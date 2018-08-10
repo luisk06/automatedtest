@@ -6,16 +6,16 @@ npm-debug.log*
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 
-tests/reports/**/*.json
-tests/reports/**/*.xml
-tests/reports/**/*.html
-tests/reports/**/*.png
-tests/reports/**/*.txt
-tests/support/reports/coverage/**/*
-tests/support/config.user.js
-tests/reports/custom/chrome.json
-tests/support/config.saucelabuser.js
-tests/support/config.browserstack.js
+reports/**/*.json
+reports/**/*.xml
+reports/**/*.html
+reports/**/*.png
+reports/**/*.txt
+support/reports/coverage/**/*
+support/config.user.js
+reports/custom/chrome.json
+support/config.saucelabuser.js
+support/config.browserstack.js
 
 tests/scenarios.txt
 package-lock.json*
