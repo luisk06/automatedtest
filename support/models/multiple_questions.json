@@ -1,0 +1,86 @@
+{
+    "name": "Qrvey with Multiplie Choice Question by API",
+    "description": "A description of test by API",
+    "userid": "",
+    "qrveyid": "",
+    "appType": "FORM",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "duration": {
+        "from": "2017-06-16T14:54:04.469Z"
+    },
+    "templateNotification": true,
+    "totalTime": 48,
+    "questions": {
+        "data": [{
+            "text": "Who is your favorite game of thrones character?",
+            "type": "SINGLE_CHOICE",
+            "answers": [{
+                "answerid": "MIPL29S5a0",
+                "answer": "Jon Snow"
+            }, {
+                "answerid": "MIPL29S5a1",
+                "answer": "Tyrion Lannister"
+            }, {
+                "answerid": "MIPL29S5a2",
+                "answer": "Daenerys Targaryen"
+            }, {
+                "answerid": "MIPL29S5a3",
+                "answer": "Arya Stark"
+            }, {
+                "answerid": "MIPL29S5a4",
+                "answer": "Ghost"
+            }],
+            "id": "Y06NPO18",
+            "question": "main",
+            "time": 3
+            }, {
+            "text" : "YES_NO_Question",
+            "id" : "7W_4I4FS",
+            "type" : "YES_NO",
+            "question" : "main",
+            "answers" : [{
+                "answer" : "Yes",
+                "answerid" : "7W_4I4FSa0"
+            }, {
+                "answer" : "No",
+                "answerid" : "7W_4I4FSa1"
+            }],
+            "time" : 9
+            },
+            {
+            "text" : "Short_Text_Question",
+            "id" : "DB1PPWUP",
+            "type" : "TEXTFIELD",
+            "question" : "main",
+            "answers" : [{
+                "answer" : "TEXTFIELD"
+            }],
+            "maxChar" : 120,
+            "time" : 12
+        }]
+    },
+    "customStyle": {
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "totalQuestions": 1
+}

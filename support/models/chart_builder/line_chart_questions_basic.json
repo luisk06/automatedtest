@@ -1,0 +1,124 @@
+{
+	"name": "Line Chart Test",
+	"appType": "",
+	"userid": "",
+	"appid": "",
+	"qrveyid": "",
+	"status": "IN_PROGRESS",
+	"customStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"introPage": false,
+	"templateNotification": true,
+	"tempStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"questions": {
+		"data": [{
+				"text": "Single Selection",
+				"type": "SINGLE_CHOICE",
+				"answers": [{
+						"answer": "A",
+						"answerid": "XBFF40AUa0"
+					},
+					{
+						"answer": "B",
+						"answerid": "XBFF40AUa1"
+					}
+				],
+				"id": "XBFF40AU",
+				"question": "main",
+				"time": 1,
+				"auxText": "Single Selection"
+			},
+			{
+				"text": "Yes-No",
+				"id": "WDB1VSJ7",
+				"type": "YES_NO",
+				"question": "main",
+				"answers": [{
+						"answer": "Yes",
+						"answerid": "WDB1VSJ7a0"
+					},
+					{
+						"answer": "No",
+						"answerid": "WDB1VSJ7a1"
+					}
+				],
+				"time": 3,
+				"auxText": "Yes-No"
+			},
+			{
+				"text": "Numeric",
+				"id": "CYCP9YQ5",
+				"type": "NUMERIC",
+				"question": "main",
+				"answers": [{
+					"answer": "NUMERIC",
+					"answerid": "CYCP9YQ5a0"
+				}],
+				"allowDecimals": false,
+				"hasMinMax": false,
+				"time": 1,
+				"auxText": "Numeric",
+				"numberType": "General"
+			},
+			{
+				"text": "Date",
+				"id": "E4Z9WXST",
+				"type": "DATE",
+				"question": "main",
+				"answers": [{
+					"answer": "DATE",
+					"answerid": "E4Z9WXSTa0"
+				}],
+				"time": 5,
+				"auxText": "Date"
+			}
+		]
+	},
+	"results_visibility": "Public",
+	"duration": {
+		"neverExpires": true,
+		"from": "2017-06-27T14:29:54.780Z"
+	},
+	"questionsVersion": 36
+}

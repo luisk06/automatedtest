@@ -1,0 +1,134 @@
+{
+    "name": "Qrvey with MC Jump-to-End Branch",
+    "appType": "SURVEY",
+    "userid": "DwmvNLV",
+    "appid": "",
+    "qrveyid": "VpRLpma",
+    "status": "IN_PROGRESS",
+    "numResponses": 0,
+    "customStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "introPage": false,
+    "templateNotification": true,
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "questions": {
+        "data": [
+            {
+                "text": "What option do you prefer the most?",
+                "type": "SINGLE_CHOICE",
+                "answers": [
+                    {
+                        "answer": "Option 1",
+                        "answerid": "8M5ULH5Ka0"
+                    },
+                    {
+                        "answer": "Option 2",
+                        "answerid": "8M5ULH5Ka1"
+                    }
+                ],
+                "id": "8M5ULH5K",
+                "question": "main",
+                "time": 5,
+                "auxText": "What option do you prefer the most?"
+            },
+            {
+                "text": "How do you feel today?",
+                "id": "K8BU267G",
+                "type": "TEXTFIELD",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "TEXTFIELD"
+                    }
+                ],
+                "maxChar": 120,
+                "auxText": "How do you feel today?"
+            },
+            {
+                "text": "What's your age?",
+                "id": "9I4KKV3_",
+                "type": "NUMERIC",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "NUMERIC"
+                    }
+                ],
+                "allowDecimals": false,
+                "hasMinMax": false,
+                "min": null,
+                "max": null,
+                "auxText": "What's your age?",
+                "numberType": "General",
+                "time": 73
+            }
+        ]
+    },
+    "description": "",
+    "branchesMap": [
+        {
+            "questionid": "8M5ULH5K",
+            "branches": [
+                {
+                    "name": "New Branch",
+                    "branchid": "J_043MWD",
+                    "level": 1,
+                    "option": {
+                        "type": "end_now"
+                    },
+                    "options": [
+                        {
+                            "answer": "Option 1",
+                            "answerid": "8M5ULH5Ka0"
+                        }
+                    ],
+                    "rel": [
+                        ""
+                    ],
+                    "condition": "equal"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "text": "A date question",
+    "id": "",
+    "type": "DATE",
+    "question": "main",
+    "answers": [
+        {
+            "answer": "DATE"
+        }
+    ],
+    "time": 1
+}

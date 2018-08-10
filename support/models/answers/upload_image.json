@@ -1,0 +1,26 @@
+{
+	"profile": {
+		"email": ""
+	},
+	"qrveyID": "",
+	"answers": [
+		{
+			"id": "",
+			"type": "IMAGEUPLOAD",
+			"time": "",
+			"question": "main",
+			"data": [
+				true
+			],
+			"data_ansid": [],
+			"imageUrl": "",
+			"imageUploadOption": ""
+		}
+	],
+	"questionsVersion": 1,
+	"totalUserTime": 1407,
+	"qstring": {
+		"q": "",
+		"": "undefined"
+	}
+}

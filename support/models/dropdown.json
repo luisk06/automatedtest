@@ -1,0 +1,34 @@
+{
+	"qrveyid": "oDPaadD",
+	"makerName": "",
+	"name": "Dropdown Question",
+	"status": "RUNNING",
+	"questions": {
+		"data": [
+			{
+				"questionIndex": 1,
+				"incomplete": false,
+				"question": "main",
+				"otherField": false,
+				"answers": [
+					"Less than high school",
+					"Graduated high school",
+					"Trade/technical school",
+					"Some college, no degree",
+					"Associate degree",
+					"Bachelor’s degree"
+				],
+				"id": "DD_8LYA5",
+				"text": "sdfsdfdsfsdfsd",
+				"type": "DROPDOWN",
+				"isTrusted": true
+			}
+		]
+	},
+	"userExists": false,
+	"userAnsweredAlready": null,
+	"appType": "SURVEY",
+	"introPage": false,
+	"questionsVersion": 16,
+	"appid": "RbqrYz6"
+}

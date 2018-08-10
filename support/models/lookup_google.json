@@ -1,0 +1,108 @@
+{
+	"name": "Test Lookup google-sheet forms",
+	"totalTime": 4,
+	"appType": "ONLINEFORM",
+	"userid": "cbfdfpu",
+	"appid": "",
+	"qrveyid": "f0C5sQI",
+	"description": "Test description",
+	"templateNotification": true,
+	"questions": {
+		"data": [{
+			"lookup_config": {
+				"display_name_pos": 0,
+				"firstRow": true,
+				"testedFields": true,
+				"gsheet_id": "1xLNeEmGKg6j9bM8UbXzihb5ATt-wZVNGjNkob68x1Ro",
+				"backupUrl": "https://docs.google.com/spreadsheets/d/1xLNeEmGKg6j9bM8UbXzihb5ATt-wZVNGjNkob68x1Ro/edit?usp=sharing",
+				"value_pos": 1,
+				"suggested_values": [
+					"Option",
+					"Value"
+				],
+				"source": "google_spreadsheet",
+				"display_name": "Option",
+				"sheet_name": "Sheet1",
+				"value": "Value",
+				"url": "https://docs.google.com/spreadsheets/d/1xLNeEmGKg6j9bM8UbXzihb5ATt-wZVNGjNkob68x1Ro/edit?usp=sharing"
+			},
+			"question": "main",
+			"answers": [{
+					"answerid": "8_U0UJC4aT02CLM0F",
+					"answer": "Option 1",
+					"value": "Value 1"
+				},
+				{
+					"answerid": "8_U0UJC4aJH5GJCCL",
+					"answer": "Option 2",
+					"value": "Value 2"
+				},
+				{
+					"answerid": "8_U0UJC4a7PCT2GX2",
+					"answer": "Option 3",
+					"value": "Value 3"
+				},
+				{
+					"answerid": "8_U0UJC4a403Y18LU",
+					"answer": "Option 4",
+					"value": "Value 4"
+				},
+				{
+					"answerid": "8_U0UJC4aA9EL5CST",
+					"answer": "Option 5",
+					"value": "Value 5"
+				}
+			],
+			"id": "8_U0UJC4",
+			"text": "Test lookup",
+			"time": 4,
+			"type": "LOOKUP"
+		}]
+	},
+	"introPage": true,
+	"status": "IN_PROGRESS",
+	"customStyle": {
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"name": "Qrvey Default",
+		"style": {
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"buttons": "#293b49",
+			"answerFont": "#595959",
+			"imgSize": 150,
+			"background": "#fafafa",
+			"main": "#e6773d",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"newChanges": false,
+		"userid": "qrveydefault"
+	},
+	"tempStyle": {
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"name": "Qrvey Default",
+		"style": {
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"buttons": "#293b49",
+			"answerFont": "#595959",
+			"imgSize": 150,
+			"background": "#fafafa",
+			"main": "#e6773d",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"newChanges": false,
+		"userid": "qrveydefault"
+	}
+}

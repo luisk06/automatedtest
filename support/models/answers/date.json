@@ -1,0 +1,21 @@
+{
+    "pointsPerUser": 100,
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [{
+        "id": "TOGGQ8A0",
+        "type": "DATE",
+        "time": 1,
+        "question": "main",
+        "data": [],
+        "data_ansid": []
+    }],
+    "totalUserTime": 2,
+    "optionalQuestions": false,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

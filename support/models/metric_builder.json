@@ -1,0 +1,100 @@
+{
+    "appid": "Sd5GlAV",
+    "type": {
+        "text": "Indicator Gauge",
+        "label": "INDICATOR"
+    },
+    "thresholdsList": [
+        {
+            "label": "dsfsdfsdfdssfsd",
+            "color": "#F00809",
+            "operator": {
+                "text": "Less than",
+                "label": "LESS_THAN"
+            },
+            "value": 10000
+        },
+        {
+            "label": "erterteret",
+            "color": "#9ED208",
+            "operator": {
+                "text": "Greater than",
+                "label": "GREATER_THAN"
+            },
+            "value": 100
+        }
+    ],
+    "data": {
+        "dataSet": {
+            "text": "Untitled Dataset",
+            "appType": "ELASTICSEARCH",
+            "appid": "Sd5GlAV",
+            "qrveyid": "sQU9ixH"
+        },
+        "value": {
+            "numberType": "General",
+            "elasticseachDataType": "long",
+            "displayName": "Primary Insurance Info Link",
+            "origColumnName": "Primary Insurance Info Link",
+            "origColumnType": "NUMERIC",
+            "auxText": "Primary Insurance Info Link",
+            "column": "Primary Insurance Info Link",
+            "checked": true,
+            "text": "Primary Insurance Info Link",
+            "id": "DOLTS9GX",
+            "time": 4,
+            "type": "NUMERIC",
+            "label": "NUMERIC"
+        },
+        "valueAggregate": {
+            "text": "Sum",
+            "label": "SUM"
+        },
+        "dateColumn": {
+            "elasticseachDataType": "date",
+            "displayName": "Receiving Date Time.value",
+            "origColumnName": "Receiving Date Time.value",
+            "origColumnType": "DATE",
+            "auxText": "Receiving Date Time.value",
+            "column": "Receiving Date Time.value",
+            "checked": true,
+            "text": "Receiving Date Time.value",
+            "id": "22NYVZFW",
+            "time": 4,
+            "type": "DATE",
+            "label": "DATE"
+        }
+    },
+    "globalSettings": {
+        "numberFormat": {
+            "text": "Default",
+            "label": "DEFAULT"
+        },
+        "comparisonType": "CHANGE",
+        "tooltip": true,
+        "legend": true,
+        "description": true
+    },
+    "individualSettings": {
+        "iconPosition": {
+            "text": "Left",
+            "label": "LEFT"
+        }
+    },
+    "footerMsg": "Primary Insurance Info Link (SUM) ",
+    "changed": 1533309018097,
+    "name": "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a mor",
+    "results": {
+        "value": 5328955027,
+        "min": 0,
+        "max": 1376,
+        "lastValue": 0
+    },
+    "userid": "UBTesjC",
+    "metricid": "1_P-hWfX8",
+    "namelower": "there is no one who loves pain itself, who seeks after it and wants to have it, simply because it is",
+    "createDate": "2018-08-03T15:10:29.818Z",
+    "modifyDate": "2018-08-03T15:10:29.818Z",
+    "position": 3
+}

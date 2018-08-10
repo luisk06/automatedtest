@@ -1,0 +1,20 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [{
+        "id": "5GWKCON_",
+        "type": "SINGLE_CHOICE",
+        "time": 29,
+        "question": "main",
+        "data": [
+            "Option 1"
+        ]
+    }],
+    "totalUserTime": 68,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

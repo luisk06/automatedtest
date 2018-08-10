@@ -1,0 +1,69 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [
+        {
+            "id": "GCPNJZXZ",
+            "type": "SINGLE_CHOICE",
+            "time": 2233,
+            "question": "main",
+            "data": [
+                "A"
+            ],
+            "data_ansid": [
+                "GCPNJZXZa0"
+            ]
+        },
+        {
+            "id": "D1T6JJYW",
+            "type": "YES_NO",
+            "time": 2235,
+            "question": "main",
+            "data": [
+                "No"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "6MDGPPI3",
+            "type": "IMAGE",
+            "time": 2239,
+            "question": "main",
+            "data": [
+                ""
+            ],
+            "data_ansid": [
+                ""
+            ]
+        },
+        {
+            "id": "4BITRZTQ",
+            "type": "DATE",
+            "time": 2242,
+            "question": "main",
+            "data": [
+                "10/04/2017"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "EFTV_U5H",
+            "type": "NUMERIC",
+            "time": 2249,
+            "question": "main",
+            "data": [
+                32
+            ],
+            "data_ansid": [],
+            "numberType": "General"
+        }
+    ],
+    "questionsVersion": 2,
+    "totalUserTime": 2254,
+    "qstring": {
+        "q": "ab6y0",
+        "": "undefined"
+    }
+}

@@ -1,0 +1,31 @@
+{
+	"answers": [
+		{
+			"data": ["10"],
+			"id": "",
+			"question": "main",
+			"time": 9,
+			"type": "NPS_SCORE",
+			"userType": "Promoter"
+		},
+		{
+			"data": ["Hola como estas?"],
+			"id": "",
+			"question": "optional",
+			"time": 17,
+			"type": "NPS_FEEDBACK",
+			"userType": "Promoter"
+		}
+	],
+	"optionalQuestions": true,
+	"pointsPerUser": "undefined",
+	"profile": {
+		"email": ""
+	},
+	"qrveyID": "",
+	"qstring": {
+		"": "undefined",
+		"q": ""
+	},
+	"totalUserTime": 22
+}

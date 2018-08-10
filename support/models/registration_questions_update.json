@@ -1,0 +1,103 @@
+{
+	"name": "Registration form by API",
+	"description": "A description of test by API",
+	"userid": "",
+	"qrveyid": "",
+	"appType": "",
+	"appid": "",
+	"status": "IN_PROGRESS",
+	"customStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"introPage": false,
+	"templateNotification": true,
+	"tempStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"questions" : {
+		"data" : [{
+			"text" : "Email",
+			"id" : "FI6UTC58",
+			"type" : "EMAIL_FORM",
+			"question" : "main",
+			"answers" : [{
+			"answer" : "EMAIL_FORM"
+			}]
+		},
+		{
+		"maxChar" : 500,
+		"question" : "main",
+		"answers" : [{
+			"answer" : "TEXTFIELD",
+			"answerid" : "W11SUMY_ar0"
+		}],
+		"text" : "Name",
+		"id" : "W11SUMY_",
+		"time" : 6,
+		"type" : "TEXTFIELD"
+		},
+		{
+		"text" : "New Email",
+		"id" : "PHTY25XG",
+		"type" : "EMAIL_FORM",
+		"question" : "main",
+		"answers" : [{
+			"answer" : "EMAIL_FORM"
+		}],
+		"time" : 9
+		},
+		{
+		"text" : "Phone Number",
+		"id" : "141BFUU1",
+		"type" : "PHONE",
+		"question" : "main",
+			"answers" : [{
+				"answer" : "PHONE"
+			}]
+		}]
+	},
+	"results_visibility": "Public",
+	"duration": {
+		"neverExpires": true,
+		"from": "2017-06-27T14:29:54.780Z"
+	},
+	"questionsVersion": 36
+}

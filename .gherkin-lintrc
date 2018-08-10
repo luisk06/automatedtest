@@ -1,0 +1,14 @@
+{
+    "no-unnamed-features": "on",
+    "no-unnamed-scenarios": "on",
+    "indentation" : ["on", { "Feature": 0, "Background": 1, "Scenario": 1, "Step": 2, "given": 2, "and": 3 }],
+    "name-length" : ["on", { "Feature": 120, "Scenario":  200, "Step": 160 }],
+    "new-line-at-eof": ["on", "no"],
+    "no-duplicate-tags": "on",
+    "no-files-without-scenarios": "on",
+    "no-multiple-empty-lines": "on",
+    "no-scenario-outlines-without-examples": "on",
+    "no-trailing-spaces": "on",
+    "no-empty-file": "on",
+    "no-scenario-outlines-without-examples": "on"
+}

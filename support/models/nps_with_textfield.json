@@ -1,0 +1,59 @@
+{
+    "name": "Qrvey with NPS Question by API",
+    "description": "A description of test by API",
+    "appType": "NPS",
+    "userid": "",
+    "qrveyid": "",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "duration": {
+        "neverExpires": true,
+        "number": 1,
+        "period": "day"
+    },
+    "questions": {
+        "data": [{
+            "text": "Qrvey",
+            "type": "NPS_SCORE",
+            "id": "KJP0Z9RY",
+            "answers": [{
+                "answer": "NPSSCORE"
+            }],
+            "question": "main",
+            "time": 10
+        }, {
+            "text": "Could you please explain your choice? Thank you!",
+            "type": "NPS_FEEDBACK",
+            "id": "S82Z_TY4",
+            "answers": [{
+                "answer": "NPSFEEDBACK"
+            }],
+            "question": "optional",
+            "time": 15
+        }]
+    },
+    "customStyle": {
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "totalQuestions": 2,
+    "totalTime": 25
+}

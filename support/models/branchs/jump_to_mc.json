@@ -1,0 +1,141 @@
+{
+    "name": "Qrvey with MC Jump-to-Question",
+    "appType": "SURVEY",
+    "userid": "DwmvNLV",
+    "appid": "",
+    "qrveyid": "5AQ12qe",
+    "status": "PAUSED",
+    "numResponses": 0,
+    "customStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "introPage": false,
+    "templateNotification": true,
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "questions": {
+        "data": [
+            {
+                "text": "What option do you prefer?",
+                "type": "SINGLE_CHOICE",
+                "answers": [
+                    {
+                        "answer": "Option 1",
+                        "answerid": "Z4KQUSK_a0"
+                    },
+                    {
+                        "answer": "Option 2",
+                        "answerid": "Z4KQUSK_a1"
+                    }
+                ],
+                "id": "Z4KQUSK_",
+                "question": "main",
+                "time": 6,
+                "auxText": "What option do you prefer?"
+            },
+            {
+                "text": "How do you feel today?",
+                "id": "JGYFZNZR",
+                "type": "TEXTFIELD",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "TEXTFIELD"
+                    }
+                ],
+                "maxChar": 120,
+                "auxText": "How do you feel today?"
+            },
+            {
+                "text": "Please enter a number",
+                "id": "8R1PJXET",
+                "type": "NUMERIC",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "NUMERIC"
+                    }
+                ],
+                "allowDecimals": false,
+                "hasMinMax": false,
+                "min": null,
+                "max": null,
+                "auxText": "Please enter a number",
+                "numberType": "General"
+            }
+        ]
+    },
+    "description": "",
+    "branchesMap": [
+        {
+            "questionid": "Z4KQUSK_",
+            "branches": [
+                {
+                    "name": "New Branch",
+                    "branchid": "GV98GY3K",
+                    "level": 1,
+                    "option": {
+                        "type": "jump_to",
+                        "questionID": "8R1PJXET"
+                    },
+                    "options": [
+                        {
+                            "answer": "Option 1",
+                            "answerid": "Z4KQUSK_a0"
+                        }
+                    ],
+                    "rel": [
+                        ""
+                    ],
+                    "condition": "equal"
+                }
+            ]
+        }
+    ],
+    "results_visibility": "Private",
+    "duration": {
+        "neverExpires": true,
+        "number": 1,
+        "period": "day",
+        "from": "2017-10-30T15:53:32.314Z"
+    }
+}

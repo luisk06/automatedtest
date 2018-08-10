@@ -1,0 +1,15 @@
+{
+    "body": [{
+        "type": "ACTION",
+        "bodyId": "eo1knia",
+        "warnings": {
+            "warningMessage": false,
+            "warningAttachment": false,
+            "warningLoadQrvey": false
+        },
+        "data": {
+            "action_type": "SHOW_MESSAGE",
+            "message": "Hello Qrveyers!"
+        }
+    }]
+}

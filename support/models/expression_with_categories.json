@@ -1,0 +1,79 @@
+{
+	"name": "Qrvey with Expression by API",
+	"description": "A description of test by API",
+	"userid": "",
+	"appType": "SURVEY",
+	"qrveyid": "",
+	"appid": "",
+	"status": "IN_PROGRESS",
+	"duration": {
+		"from": "2017-12-12T16:40:41.677Z"
+	},
+	"templateNotification": true,
+	"totalTime": 48,
+	"questions": {
+		"data": [{
+			"id": "B33OY14N",
+			"activeCat": true,
+			"time": 9,
+			"text": "How do you feel",
+			"answers": [{
+				"answerid": "B33OY14Na0",
+				"answer": "EXPRESSION"
+			}],
+			"question": "main",
+			"negative": [{
+				"text": "Unusual"
+			}, {
+				"text": "Tired"
+			}, {
+				"text": "Bored"
+			}, {
+				"text": "Depressed"
+			}, {
+				"text": "Sick"
+			}],
+			"type": "EXPRESSION",
+			"positive": [{
+				"text": "Happy"
+			}, {
+				"text": "Exited"
+			}, {
+				"text": "Enthusiastic"
+			}, {
+				"text": "Lucky"
+			}, {
+				"text": "Comfortable"
+			}],
+			"multiple": false
+		}]
+	},
+	"customStyle": {
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"style": {
+			"mainFont": "#ffffff",
+			"imgSize": 150,
+			"questionFont": "#595959",
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"textFieldBackground": "#f7f7f7",
+			"buttons": "#293b49",
+			"main": "#e6773d"
+		},
+		"styleid": "NJI5oEtiZ",
+		"name": "Qrvey Default",
+		"userid": "CQINSeS",
+		"newChanges": false
+	},
+	"results_visibility": "Public",
+	"duration": {
+		"number": 15,
+		"period": "day"
+	},
+	"totalQuestions": 1
+}

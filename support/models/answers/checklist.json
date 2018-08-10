@@ -1,0 +1,20 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "aZ4aP01",
+    "answers": [{
+        "id": "QL_20N3W",
+        "type": "CHECKLIST",
+        "time": 1,
+        "question": "main",
+        "data": ["sdfds", "fsdfsdfdfsd"],
+        "data_ansid": []
+    }],
+    "totalUserTime": 11,
+    "questionsVersion": 2,    
+    "qstring": {
+        "q": "aRl7o",
+        "": "undefined"
+    }
+}

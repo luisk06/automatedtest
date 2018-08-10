@@ -1,0 +1,82 @@
+{
+    "name": "Qrvey with Checklist Question by API",
+    "description": "Qrvey with Checklist Question by API",
+    "appType": "CHECKLIST",
+    "userid": "rEG25aY",
+    "qrveyid": "GwGmRwd",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "results_visibility" : "Private",
+    "duration": {
+        "number": 1,
+        "period": "day",
+        "neverExpires": true
+    },
+    "customStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault"
+    },
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault"
+    },
+    "introPage": true,
+    "questions": {
+        "data": [{
+            "id": "NIPL29S5",
+            "time": 6,
+            "text": "Check all topics you are interested in.",
+            "answers": [{
+                "answerid": "NIPL29S5a0",
+                "answer": "Technology"
+            }, {
+                "answerid": "NIPL29S5a1",
+                "answer": "Science"
+            }, {
+                "answerid": "NIPL29S5a2",
+                "answer": "Sports"
+            }, {
+                "answerid": "NIPL29S5a3",
+                "answer": "Politics"
+            }, {
+                "answerid": "NIPL29S5a4",
+                "answer": "Entertainment"
+            }, {
+                "answerid": "NIPL29S5a5",
+                "answer": "Art & Culture"
+            }, {
+                "answerid": "NIPL29S5a6",
+                "answer": "Fashion"
+            }],
+            "question": "main",
+            "type": "CHECKLIST"
+        }]
+    },
+    "emailReqConfig": {
+        "title": "Email",
+        "not_allow_duplicates": true
+    },
+    "respondent_email": "None"
+}

@@ -1,0 +1,84 @@
+{
+	"questions": {
+		"data": [
+			{
+				"text": "Can you upload your favorite picture?",
+				"id": "QW4SMQ3B",
+				"type": "IMAGEUPLOAD",
+				"question": "main",
+				"imageUploadOption": "None",
+				"answers": [
+					{
+						"answer": "IMAGEUPLOAD",
+						"answerid": "QW4SMQ3Ba0"
+					}
+				],
+				"auxText": "can you upload your favorite picture?"
+			}
+		]
+	},
+	"introPage": false,
+	"status": "IN_PROGRESS",
+	"customStyle": {
+		"name": "Qrvey Default",
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"style": {
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"buttons": "#293b49",
+			"answerFont": "#595959",
+			"imgSize": 150,
+			"background": "#fafafa",
+			"main": "#e6773d",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"userid": "qrveydefault",
+		"newChanges": false,
+		"styleid": "NJI5oEtiZ"
+	},
+	"tempStyle": {
+		"name": "Qrvey Default",
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"style": {
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"buttons": "#293b49",
+			"answerFont": "#595959",
+			"imgSize": 150,
+			"background": "#fafafa",
+			"main": "#e6773d",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"userid": "qrveydefault",
+		"newChanges": false,
+		"styleid": "NJI5oEtiZ"
+	},
+	"numResponses": 0,
+	"name": "upload image question for qrvey",
+	"createDate": "2018-03-16T20:44:16.169Z",
+	"searchString": "upload image question for qrvey",
+	"appType": "SURVEY",
+	"userid": "IWI5U3H",
+	"modifyDate": "2018-03-16T21:27:33.977Z",
+	"appid": "",
+	"qrveyid": "",
+	"questionsVersion": 1,
+	"templateNotification": true,
+	"namelower": "upload image question for qrvey",
+	"results_visibility": "Private",
+	"respondent_email": "None",
+	"duration": {
+		"neverExpires": true,
+		"from": "2018-03-16T21:27:33.859Z"
+	}
+}

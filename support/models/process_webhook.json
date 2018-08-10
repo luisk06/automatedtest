@@ -1,0 +1,17 @@
+{
+    "notifications": [
+        "none"
+    ],
+    "triggers": [{
+        "type": "WEBHOOK",
+        "data": {
+            "url": "http://localhost:1234/webhooks/automatiq/process/7c5b64638c297f2c67bab7f03bf8cb6af7cdf92257415a1fa02ba5f25e2a224157b7bed88cc2ab9d921b"
+        }
+    }],
+    "processid": "s1c0ixF",
+    "userid": "rEG25aY",
+    "name": "Process webhook by API",
+    "userEmail": "",
+    "description": "Null",
+    "status": "NOT_RUNNING"
+}

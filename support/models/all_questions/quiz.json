@@ -1,0 +1,152 @@
+{
+    "emailReqConfig": {
+        "title": "Email",
+        "not_allow_duplicates": true
+    },
+    "questions": {
+        "data": [
+            {
+                "question": "optional",
+                "answers": [
+                    {
+                        "answer": "A",
+                        "answerid": "GCPNJZXZa0"
+                    },
+                    {
+                        "answer": "B",
+                        "answerid": "GCPNJZXZa1"
+                    },
+                    {
+                        "answer": "C",
+                        "answerid": "GCPNJZXZa6LURL2SQ"
+                    },
+                    {
+                        "answer": "D",
+                        "answerid": "GCPNJZXZaL5EK_F3W"
+                    }
+                ],
+                "text": "Multiple Choice",
+                "id": "GCPNJZXZ",
+                "time": 2,
+                "type": "SINGLE_CHOICE"
+            },
+            {
+                "question": "optional",
+                "answers": [
+                    {
+                        "answer": "Yes"
+                    },
+                    {
+                        "answer": "No"
+                    }
+                ],
+                "text": "Yes-No",
+                "id": "D1T6JJYW",
+                "time": 3,
+                "type": "YES_NO"
+            },
+            {
+                "question": "optional",
+                "answers": [
+                    {
+                        "answerid": "6MDGPPI3a0",
+                        "imageUrl": "https://automatedqastg.qrvey.com/app/images/icn/mini-timer@2x.png"
+                    },
+                    {
+                        "answerid": "6MDGPPI3a1",
+                        "imageUrl": "https://automatedqastg.qrvey.com/app/images/icn/logo-qrvey.png"
+                    }
+                ],
+                "text": "Image",
+                "id": "6MDGPPI3",
+                "time": 10,
+                "type": "IMAGE"
+            },
+            {
+                "question": "optional",
+                "answers": [
+                    {
+                        "answer": "DATE"
+                    }
+                ],
+                "text": "Date",
+                "id": "4BITRZTQ",
+                "time": 10,
+                "type": "DATE"
+            },
+            {
+                "allowDecimals": true,
+                "score": 1,
+                "numberType": "General",
+                "question": "optional",
+                "hasMinMax": false,
+                "answers": [
+                    {
+                        "answer": "NUMERIC"
+                    }
+                ],
+                "text": "Numeric",
+                "id": "EFTV_U5H",
+                "rangeError": false,
+                "type": "NUMERIC"
+            }
+        ]
+    },
+    "introPage": false,
+    "status": "IN_PROGRESS",
+    "customStyle": {
+        "name": "Qrvey Default",
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "userid": "qrveydefault",
+        "newChanges": false,
+        "styleid": "NJI5oEtiZ"
+    },
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "userid": "qrveydefault",
+        "newChanges": false,
+        "styleid": "NJI5oEtiZ"
+    },
+    "numResponses": 0,
+    "name": "Quiz All Questions",
+    "totalQuestions": 5,
+    "searchString": "quiz all questions",
+    "appType": "QUIZ",
+    "userid": "",
+    "appid": "",
+    "qrveyid": "",
+    "questionsVersion": 2,
+    "templateNotification": true,
+    "emailRequired": true
+}

@@ -1,0 +1,74 @@
+{
+    "name": "Qrvey with Long Text Question by API",
+    "description": "A description of test by API",
+    "appType": "SURVEY",
+    "userid": "U1EmRk1",
+    "qrveyid": "1yKoVBZ",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "duration": {
+        "from": "2016-11-29T19:22:50.371Z"
+    },
+    "customStyle": {
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "introPage": true,
+    "templateNotification": true,
+    "tempStyle": {
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "totalTime": 6,
+    "questions": {
+        "data": [{
+            "text": "Question",
+            "id": "W11SUMY_",
+            "type": "LONGTEXT",
+            "question": "main",
+            "answers": [{
+                "answer": "LONGTEXT",
+                "answerid": "W11SUMY_ar0"
+            }],
+            "maxChar": 500,
+            "time": 6
+        }]
+    },
+    "totalQuestions": 1
+}

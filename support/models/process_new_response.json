@@ -1,0 +1,15 @@
+{
+    "notifications": [
+        "none"
+    ],
+    "triggers": [{
+        "label" : "1.",
+        "type": "NEW_RESPONSE"
+    }],
+    "processid": "s1c0ixF",
+    "userid": "rEG25aY",
+    "name": "Process new response by API",
+    "userEmail": "",
+    "description": "Null",
+    "status": "NOT_RUNNING"
+}

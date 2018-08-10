@@ -1,0 +1,21 @@
+{
+    "pointsPerUser": 100,
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [{
+        "id": "",
+        "type": "SLIDEBAR",
+        "time": 6,
+        "question": "main",
+        "data": [],
+        "data_ansid": []
+    }],
+    "totalUserTime": 6,
+    "optionalQuestions": false,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

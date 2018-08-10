@@ -1,0 +1,61 @@
+{
+    "name": "Qrvey with Expression Question by API",
+    "description": "A description of test by API",
+    "userid": "",
+    "appType": "SURVEY",
+    "qrveyid": "",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "templateNotification": true,
+    "totalTime": 48,
+    "questions": {
+        "data": [{
+            "text": "A expression question",
+            "id": "KASPLWWH",
+            "type": "EXPRESSION",
+            "question": "main",
+            "answers": [{
+                "answer": "EXPRESSION"
+            }],
+            "activeCat": false,
+            "words": [{
+                "text": "Happy"
+            }, {
+                "text": "Exited"
+            }, {
+                "text": "Dull"
+            }, {
+                "text": "Tired"
+            }, {
+                "text": "Impassive"
+            }],
+            "positive": [],
+            "negative": [],
+            "multiple": false,
+            "time": 1
+        }]
+    },
+    "customStyle": {
+        "position": "sqmodal",
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "results_visibility": "Public",
+    "duration": {
+        "number": 15,
+        "period": "day"
+    },
+    "totalQuestions": 1
+}

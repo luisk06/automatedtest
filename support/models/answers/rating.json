@@ -1,0 +1,21 @@
+{
+    "pointsPerUser": 100,
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [{
+        "id": "",
+        "type": "RATING",
+        "time": 7,
+        "question": "main",
+        "data": [],
+        "data_ansid": []
+    }],
+    "totalUserTime": 22,
+    "optionalQuestions": false,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "text": "Who is your favorite game of thrones character?",
+    "type": "SINGLE_CHOICE",
+    "answers": [
+        {
+            "answerid": "MIPL29S5a0",
+            "answer": "Jon Snow"
+        },
+        {
+            "answerid": "MIPL29S5a1",
+            "answer": "Tyrion Lannister"
+        },
+        {
+            "answerid": "MIPL29S5a2",
+            "answer": "Daenerys Targaryen"
+        },
+        {
+            "answerid": "MIPL29S5a3",
+            "answer": "Arya Stark"
+        },
+        {
+            "answerid": "MIPL29S5a4",
+            "answer": "Ghost"
+        }
+    ],
+    "id": "Y06NPO18",
+    "question": "main",
+    "time": 3
+}

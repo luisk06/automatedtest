@@ -1,0 +1,63 @@
+{
+    "name": "Qrvey with Name Question by API",
+    "description": "A description of test by API",
+    "appType": "ONLINEFORM",
+    "userid": "U1EmRk1",
+    "appid": "",
+    "qrveyid": "mQrVwWy",
+    "status": "IN_PROGRESS",
+    "duration": {
+        "from": "2017-12-02T14:07:41.785Z"
+    },
+    "customStyle": {
+        "position": "sqmodal",
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "templateNotification": true,
+    "tempStyle": {
+        "position": "sqmodal",
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "introPage": true,
+    "questions": {
+        "data": [{
+            "text": "Name Question",
+            "id": "C2O9XQ05",
+            "type": "NAME",
+            "question": "main",
+            "answers": [{
+                "answer": "Name"
+            }],
+            "time": 6
+        }]
+    },
+    "totalTime": 6,
+    "totalQuestions": 1,
+    "description": ""
+}

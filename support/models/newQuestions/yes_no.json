@@ -1,0 +1,15 @@
+{
+    "text": "A yes/no question",
+    "id": "",
+    "type": "YES_NO",
+    "question": "main",
+    "answers": [
+        {
+            "answer": "Yes"
+        },
+        {
+            "answer": "No"
+        }
+    ],
+    "time": 16
+}

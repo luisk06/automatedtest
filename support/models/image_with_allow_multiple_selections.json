@@ -1,0 +1,103 @@
+{
+	"name": "Qrvey with Image Question By API",
+	"description": "A description of test by API",
+	"userid": "",
+	"appType": "SURVEY",
+	"qrveyid": "",
+	"appid": "",
+	"status": "IN_PROGRESS",
+	"duration": {
+		"from": "2017-12-14T16:25:42.146Z"
+	},
+	"templateNotification": true,
+	"totalTime": 48,
+	"questions": {
+		"data": [{
+			"text": "Who is your favorite game of thrones character?",
+			"id": "Y06NPO18",
+			"type": "IMAGE",
+			"question": "main",
+			"answers": [{
+				"answer": "Jon Snow",
+				"answerid": "Y06NPO18a0",
+				"imageUrl": "http://assets.viewers-guide.hbo.com/larges1-ep1-people-avatar-rgb-snow-jon-1024x1024.jpg"
+			}, {
+				"answer": "Tyrion Lannister",
+				"answerid": "Y06NPO18a1",
+				"imageUrl": "http://www.trystancraft.com/costume/wp-content/uploads/2015/02/TyrionLannister-season4.jpg"
+			}, {
+				"answer": "Daenerys Targaryen",
+				"answerid": "Y06NPO18aIOYO1MRX",
+				"imageUrl": "http://www.fandomisinthedetails.com/uploads/1/9/2/0/19201953/8161305_orig.jpg"
+			}, {
+				"answer": "Arya Stark",
+				"answerid": "Y06NPO18aBXQTYT78",
+				"imageUrl": "https://pbs.twimg.com/profile_images/713341866620485633/r74dChcE.jpg"
+			}, {
+				"answer": "Ghost",
+				"answerid": "Y06NPO18aF68SZSWT",
+				"imageUrl": "http://pixel.nymag.com/imgs/daily/vulture/2016/05/23/23-direwolves.w529.h352.jpg"
+			}, {
+				"answer": "Jon Snow",
+				"answerid": "Y06NPO18a0",
+				"imageUrl": "http://assets.viewers-guide.hbo.com/larges1-ep1-people-avatar-rgb-snow-jon-1024x1024.jpg"
+			}, {
+				"answer": "Tyrion Lannister",
+				"answerid": "Y06NPO18a1",
+				"imageUrl": "http://www.trystancraft.com/costume/wp-content/uploads/2015/02/TyrionLannister-season4.jpg"
+			}, {
+				"answer": "Daenerys Targaryen",
+				"answerid": "Y06NPO18aIOYO1MRX",
+				"imageUrl": "http://www.fandomisinthedetails.com/uploads/1/9/2/0/19201953/8161305_orig.jpg"
+			}, {
+				"answer": "Arya Stark",
+				"answerid": "Y06NPO18aBXQTYT78",
+				"imageUrl": "https://pbs.twimg.com/profile_images/713341866620485633/r74dChcE.jpg"
+			}, {
+				"answer": "Ghost",
+				"answerid": "Y06NPO18aF68SZSWT",
+				"imageUrl": "http://pixel.nymag.com/imgs/daily/vulture/2016/05/23/23-direwolves.w529.h352.jpg"
+			}, {
+				"answer": "Jon Snow",
+				"answerid": "Y06NPO18a0",
+				"imageUrl": "http://assets.viewers-guide.hbo.com/larges1-ep1-people-avatar-rgb-snow-jon-1024x1024.jpg"
+			}, {
+				"answer": "Tyrion Lannister",
+				"answerid": "Y06NPO18a1",
+				"imageUrl": "http://www.trystancraft.com/costume/wp-content/uploads/2015/02/TyrionLannister-season4.jpg"
+			}, {
+				"answer": "Daenerys Targaryen",
+				"answerid": "Y06NPO18aIOYO1MRX",
+				"imageUrl": "http://www.fandomisinthedetails.com/uploads/1/9/2/0/19201953/8161305_orig.jpg"
+			}, {
+				"answer": "Arya Stark",
+				"answerid": "Y06NPO18aBXQTYT78",
+				"imageUrl": "https://pbs.twimg.com/profile_images/713341866620485633/r74dChcE.jpg"
+			}, {
+				"answer": "Ghost",
+				"answerid": "Y06NPO18aF68SZSWT",
+				"imageUrl": "http://pixel.nymag.com/imgs/daily/vulture/2016/05/23/23-direwolves.w529.h352.jpg"
+			}],
+			"allowMultiple": true,
+			"time": 9
+		}]
+	},
+	"customStyle": {
+		"position": "sqmodal",
+		"style": {
+			"mainFont": "#ffffff",
+			"imgSize": 150,
+			"questionFont": "#595959",
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"textFieldBackground": "#f7f7f7",
+			"buttons": "#293b49",
+			"main": "#e6773d"
+		},
+		"styleid": "NJI5oEtiZ",
+		"name": "Qrvey Default",
+		"userid": "U1EmRk1",
+		"newChanges": false
+	},
+	"totalQuestions": 1
+}

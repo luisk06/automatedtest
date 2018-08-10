@@ -1,0 +1,153 @@
+{
+    "questions": {
+        "data": [
+            {
+                "text": "Are you agree with Donald Trump politics?",
+                "id": "M4FEPF0K",
+                "type": "YES_NO",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "Yes",
+                        "answerid": "M4FEPF0Ka0"
+                    },
+                    {
+                        "answer": "No",
+                        "answerid": "M4FEPF0Ka1"
+                    }
+                ],
+                "auxText": "Are you agree with Donald Trump politics?"
+            },
+            {
+                "maxChar": 120,
+                "question": "main",
+                "auxText": "How do you feel today?",
+                "answers": [
+                    {
+                        "answer": "TEXTFIELD"
+                    }
+                ],
+                "text": "How do you feel today?",
+                "id": "JGYFZNZR",
+                "type": "TEXTFIELD"
+            },
+            {
+                "allowDecimals": false,
+                "numberType": "General",
+                "question": "main",
+                "hasMinMax": false,
+                "auxText": "Please enter a number",
+                "answers": [
+                    {
+                        "answer": "NUMERIC"
+                    }
+                ],
+                "text": "Please enter a number",
+                "id": "8R1PJXET",
+                "type": "NUMERIC"
+            }
+        ]
+    },
+    "status": "IN_PROGRESS",
+    "customStyle": {
+        "name": "Qrvey Default",
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "userid": "qrveydefault",
+        "newChanges": false,
+        "styleid": "NJI5oEtiZ"
+    },
+    "branchesMap": [
+        {
+            "branches": [
+                {
+                    "name": "New Branch",
+                    "options": [
+                        {
+                            "answer": "Option 1",
+                            "answerid": "Z4KQUSK_a0"
+                        }
+                    ],
+                    "branchid": "GV98GY3K",
+                    "condition": "equal",
+                    "level": 1,
+                    "option": {
+                        "type": "jump_to",
+                        "questionID": "8R1PJXET"
+                    }
+                }
+            ],
+            "questionid": "Z4KQUSK_"
+        },
+        {
+            "questionid": "M4FEPF0K",
+            "branches": [
+                {
+                    "name": "New Branch",
+                    "branchid": "TT_I6F2K",
+                    "level": 1,
+                    "option": {
+                        "type": "jump_to",
+                        "questionID": "8R1PJXET"
+                    },
+                    "options": [
+                        {
+                            "answer": "Yes",
+                            "answerid": "M4FEPF0Ka0"
+                        }
+                    ],
+                    "rel": [
+                        ""
+                    ],
+                    "condition": "equal"
+                }
+            ]
+        }
+    ],
+    "numResponses": 0,
+    "name": "Qrvey with Yes-No Jump-to-Question",
+    "appType": "SURVEY",
+    "userid": "DwmvNLV",
+    "appid": "",
+    "qrveyid": "lk2p7ll",
+    "questionsVersion": 1,
+    "introPage": false,
+    "templateNotification": true,
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "userid": "qrveydefault",
+        "newChanges": false,
+        "styleid": "NJI5oEtiZ"
+    },
+    "description": ""
+}

@@ -1,0 +1,75 @@
+{
+	"name": "Untitled Survey",
+	"appType": "SURVEY",
+	"userid": "lGwGEaq",
+	"appid": "1Lw9qme",
+	"qrveyid": "yMJmBRo",
+	"namelower": "untitled survey",
+	"status": "IN_PROGRESS",
+	"createDate": "2017-08-15T19:28:27.579Z",
+	"modifyDate": "2017-08-15T19:28:27.579Z",
+	"searchString": "untitled survey",
+	"customStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"introPage": false,
+	"templateNotification": true,
+	"tempStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"questions": {
+		"data": [{
+			"text": "Question",
+			"id": "73YL0OR6",
+			"type": "DATE",
+			"question": "main",
+			"answers": [{
+				"answer": "DATE",
+				"answerid": "73YL0OR6a0"
+			}],
+			"time": 15,
+			"auxText": "Question",
+			"showRangeData": "Before",
+			"min": "",
+			"max": "08/30/2018"
+		}]
+	}
+}

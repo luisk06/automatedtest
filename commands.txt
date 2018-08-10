@@ -1,0 +1,148 @@
+cd ~/Documents/projects/qrvey/tests
+
+// Deleting Workflows
+$('.spec-touch-menu-qrvey-delete-option').click()
+$('.spec-delete-process-confirm').click()
+
+sudo npm link ../../qrvey-common
+
+
+brw.enterRepl();
+
+// eslint-disable-line
+
+npm run tsc:w
+sudo npm run lite
+
+allure generate xml/
+allure report open
+
+"([^"]*)"
+
+(\d+)
+
+// Using promise
+var defer = protractor.promise.defer()
+defer.fulfill(_qrveyId);
+return defer.promise;
+
+
+cb(null, 'pending');
+
+qstring = findHashInUrl(_data.url);
+
+defaults write com.apple.finder AppleShowAllFiles FALSE
+defaults write com.apple.finder AppleShowAllFiles TRUE
+
+KillAll Finder
+
+
+//Slidebars
+var _count = 0;
+
+.attr("data-id", function (d) {
+  var _h = height - y(d.val);
+  if(_h != 0){
+    _count += 1;
+    return "spec-slidebar-bar-" + _count;
+  }
+})
+
+
+# Commands
+
+make deleteReports
+make node-server
+make deleteQrveys arg=jonathan.olier@qrvey.com
+make qa-e2e-local
+
+
+# Remote Easy Run
+make rer-module arg=accessing
+make rer-module arg=editing
+make rer-module arg=nps
+#make rer-module arg=polls
+make rer-module arg=qrvey
+make rer-module arg=checklist
+
+-----------------------------------------
+
+#make rer-module arg=incontext
+make rer-module arg=automation
+make rer-module arg=forms
+#make rer-module arg=progressive
+#make rer-module arg=progressiveAnalyze
+#make rer-module arg=progressiveTaking
+#make rer-module arg=progressiveWidget
+make rer-module arg=widgetTaker
+make rer-module arg=quiz
+
+-----------------------------------------
+
+make rer-survey arg=analyzing
+make rer-survey arg=taking
+make rer-survey arg=making
+make rer-survey arg=preview
+make rer-module arg=addressBook
+make rer-module arg=trialAccount
+make rer-module arg=dataloader
+#make rer-module arg=rules
+
+#make rer-module arg=customize
+#make rer-module arg=widgetDesign
+-----------------------------------------
+
+make rer-module arg=customizeChecklist
+make rer-module arg=customizeForms
+make rer-module arg=customizeNps
+make rer-module arg=customizePolls
+make rer-module arg=customizeQuiz
+make rer-module arg=customizeSurvey
+
+-----------------------------------------
+
+make rer-module arg=smokeTest
+
+-----------------------------------------
+
+#make rer-widget arg=survey
+#make rer-widget arg=polling
+#make rer-widget arg=onpage
+#make rer-widget arg=checklist
+#make rer-widget arg=forms
+#make rer-widget arg=progressive
+#make rer-widget arg=quiz
+#make rer-widget arg=nps
+
+-----------------------------------------
+
+# Widgets Name List
+taker
+analytiq
+nps-results
+incontext
+poll-presenter
+poll-viewer
+iframe
+
+
+survey-design
+polling-design
+onpage-design
+checklist-design
+form-design
+progressive-design
+quiz-design
+nps-design
+
+
+make commiter arg="Changed the test cases for "
+make puller arg=QC-Sprint33
+make pusher arg=QC-Sprint33
+make merger arg=Sprint33
+make basher arg=QC-Sprint33 arg2=Sprint33
+
+
+# unit tests
+sudo npm install karma karma-jasmine jasmine-core karma-jasmine karma-chrome-launcher phantomjs karma-phantomjs-launcher
+sudo npm install -g karma-cli jasmine

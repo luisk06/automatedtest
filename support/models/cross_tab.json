@@ -1,0 +1,111 @@
+{
+    "questions": {
+        "data": [{
+            "question": "main",
+            "auxText": "Multiple Choice Question",
+            "answers": [{
+                "answerid": "_HGIPWW2a0",
+                "answer": "Option 1"
+            }, {
+                "answerid": "_HGIPWW2a1",
+                "answer": "Option 2"
+            }],
+            "id": "_HGIPWW2",
+            "text": "Multiple Choice Question",
+            "time": 4,
+            "type": "SINGLE_CHOICE"
+        }, {
+            "text": "Rating Question",
+            "id": "47RQ4ESB",
+            "type": "RATING",
+            "question": "main",
+            "answers": [{
+                "answer": "RATING",
+                "answerid": "47RQ4ESBa0"
+            }],
+            "rating": 5,
+            "time": 3,
+            "auxText": "Rating Question"
+        }, {
+            "text": "Yes - No Question",
+            "id": "PVIAL7Q2",
+            "type": "YES_NO",
+            "question": "main",
+            "answers": [{
+                "answer": "Yes",
+                "answerid": "PVIAL7Q2a0"
+            }, {
+                "answer": "No",
+                "answerid": "PVIAL7Q2a1"
+            }],
+            "time": 4,
+            "auxText": "Yes - No Question"
+        }, {
+            "text": "Image Question",
+            "id": "26XUAVZ9",
+            "type": "IMAGE",
+            "question": "main",
+            "answers": [{
+                "answer": "Option Q",
+                "answerid": "26XUAVZ9a0",
+                "imageUrl": "https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png"
+            }, {
+                "answer": "Option W",
+                "answerid": "26XUAVZ9a1",
+                "imageUrl": "https://automatedqastg.qrvey.com/images/icn/ic_WP.png"
+            }],
+            "time": 3,
+            "auxText": "Image Question"
+        }]
+    },
+    "introPage": true,
+    "status": "IN_PROGRESS",
+    "customStyle": {
+        "styleid": "NJI5oEtiZ",
+        "name": "Qrvey Default",
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "tab": "#4D6B85",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "newChanges": false,
+        "userid": "qrveydefault"
+    },
+    "tempStyle": {
+        "styleid": "NJI5oEtiZ",
+        "name": "Qrvey Default",
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "tab": "#4D6B85",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "newChanges": false,
+        "userid": "qrveydefault"
+    },
+    "name": "Test Cross Tab",
+    "appType": "PROGRESSIVEAPP",
+    "userid": "cbfdfpu",
+    "qrveyid": "B7ND30e",
+    "appid": "",
+    "templateNotification": true,
+    "description": "",
+    "results_visibility": "Public",
+    "duration": {
+        "neverExpires": true,
+        "number": 1,
+        "period": "day",
+        "from": "2017-03-07T20:35:11.988Z"
+    }
+}

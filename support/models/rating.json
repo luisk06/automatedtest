@@ -1,0 +1,50 @@
+{
+    "name": "Qrvey with Rating Question by API",
+    "description": "A description of test by API",
+    "userid": "",
+    "appType": "SURVEY",
+    "qrveyid": "",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "duration": {
+        "from": "2017-06-16T14:54:04.469Z"
+    },
+    "templateNotification": true,
+    "totalTime": 48,
+    "questions": {
+        "data": [{
+            "text": "A rating question",
+            "id": "3MCZM1HG",
+            "type": "RATING",
+            "question": "main",
+            "answers": [{
+                "answer": "RATING"
+            }],
+            "rating": 5,
+            "time": 1
+        }]
+    },
+    "customStyle": {
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "newChanges": false,
+        "style": {
+            "mainFont": "#ffffff",
+            "imgSize": 150,
+            "questionFont": "#595959",
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "textFieldBackground": "#f7f7f7",
+            "buttons": "#293b49",
+            "main": "#e6773d"
+        },
+        "name": "Qrvey Default",
+        "userid": "U1EmRk1",
+        "styleid": "NJI5oEtiZ"
+    },
+    "totalQuestions": 1
+}

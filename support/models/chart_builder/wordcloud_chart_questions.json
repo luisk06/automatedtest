@@ -1,0 +1,173 @@
+{
+	"name": "Word Cloud Chart Test",
+	"appType": "",
+	"userid": "",
+	"appid": "",
+	"qrveyid": "",
+	"status": "IN_PROGRESS",
+	"customStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"userid": "qrveydefault",
+		"newChanges": false
+	},
+	"introPage": false,
+	"templateNotification": true,
+	"tempStyle": {
+		"name": "Qrvey Default",
+		"style": {
+			"answerFont": "#595959",
+			"background": "#fafafa",
+			"buttons": "#293b49",
+			"imgSize": 150,
+			"main": "#e6773d",
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"incontext": {
+			"label": "Got feedback?",
+			"title": "Got feedback?",
+			"position": "lefttab",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+	"userid": "qrveydefault",
+	"newChanges": false
+	},
+	"questions": {
+		"data": [
+		{
+			"text": "LongText",
+			"id": "OQNERQTH",
+			"type": "LONGTEXT",
+			"question": "main",
+			"answers": [
+			{
+				"answer" : "LONGTEXT",
+				"answerid" : "OQNERQTHa0"
+			}],
+			"maxChar" : 500,
+			"time" : 14,
+			"auxText" : "LongText"
+		},
+		{
+			"text" : "ShortText",
+			"id" : "T1B5JUSM",
+			"type" : "TEXTFIELD",
+			"question" : "main",
+			"answers" : [
+			{
+				"answer" : "TEXTFIELD",
+				"answerid" : "T1B5JUSMa0"
+			}
+			],
+			"maxChar" : 120,
+			"time" : 12,
+			"auxText" : "ShortText"
+		},
+		{
+			"text" : "Numeric",
+			"id" : "O3JMS1OE",
+			"type" : "NUMERIC",
+			"question" : "main",
+			"answers" : [
+			{
+				"answer" : "NUMERIC",
+				"answerid" : "O3JMS1OEa0"
+			}
+			],
+			"allowDecimals" : false,
+			"hasMinMax" : false,
+			"time" : 10,
+			"auxText" : "Numeric",
+			"numberType" : "General"
+		},
+		{
+			"text" : "Slider Bar",
+			"id" : "D2GSAKX8",
+			"type" : "SLIDEBAR",
+			"question" : "main",
+			"answers" : [
+		{
+			"answer" : "A",
+			"answerid" : "D2GSAKX8a0"
+		},
+		{
+			"answer" : "B",
+			"answerid" : "D2GSAKX8a1"
+		}
+		],
+			"sliderVal" : 3,
+			"middleValue" : 2,
+			"time" : 10,
+			"auxText" : "Slider Bar"
+		},
+		{
+			"text" : "Expression",
+			"id" : "SP5DDXZJ",
+			"type" : "EXPRESSION",
+			"question" : "main",
+			"answers" : [
+			{
+				"answer" : "EXPRESSION",
+				"answerid" : "SP5DDXZJa0"
+			}
+			],
+			"activeCat" : false,
+			"words" : [
+			{
+				"text" : "Happy"
+			},
+			{
+				"text" : "Exited"
+			},
+			{
+				"text" : "Dull"
+			},
+			{
+				"text" : "Tired"
+			},
+			{
+				"text" : "Impassive"
+			}
+			],
+			"multiple" : false,
+			"time" : 13,
+			"auxText" : "Expression"
+		},
+		{
+		"text" : "Rating",
+		"id" : "69NI0928",
+		"type" : "RATING",
+		"question" : "main",
+		"answers" : [
+		{
+		"answer" : "RATING",
+		"answerid" : "69NI0928a0"
+		}
+		],
+		"rating" : 5,
+		"time" : 11,
+		"auxText" : "Rating"
+		}
+		]
+	},
+	"questionsVersion" : 23
+}

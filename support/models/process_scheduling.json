@@ -1,0 +1,27 @@
+{
+    "notifications": [
+        "none"
+    ],
+    "triggers": [{
+        "type": "SCHEDULE",
+        "data": {
+            "time_zone": "-05:00",
+            "repeat": "DAILY",
+            "period": 1,
+            "start_time": "09:43",
+            "time_period": "AM",
+            "start_date": "11/16/2017",
+            "date_iso": "2017-11-16T14:43:00Z"
+        }
+    }],
+    "processid": "1oaBzWr",
+    "userid": "rEG25aY",
+    "name": "Process scheduling by API",
+    "userEmail": "",
+    "body": [{
+        "type": "ACTION",
+        "bodyId": "2jZRWn4"
+    }],
+    "description": "Null",
+    "status": "NOT_RUNNING"
+}

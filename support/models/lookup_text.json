@@ -1,0 +1,101 @@
+{
+	"questions": {
+		"data": [{
+			"lookup_config": {
+				"source": "text"
+			},
+			"question": "main",
+			"answers": [{
+					"answerid": "AB_QEO1Aa0",
+					"answer": "Option 1",
+					"value": "Value 1"
+				},
+				{
+					"answerid": "AB_QEO1Aa1",
+					"answer": "Option 2",
+					"value": "Value 2"
+				},
+				{
+					"answerid": "AB_QEO1Aa2",
+					"answer": "Option 3",
+					"value": "Value 3"
+				},
+				{
+					"answerid": "AB_QEO1Aa3",
+					"answer": "Option 4",
+					"value": "Value 4"
+				},
+				{
+					"answerid": "AB_QEO1Aa4",
+					"answer": "Option 5",
+					"value": "Value 5"
+				}
+			],
+			"id": "AB_QEO1A",
+			"text": "Test lookup",
+			"time": 4,
+			"type": "LOOKUP"
+		}]
+	},
+	"introPage": true,
+	"status": "IN_PROGRESS",
+	"customStyle": {
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"name": "Qrvey Default",
+		"style": {
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"buttons": "#293b49",
+			"answerFont": "#595959",
+			"imgSize": 150,
+			"background": "#fafafa",
+			"main": "#e6773d",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"newChanges": false,
+		"userid": "qrveydefault"
+	},
+	"tempStyle": {
+		"incontext": {
+			"label": "Got feedback?",
+			"position": "lefttab",
+			"title": "Got feedback?",
+			"triggerTime": 10
+		},
+		"styleid": "NJI5oEtiZ",
+		"name": "Qrvey Default",
+		"style": {
+			"mainFont": "#ffffff",
+			"questionFont": "#595959",
+			"buttons": "#293b49",
+			"answerFont": "#595959",
+			"imgSize": 150,
+			"background": "#fafafa",
+			"main": "#e6773d",
+			"textFieldBackground": "#f7f7f7"
+		},
+		"newChanges": false,
+		"userid": "qrveydefault"
+	},
+	"name": "Test Lookup copy-paste forms",
+	"totalTime": 4,
+	"appType": "ONLINEFORM",
+	"userid": "cbfdfpu",
+	"qrveyid": "YbmyNjG",
+	"appid": "",
+	"description": "Test description",
+	"templateNotification": true,
+	"results_visibility": "Public",
+	"duration": {
+		"number": 1,
+		"period": "day",
+		"neverExpires": true,
+		"from": "2017-03-14T21:40:59.896Z"
+	}
+}

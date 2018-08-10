@@ -1,0 +1,34 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [
+        {
+            "id": "Z4KQUSK_",
+            "type": "SINGLE_CHOICE",
+            "time": 1,
+            "question": "main",
+            "data": [
+                "Option 1"
+            ]
+        },
+        {
+            "id": "8R1PJXET",
+            "type": "NUMERIC",
+            "time": "",
+            "question": "main",
+            "data": [
+                14
+            ],
+            "data_ansid": [],
+            "numberType": "General"
+        }
+    ],
+    "questionsVersion": 2,
+    "totalUserTime": 4,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

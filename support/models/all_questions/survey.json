@@ -1,0 +1,368 @@
+{
+    "questions": {
+        "data": [
+            {
+                "text": "Multiple Choice",
+                "id": "HEB8Z2OB",
+                "type": "SINGLE_CHOICE",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "A",
+                        "answerid": "HEB8Z2OBa0"
+                    },
+                    {
+                        "answer": "B",
+                        "answerid": "HEB8Z2OBa1"
+                    },
+                    {
+                        "answer": "C",
+                        "answerid": "HEB8Z2OBaT87NQU5S"
+                    },
+                    {
+                        "answer": "D",
+                        "answerid": "HEB8Z2OBaO7P7BKTB"
+                    }
+                ],
+                "auxText": "Multiple Choice",
+                "time": 2
+            },
+            {
+                "text": "Rating",
+                "id": "MQ0SET1W",
+                "type": "RATING",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "RATING"
+                    }
+                ],
+                "rating": 5,
+                "auxText": "Rating"
+            },
+            {
+                "text": "Short Text",
+                "id": "1SLUH8XE",
+                "type": "TEXTFIELD",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "TEXTFIELD"
+                    }
+                ],
+                "maxChar": 120,
+                "auxText": "Short Text"
+            },
+            {
+                "text": "Long Text",
+                "id": "A8QLPCML",
+                "type": "LONGTEXT",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "LONGTEXT"
+                    }
+                ],
+                "maxChar": 500,
+                "auxText": "Long Text"
+            },
+            {
+                "text": "Yes-No",
+                "id": "12EHK4IM",
+                "type": "YES_NO",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "Yes",
+                        "answerid": "12EHK4IMa0"
+                    },
+                    {
+                        "answer": "No",
+                        "answerid": "12EHK4IMa1"
+                    }
+                ],
+                "auxText": "Yes - No"
+            },
+            {
+                "text": "Ranking",
+                "id": "K6ZPWZXK",
+                "type": "RANKING",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "A"
+                    },
+                    {
+                        "answer": "B"
+                    },
+                    {
+                        "answer": "C",
+                        "answerid": "K6ZPWZXKaUTB5YOAV"
+                    },
+                    {
+                        "answer": "D",
+                        "answerid": "K6ZPWZXKa0S7K5GHB"
+                    }
+                ],
+                "auxText": "Ranking",
+                "time": 2
+            },
+            {
+                "text": "Date",
+                "id": "LCNDBWP2",
+                "type": "DATE",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "DATE"
+                    }
+                ],
+                "auxText": "DATE",
+                "time": 10
+            },
+            {
+                "text": "Slider Bar",
+                "id": "V8O3EF0T",
+                "type": "SLIDEBAR",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "A"
+                    },
+                    {
+                        "answer": "B"
+                    }
+                ],
+                "sliderVal": "3",
+                "middleValue": "2",
+                "auxText": "Slider Bar",
+                "time": 6
+            },
+            {
+                "text": "Expression",
+                "id": "DAEXK7BE",
+                "type": "EXPRESSION",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "EXPRESSION"
+                    }
+                ],
+                "activeCat": false,
+                "words": [
+                    {
+                        "text": "Depressed"
+                    },
+                    {
+                        "text": "Happy"
+                    },
+                    {
+                        "text": "Angry"
+                    },
+                    {
+                        "text": "Beautiful"
+                    },
+                    {
+                        "text": "Nice"
+                    }
+                ],
+                "positive": [],
+                "negative": [],
+                "multiple": false,
+                "auxText": "Expression",
+                "time": 1
+            },
+            {
+                "text": "Numeric",
+                "id": "I3CXP9W3",
+                "type": "NUMERIC",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "NUMERIC"
+                    }
+                ],
+                "allowDecimals": false,
+                "hasMinMax": false,
+                "min": null,
+                "max": null,
+                "numberType": "General",
+                "auxText": "Numeric",
+                "time": 16
+            },
+            {
+                "text": "LookUP",
+                "id": "FV_OETV3",
+                "type": "LOOKUP",
+                "question": "main",
+                "lookup_config": {
+                    "source": "text",
+                    "testedFields": true
+                },
+                "answers": [
+                    {
+                        "answer": "Option 1",
+                        "value": "Value 1",
+                        "answerid": "FV_OETV3a6_WHA_DH"
+                    },
+                    {
+                        "answer": "Option 2",
+                        "value": "Value 2",
+                        "answerid": "FV_OETV3aR1YF7_CM"
+                    },
+                    {
+                        "answer": "Option 3",
+                        "value": "Value 3",
+                        "answerid": "FV_OETV3aI4GPI9VG"
+                    },
+                    {
+                        "answer": "Option 4",
+                        "value": "Value 4",
+                        "answerid": "FV_OETV3aTSO448MM"
+                    },
+                    {
+                        "answer": "Option 5",
+                        "value": "Value 5",
+                        "answerid": "FV_OETV3a6R2BBPLH"
+                    }
+                ],
+                "auxText": "LookUP"
+            },
+            {
+                "text": "Image",
+                "id": "TW5S8BIK",
+                "type": "IMAGE",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "",
+                        "answerid": "TW5S8BIKa0",
+                        "imageUrl": "https://automatedqastg.qrvey.com/app/images/icn/mini-timer@2x.png"
+                    },
+                    {
+                        "answer": "",
+                        "answerid": "TW5S8BIKa1",
+                        "imageUrl": "https://automatedqastg.qrvey.com/app/images/icn/logo-qrvey.png"
+                    }
+                ],
+                "auxText": "Image",
+                "time": 10
+            },
+            {
+                "text": "Name",
+                "id": "O31_60CK",
+                "type": "NAME",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "Name"
+                    }
+                ],
+                "auxText": "Name",
+                "time": 16
+            },
+            {
+                "text": "Email",
+                "id": "JKPNI1JZ",
+                "type": "EMAIL_FORM",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "EMAIL_FORM"
+                    }
+                ],
+                "auxText": "Email"
+            },
+            {
+                "text": "Phone Number",
+                "id": "3OIWJKP5",
+                "type": "PHONE",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "PHONE"
+                    }
+                ],
+                "auxText": "Phone Number"
+            },
+            {
+                "text": "US Address",
+                "id": "GA4ND8E9",
+                "type": "USADDRESS",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "USADDRESS"
+                    }
+                ],
+                "auxText": "US Address"
+            },
+            {
+                "text": "Address",
+                "id": "K_F_QARX",
+                "type": "ADDRESS",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "ADDRESS"
+                    }
+                ],
+                "auxText": "Address"
+            }
+        ]
+    },
+    "introPage": false,
+    "status": "IN_PROGRESS",
+    "customStyle": {
+        "name": "Qrvey Default",
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "userid": "qrveydefault",
+        "newChanges": false,
+        "styleid": "NJI5oEtiZ"
+    },
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "incontext": {
+            "label": "Got feedback?",
+            "position": "lefttab",
+            "title": "Got feedback?",
+            "triggerTime": 10
+        },
+        "style": {
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "buttons": "#293b49",
+            "answerFont": "#595959",
+            "imgSize": 150,
+            "background": "#fafafa",
+            "main": "#e6773d",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "userid": "qrveydefault",
+        "newChanges": false,
+        "styleid": "NJI5oEtiZ"
+    },
+    "numResponses": 0,
+    "name": "All questions Survey",
+    "appType": "SURVEY",
+    "userid": "",
+    "appid": "",
+    "qrveyid": "",
+    "questionsVersion": 2,
+    "templateNotification": true
+}

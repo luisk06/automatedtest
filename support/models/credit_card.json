@@ -1,0 +1,77 @@
+{
+    "name": "Make a donation for the children",
+    "appType": "ONLINEFORM",
+    "userid": "",
+    "qrveyid": "",
+    "appid": "",
+    "status": "IN_PROGRESS",
+    "customStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "templateNotification": true,
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "introPage": false,
+    "questions": {
+        "data": [{
+            "text": "Make a donation for the children",
+            "id": "R3PJXAK9",
+            "type": "CREDIT_CARD",
+            "question": "main",
+            "answers": [{
+                "answer": "CREDIT_CARD"
+            }],
+            "time": 10,
+            "chargeAmount": 1,
+            "chargeDescription": "You can donate just a few dollars for the children."
+        }]
+    },
+    "description": "",
+    "paymentQuestionLimit": true,
+    "results_visibility": "Public",
+    "duration": {
+        "number": 1,
+        "period": "day",
+        "neverExpires": true,
+        "from": "2017-04-25T20:59:03.121Z"
+    }
+}

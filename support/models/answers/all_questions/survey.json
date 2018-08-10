@@ -1,0 +1,219 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "TjFMIxc",
+    "answers": [
+        {
+            "id": "HEB8Z2OB",
+            "type": "SINGLE_CHOICE",
+            "time": 4,
+            "question": "main",
+            "data": [
+                "B"
+            ],
+            "data_ansid": [
+                "HEB8Z2OBa1"
+            ]
+        },
+        {
+            "id": "MQ0SET1W",
+            "type": "RATING",
+            "time": 6,
+            "question": "main",
+            "data": [
+                5
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "1SLUH8XE",
+            "type": "TEXTFIELD",
+            "time": 9,
+            "question": "main",
+            "data": [
+                "qwqweqweq"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "A8QLPCML",
+            "type": "LONGTEXT",
+            "time": 10,
+            "question": "main",
+            "data": [
+                "qweqweqweqwe"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "12EHK4IM",
+            "type": "YES_NO",
+            "time": 13,
+            "question": "main",
+            "data": [
+                "No"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "K6ZPWZXK",
+            "type": "RANKING",
+            "time": 18,
+            "question": "main",
+            "data": [
+                "B",
+                "C",
+                "D",
+                "A"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "LCNDBWP2",
+            "type": "DATE",
+            "time": 30,
+            "question": "main",
+            "data": [
+                "10/05/2017"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "V8O3EF0T",
+            "type": "SLIDEBAR",
+            "time": 32,
+            "question": "main",
+            "data": [
+                "3"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "DAEXK7BE",
+            "type": "EXPRESSION",
+            "time": 39,
+            "question": "main",
+            "data": [
+                "Happy",
+                "Depressed",
+                "Beautiful"
+            ],
+            "data_ansid": [
+                null,
+                null,
+                null
+            ],
+            "expression_type": "words"
+        },
+        {
+            "id": "I3CXP9W3",
+            "type": "NUMERIC",
+            "time": 43,
+            "question": "main",
+            "data": [
+                12
+            ],
+            "data_ansid": [],
+            "numberType": "General"
+        },
+        {
+            "id": "FV_OETV3",
+            "type": "LOOKUP",
+            "time": 48,
+            "question": "main",
+            "data": [
+                "Value 2"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "TW5S8BIK",
+            "type": "IMAGE",
+            "time": 50,
+            "question": "main",
+            "data": [
+                "https://automatedqastg.qrvey.com/app/images/icn/logo-qrvey.png"
+            ],
+            "data_ansid": [
+                "TW5S8BIKa1"
+            ]
+        },
+        {
+            "id": "O31_60CK",
+            "type": "NAME",
+            "time": 55,
+            "question": "main",
+            "data": [
+                "NAME"
+            ],
+            "data_ansid": [],
+            "name": {
+                "first_name": "Car",
+                "last_name": "asdsad"
+            }
+        },
+        {
+            "id": "JKPNI1JZ",
+            "type": "EMAIL_FORM",
+            "time": 60,
+            "question": "main",
+            "data": [
+                "c@c.cx"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "3OIWJKP5",
+            "type": "PHONE",
+            "time": 174,
+            "question": "main",
+            "data": [
+                "+374 +374 3004476787"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "GA4ND8E9",
+            "type": "USADDRESS",
+            "time": 181,
+            "question": "main",
+            "data": [
+                "USADDRESS"
+            ],
+            "data_ansid": [],
+            "address": {
+                "address_line_1": "",
+                "address_line_2": "",
+                "city": "",
+                "state": "",
+                "stateName": "",
+                "postal_code": "",
+                "country": "USA"
+            }
+        },
+        {
+            "id": "K_F_QARX",
+            "type": "ADDRESS",
+            "time": 186,
+            "question": "main",
+            "data": [
+                "ADDRESS"
+            ],
+            "data_ansid": [],
+            "address": {
+                "street_address": "asdasd",
+                "state": "asdasd",
+                "city": "asdasd",
+                "postal_code": "asdasd",
+                "country": "Åland Islands (Åland)"
+            }
+        }
+    ],
+    "questionsVersion": 2,
+    "totalUserTime": 186,
+    "qstring": {
+        "q": "aL4Gg",
+        "": "undefined"
+    }
+}

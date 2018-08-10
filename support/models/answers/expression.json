@@ -1,0 +1,22 @@
+{
+    "pointsPerUser": 100,
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [{
+        "id": "",
+        "type": "EXPRESSION",
+        "time": 12,
+        "question": "main",
+        "data": [],
+        "expression_type": "words",
+        "data_ansid": []
+    }],
+    "totalUserTime": 13,
+    "optionalQuestions": false,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

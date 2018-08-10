@@ -1,0 +1,124 @@
+{
+    "name": "QA Branchs level 1",
+    "appType": "SURVEY",
+    "userid": "",
+    "appid": "",
+    "description": "",
+    "qrveyid": "hRt7FGS",
+    "status": "IN_PROGRESS",
+    "customStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "introPage": false,
+    "templateNotification": true,
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "questions": {
+        "data": [
+            {
+                "text": "Question",
+                "type": "SINGLE_CHOICE",
+                "answers": [
+                    {
+                        "answer": "Op 1",
+                        "answerid": "UYOKJIG0a0"
+                    },
+                    {
+                        "answer": "Op 2",
+                        "answerid": "UYOKJIG0a1"
+                    }
+                ],
+                "id": "UYOKJIG0",
+                "question": "main",
+                "time": 7,
+                "auxText": "Question"
+            }
+        ]
+    },
+    "branchesMap": [
+        {
+            "questionid": "UYOKJIG0",
+            "branches": [
+                {
+                    "name": "Level 1",
+                    "branchid": "BQJNN6RK",
+                    "level": 1,
+                    "questions": {
+                        "data": [
+                            {
+                                "text": "Question 2",
+                                "type": "SINGLE_CHOICE",
+                                "answers": [
+                                    {
+                                        "answer": "Op 1",
+                                        "answerid": "A7UA76IKa0"
+                                    },
+                                    {
+                                        "answer": "Op 2",
+                                        "answerid": "A7UA76IKa1"
+                                    }
+                                ],
+                                "id": "A7UA76IK",
+                                "question": "main",
+                                "branch_level": 1,
+                                "auxText": "Question 2"
+                            }
+                        ]
+                    },
+                    "option": {
+                        "type": "follow_branch"
+                    },
+                    "options": [
+                        {
+                            "answer": "Op 1",
+                            "answerid": "UYOKJIG0a0"
+                        }
+                    ],
+                    "rel": [
+                        ""
+                    ],
+                    "condition": "equal"
+                }
+            ]
+        }
+    ]
+}

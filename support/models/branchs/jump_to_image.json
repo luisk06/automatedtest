@@ -1,0 +1,139 @@
+{
+    "name": "Qrvey with Image Jump-to-Question",
+    "appType": "SURVEY",
+    "userid": "DwmvNLV",
+    "appid": "",
+    "qrveyid": "pW6da4E",
+    "status": "IN_PROGRESS",
+    "numResponses": 0,
+    "customStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "introPage": false,
+    "templateNotification": true,
+    "tempStyle": {
+        "name": "Qrvey Default",
+        "style": {
+            "answerFont": "#595959",
+            "background": "#fafafa",
+            "buttons": "#293b49",
+            "imgSize": 150,
+            "main": "#e6773d",
+            "mainFont": "#ffffff",
+            "questionFont": "#595959",
+            "textFieldBackground": "#f7f7f7"
+        },
+        "incontext": {
+            "label": "Got feedback?",
+            "title": "Got feedback?",
+            "position": "lefttab",
+            "triggerTime": 10
+        },
+        "styleid": "NJI5oEtiZ",
+        "userid": "qrveydefault",
+        "newChanges": false
+    },
+    "questions": {
+        "data": [
+            {
+                "text": "What logo do you like the most?",
+                "id": "BC7J5CZK",
+                "type": "IMAGE",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "",
+                        "answerid": "BC7J5CZKa0",
+                        "imageUrl": "https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png"
+                    },
+                    {
+                        "answer": "",
+                        "answerid": "BC7J5CZKa1",
+                        "imageUrl": "https://automatedqastg.qrvey.com/images/icn/ic_WP.png"
+                    }
+                ],
+                "auxText": "What logo do you like the most?",
+                "time": 6
+            },
+            {
+                "text": "How do you feel today?",
+                "id": "UDY62B0B",
+                "type": "TEXTFIELD",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "TEXTFIELD"
+                    }
+                ],
+                "maxChar": 120,
+                "auxText": "How do you feel today?",
+                "time": 2
+            },
+            {
+                "text": "Please enter a number",
+                "id": "YUZ28WC0",
+                "type": "NUMERIC",
+                "question": "main",
+                "answers": [
+                    {
+                        "answer": "NUMERIC"
+                    }
+                ],
+                "allowDecimals": false,
+                "hasMinMax": false,
+                "min": null,
+                "max": null,
+                "auxText": "Please enter a number",
+                "numberType": "General",
+                "time": 74
+            }
+        ]
+    },
+    "description": "",
+    "branchesMap": [
+        {
+            "questionid": "BC7J5CZK",
+            "branches": [
+                {
+                    "name": "New Branch",
+                    "branchid": "4X9FNC6L",
+                    "level": 1,
+                    "option": {
+                        "type": "jump_to",
+                        "questionID": "YUZ28WC0"
+                    },
+                    "options": [
+                        {
+                            "answer": "",
+                            "answerid": "BC7J5CZKa0",
+                            "imageUrl": "https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png"
+                        }
+                    ],
+                    "rel": [
+                        ""
+                    ],
+                    "condition": "equal"
+                }
+            ]
+        }
+    ]
+}

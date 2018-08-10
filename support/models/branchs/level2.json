@@ -1,0 +1,173 @@
+{
+	"questions": {
+	  "data": [
+		{
+		  "question": "main",
+		  "auxText": "Question",
+		  "answers": [
+			{
+			  "answer": "Op 1",
+			  "answerid": "UYOKJIG0a0"
+			},
+			{
+			  "answer": "Op 2",
+			  "answerid": "UYOKJIG0a1"
+			}
+		  ],
+		  "text": "Question",
+		  "id": "UYOKJIG0",
+		  "time": 7,
+		  "type": "SINGLE_CHOICE"
+		}
+	  ]
+	},
+	"introPage": false,
+	"status": "IN_PROGRESS",
+	"customStyle": {
+	  "name": "Qrvey Default",
+	  "incontext": {
+		"label": "Got feedback?",
+		"position": "lefttab",
+		"title": "Got feedback?",
+		"triggerTime": 10
+	  },
+	  "style": {
+		"mainFont": "#ffffff",
+		"questionFont": "#595959",
+		"buttons": "#293b49",
+		"answerFont": "#595959",
+		"imgSize": 150,
+		"background": "#fafafa",
+		"main": "#e6773d",
+		"textFieldBackground": "#f7f7f7"
+	  },
+	  "userid": "qrveydefault",
+	  "newChanges": false,
+	  "styleid": "NJI5oEtiZ"
+	},
+	"branchesMap": [
+	  {
+		"branches": [
+		  {
+			"branchid": "BQJNN6RK",
+			"condition": "equal",
+			"level": 1,
+			"name": "Level 1",
+			"questions": {
+			  "data": [
+				{
+				  "question": "main",
+				  "auxText": "Question 2",
+				  "answers": [
+					{
+					  "answer": "Op 1",
+					  "answerid": "A7UA76IKa0"
+					},
+					{
+					  "answer": "Op 2",
+					  "answerid": "A7UA76IKa1"
+					}
+				  ],
+				  "branch_level": 1,
+				  "text": "Question 2",
+				  "id": "A7UA76IK",
+				  "type": "SINGLE_CHOICE"
+				}
+			  ]
+			},
+			"options": [
+			  {
+				"answer": "Op 1",
+				"answerid": "UYOKJIG0a0"
+			  }
+			],
+			"rel": [],
+			"option": {
+			  "type": "follow_branch"
+			}
+		  }
+		],
+		"questionid": "UYOKJIG0"
+	  },
+	  {
+		"questionid": "A7UA76IK",
+		"branches": [
+		  {
+			"name": "Level 2",
+			"branchid": "DVBOBCQQ",
+			"level": 2,
+			"questions": {
+			  "data": [
+				{
+				  "text": "Question 3",
+				  "type": "SINGLE_CHOICE",
+				  "answers": [
+					{
+					  "answer": "Op 1",
+					  "answerid": "RGJ5QE2Ua0"
+					},
+					{
+					  "answer": "Op 2",
+					  "answerid": "RGJ5QE2Ua1"
+					}
+				  ],
+				  "id": "RGJ5QE2U",
+				  "question": "main",
+				  "branch_level": 2,
+				  "auxText": "Question 3"
+				}
+			  ]
+			},
+			"option": {
+			  "type": "follow_branch"
+			},
+			"options": [
+			  {
+				"answer": "Op 1",
+				"answerid": "A7UA76IKa0"
+			  }
+			],
+			"rel": [
+			  ""
+			],
+			"condition": "equal"
+		  }
+		]
+	  }
+	],
+	"tempStyle": {
+	  "name": "Qrvey Default",
+	  "incontext": {
+		"label": "Got feedback?",
+		"position": "lefttab",
+		"title": "Got feedback?",
+		"triggerTime": 10
+	  },
+	  "style": {
+		"mainFont": "#ffffff",
+		"questionFont": "#595959",
+		"buttons": "#293b49",
+		"answerFont": "#595959",
+		"imgSize": 150,
+		"background": "#fafafa",
+		"main": "#e6773d",
+		"textFieldBackground": "#f7f7f7"
+	  },
+	  "userid": "qrveydefault",
+	  "newChanges": false,
+	  "styleid": "NJI5oEtiZ"
+	},
+	"numResponses": 0,
+	"name": "QA Branchs level 2",
+	"appType": "SURVEY",
+	"userid": "DwmvNLV",
+	"results_visibility": "Private",
+	"appid": "",
+	"qrveyid": "hRt7FGS",
+	"questionsVersion": 2,
+	"duration": {
+	  "neverExpires": true
+	},
+	"templateNotification": true,
+	"description": ""
+  }

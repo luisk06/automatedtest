@@ -1,0 +1,35 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [
+        {
+            "id": "M4FEPF0K",
+            "type": "YES_NO",
+            "time": 1,
+            "question": "main",
+            "data": [
+                "Yes"
+            ],
+            "data_ansid": []
+        },
+        {
+            "id": "8R1PJXET",
+            "type": "NUMERIC",
+            "time": "",
+            "question": "main",
+            "data": [
+                14
+            ],
+            "data_ansid": [],
+            "numberType": "General"
+        }
+    ],
+    "questionsVersion": 2,
+    "totalUserTime": 5,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

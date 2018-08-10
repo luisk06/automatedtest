@@ -1,0 +1,15 @@
+{
+    "text": "A numeric question",
+    "id": "",
+    "type": "NUMERIC",
+    "question": "main",
+    "answers": [
+        {
+            "answer": "NUMERIC"
+        }
+    ],
+    "allowDecimals": false,
+    "hasMinMax": false,
+    "time": 1,
+    "numberType": "General"
+}

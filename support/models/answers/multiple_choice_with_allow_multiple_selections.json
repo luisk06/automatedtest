@@ -1,0 +1,20 @@
+{
+	"profile": {
+		"email": ""
+	},
+	"qrveyID": "",
+	"answers": [{
+		"id": "",
+		"type": "MULTIPLE_CHOICE",
+		"time": 9,
+		"question": "main",
+		"data": [],
+		"data_ansid": []
+	}],
+	"totalUserTime": 9,
+	"optionalQuestions": false,
+	"qstring": {
+		"q": "",
+		"": "undefined"
+	}
+}

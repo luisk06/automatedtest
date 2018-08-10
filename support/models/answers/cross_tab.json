@@ -1,0 +1,55 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [{
+        "id": "_HGIPWW2",
+        "type": "SINGLE_CHOICE",
+        "time": 4,
+        "question": "main",
+        "data": [
+            ""
+        ],
+        "data_ansid": [
+            "_HGIPWW2a0"
+        ]
+    }, {
+        "id": "47RQ4ESB",
+        "type": "RATING",
+        "time": 8,
+        "question": "main",
+        "data": [
+
+        ],
+        "data_ansid": []
+    }, {
+        "id": "PVIAL7Q2",
+        "type": "YES_NO",
+        "time": 10,
+        "question": "main",
+        "data": [
+            ""
+        ],
+        "data_ansid": [
+            "PVIAL7Q2a1"
+        ]
+    }, {
+        "id": "26XUAVZ9",
+        "type": "IMAGE",
+        "time": 21,
+        "question": "main",
+        "data": [
+            ""
+        ],
+        "data_ansid": [
+            ""
+        ]
+    }],
+    "totalUserTime": 22,
+    "optionalQuestions": false,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "profile" : {
+        "email" : ""
+    },
+    "qrveyID" : "gnQrAlK",
+    "answers" : [
+        {
+            "id" : "OQNERQTH",
+            "type" : "LONGTEXT",
+            "time" : 131,
+            "question" : "main",
+            "data" : [
+                "This is a long text for a word cloud chart"
+            ],
+            "data_ansid" : [
+            ]
+        },
+        {
+            "id" : "T1B5JUSM",
+            "type" : "TEXTFIELD",
+            "time" : 137,
+            "question" : "main",
+            "data" : [
+            "Short text for word cloud chart"
+            ],
+            "data_ansid" : [
+            ]
+        },
+        {
+            "id" : "O3JMS1OE",
+            "type" : "NUMERIC",
+            "time" : 151,
+            "question" : "main",
+            "data" : [
+                32
+            ],
+            "data_ansid" : [
+            ],
+            "numberType" : "General"
+        },
+        {
+            "id" : "D2GSAKX8",
+            "type" : "SLIDEBAR",
+            "time" : 151,
+            "question" : "main",
+            "data" : [
+                "1"
+            ],
+            "data_ansid" : [
+            ]
+        },
+        {
+            "id" : "SP5DDXZJ",
+            "type" : "EXPRESSION",
+            "time" : 148,
+            "question" : "main",
+            "data" : [
+                "Happy",
+                "Exited"
+            ],
+            "data_ansid" : [
+            ],
+            "expression_type" : "words"
+        },
+        {
+            "id" : "69NI0928",
+            "type" : "RATING",
+            "time" : 150,
+            "question" : "main",
+            "data" : [
+                5
+            ],
+            "data_ansid" : [
+            ]
+        }
+    ],
+    "questionsVersion" : 2,
+    "totalUserTime" : 151,
+    "optionalQuestions" : false,
+    "qstring" : {
+    "q" : "apK0M",
+    "" : "undefined"
+    }
+}

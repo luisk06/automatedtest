@@ -1,0 +1,50 @@
+{
+    "profile": {
+        "email": ""
+    },
+    "qrveyID": "",
+    "answers": [
+        {
+            "id": "UYOKJIG0",
+            "type": "SINGLE_CHOICE",
+            "time": 1,
+            "question": "main",
+            "data": [
+                "Op 1"
+            ]
+        },
+        {
+            "id": "A7UA76IK",
+            "type": "SINGLE_CHOICE",
+            "time": 4,
+            "question": "main",
+            "data": [
+                "Op 1"
+            ]
+        },
+        {
+            "id": "RGJ5QE2U",
+            "type": "SINGLE_CHOICE",
+            "time": 5,
+            "question": "main",
+            "data": [
+                "Op 1"
+            ]
+        },
+        {
+            "id": "NX8E2QMQ",
+            "type": "SINGLE_CHOICE",
+            "time": 13,
+            "question": "main",
+            "data": [
+                "Op 2"
+            ]
+        }
+    ],
+    "questionsVersion": 2,
+    "totalUserTime": 13,
+    "qstring": {
+        "q": "",
+        "": "undefined"
+    }
+}
