@@ -12,7 +12,7 @@ module.exports = function() {
 
 	Given(/^the user has answer some qrveys$/, function(cb) {
 		user.toDoLogin().then(function() {
-			return user.createsQrvey({ 'title': _title });
+			return user.createsWebform({ 'title': _title });
 		}).then(function() {
 			return user.createsMultiChoiceTypeQuestion(_title);
 		}).then(function() {

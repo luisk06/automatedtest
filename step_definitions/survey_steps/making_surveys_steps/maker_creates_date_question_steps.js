@@ -18,11 +18,11 @@ module.exports = function() {
 	});
 
 	Given(/^the user created the "([^"]*)"$/, function(type, cb) {
-		user.createsQrvey({ 'type': type }).then(cb);
+		user.createsWebform({ 'type': type }).then(cb);
 	});
 
 	When(/^the user created the "([^"]*)" with "([^"]*)" as title$/, function(type, title, cb) {
-		user.createsQrvey({ 'type': type , 'title': title}).then(cb);
+		user.createsWebform({ 'type': type , 'title': title}).then(cb);
 	});
 
 	Given(/^the user created the "([^"]*)" with "([^"]*)" question in "([^"]*)"$/, function(typeOfQrvey, typeOfQuestion, stateOfQrvey, cb) {

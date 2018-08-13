@@ -157,22 +157,15 @@ var User = function () {
 		return this.waitsFor('.spec-qrvey-logo-exp');
 	};
 
-	this.createsQrvey = function (obj) {
-		if (!_.get(obj, 'title')) {
-			obj.title = 'Name its undefined for this test qrvey';
-		}
-
-		if (!_.get(obj, 'description')) {
-			obj.description = 'No description was defined for this test qrvey';
-		}
-
-		if (!_.get(obj, 'type')) {
-			obj.type = 'survey';
-		}
+	this.createsWebform = function (obj) {
+		if (!_.get(obj, 'title')) obj.title = 'Name its undefined for this test qrvey';
+		if (!_.get(obj, 'description')) obj.description = 'No description was defined for this test qrvey';
+		if (!_.get(obj, 'type')) obj.type = 'survey';
+		if (obj.type == 'form') obj.type = 'forms';
 
 		this.finds('.spec_dropdown_create_' + obj.type + '_button').click();
 
-		var _el = (obj.type == 'incontextfeedback') ? '.spec-button-create-incontext' : '.spec-button-create-' + obj.type;
+		var _el = '.spec-button-create-' + obj.type;
 		if (obj.type !== 'quiz') scrollIntoElement(this.finds(_el));
 
 		this.finds(_el).click();
@@ -192,7 +185,7 @@ var User = function () {
 		_number = (_number > 0) ? _number : 0;
 
 		var _el = this.findsAll('.spec-select-option-question').last();
-		this.waits();
+		this.waits(200);
 		_el.click();
 		return _el.all(by.css('.options span')).get(_number).click();
 	};
@@ -202,11 +195,19 @@ var User = function () {
 
 		return this.finds('.spec_title_description').click().then(function () {
 			scrollToTop();
-			var _field = (field == 'name') ? ' input' : ' textarea';
-			var _el = _this.finds('.spec_editing_title_description' + _field);
 
-			_el.clear();
-			_el.sendKeys(context);
+			_this.finds('.spec_editing_title_description input').clear().sendKeys(
+				rand.getParagraph(2)
+			).getAttribute('value').then(function (_val) {
+				expect(_val.length).to.be.equal(36);
+			});
+
+			_this.finds('.spec_editing_title_description textarea').clear().sendKeys(
+				rand.getParagraph(10)
+			).getAttribute('value').then(function(_val){
+				expect(_val.length).to.be.equal(176);
+			});
+
 		}).then(function () {
 			if (typeQrvey == 'quiz' || typeQrvey == 'survey' || typeQrvey == 'forms') {
 				if (typeQrvey == 'survey') {
@@ -218,10 +219,7 @@ var User = function () {
 
 			var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
 
-			if(typeQrvey == 'nps'){
-				_this.waits(300);
-				// brw.enterRepl();
-			}
+			if(typeQrvey == 'nps') _this.waits(300);
 
 			_this.finds(clickQuestionName).click();
 		});
@@ -372,24 +370,28 @@ var User = function () {
 	};
 
 	this.createsMultiChoiceTypeQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'Would you recommend our product to others?';
 		var _this = this;
 
-		if (params.isQuiz){
-			element.all(by.css('.answer .right-answer input')).first().click();
-		}
+		if (params.isQuiz) this.finds('.answer .right-answer input').first().click();
 
-		return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(_title).then(function () {
+		return this.createsTitleForQuestion().then(function () {
 			return _this.createsListOptions('multichoice');
 		});
 	};
 
-	this.createsSectionQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'Would you recommend our product to others?';
+	this.createsSectionQuestion = function () {
 		var _this = this;
 
-		return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(_title).then(function () {
+		return this.createsTitleForQuestion().then(function () {
 			return _this.createsListOptions('multichoice');
+		});
+	};
+
+	this.createsTitleForQuestion = function(text){
+		return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(
+			rand.getParagraph(20)
+		).getAttribute('value').then(function(_val){
+			expect(_val.length).to.be.equal(160);
 		});
 	};
 
@@ -400,7 +402,7 @@ var User = function () {
 
 		async.during(function (cb) {
 			hasClass(_this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function(_val){
-				console.log('val', !_val);
+				logger.log('val', !_val);
 				return cb(null, !_val);
 			});
 		}, function (next) {
@@ -429,38 +431,47 @@ var User = function () {
 
 	this.createsSlideBarQuestion = function (params = {}) {
 		var _number = (typeof params._number !== 'undefined') ? params._number : 3;
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'How satisfied are you with this product?';
 
 		qrvey.questionType('spec_sl_qt');
-		this.waits();
+		this.waits(200);
 
-		this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title);
-		this.finds('.spec-slidebar-question-type-answer-left').sendKeys('Very Satisfied');
-		this.finds('.spec-slidebar-question-type-answer-right').sendKeys('Very Unsatisfied');
-		this.finds('#spec-slidebar-number-option-' + _number).click();
+		this.createsTitleForQuestion();
+
+		this.finds('.spec-slidebar-question-type-answer-left').sendKeys(
+			rand.getParagraph(10)
+		).getAttribute('value').then(function(_val){
+			expect(_val.length).to.be.equal(54);
+		});
+
+		this.finds('.spec-slidebar-question-type-answer-right').sendKeys(
+			rand.getParagraph(10)
+		).getAttribute('value').then(function (_val) {
+			expect(_val.length).to.be.equal(54);
+		});
+
+		if (_number != 3){
+			this.finds('.spec-slidebar-number-option-' + _number).click();
+		}
+
 		return this.clicksOutside();
 	};
 
 	this.createsDateQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'When is my birthday?';
-
 		if (params.isQuiz){
 			element(by.css('.right-answer-input input')).click();
 			element(by.css('.mat-calendar-body-today')).click();
 		}
 
 		qrvey.questionType('spec_da_qt');
-		return this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title).then(function () {
+		return this.createsTitleForQuestion().then(function () {
 			return _this.clicksOutside();
 		});
 	};
 
-	this.createsDropdownQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'What option is better?';
-
+	this.createsDropdownQuestion = function () {
 		qrvey.questionType('spec_dr_qt');
 
-		return this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title).then(function () {
+		return this.createsTitleForQuestion().then(function () {
 			return _this.createOptionsDropdown();
 		});
 	};
@@ -477,14 +488,10 @@ var User = function () {
 	};
 
 	this.createsNumericTypeQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'How old are you?';
-
-		if (params.isQuiz){
-			this.finds('.right-answer-input input').sendKeys(10);
-		}
+		if (params.isQuiz) this.finds('.right-answer-input input').sendKeys(10);
 
 		qrvey.questionType('spec_nu_qt');
-		return this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title);
+		return this.createsTitleForQuestion();
 	};
 
 	this.activatesAllowDecimals = function () {
@@ -492,28 +499,18 @@ var User = function () {
 	};
 
 	this.createsYesOrNotQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'Are you Female?';
-
-		if(params.isQuiz){
-			this.finds('.spec-quiz-right-answer-Yes').click();
-		}
+		if(params.isQuiz) this.finds('.spec-quiz-right-answer-Yes').click();
 
 		qrvey.questionType('spec_yn_qt');
-		return _this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(_title);
+		return this.createsTitleForQuestion();
 	};
 
-	this.createsRatingQuestion = function (_title) {
-		_title = (typeof _title !== 'undefined') ? _title : 'Are you Female?';
-
+	this.createsRatingQuestion = function () {
 		qrvey.questionType('spec_rt_qt');
-		return this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title);
+		return this.createsTitleForQuestion();
 	};
 
 	this.createsRankingQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'Which movie is better for you?';
-
-
-
 		if (params.isQuiz){
 			element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
 			element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
@@ -521,7 +518,7 @@ var User = function () {
 
 		qrvey.questionType('spec_rn_qt');
 
-		return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(_title).then(function () {
+		return this.createsTitleForQuestion().then(function () {
 			return _this.createsListOptions('ranking');
 		});
 	};
@@ -529,9 +526,6 @@ var User = function () {
 	this.createsNps = function () {
 		this.finds('.spec_dashboard_create_new_button').click();
 		this.finds('.spec_dropdown_create_nps_button').click();
-
-		// this.finds('.spec-input-new-nps-name').sendKeys(_title);
-		// this.finds('.spec-input-new-nps-description').sendKeys(_description);
 
 		return this.finds('.spec-button-create-nps').click();
 	};
@@ -553,7 +547,7 @@ var User = function () {
 	};
 
 	this.fillsRankingQuestion = function (_titles) {
-		this.finds('.spec-edit-question-name-any').sendKeys('Which qrveys are better for you?');
+		this.createsTitleForQuestion();
 
 		var _length = 0,
 			t = 1,
@@ -582,18 +576,14 @@ var User = function () {
 		return this.waits(100);
 	};
 
-	this.createsTextFiledQuestion = function (_title) {
-		_title = (typeof _title !== 'undefined') ? _title : 'Short Text question creation test';
-
+	this.createsTextFiledQuestion = function () {
 		qrvey.questionType('spec_tf_qt');
-		return this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title);
+		return this.createsTitleForQuestion();
 	};
 
-	this.createsShortTextFiledQuestion = function (_title) {
-		_title = (typeof _title !== 'undefined') ? _title : 'Short Text question creation test';
-
+	this.createsShortTextFiledQuestion = function () {
 		qrvey.questionType('spec_st_qt');
-		return this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title);
+		return this.createsTitleForQuestion();
 	};
 
 	this.takesQrvey = function (_number) {
@@ -681,8 +671,8 @@ var User = function () {
 			return elem.getAttribute('value').then(function (_val) {
 				return _text.includes(_val);
 			});
-		}).count().then(function (lenght) {
-			return lenght > 0;
+		}).count().then(function (length) {
+			return length > 0;
 		});
 	};
 
@@ -762,6 +752,14 @@ var User = function () {
 		});
 
 		return element;
+	};
+
+	this.isPresent = function(_el){
+		return this.finds(_el).isPresent();
+	};
+
+	this.findsValue = function (_el){
+		return this.finds(_el).getAttribute('value');
 	};
 
 	this.findsOn = function (ele) {
@@ -1037,7 +1035,7 @@ var User = function () {
 			});
 		} else if (_confirm === false) {
 			this.finds('.spec-failed-submit-take-qrvey').click();
-			return this.waits();
+			return this.waits(300);
 		}
 	};
 
@@ -1344,16 +1342,13 @@ var User = function () {
 			count = 0;
 
 		if (typeof params.typeOfInput === 'undefined') params.typeOfInput = 'url';
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'Which image is better?';
 
-		this.findsAll('.spec-edit-question-name-any').last().sendKeys(_title);
+		this.createsTitleForQuestion();
 
 		async.during(function (cb) {
 			_this.finds('.spec-add-option-image-question').isDisplayed().then(function (_displayed) {
-				console.log('_displayed', _displayed);
 				return cb(null, _displayed);
 			}).catch(function(){
-				console.log('_displayed', false);
 				return cb(null, false);
 			});
 		}, function (next) {
@@ -1366,10 +1361,9 @@ var User = function () {
 		var n = 0;
 
 		_this.findsAll('.spec-image-upload-option-url').count().then(function (_count) {
-			console.log('_count', _count);
 			count = _count;
 
-			console.log('params.typeOfInput', params.typeOfInput);
+			logger.log('params.typeOfInput', params.typeOfInput);
 
 			if (params.typeOfInput == 'url') {
 				logger.log('by URL');
@@ -1504,12 +1498,11 @@ var User = function () {
 		return deferred.promise;
 	};
 
-	this.createsExpressionQuestion = function (_title) {
-		_title = (typeof _title !== 'undefined') ? _title : 'Title for Expression question';
+	this.createsExpressionQuestion = function () {
 		qrvey.questionType('spec_ex_qt');
 		this.waits(200);
 		this.fillExpressionQuestionAnswers();
-		return this.finds('.spec-edit-question-name-any').sendKeys(_title);
+		return this.createsTitleForQuestion();
 	};
 
 	this.fillExpressionQuestionAnswers = function (num, type) {
@@ -1535,13 +1528,8 @@ var User = function () {
 	};
 
 	this.createsTextFieldQuestion = function (params = {}) {
-		var _title = (typeof params.title !== 'undefined') ? params.title : 'Title for Any question';
-
-		if (params.isQuiz){
-			this.finds('.answer input').sendKeys('question');
-		}
-
-		return this.finds('.spec-edit-question-name-any').sendKeys(_title);
+		if (params.isQuiz) this.finds('.answer input').sendKeys('question');
+		return this.createsTitleForQuestion();
 	};
 
 	this.createsQuestionByType = function (_type, _isQuiz) {
@@ -1574,6 +1562,7 @@ var User = function () {
 					deferred.fulfill();
 				});
 				break;
+			case 'slidebar':
 			case 'slide_bar':
 			case 'slide bar':
 				this.createsSlideBarQuestion({
@@ -1641,7 +1630,7 @@ var User = function () {
 				});
 				break;
 			default:
-				throw 'Error, ' + _type + ' type of question is undefined';
+				throw new Error('The ' + _type + ' type of question is undefined');
 		}
 
 		return deferred.promise;
@@ -2323,8 +2312,11 @@ var User = function () {
 			case 'dropdown':
 				_text = 'Dropdown';
 				break;
+			case 'slidebar':
+				_text = 'Slide Bar';
+				break;
 			default:
-				throw new Error('Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
+				throw new Error('The type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
 		}
 
 		scrollToTop();

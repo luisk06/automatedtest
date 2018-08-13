@@ -11,11 +11,11 @@ module.exports = function() {
 	});
 
 	Given(/^that the user is editing a qrvey$/, function(cb) {
-		user.createsQrvey().then(cb);
+		user.createsWebform().then(cb);
 	});
 
 	Given(/^that the user is editing a "([^"]*)"$/, function(typeOfQrvey, cb) {
-		user.createsQrvey({
+		user.createsWebform({
 			'title': 'Test Customize ' + typeOfQrvey,
 			'description': 'Test description',
 			'type': typeOfQrvey
@@ -23,7 +23,7 @@ module.exports = function() {
 	});
 
 	Given(/^that the user is editing a "([^"]*)" with "([^"]*)" as tittle$/, function(typeOfQrvey, title, cb) {
-		user.createsQrvey({
+		user.createsWebform({
 			'title': title + ' ' + typeOfQrvey,
 			'description': 'Test description',
 			'type': typeOfQrvey
