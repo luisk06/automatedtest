@@ -1702,7 +1702,7 @@ var User = function () {
 	};
 
 	this.answersLongTextQuestion = function () {
-		var text = rand.getText(10001);
+		var text = rand.getText(500);
 		return this.finds('.spec-taker-long-text-answers').sendKeys(text);
 	};
 

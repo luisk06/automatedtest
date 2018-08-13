@@ -21,9 +21,8 @@ module.exports = function () {
 
 	When(/^the user picks "([^"]*)" from "([^"]*)" layer dropdown$/, function (optionToPick, dropdownType, cb) {
 		user.waits(1500);
-		var panelContainer = element(containerLocator);
+		var panelContainer = element.all(containerLocator).last();
 		panelContainer.element(by.css('.spec-' + dropdownType + '-dropdown > div > span')).click().then(function () {
-			panelContainer = element(containerLocator);
 			panelContainer.element(by.xpath(".//qv-dropdown[contains(@class, 'spec-" + dropdownType + "-dropdown')]//div[contains(@class, 'options')]//span[contains(text(),'" + optionToPick + "')]")).click().then(cb); // eslint-disable-line
 		});
 	});
@@ -42,6 +41,10 @@ module.exports = function () {
 
 	When(/^the user opens the first combo panel$/, function (cb) {
 		element(containerLocator).click().then(cb);
+	});
+
+	When(/^the user opens the combo panel number (\d+)$/, function (number, cb) {
+		element.all(containerLocator).get(number - 1).click().then(cb);
 	});
 
 	When(/^the user choose "([^"]*)" as visualization mode$/, function (visual, cb) {

@@ -33,7 +33,7 @@ Feature: Creating branches with different types of questions options
 		Examples:
 			| typeOfQrvey | typeOfQuestion  | branchsOption 	|
 			| survey      | multiple choice | Equal				|
-			| forms	      | multiple choice | Does Not Equal	|
+			| forms	      | multiple choice | Does not Equal	|
 
 
 	Scenario Outline: The user creates a image question with branch on a <typeOfQuestion> and <branchsOption> option
@@ -55,7 +55,7 @@ Feature: Creating branches with different types of questions options
 
 		Examples:
 			| typeOfQrvey | typeOfQuestion  | branchsOption 	|
-			| survey      | image			| Does Not Equal	|
+			| survey      | image			| Does not Equal	|
 			| forms	      | image			| Equal				|
 
 	Scenario Outline: The user creates a yes-no question with branch on using <branchsOption> option
@@ -77,7 +77,7 @@ Feature: Creating branches with different types of questions options
 
 		Examples:
 			| typeOfQrvey | typeOfQuestion  | branchsOption 	|
-			| survey      | yes-no			| Does Not Equal	|
+			| survey      | yes-no			| Does not Equal	|
 			| forms	      | yes-no			| Equal				|
 
 
