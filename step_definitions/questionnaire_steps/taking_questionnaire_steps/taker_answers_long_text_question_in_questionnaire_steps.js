@@ -18,7 +18,7 @@ module.exports = function() {
 				case 'long text':
 				case 'long_text':
 					user.finds('.spec-taker-long-text-answers').getAttribute('value').then(function(_text){
-						expect(_text.length).to.be.equal(10000);
+						expect(_text.length).to.be.equal(500);
 					});
 					break;
 			}
