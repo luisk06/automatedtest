@@ -61,7 +61,7 @@ module.exports = function() {
 				_type = 'spec_nps_qt';
 				break;
 			default:
-				throw 'Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu';
+				throw new Error('Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
 		}
 
 		element(by.css('#questionType_dropdown')).click();

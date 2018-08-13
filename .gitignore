@@ -10,14 +10,13 @@ reports/**/*.json
 reports/**/*.xml
 reports/**/*.html
 reports/**/*.png
-reports/**/*.txt
-support/reports/coverage/**/*
-support/config.user.js
 reports/custom/chrome.json
+reports/**/*.txt
+support/config.user.js
 support/config.saucelabuser.js
 support/config.browserstack.js
 
-tests/scenarios.txt
+scenarios.txt
 package-lock.json*
 *-unittest-report.xml
 reports/*.json

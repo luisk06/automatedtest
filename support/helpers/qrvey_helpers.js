@@ -81,7 +81,7 @@ var Qrveyhelpers = function() {
 				_type = 'spec_ua_qt';
 				break;
 			default:
-				throw 'Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu';
+				throw new Error('Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
 		}
 
 		return _type;
@@ -507,7 +507,7 @@ var Qrveyhelpers = function() {
 		var branchDropdown = this.getBranchesListFromQuestion(questionNumber, levelNumber).get(branchNumber).element(by.css(locatorBranchIfAnswerIsDropdown));
 
 		//Select option
-		
+
 		return branchDropdown.click().then(function(){
 			if(ifansweris == 'Does not contain'){
 				return browser.actions().mouseDown(branchDropdown.element(by.xpath(".//ul/li[normalize-space(text()) = '" + ifansweris + "']"))).click().perform().then(function(){ // eslint-disable-line

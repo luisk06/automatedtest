@@ -24,8 +24,13 @@ module.exports = function () {
 
     Then(/^the user publish the webform$/, function (cb) {
         user.publishWebform().then(function () {
+            return user.getsTextExists('nps');
+        }).then(function (isNps) {
+            console.log('isNps', isNps);
+
             expect(user.finds('.spec-webform-incomplete-alert').isPresent()).to.eventually.be.false;
-            expect(user.finds('.spec-confirm-end-qrvey').isDisplayed()).to.eventually.be.true.and.notify(cb);
+            if(!isNps) expect(user.finds('.spec-confirm-end-qrvey').isDisplayed()).to.eventually.be.true.and.notify(cb);
+            else cb();
         });
     });
 };
