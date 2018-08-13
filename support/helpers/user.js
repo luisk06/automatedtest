@@ -38,10 +38,8 @@ var User = function () {
 	};
 
 	this.waits = function (_time) {
-		if (typeof _time !== 'number') throw 'The time should be numeric';
-		return brw.sleep(
-			(typeof _time != 'undefined') ? _time : this.settings.pageSleep
-		);
+		if (typeof _time !== 'number') throw new Error('The time should be numeric');
+		return brw.sleep(_time);
 	};
 
 	this.whereIAm = function () {
@@ -216,7 +214,7 @@ var User = function () {
 				} else _this.finds('.spec_edit_question_overlay').click();
 			}
 
-			if (typeQrvey == 'nps') user.finds('.spec-question-title').click();
+			if (typeQrvey == 'nps' || typeQrvey == 'checklist') user.finds('.spec-question-title').click();
 
 			var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
 
@@ -386,6 +384,15 @@ var User = function () {
 		});
 	};
 
+	this.createsSectionQuestion = function (params = {}) {
+		var _title = (typeof params.title !== 'undefined') ? params.title : 'Would you recommend our product to others?';
+		var _this = this;
+
+		return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(_title).then(function () {
+			return _this.createsListOptions('multichoice');
+		});
+	};
+
 	this.createsListOptions = function (type) {
 		var deferred = protractor.promise.defer();
 		var i = 0;
@@ -529,9 +536,9 @@ var User = function () {
 		return this.finds('.spec-button-create-nps').click();
 	};
 
-	this.createsNpsQuestion = function (_nameEnterprise, _textfieldText) {
-		_nameEnterprise = (typeof _nameEnterprise !== 'undefined') ? _nameEnterprise : 'QRVEY';
-		_textfieldText = (typeof _textfieldText !== 'undefined') ? _textfieldText : 'Could you please explain your choice? Thank you!';
+	this.createsNpsQuestion = function (_nameEnterprise = '', _textfieldText = '') {
+		_nameEnterprise = (_nameEnterprise != '') ? _nameEnterprise : 'QRVEY';
+		_textfieldText = (_textfieldText != '') ? _textfieldText : 'Could you please explain your choice? Thank you!';
 
 		this.finds('.qrvey-info-editor-container').click();
 		element.all(by.css('.spec_edit_question_overlay')).get(0).click();
@@ -1500,7 +1507,7 @@ var User = function () {
 	this.createsExpressionQuestion = function (_title) {
 		_title = (typeof _title !== 'undefined') ? _title : 'Title for Expression question';
 		qrvey.questionType('spec_ex_qt');
-		this.waits();
+		this.waits(200);
 		this.fillExpressionQuestionAnswers();
 		return this.finds('.spec-edit-question-name-any').sendKeys(_title);
 	};
@@ -1549,6 +1556,16 @@ var User = function () {
 					deferred.fulfill();
 				});
 				break;
+			case 'nps':
+				this.createsNpsQuestion().then(function () {
+					deferred.fulfill();
+				});
+				break;
+			case 'checklist':
+				this.createsSectionQuestion().then(function () {
+					deferred.fulfill();
+				});
+				break;
 			case 'multiple_choice':
 			case 'multiple choice':
 				this.createsMultiChoiceTypeQuestion({
@@ -1576,6 +1593,10 @@ var User = function () {
 			case 'short_text':
 			case 'long text':
 			case 'long_text':
+			case 'name':
+			case 'email':
+			case 'address':
+			case 'password':
 				this.createsTextFieldQuestion({
 					isQuiz: _isQuiz
 				}).then(function () {
@@ -2303,7 +2324,7 @@ var User = function () {
 				_text = 'Dropdown';
 				break;
 			default:
-				throw 'Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu';
+				throw new Error('Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
 		}
 
 		scrollToTop();
@@ -2347,13 +2368,21 @@ var User = function () {
 		var defer = protractor.promise.defer();
 		var _this = this;
 
-		this.selectQuestionFromDropdown(type).then(function () {
-			return _this.isQuizOnMaker();
-		}).then(function (_isQuizOnMaker) {
-			return _this.createsQuestionByType(type, _isQuizOnMaker);
-		}).then(function () {
-			defer.fulfill();
-		});
+		if (type !== 'checklist' && type !== 'nps'){
+			this.selectQuestionFromDropdown(type).then(function () {
+				return _this.isQuizOnMaker();
+			}).then(function (_isQuizOnMaker) {
+				return _this.createsQuestionByType(type, _isQuizOnMaker);
+			}).then(function () {
+				defer.fulfill();
+			});
+		} else {
+			this.isQuizOnMaker().then(function (_isQuizOnMaker) {
+				return _this.createsQuestionByType(type, _isQuizOnMaker);
+			}).then(function () {
+				defer.fulfill();
+			});
+		}
 
 		return defer.promise;
 	};
