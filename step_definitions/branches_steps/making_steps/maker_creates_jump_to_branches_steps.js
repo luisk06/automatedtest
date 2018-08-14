@@ -32,7 +32,7 @@ module.exports = function () {
 
 	When(/^the user fill "([^"]*)" question options from question (\d+)$/, function (typeOfQuestion, questionNumber, cb) {
 		user.waits(500).then(function () {
-			user.fillQuestionByTypeAndID(questionNumber, typeOfQuestion).then(cb);
+			maker.fillQuestionByTypeAndID(questionNumber, typeOfQuestion).then(cb);
 		});
 	});
 
@@ -119,7 +119,7 @@ module.exports = function () {
 		user.waits(2000);
 		var dateDropdownMin = branch.element(locatorDateDropdown);
 		if(option == 'Between, inclusive'){
-			
+
 			dateDropdownMin.sendKeys('6/6/2013').then(function(){
 				var dateDropdownMax = branch.element(locatorDateDropdownMax);
 				dateDropdownMax.sendKeys('6/6/2018');
@@ -130,7 +130,7 @@ module.exports = function () {
 		}
 	});
 
-	
+
 
 	When(/^the user select "([^"]*)" as if-answer-is option for branch (\d+) level (\d+) on question (\d+)$/, function (ifansweris, branchNumber, levelNumber, questionNumber, cb) {
 		qrvey.selectBranchesIfAnswerIs(ifansweris, questionNumber, branchNumber, levelNumber).then(cb);

@@ -136,7 +136,7 @@ module.exports = function() {
 		var el = '.spec_customize_themes_nameInput';
 
 		webpage.waitsFor(el);
-		user.getsInputTextExists(el, arg1).then(function(_value) {
+		maker.getsInputTextExists(el, arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

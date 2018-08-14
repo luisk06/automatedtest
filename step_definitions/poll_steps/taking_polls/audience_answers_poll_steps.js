@@ -9,7 +9,7 @@ module.exports = function() {
 	When(/^the audience answers the "([^"]*)" poll$/, function(typeOfQuestion, cb) {
 		user.waits(3000).then(function(){
 			if(typeOfQuestion == 'numeric') typeOfQuestion = 'numeric-mask';
-			user.answersQuestion(typeOfQuestion).then(cb);
+			taker.answersQuestion(typeOfQuestion).then(cb);
 		});
 	});
 };

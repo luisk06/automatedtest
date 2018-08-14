@@ -52,7 +52,7 @@ module.exports = function() {
 
 	Then(/^the new tag should be displayed$/, function(cb) {
 		logger.log('newTagName', newTagName);
-		user.getsInputTextExists('.spec-addressbook-tagmanager-input-name-tag', newTagName).then(function(_value) {
+		make.getsInputTextExists('.spec-addressbook-tagmanager-input-name-tag', newTagName).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

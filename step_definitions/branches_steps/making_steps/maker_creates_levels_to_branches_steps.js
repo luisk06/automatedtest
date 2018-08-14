@@ -82,7 +82,7 @@ module.exports = function() {
 	});
 
 	When(/^the user writes the question and answers for question number (\d+)$/, function(numberQuestion, cb) {
-		user.createsMultiChoiceTypeQuestion('Would you recommend our product to others ' + numberQuestion + ' ?').then(function() {
+		maker.createsMultiChoiceTypeQuestion('Would you recommend our product to others ' + numberQuestion + ' ?').then(function() {
 			numberQuestion = numberQuestion - 1;
 
 			element.all(by.css('.spec-add-option-multichoice-question-0')).last().click();

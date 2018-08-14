@@ -8,7 +8,7 @@ module.exports = function() {
 
 	When(/^the user writes the "([^"]*)" question options$/, function(questiontype, cb) {
 		if (questiontype == 'yes-no'){
-			user.createsYesOrNotQuestion().then(cb);
+			maker.createsYesOrNotQuestion().then(cb);
 		}
 	});
 

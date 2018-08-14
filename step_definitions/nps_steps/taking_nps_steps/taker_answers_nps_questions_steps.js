@@ -18,7 +18,7 @@ module.exports = function() {
 
 	When(/^the user answers the "([^"]*)" question$/, function(typeOfQuestion, cb) {
 		skipSync(true);
-		user.answersQuestion(typeOfQuestion).then(cb);
+		taker.answersQuestion(typeOfQuestion).then(cb);
 	});
 
 	When(/^clicks on the Ok button again$/, function(cb) {

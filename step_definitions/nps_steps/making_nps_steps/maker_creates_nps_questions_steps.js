@@ -11,7 +11,7 @@ module.exports = function() {
 	});
 
 	When(/^the user writes the "([^"]*)" as "([^"]*)" in "([^"]*)" type of qrvey$/, function(context, field, typeQrvey, cb) {
-		user.fillQrveyNameOrDescription(context, field, typeQrvey).then(function(){
+		maker.fillQrveyNameOrDescription(context, field, typeQrvey).then(function(){
 			cb();
 		});
 	});

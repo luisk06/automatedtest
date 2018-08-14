@@ -27,7 +27,7 @@ module.exports = function() {
 	When(/^the user creates a "([^"]*)" action with "([^"]*)"$/, function (typeOfAction, typeOfqrvey, cb) {
 		var  view = 'detailed';
 		if(typeOfqrvey=='form' || typeOfqrvey=='questionnaire') view = 'tabular';
-		user.createsActionToPage(typeOfAction, typeOfqrvey, view).then(cb);
+		maker.createsActionToPage(typeOfAction, typeOfqrvey, view).then(cb);
 	});
 
 	Then(/^the project is opened succefully$/, function (cb) {

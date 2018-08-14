@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that the user has added questions and wants to edit them$/, function(cb) {
-		user.createsMultiChoiceTypeQuestion().then(cb);
+		maker.createsMultiChoiceTypeQuestion().then(cb);
 	});
 
 	When(/^the question turns to edit mode$/, function(cb) {

@@ -20,7 +20,7 @@ module.exports = function() {
 	});
 
 	When(/^the user does sign up$/, function(cb) {
-		user.toDoRegister(newAccount).then(cb);
+		maker.toDoRegister(newAccount).then(cb);
 	});
 
 	Then(/^the "([^"]*)" message should be diplayed$/, function(message, cb) {

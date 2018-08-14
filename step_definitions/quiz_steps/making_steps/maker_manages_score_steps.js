@@ -97,25 +97,25 @@ module.exports = function () {
 	});
 
 	When(/^the user choose the right answers$/, function (cb) {
-		user.answerAllOnTaker().then(function () {
+		taker.answerAllOnTaker().then(function () {
 			cb();
 		});
 	});
 
 	When(/^the user choose the answers$/, function (cb) {
-		user.answerAllOnTaker(false).then(function () {
+		taker.answerAllOnTaker(false).then(function () {
 			cb();
 		});
 	});
 
 	When(/^the user should passed the quiz$/, function (cb) {
-		user.getQuizStatus().then(function (_status) {
+		taker.getQuizStatus().then(function (_status) {
 			expect(_status).to.be.equal('passed');
 		}).then(cb);
 	});
 
 	When(/^the user should failed the quiz$/, function (cb) {
-		user.getQuizStatus().then(function (_status) {
+		taker.getQuizStatus().then(function (_status) {
 			expect(_status).to.be.equal('not-passed');
 		}).then(cb);
 	});

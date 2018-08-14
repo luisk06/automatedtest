@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that the user adds a multiple choice question$/, function(cb) {
-		user.createsMultiChoiceTypeQuestion().then(cb);
+		maker.createsMultiChoiceTypeQuestion().then(cb);
 	});
 
 	When(/^the user adds the answer choices$/, function(cb) {
@@ -19,11 +19,11 @@ module.exports = function() {
 	});
 
 	Then(/^the user will see the paths they created below the question as tabs$/, function(cb) {
-		user.opensPathQuestion(1).then(cb);
+		maker.opensPathQuestion(1).then(cb);
 	});
 
 	Given(/^that the user adds a Yes\/No question$/, function(cb) {
-		user.createsYesOrNotQuestion().then(cb);
+		maker.createsYesOrNotQuestion().then(cb);
 	});
 
 	Then(/^the paths checkbox inside the path question should not be displayed$/, function(cb) {

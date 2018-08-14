@@ -22,6 +22,7 @@ global.dropFile = require('./helpers/drop-file.js');
 
 // NewOnes
 global.webpage = require('./helpers/webpage');
+global.taker = require('./helpers/taker');
 
 // Random Answers Module
 global.chance = require('chance').Chance();

@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user have a qrvey created$/, function(cb) {
-		user.createsWebform().then(cb);
+		maker.createsWebform().then(cb);
 	});
 
 	When(/^the user clicks on trigger select$/, function(cb){

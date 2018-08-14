@@ -7,7 +7,7 @@ module.exports = function () {
     Then = this.Then;
 
     Given(/^the user just added "([^"]*)" question$/, function (type, cb) {
-        user.buildQuestion(type).then(function () {
+        maker.buildQuestion(type).then(function () {
             cb();
         });
     });
@@ -15,7 +15,7 @@ module.exports = function () {
     When(/^the user add a custom intro page$/, function (cb) {
         scrollToTop();
 
-        user.addIntroPage().then(function () {
+        maker.addIntroPage().then(function () {
             expect(
                 user.findsValue('#form_intro_title')
             ).to.eventually.have.lengthOf(300);
@@ -31,7 +31,7 @@ module.exports = function () {
     });
 
     Then(/^the user publish the webform$/, function (cb) {
-        user.publishWebform().then(function () {
+        maker.publishWebform().then(function () {
             //     return webpage.getsTextExists('nps');
             // }).then(function (isNps) {
             //     console.log('isNps', isNps);

@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user adds and fills (\d+) options on "([^"]*)" question to question (\d+)$/, function(numberOfOptions, typeOfQuestion, questionNumber, cb) {
-		user.addFillOptionsToQuestionID(numberOfOptions, questionNumber, typeOfQuestion).then(cb);
+		maker.addFillOptionsToQuestionID(numberOfOptions, questionNumber, typeOfQuestion).then(cb);
 	});
 
 	When(/^the user adds (\d+) branches to question (\d+)$/, function(numberOfBranchesToAdd, questionNumber, cb) {

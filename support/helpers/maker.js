@@ -5,229 +5,30 @@ var Maker = function () {};
 Maker.prototype = User.prototype;
 Maker.prototype.constructor = Maker;
 
-Maker.prototype.toDoLogin = function (_username, _password) {
-	_username = (typeof _username !== 'undefined') ? _username : configer.get('username');
-	_password = (typeof _password !== 'undefined') ? _password : configer.get('password');
-
-	this.goTo('/login');
-	this.finds('#spec-inputlogin-user').sendKeys(_username);
-	this.finds('#spec-inputlogin-password').sendKeys(_password);
-	this.finds('.spec-login-btn').click();
-	return this.waitsFor('.spec-qrvey-logo-exp');
+Maker.prototype.actionSearch = function () {
+	this.finds('.spec_search_input').sendKeys(protractor.Key.ENTER);
+	return this.waits(2000);
 };
 
-Maker.prototype.toDoRegister = function (_username, _password) {
-	_username = (typeof _username !== 'undefined') ? _username : 'testingqrvey+' + randomId() + '@gmail.com';
-	_password = (typeof _password !== 'undefined') ? _password : '123456';
-
-	logger.log('register username', _username);
-
-	this.goTo('/register');
-	this.finds('#spec-input-useremail-register').sendKeys(_username);
-	this.finds('#spec-input-userpass-register').sendKeys(_password);
-	this.finds('.spec-register-btn').click();
-
-	return this.waitsFor('.spec-qrvey-logo-exp');
+Maker.prototype.activatesAddOtherOption = function () {
+	return this.finds('.spec-active-option-add-other-option').click();
 };
 
-Maker.prototype.createsWebform = function (obj) {
-	if (!_.get(obj, 'title')) obj.title = 'Name its undefined for this test qrvey';
-	if (!_.get(obj, 'description')) obj.description = 'No description was defined for this test qrvey';
-	if (!_.get(obj, 'type')) obj.type = 'survey';
-	if (obj.type == 'form') obj.type = 'forms';
-
-	this.finds('.spec_dropdown_create_' + obj.type + '_button').click();
-
-	var _el = '.spec-button-create-' + obj.type;
-	if (obj.type !== 'quiz') scrollIntoElement(this.finds(_el));
-
-	this.finds(_el).click();
-	this.waitsFor('.spec_title_description');
-	return this.fillQrveyNameOrDescription(obj.title, 'name', obj.type);
+Maker.prototype.activatesAllowDecimals = function () {
+	return this.finds('.spec-maker-allow-decimals').click();
 };
 
-Maker.prototype.editsQuery = function () {
-	this.finds('.spec-create-qrvey').click();
-	this.finds('.spec_create_modal_name_field').sendKeys('Product Use Satisfaction');
-	this.finds('.spec_create_modal_description_field').sendKeys('Please help us to better understand your needs by completing this qrvey. Thank you for your time.');
-	this.finds('.spec-button-create-survey').click();
-	return this.finds('.spec-save-new-qrvey').click();
+Maker.prototype.activatesAllowMultipleSelections = function () {
+	return this.finds('.spec-active-option-allow-multiple-selection + label').click();
 };
 
-Maker.prototype.selectsOptionOfQuestion = function (_number) {
-	_number = (_number > 0) ? _number : 0;
-
-	var _el = this.findsAll('.spec-select-option-question').last();
-	this.waits(200);
-	_el.click();
-	return _el.all(by.css('.options span')).get(_number).click();
+Maker.prototype.activatesQrvey = function () {
+	this.finds('.spec-tab-to-share').click();
+	return this.finds('.spec-qrvey-btn-active').click();
 };
 
-Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey) {
-	var _this = this;
-
-	return this.finds('.spec_title_description').click().then(function () {
-		scrollToTop();
-
-		_this.finds('.spec_editing_title_description input').clear().sendKeys(
-			rand.getParagraph(2)
-		).getAttribute('value').then(function (_val) {
-			expect(_val.length).to.be.equal(36);
-		});
-
-		_this.finds('.spec_editing_title_description textarea').clear().sendKeys(
-			rand.getParagraph(10)
-		).getAttribute('value').then(function (_val) {
-			expect(_val.length).to.be.equal(176);
-		});
-
-	}).then(function () {
-		if (typeQrvey == 'quiz' || typeQrvey == 'survey' || typeQrvey == 'forms') {
-			if (typeQrvey == 'survey') {
-				_this.finds('.question-preview-mode').click();
-			} else _this.finds('.spec_edit_question_overlay').click();
-		}
-
-		if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
-			_this.waits(1300);
-			user.finds('.spec-question-title').click();
-		}
-
-		var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
-
-		if (typeQrvey == 'nps') _this.waits(300);
-
-		_this.finds(clickQuestionName).click();
-	});
-};
-
-Maker.prototype.fillMultipleChoiceQuestionFromId = function (number, title) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-
-	questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
-	questionContainer.element(by.css('.spec-multichoice-option-1')).sendKeys('Option 1');
-	return questionContainer.element(by.css('.spec-multichoice-option-2')).sendKeys('Option 2');
-};
-
-Maker.prototype.fillQuestionTittleFromID = function (number, title) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
-};
-
-Maker.prototype.fillRankingQuestionFromId = function (number, title) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-
-	questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
-	questionContainer.element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
-	return questionContainer.element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
-};
-
-Maker.prototype.fillSlideBarQuestionFromId = function (number, title) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-
-	questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
-	questionContainer.element(by.css('.spec-slidebar-question-type-answer-left')).sendKeys('Very Satisfied');
-	return questionContainer.element(by.css('.spec-slidebar-question-type-answer-right')).sendKeys('Very Unsatisfied');
-};
-
-Maker.prototype.fillExpressionQuestionFromId = function (number, title) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-	var locatorExpressionInput = by.css('.spec_input_expression_word');
-
-	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function () {
-		questionContainer.element(locatorExpressionInput).sendKeys('Happy ');
-		brw.actions().sendKeys(protractor.Key.ENTER).perform();
-		questionContainer.element(locatorExpressionInput).sendKeys('Sad ');
-		brw.actions().sendKeys(protractor.Key.ENTER).perform();
-		questionContainer.element(locatorExpressionInput).sendKeys('Normal ');
-		brw.actions().sendKeys(protractor.Key.ENTER).perform();
-		questionContainer.element(locatorExpressionInput).sendKeys('Emburrated ');
-		brw.actions().sendKeys(protractor.Key.ENTER).perform();
-	});
-};
-
-Maker.prototype.fillImageQuestionFromId = function (number, title) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-	var _this = this;
-
-	var i = 0;
-	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function () {
-		return questionContainer.all(by.css('.spec-image-upload-option-url')).each(function () {
-			_this.waits(890);
-			questionContainer.element(by.css('.spec-image-upload-option-url-' + i)).click();
-
-			var _el = _this.finds('.spec-design-modal-image-url');
-			var _url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
-
-			_el.clear().sendKeys(_url).then(function () {
-				return _el.getAttribute('value');
-			}).then(function (_value) {
-				expect(_value).to.be.equal(_url);
-			}).then(function () {
-				_this.finds('.spec-design-modal-done-button').click();
-			});
-
-			i++;
-		}).then(function () {
-			var j = 1;
-
-			questionContainer.all(by.css('.spec-design-image-title')).each(function () {
-				questionContainer.element(by.css('.spec-design-image-title-' + j)).sendKeys('Option ' + j);
-				j++;
-			});
-		});
-	});
-};
-
-Maker.prototype.fillQuestionDefaultFromID = function (number) {
-	var locatorQuestionContainer = '.spec-question-container-';
-	var questionContainer = this.finds(locatorQuestionContainer + number);
-	return questionContainer.element(by.css('.spec-edit-question-name-any')).click();
-};
-
-Maker.prototype.fillQuestionByTypeAndID = function (number, typeOfQuestion) {
-	switch (typeOfQuestion) {
-		case 'address':
-			return this.fillQuestionTittleFromID(number, 'Where do you live?');
-		case 'multiple choice':
-			return this.fillMultipleChoiceQuestionFromId(number, 'What option is more effective?');
-		case 'rating':
-			return this.fillQuestionTittleFromID(number, 'Rate the product please.');
-		case 'short text':
-		case 'short-text':
-		case 'short_text':
-			return this.fillQuestionTittleFromID(number, 'Give a brief opinion about the site');
-		case 'long text':
-		case 'long-text':
-		case 'long_text':
-			return this.fillQuestionTittleFromID(number, 'What do you think about the customer service?');
-		case 'yes-no':
-		case 'yes no':
-		case 'yes/no':
-			return this.fillQuestionTittleFromID(number, 'Are you agree with Donald Trumps politics?');
-		case 'ranking':
-			return this.fillRankingQuestionFromId(number, 'Rank this 2 options.');
-		case 'date':
-			return this.fillQuestionTittleFromID(number, 'Enter your birthdate');
-		case 'slidebar':
-		case 'slide_bar':
-		case 'slide bar':
-			return this.fillSlideBarQuestionFromId(number, 'How satisfied are you with this product?');
-		case 'expression':
-			return this.fillExpressionQuestionFromId(number, 'How do you feel today?');
-		case 'numeric':
-			return this.fillQuestionTittleFromID(number, '2x + 8 = 9; x = ?');
-		case 'image':
-			return this.fillImageQuestionFromId(number, 'Which one do you like the most?');
-		default:
-			return this.fillQuestionDefaultFromID(number);
-	}
+Maker.prototype.activatesTagsOption = function () {
+	return this.finds('.spec-add-tags-question').click();
 };
 
 Maker.prototype.addFillOptionsToQuestionID = function (numberOfOptions, questionNumber, typeOfQuestion) {
@@ -243,414 +44,6 @@ Maker.prototype.addFillOptionsToQuestionID = function (numberOfOptions, question
 		default:
 			return qrvey.fillQuestionDefaultFromID(questionNumber);
 	}
-};
-
-Maker.prototype.createsMultiChoiceTypeQuestion = function (params = {}) {
-	var _this = this;
-
-	if (params.isQuiz) this.finds('.answer .right-answer input').first().click();
-
-	return this.createsTitleForQuestion().then(function () {
-		return _this.createsListOptions('multichoice');
-	});
-};
-
-Maker.prototype.createsSectionQuestion = function () {
-	var _this = this;
-
-	return this.createsTitleForQuestion().then(function () {
-		return _this.createsListOptions('multichoice');
-	});
-};
-
-Maker.prototype.createsTitleForQuestion = function (text) {
-	return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(
-		rand.getParagraph(20)
-	).getAttribute('value').then(function (_val) {
-		expect(_val.length).to.be.equal(160);
-	});
-};
-
-Maker.prototype.createsListOptions = function (type) {
-	var deferred = protractor.promise.defer();
-	var i = 0;
-	var _type = (typeof type === 'undefined') ? 'multichoice' : type;
-
-	async.during(function (cb) {
-		hasClass(_this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
-			logger.log('val', !_val);
-			return cb(null, !_val);
-		});
-	}, function (next) {
-		_this.waits(400);
-		_this.findsAll('.icon.q-icon-add').last().click().then(function () {
-			i++;
-			next();
-		});
-	});
-
-	var el = null;
-	_this.findsAll('.icon.q-icon-add').count().then(function (_count) {
-		async.times(_count, function (n, next) {
-			el = _this.finds('.spec-' + _type + '-option-' + (n + 1));
-			scrollIntoElement(el);
-			el.sendKeys('Option ' + (n + 1)).then(function () {
-				next();
-			});
-		}, function () {
-			deferred.fulfill();
-		});
-	});
-
-	return deferred.promise;
-};
-
-Maker.prototype.createsSlideBarQuestion = function (params = {}) {
-	var _number = (typeof params._number !== 'undefined') ? params._number : 3;
-
-	qrvey.questionType('spec_sl_qt');
-	this.waits(200);
-
-	this.createsTitleForQuestion();
-
-	this.finds('.spec-slidebar-question-type-answer-left').sendKeys(
-		rand.getParagraph(10)
-	).getAttribute('value').then(function (_val) {
-		expect(_val.length).to.be.equal(54);
-	});
-
-	this.finds('.spec-slidebar-question-type-answer-right').sendKeys(
-		rand.getParagraph(10)
-	).getAttribute('value').then(function (_val) {
-		expect(_val.length).to.be.equal(54);
-	});
-
-	if (_number != 3) {
-		this.finds('.spec-slidebar-number-option-' + _number).click();
-	}
-
-	return this.clicksOutside();
-};
-
-Maker.prototype.createsDateQuestion = function (params = {}) {
-	if (params.isQuiz) {
-		element(by.css('.right-answer-input input')).click();
-		element(by.css('.mat-calendar-body-today')).click();
-	}
-
-	qrvey.questionType('spec_da_qt');
-	return this.createsTitleForQuestion().then(function () {
-		return _this.clicksOutside();
-	});
-};
-
-Maker.prototype.createsDropdownQuestion = function () {
-	qrvey.questionType('spec_dr_qt');
-
-	return this.createsTitleForQuestion().then(function () {
-		return _this.createOptionsDropdown();
-	});
-};
-
-Maker.prototype.createOptionsDropdown = function (numOpt = 9) {
-	var list = '';
-	var index = 1;
-
-	for (index = 1; index <= numOpt; index++) {
-		list += 'Option' + index;
-		if (index + 1 <= numOpt) list += '\n';
-	}
-	return this.finds('.dropdown-text').sendKeys(list);
-};
-
-Maker.prototype.createsNumericTypeQuestion = function (params = {}) {
-	if (params.isQuiz) this.finds('.right-answer-input input').sendKeys(10);
-
-	qrvey.questionType('spec_nu_qt');
-	return this.createsTitleForQuestion();
-};
-
-Maker.prototype.activatesAllowDecimals = function () {
-	return this.finds('.spec-maker-allow-decimals').click();
-};
-
-Maker.prototype.createsYesOrNotQuestion = function (params = {}) {
-	if (params.isQuiz) this.finds('.spec-quiz-right-answer-Yes').click();
-
-	qrvey.questionType('spec_yn_qt');
-	return this.createsTitleForQuestion();
-};
-
-Maker.prototype.createsRatingQuestion = function () {
-	qrvey.questionType('spec_rt_qt');
-	return this.createsTitleForQuestion();
-};
-
-Maker.prototype.createsRankingQuestion = function (params = {}) {
-	if (params.isQuiz) {
-		element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
-		element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
-	}
-
-	qrvey.questionType('spec_rn_qt');
-
-	return this.createsTitleForQuestion().then(function () {
-		return _this.createsListOptions('ranking');
-	});
-};
-
-Maker.prototype.createsNps = function () {
-	this.finds('.spec_dashboard_create_new_button').click();
-	this.finds('.spec_dropdown_create_nps_button').click();
-
-	return this.finds('.spec-button-create-nps').click();
-};
-
-Maker.prototype.createsNpsQuestion = function (_nameEnterprise = '', _textfieldText = '') {
-	_nameEnterprise = (_nameEnterprise != '') ? _nameEnterprise : 'QRVEY';
-	_textfieldText = (_textfieldText != '') ? _textfieldText : 'Could you please explain your choice? Thank you!';
-
-	this.finds('.qrvey-info-editor-container').click();
-	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-	this.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
-	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-	this.finds('.spec-nps-title-textfield-question-input').clear().sendKeys(_textfieldText);
-	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-
-	return element(by.css('.spec-nps-title-question-input')).getAttribute('value').then(function (_html) {
-		expect(_html).to.be.equal(_nameEnterprise);
-	});
-};
-
-Maker.prototype.fillsRankingQuestion = function (_titles) {
-	this.createsTitleForQuestion();
-
-	var _length = 0,
-		t = 1,
-		i = 0;
-
-	_titles = (typeof _titles !== 'undefined') ? _titles : {
-		'1': 'Ironman',
-		'2': 'Spiderman'
-	};
-
-	_length = Object.keys(_titles).length;
-
-	if (_length < 2) throw new Error('Error, the minium question is 2');
-
-	if (_length > 2) {
-		for (i = 0; i <= _length - 3; i++) {
-			this.findsAll('.spec-add-option-ranking-question-0').last().click();
-		}
-	}
-
-	for (i = 1; i <= _length; i++) {
-		this.finds('.spec-ranking-option-' + t).sendKeys(_titles[i]);
-		t++;
-	}
-
-	return this.waits(100);
-};
-
-Maker.prototype.createsTextFiledQuestion = function () {
-	qrvey.questionType('spec_tf_qt');
-	return this.createsTitleForQuestion();
-};
-
-Maker.prototype.createsShortTextFiledQuestion = function () {
-	qrvey.questionType('spec_st_qt');
-	return this.createsTitleForQuestion();
-};
-
-Maker.prototype.activatesQrvey = function () {
-	this.finds('.spec-tab-to-share').click();
-	return this.finds('.spec-qrvey-btn-active').click();
-};
-
-Maker.prototype.findsUrlToTaker = function () {
-	var el = this.finds('.spec-qrvey-url-share');
-	return el.getAttribute('value');
-};
-
-Maker.prototype.previewsQrvey = function () {
-	return this.finds('.spec-design-preview-link').click();
-};
-
-Maker.prototype.forgotPassword = function (username) {
-	this.finds('.spec-user-forgot-password').clear().sendKeys(username);
-	return this.finds('.spec-user-forgot-password-btn').click();
-};
-
-Maker.prototype.activatesAddOtherOption = function () {
-	return this.finds('.spec-active-option-add-other-option').click();
-};
-
-Maker.prototype.activatesAllowMultipleSelections = function () {
-	return this.finds('.spec-active-option-allow-multiple-selection + label').click();
-};
-
-Maker.prototype.activatesTagsOption = function () {
-	return this.finds('.spec-add-tags-question').click();
-};
-
-Maker.prototype.clicksOutside = function () {
-	return this.finds('body').click();
-};
-
-Maker.prototype.opensPathQuestion = function (_number) {
-	_number = (typeof _number !== 'undefined') ? _number : 1;
-
-	return this.findsAll('.spec-path-question').then(function (elements) {
-		elements[_number - 1].click();
-	});
-};
-
-Maker.prototype.isVisibleQuestionPath = function () {
-	return this.finds('.spec-question-path').isDisplayed();
-};
-
-Maker.prototype.getsTextExists = function (_text) {
-	return element.all(by.xpath('//*[contains(text(),\'' + _text + '\')]')).count().then(function (arr) {
-		return (arr > 0);
-	}, function () {
-		return false;
-	});
-};
-
-Maker.prototype.getsInputTextExists = function (_locator, _text) {
-	return element.all(by.css(_locator)).filter(function (elem) {
-		return elem.getAttribute('value').then(function (_val) {
-			return _text.includes(_val);
-		});
-	}).count().then(function (length) {
-		return length > 0;
-	});
-};
-
-Maker.prototype.getsTotal = function (_repeat) { // 'question in qrveyObject'
-	return element.all(by.repeater(_repeat)).then(function (arr) {
-		return arr.length;
-	}, function () {
-		return null;
-	});
-};
-
-Maker.prototype.getsTotalByCss = function (_class) {
-	return this.findsAll(_class).count();
-};
-
-Maker.prototype.touchesMenuQrvey = function (_number) {
-	_number = (typeof _number !== 'undefined') ? (_number - 1) : 0;
-
-	return this.getsTotal('qrvey in qrveys').then(function (count) {
-		if (count === 0) {
-
-			var _el = (!isMobile) ? '.spec_dropdown_create_survey_button.dash-btn-desk' : '.spec_dropdown_create_survey_button.dash-btn-mobile';
-			this.finds(_el).click();
-			this.waits(2000);
-
-			this.finds('.spec-button-create-survey').click();
-
-			this.waits(2000);
-			brw.get(brw.baseUrl);
-		}
-
-		this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey')).click();
-	});
-};
-
-Maker.prototype.touchesDeleteOptionMenuQrvey = function (_number) {
-	_number = (typeof _number !== 'undefined') ? _number : 1;
-	_number = (_number - 1 < 0) ? 0 : _number - 1;
-
-	return this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey-delete-option')).click();
-};
-
-Maker.prototype.deleteMesssage = function (_state) {
-	_state = (typeof _state !== 'undefined') ? _state : 'confirm';
-
-	if (_state == 'confirm') {
-		return this.finds('.spec-delete-qrvey-confirm').click();
-	} else if (_state == 'cancel') {
-		return this.finds('.spec-delete-qrvey-cancel').click();
-	}
-};
-
-Maker.prototype.touchsDuplicateOptionMenuQrvey = function (_number) {
-	_number = (typeof _number !== 'undefined') ? _number : 1;
-	_number = _number - 1;
-
-	return this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey-duplicate-option')).click();
-};
-
-Maker.prototype.currentStateQrvey = function () {
-	return this.finds('.spec-qrvey-item-0').element(by.css('.spec-qrvey-status-draft')).getInnerHtml();
-};
-
-Maker.prototype.takesQrveyShared = function () {
-	return this.finds('.spec-taker-qrvey').click();
-};
-
-Maker.prototype.selectsOtherQuestion = function () {
-	return this.finds('.spec-other-write-awnswer');
-};
-
-Maker.prototype.movesSlidebar = function (_distance) {
-	var _el = this.findsAll('.rz-pointer').first();
-
-	brw.actions().mouseDown(_el).perform();
-	this.waits(2000);
-	return brw.actions().mouseMove(_el, {
-		x: _distance,
-		y: 0
-	}).perform();
-};
-
-Maker.prototype.addsNewQuestion = function () {
-	this.finds('.spec-design-add-state').click();
-	return this.finds('.spec-design-add-new-question').click();
-};
-
-Maker.prototype.makerMovesQuestion = function (_where, _number) {
-	_where = (typeof _where !== 'undefined') ? _where : 'up';
-	_number = (typeof _number !== 'undefined') ? (_number - 1) : 0;
-
-	var _dir = (_where == 'up') ? { x: 0, y: 500 } : { x: 0, y: -500 },
-		_el = this.finds('.spec-maker-move-question-' + _number);
-
-	brw.actions().mouseDown(_el).perform();
-	this.waits(2000);
-	brw.actions().mouseMove(_el, _dir).perform();
-	return brw.actions().mouseUp().perform();
-};
-
-Maker.prototype.search = function (_text) {
-	this.finds('.spec_search_input').sendKeys(_text);
-	return this.waits(2000);
-};
-
-Maker.prototype.actionSearch = function () {
-	this.finds('.spec_search_input').sendKeys(protractor.Key.ENTER);
-	return this.waits(2000);
-};
-
-Maker.prototype.createsPolling = function (_title, _description) {
-	_title = (typeof _title !== 'undefined') ? _title : 'NPS Survey in Qrvey';
-	_description = (typeof _description !== 'undefined') ? _description : 'NPS Survey in Qrvey';
-
-	this.finds('.spec_dashboard_create_new_button').click();
-	this.finds('.spec_dropdown_create_polling_button').click();
-
-	this.finds('.spec-input-new-polling-name').sendKeys(_title);
-	this.finds('.spec-input-new-polling-description').sendKeys(_description);
-	return this.finds('.spec-button-create-polling').click();
-};
-
-Maker.prototype.putCodeInAudiencePage = function (_code) {
-	if (typeof _code === 'undefined') throw new Error('Error, lack the code');
-
-	logger.log('the code is:', _code);
-	return this.finds('.spec_audiencepage_enter_access_code_input').sendKeys(_code);
 };
 
 Maker.prototype.addImageOptions = function (_all_images_possible) {
@@ -701,6 +94,151 @@ Maker.prototype.addImageTitles = function () {
 	});
 
 	return deferred.promise;
+};
+
+Maker.prototype.addIntroPage = function () {
+	this.findsAll('.spec-design-add-state').first().click();
+	this.finds('.spec-design-add-intro').click();
+	this.finds('#form_intro_title').clear().sendKeys(rand.getParagraph(4));
+	this.finds('#form_intro_content').clear().sendKeys(rand.getParagraph(20));
+	this.finds('#form_intro_button').clear().sendKeys(rand.getParagraph(1));
+	return this.finds('#form_intro_title').click();
+};
+
+Maker.prototype.addNewToken = function (typeToken) {
+	typeToken = typeToken.toLowerCase();
+
+	this.finds('.spec-automatiq-add-token').click();
+	this.waitsFor('.modal-dialog');
+
+	this.finds('.spec-automatiq-token-select-qrvey').click();
+	this.finds('ul.open .scroll-select .spec-automatiq-token-qrvey-option-1').click();
+
+	this.waitsFor('.tokens-questions');
+	this.finds('.spec-automatiq-token-question-option-1').click();
+	this.finds('.spec-automatiq-token-label-input').sendKeys(typeToken);
+	this.finds('.spec-automatiq-token-add-button').click();
+
+	expect(this.finds('.tokens-label').getText()).to.eventually.be.equal('{{' + typeToken + '}}');
+
+	return this.finds('.spec-close-modal').click();
+};
+
+Maker.prototype.addsNewQuestion = function () {
+	this.finds('.spec-design-add-state').click();
+	return this.finds('.spec-design-add-new-question').click();
+};
+
+Maker.prototype.buildQuestion = function (type) {
+	var defer = protractor.promise.defer();
+	var _this = this;
+
+	if (type !== 'checklist' && type !== 'nps') {
+		this.selectQuestionFromDropdown(type).then(function () {
+			return _this.isQuizOnMaker();
+		}).then(function (_isQuizOnMaker) {
+			return _this.createsQuestionByType(type, _isQuizOnMaker);
+		}).then(function () {
+			defer.fulfill();
+		});
+	} else {
+		this.isQuizOnMaker().then(function (_isQuizOnMaker) {
+			return _this.createsQuestionByType(type, _isQuizOnMaker);
+		}).then(function () {
+			defer.fulfill();
+		});
+	}
+
+	return defer.promise;
+};
+
+Maker.prototype.clicksOutside = function () {
+	return this.finds('body').click();
+};
+
+Maker.prototype.createOptionsDropdown = function (numOpt = 9) {
+	var list = '';
+	var index = 1;
+
+	for (index = 1; index <= numOpt; index++) {
+		list += 'Option' + index;
+		if (index + 1 <= numOpt) list += '\n';
+	}
+	return this.finds('.dropdown-text').sendKeys(list);
+};
+
+Maker.prototype.createPage = function () {
+	this.finds('#spec_new_page').click();
+	this.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5));
+	this.finds('.spec-input-new-process-description').clear().sendKeys(rand.getSentence(15));
+	return this.finds('.spec-button-create-process').click();
+};
+
+Maker.prototype.createPageWithTitle = function (title) {
+	this.finds('.spec_pages_create_new_button').click();
+	this.finds('.spec-input-new-process-name').clear().sendKeys(title);
+	this.finds('.spec-input-new-process-description').clear().sendKeys(rand.getSentence(15));
+	return this.finds('.spec-button-create-process').click();
+};
+
+Maker.prototype.createsActionToPage = function (_typeOfAction, typeOfQrvey, _view) {
+	this.finds('.spec-automatiq-block-action-view-open').click();
+	this.finds('.spec-automatiq-select-action-open').click();
+	this.finds('.spec-automatiq-select-action-' + _typeOfAction).click();
+	this.finds('.spec-automatiq-show-results-select-qrvey span').click();
+	this.finds('.spec-show-results-' + typeOfQrvey).click();
+	this.finds('.spec-show-results-qrvey').click();
+	this.waits(5000);
+
+	this.findsAll('.spec-show-results-qrvey ul div li').get(1).click();
+
+	var view = 0;
+	if (typeOfQrvey == 'form' || typeOfQrvey == 'questionnaire') {
+		this.finds('.automatiq-select-results-view span').click();
+	} else {
+		this.finds('.automatiq-select-results-view').click();
+	}
+
+	if (_view == 'detailed' || _view == null) {
+		view = 0;
+	} else if (_view == 'summary') {
+		view = 1;
+	} else if (_view == 'tabular') {
+		view = 2;
+
+		if (typeOfQrvey == 'form') {
+			view = 3;
+		}
+	}
+
+	return this.findsAll('.automatiq-select-results-view ul div li').get(view).click();
+};
+
+Maker.prototype.createsDateQuestion = function (params = {}) {
+	if (params.isQuiz) {
+		element(by.css('.right-answer-input input')).click();
+		element(by.css('.mat-calendar-body-today')).click();
+	}
+
+	qrvey.questionType('spec_da_qt');
+	return this.createsTitleForQuestion().then(function () {
+		return _this.clicksOutside();
+	});
+};
+
+Maker.prototype.createsDropdownQuestion = function () {
+	qrvey.questionType('spec_dr_qt');
+
+	return this.createsTitleForQuestion().then(function () {
+		return _this.createOptionsDropdown();
+	});
+};
+
+Maker.prototype.createsExpressionQuestion = function () {
+	qrvey.questionType('spec_ex_qt');
+	this.waits(200);
+	this.fillExpressionQuestionAnswers();
+	return this.createsTitleForQuestion();
 };
 
 Maker.prototype.createsImageQuestion = function (params = {}) {
@@ -865,16 +403,141 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 	return deferred.promise;
 };
 
-Maker.prototype.createsExpressionQuestion = function () {
-	qrvey.questionType('spec_ex_qt');
-	this.waits(200);
-	this.fillExpressionQuestionAnswers();
+Maker.prototype.createsIncontext = function (_title, _description) {
+	_title = (typeof _title !== 'undefined') ? _title : 'In Context in Qrvey';
+	_description = (typeof _description !== 'undefined') ? _description : 'In Context in Qrvey';
+
+	this.finds('.spec_dashboard_create_new_button').click();
+	this.finds('.spec_dropdown_create_incontextfeedback_button').click();
+
+	this.finds('.spec-input-new-incontext-name').sendKeys(_title);
+	this.finds('.spec-input-new-incontext-description').sendKeys(_description);
+	return this.finds('.spec-button-create-incontext').click();
+};
+
+Maker.prototype.createsListOptions = function (type) {
+	var deferred = protractor.promise.defer();
+	var i = 0;
+	var _type = (typeof type === 'undefined') ? 'multichoice' : type;
+
+	async.during(function (cb) {
+		hasClass(_this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
+			logger.log('val', !_val);
+			return cb(null, !_val);
+		});
+	}, function (next) {
+		_this.waits(400);
+		_this.findsAll('.icon.q-icon-add').last().click().then(function () {
+			i++;
+			next();
+		});
+	});
+
+	var el = null;
+	_this.findsAll('.icon.q-icon-add').count().then(function (_count) {
+		async.times(_count, function (n, next) {
+			el = _this.finds('.spec-' + _type + '-option-' + (n + 1));
+			scrollIntoElement(el);
+			el.sendKeys('Option ' + (n + 1)).then(function () {
+				next();
+			});
+		}, function () {
+			deferred.fulfill();
+		});
+	});
+
+	return deferred.promise;
+};
+
+Maker.prototype.createsMultiChoiceTypeQuestion = function (params = {}) {
+	var _this = this;
+
+	if (params.isQuiz) this.finds('.answer .right-answer input').first().click();
+
+	return this.createsTitleForQuestion().then(function () {
+		return _this.createsListOptions('multichoice');
+	});
+};
+
+Maker.prototype.createsNps = function () {
+	this.finds('.spec_dashboard_create_new_button').click();
+	this.finds('.spec_dropdown_create_nps_button').click();
+
+	return this.finds('.spec-button-create-nps').click();
+};
+
+Maker.prototype.createsNpsQuestion = function (_nameEnterprise = '', _textfieldText = '') {
+	_nameEnterprise = (_nameEnterprise != '') ? _nameEnterprise : 'QRVEY';
+	_textfieldText = (_textfieldText != '') ? _textfieldText : 'Could you please explain your choice? Thank you!';
+
+	this.finds('.qrvey-info-editor-container').click();
+	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
+	this.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
+	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
+	this.finds('.spec-nps-title-textfield-question-input').clear().sendKeys(_textfieldText);
+	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
+
+	return element(by.css('.spec-nps-title-question-input')).getAttribute('value').then(function (_html) {
+		expect(_html).to.be.equal(_nameEnterprise);
+	});
+};
+
+Maker.prototype.createsNumericTypeQuestion = function (params = {}) {
+	if (params.isQuiz) this.finds('.right-answer-input input').sendKeys(10);
+
+	qrvey.questionType('spec_nu_qt');
 	return this.createsTitleForQuestion();
 };
 
-Maker.prototype.createsTextFieldQuestion = function (params = {}) {
-	if (params.isQuiz) this.finds('.answer input').sendKeys('question');
-	return this.createsTitleForQuestion();
+Maker.prototype.createsPages = function (action) {
+	var deferred = protractor.promise.defer();
+
+	this.findsAll('.spec_pages_button').first().click();
+	this.finds('#spec_new_page').click();
+	this.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5));
+	this.finds('.spec-button-create-process').click();
+
+	this.waitsFor('.spec-automatiq-block-action-view-open');
+	this.findsAll('.spec-automatiq-block-action-view-open').get(0).click();
+	this.findsAll('.spec-automatiq-select-action-open').get(0).click();
+	this.findsAll('.spec-automatiq-select-action-' + action).get(0).click();
+
+	if (action === 'showmsg') {
+		this.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10));
+		this.finds('.spec-automation-btn-activate').click();
+
+		this.waitsFor('.toggle');
+		this.findsAll('.pages-list.qrvey-list.qrvey-pages-list .page .toggle').first().click();
+
+		deferred.fulfill();
+	} else throw new Error('The action is not supported yet');
+
+	return deferred.promise;
+};
+
+Maker.prototype.createsPolling = function (_title, _description) {
+	_title = (typeof _title !== 'undefined') ? _title : 'NPS Survey in Qrvey';
+	_description = (typeof _description !== 'undefined') ? _description : 'NPS Survey in Qrvey';
+
+	this.finds('.spec_dashboard_create_new_button').click();
+	this.finds('.spec_dropdown_create_polling_button').click();
+
+	this.finds('.spec-input-new-polling-name').sendKeys(_title);
+	this.finds('.spec-input-new-polling-description').sendKeys(_description);
+	return this.finds('.spec-button-create-polling').click();
+};
+
+Maker.prototype.createsProcess = function (_title, _description) {
+	this.finds('.spec_workflows_button').click();
+	this.finds('#spec_new_process').click();
+
+	_title = (typeof _title !== 'undefined') ? _title : 'Name its undefined for this process qrvey';
+	_description = (typeof _description !== 'undefined') ? _description : 'No description was defined for this test qrvey';
+
+	this.finds('.spec-input-new-process-name').sendKeys(_title);
+	this.finds('.spec-input-new-process-description').sendKeys(_description);
+
+	return this.finds('.spec-button-create-process').click();
 };
 
 Maker.prototype.createsQuestionByType = function (_type, _isQuiz) {
@@ -981,117 +644,102 @@ Maker.prototype.createsQuestionByType = function (_type, _isQuiz) {
 	return deferred.promise;
 };
 
-Maker.prototype.createsIncontext = function (_title, _description) {
-	_title = (typeof _title !== 'undefined') ? _title : 'In Context in Qrvey';
-	_description = (typeof _description !== 'undefined') ? _description : 'In Context in Qrvey';
-
-	this.finds('.spec_dashboard_create_new_button').click();
-	this.finds('.spec_dropdown_create_incontextfeedback_button').click();
-
-	this.finds('.spec-input-new-incontext-name').sendKeys(_title);
-	this.finds('.spec-input-new-incontext-description').sendKeys(_description);
-	return this.finds('.spec-button-create-incontext').click();
-};
-
-Maker.prototype.createsProcess = function (_title, _description) {
-	this.finds('.spec_workflows_button').click();
-	this.finds('#spec_new_process').click();
-
-	_title = (typeof _title !== 'undefined') ? _title : 'Name its undefined for this process qrvey';
-	_description = (typeof _description !== 'undefined') ? _description : 'No description was defined for this test qrvey';
-
-	this.finds('.spec-input-new-process-name').sendKeys(_title);
-	this.finds('.spec-input-new-process-description').sendKeys(_description);
-
-	return this.finds('.spec-button-create-process').click();
-};
-
-Maker.prototype.selectTemplate = function (_category) {
-	switch (_category) {
-		case 'friends':
-			return this.finds('.spec-friends-templates').click();
-		case 'customers':
-			return this.finds('.spec-customers-templates').click();
-		case 'colleagues':
-			return this.finds('.spec-colleagues-templates').click();
-		case 'event':
-			return this.finds('.spec-event-templates').click();
-		case 'students':
-			return this.finds('.spec-students-templates').click();
-	}
-};
-
-Maker.prototype.createsPages = function (action) {
-	var deferred = protractor.promise.defer();
-
-	this.findsAll('.spec_pages_button').first().click();
-	this.finds('#spec_new_page').click();
-	this.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5));
-	this.finds('.spec-button-create-process').click();
-
-	this.waitsFor('.spec-automatiq-block-action-view-open');
-	this.findsAll('.spec-automatiq-block-action-view-open').get(0).click();
-	this.findsAll('.spec-automatiq-select-action-open').get(0).click();
-	this.findsAll('.spec-automatiq-select-action-' + action).get(0).click();
-
-	if (action === 'showmsg') {
-		this.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10));
-		this.finds('.spec-automation-btn-activate').click();
-
-		this.waitsFor('.toggle');
-		this.findsAll('.pages-list.qrvey-list.qrvey-pages-list .page .toggle').first().click();
-
-		deferred.fulfill();
-	} else throw new Error('The action is not supported yet');
-
-	return deferred.promise;
-};
-
-Maker.prototype.createPage = function () {
-	this.finds('#spec_new_page').click();
-	this.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5));
-	this.finds('.spec-input-new-process-description').clear().sendKeys(rand.getSentence(15));
-	return this.finds('.spec-button-create-process').click();
-};
-
-Maker.prototype.createPageWithTitle = function (title) {
-	this.finds('.spec_pages_create_new_button').click();
-	this.finds('.spec-input-new-process-name').clear().sendKeys(title);
-	this.finds('.spec-input-new-process-description').clear().sendKeys(rand.getSentence(15));
-	return this.finds('.spec-button-create-process').click();
-};
-
-Maker.prototype.createsActionToPage = function (_typeOfAction, typeOfQrvey, _view) {
-	this.finds('.spec-automatiq-block-action-view-open').click();
-	this.finds('.spec-automatiq-select-action-open').click();
-	this.finds('.spec-automatiq-select-action-' + _typeOfAction).click();
-	this.finds('.spec-automatiq-show-results-select-qrvey span').click();
-	this.finds('.spec-show-results-' + typeOfQrvey).click();
-	this.finds('.spec-show-results-qrvey').click();
-	this.waits(5000);
-
-	this.findsAll('.spec-show-results-qrvey ul div li').get(1).click();
-
-	var view = 0;
-	if (typeOfQrvey == 'form' || typeOfQrvey == 'questionnaire') {
-		this.finds('.automatiq-select-results-view span').click();
-	} else {
-		this.finds('.automatiq-select-results-view').click();
+Maker.prototype.createsRankingQuestion = function (params = {}) {
+	if (params.isQuiz) {
+		element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
+		element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
 	}
 
-	if (_view == 'detailed' || _view == null) {
-		view = 0;
-	} else if (_view == 'summary') {
-		view = 1;
-	} else if (_view == 'tabular') {
-		view = 2;
+	qrvey.questionType('spec_rn_qt');
 
-		if (typeOfQrvey == 'form') {
-			view = 3;
-		}
+	return this.createsTitleForQuestion().then(function () {
+		return _this.createsListOptions('ranking');
+	});
+};
+
+Maker.prototype.createsRatingQuestion = function () {
+	qrvey.questionType('spec_rt_qt');
+	return this.createsTitleForQuestion();
+};
+
+Maker.prototype.createsSectionQuestion = function () {
+	var _this = this;
+
+	return this.createsTitleForQuestion().then(function () {
+		return _this.createsListOptions('multichoice');
+	});
+};
+
+Maker.prototype.createsShortTextFiledQuestion = function () {
+	qrvey.questionType('spec_st_qt');
+	return this.createsTitleForQuestion();
+};
+
+Maker.prototype.createsSlideBarQuestion = function (params = {}) {
+	var _number = (typeof params._number !== 'undefined') ? params._number : 3;
+
+	qrvey.questionType('spec_sl_qt');
+	this.waits(200);
+
+	this.createsTitleForQuestion();
+
+	this.finds('.spec-slidebar-question-type-answer-left').sendKeys(
+		rand.getParagraph(10)
+	).getAttribute('value').then(function (_val) {
+		expect(_val.length).to.be.equal(54);
+	});
+
+	this.finds('.spec-slidebar-question-type-answer-right').sendKeys(
+		rand.getParagraph(10)
+	).getAttribute('value').then(function (_val) {
+		expect(_val.length).to.be.equal(54);
+	});
+
+	if (_number != 3) {
+		this.finds('.spec-slidebar-number-option-' + _number).click();
 	}
 
-	return this.findsAll('.automatiq-select-results-view ul div li').get(view).click();
+	return this.clicksOutside();
+};
+
+Maker.prototype.createsTextFieldQuestion = function (params = {}) {
+	if (params.isQuiz) this.finds('.answer input').sendKeys('question');
+	return this.createsTitleForQuestion();
+};
+
+Maker.prototype.createsTitleForQuestion = function (text) {
+	return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(
+		rand.getParagraph(20)
+	).getAttribute('value').then(function (_val) {
+		expect(_val.length).to.be.equal(160);
+	});
+};
+
+Maker.prototype.createsWebform = function (obj) {
+	if (!_.get(obj, 'title')) obj.title = 'Name its undefined for this test qrvey';
+	if (!_.get(obj, 'description')) obj.description = 'No description was defined for this test qrvey';
+	if (!_.get(obj, 'type')) obj.type = 'survey';
+	if (obj.type == 'form') obj.type = 'forms';
+
+	this.finds('.spec_dropdown_create_' + obj.type + '_button').click();
+
+	var _el = '.spec-button-create-' + obj.type;
+	if (obj.type !== 'quiz') scrollIntoElement(this.finds(_el));
+
+	this.finds(_el).click();
+	this.waitsFor('.spec_title_description');
+	return this.fillQrveyNameOrDescription(obj.title, 'name', obj.type);
+};
+
+Maker.prototype.createsYesOrNotQuestion = function (params = {}) {
+	if (params.isQuiz) this.finds('.spec-quiz-right-answer-Yes').click();
+
+	qrvey.questionType('spec_yn_qt');
+	return this.createsTitleForQuestion();
+};
+
+Maker.prototype.currentStateQrvey = function () {
+	return this.finds('.spec-qrvey-item-0').element(by.css('.spec-qrvey-status-draft')).getInnerHtml();
 };
 
 Maker.prototype.deleteAnDashboard = function (_appID) {
@@ -1109,23 +757,239 @@ Maker.prototype.deleteAnDashboard = function (_appID) {
 	});
 };
 
-Maker.prototype.addNewToken = function (typeToken) {
-	typeToken = typeToken.toLowerCase();
+Maker.prototype.deleteMesssage = function (_state) {
+	_state = (typeof _state !== 'undefined') ? _state : 'confirm';
 
-	this.finds('.spec-automatiq-add-token').click();
-	this.waitsFor('.modal-dialog');
+	if (_state == 'confirm') {
+		return this.finds('.spec-delete-qrvey-confirm').click();
+	} else if (_state == 'cancel') {
+		return this.finds('.spec-delete-qrvey-cancel').click();
+	}
+};
 
-	this.finds('.spec-automatiq-token-select-qrvey').click();
-	this.finds('ul.open .scroll-select .spec-automatiq-token-qrvey-option-1').click();
+Maker.prototype.editsQuery = function () {
+	this.finds('.spec-create-qrvey').click();
+	this.finds('.spec_create_modal_name_field').sendKeys('Product Use Satisfaction');
+	this.finds('.spec_create_modal_description_field').sendKeys('Please help us to better understand your needs by completing this qrvey. Thank you for your time.');
+	this.finds('.spec-button-create-survey').click();
+	return this.finds('.spec-save-new-qrvey').click();
+};
 
-	this.waitsFor('.tokens-questions');
-	this.finds('.spec-automatiq-token-question-option-1').click();
-	this.finds('.spec-automatiq-token-label-input').sendKeys(typeToken);
-	this.finds('.spec-automatiq-token-add-button').click();
+Maker.prototype.fillExpressionQuestionFromId = function (number, title) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+	var locatorExpressionInput = by.css('.spec_input_expression_word');
 
-	expect(this.finds('.tokens-label').getText()).to.eventually.be.equal('{{' + typeToken + '}}');
+	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function () {
+		questionContainer.element(locatorExpressionInput).sendKeys('Happy ');
+		brw.actions().sendKeys(protractor.Key.ENTER).perform();
+		questionContainer.element(locatorExpressionInput).sendKeys('Sad ');
+		brw.actions().sendKeys(protractor.Key.ENTER).perform();
+		questionContainer.element(locatorExpressionInput).sendKeys('Normal ');
+		brw.actions().sendKeys(protractor.Key.ENTER).perform();
+		questionContainer.element(locatorExpressionInput).sendKeys('Emburrated ');
+		brw.actions().sendKeys(protractor.Key.ENTER).perform();
+	});
+};
 
-	return this.finds('.spec-close-modal').click();
+Maker.prototype.fillImageQuestionFromId = function (number, title) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+	var _this = this;
+
+	var i = 0;
+	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function () {
+		return questionContainer.all(by.css('.spec-image-upload-option-url')).each(function () {
+			_this.waits(890);
+			questionContainer.element(by.css('.spec-image-upload-option-url-' + i)).click();
+
+			var _el = _this.finds('.spec-design-modal-image-url');
+			var _url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
+
+			_el.clear().sendKeys(_url).then(function () {
+				return _el.getAttribute('value');
+			}).then(function (_value) {
+				expect(_value).to.be.equal(_url);
+			}).then(function () {
+				_this.finds('.spec-design-modal-done-button').click();
+			});
+
+			i++;
+		}).then(function () {
+			var j = 1;
+
+			questionContainer.all(by.css('.spec-design-image-title')).each(function () {
+				questionContainer.element(by.css('.spec-design-image-title-' + j)).sendKeys('Option ' + j);
+				j++;
+			});
+		});
+	});
+};
+
+Maker.prototype.fillMultipleChoiceQuestionFromId = function (number, title) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+
+	questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
+	questionContainer.element(by.css('.spec-multichoice-option-1')).sendKeys('Option 1');
+	return questionContainer.element(by.css('.spec-multichoice-option-2')).sendKeys('Option 2');
+};
+
+Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey) {
+	var _this = this;
+
+	return this.finds('.spec_title_description').click().then(function () {
+		scrollToTop();
+
+		_this.finds('.spec_editing_title_description input').clear().sendKeys(
+			rand.getParagraph(2)
+		).getAttribute('value').then(function (_val) {
+			expect(_val.length).to.be.equal(36);
+		});
+
+		_this.finds('.spec_editing_title_description textarea').clear().sendKeys(
+			rand.getParagraph(10)
+		).getAttribute('value').then(function (_val) {
+			expect(_val.length).to.be.equal(176);
+		});
+
+	}).then(function () {
+		if (typeQrvey == 'quiz' || typeQrvey == 'survey' || typeQrvey == 'forms') {
+			if (typeQrvey == 'survey') {
+				_this.finds('.question-preview-mode').click();
+			} else _this.finds('.spec_edit_question_overlay').click();
+		}
+
+		if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
+			_this.waits(1300);
+			user.finds('.spec-question-title').click();
+		}
+
+		var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
+
+		if (typeQrvey == 'nps') _this.waits(300);
+
+		_this.finds(clickQuestionName).click();
+	});
+};
+
+Maker.prototype.fillQuestionByTypeAndID = function (number, typeOfQuestion) {
+	switch (typeOfQuestion) {
+		case 'address':
+			return this.fillQuestionTittleFromID(number, 'Where do you live?');
+		case 'multiple choice':
+			return this.fillMultipleChoiceQuestionFromId(number, 'What option is more effective?');
+		case 'rating':
+			return this.fillQuestionTittleFromID(number, 'Rate the product please.');
+		case 'short text':
+		case 'short-text':
+		case 'short_text':
+			return this.fillQuestionTittleFromID(number, 'Give a brief opinion about the site');
+		case 'long text':
+		case 'long-text':
+		case 'long_text':
+			return this.fillQuestionTittleFromID(number, 'What do you think about the customer service?');
+		case 'yes-no':
+		case 'yes no':
+		case 'yes/no':
+			return this.fillQuestionTittleFromID(number, 'Are you agree with Donald Trumps politics?');
+		case 'ranking':
+			return this.fillRankingQuestionFromId(number, 'Rank this 2 options.');
+		case 'date':
+			return this.fillQuestionTittleFromID(number, 'Enter your birthdate');
+		case 'slidebar':
+		case 'slide_bar':
+		case 'slide bar':
+			return this.fillSlideBarQuestionFromId(number, 'How satisfied are you with this product?');
+		case 'expression':
+			return this.fillExpressionQuestionFromId(number, 'How do you feel today?');
+		case 'numeric':
+			return this.fillQuestionTittleFromID(number, '2x + 8 = 9; x = ?');
+		case 'image':
+			return this.fillImageQuestionFromId(number, 'Which one do you like the most?');
+		default:
+			return this.fillQuestionDefaultFromID(number);
+	}
+};
+
+Maker.prototype.fillQuestionDefaultFromID = function (number) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+	return questionContainer.element(by.css('.spec-edit-question-name-any')).click();
+};
+
+Maker.prototype.fillQuestionTittleFromID = function (number, title) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
+};
+
+Maker.prototype.fillRankingQuestionFromId = function (number, title) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+
+	questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
+	questionContainer.element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
+	return questionContainer.element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
+};
+
+Maker.prototype.fillSlideBarQuestionFromId = function (number, title) {
+	var locatorQuestionContainer = '.spec-question-container-';
+	var questionContainer = this.finds(locatorQuestionContainer + number);
+
+	questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title);
+	questionContainer.element(by.css('.spec-slidebar-question-type-answer-left')).sendKeys('Very Satisfied');
+	return questionContainer.element(by.css('.spec-slidebar-question-type-answer-right')).sendKeys('Very Unsatisfied');
+};
+
+Maker.prototype.fillsRankingQuestion = function (_titles) {
+	this.createsTitleForQuestion();
+
+	var _length = 0,
+		t = 1,
+		i = 0;
+
+	_titles = (typeof _titles !== 'undefined') ? _titles : {
+		'1': 'Ironman',
+		'2': 'Spiderman'
+	};
+
+	_length = Object.keys(_titles).length;
+
+	if (_length < 2) throw new Error('Error, the minium question is 2');
+
+	if (_length > 2) {
+		for (i = 0; i <= _length - 3; i++) {
+			this.findsAll('.spec-add-option-ranking-question-0').last().click();
+		}
+	}
+
+	for (i = 1; i <= _length; i++) {
+		this.finds('.spec-ranking-option-' + t).sendKeys(_titles[i]);
+		t++;
+	}
+
+	return this.waits(100);
+};
+
+Maker.prototype.findsUrlToTaker = function () {
+	var el = this.finds('.spec-qrvey-url-share');
+	return el.getAttribute('value');
+};
+
+Maker.prototype.forgotPassword = function (username) {
+	this.finds('.spec-user-forgot-password').clear().sendKeys(username);
+	return this.finds('.spec-user-forgot-password-btn').click();
+};
+
+Maker.prototype.getQuestionType = function () {
+	var defer = protractor.promise.defer();
+
+	element(by.css('.question-type-selector')).getText().then(function (_text) {
+		defer.fulfill(_text.toLowerCase());
+	});
+
+	return defer.promise;
 };
 
 Maker.prototype.getTypeQuestionOnTaker = function (idx) {
@@ -1139,19 +1003,87 @@ Maker.prototype.getTypeQuestionOnTaker = function (idx) {
 	return defer.promise;
 };
 
-Maker.prototype.getQuizStatus = function () {
+Maker.prototype.getsInputTextExists = function (_locator, _text) {
+	return element.all(by.css(_locator)).filter(function (elem) {
+		return elem.getAttribute('value').then(function (_val) {
+			return _text.includes(_val);
+		});
+	}).count().then(function (length) {
+		return length > 0;
+	});
+};
+
+Maker.prototype.getsTotal = function (_repeat) { // 'question in qrveyObject'
+	return element.all(by.repeater(_repeat)).then(function (arr) {
+		return arr.length;
+	}, function () {
+		return null;
+	});
+};
+
+Maker.prototype.getsTotalByCss = function (_class) {
+	return this.findsAll(_class).count();
+};
+
+Maker.prototype.isQuizOnMaker = function () {
 	var defer = protractor.promise.defer();
 
-	user.finds('.circle').getAttribute('class').then(function (_classes) {
-		var newValue = _classes.replace('circle', '').trim();
-
-		defer.fulfill(newValue);
-
-		// if (newValue == 'passed') logger.info('Status', 'PASASTES');
-		// else if (newValue == 'not-passed') logger.info('Status', 'PERDISTES');
+	this.getsTextExists('Quiz').then(function (_val) {
+		console.log('isQuizOnMaker', _val);
+		defer.fulfill(_val);
 	});
 
 	return defer.promise;
+};
+
+Maker.prototype.isVisibleQuestionPath = function () {
+	return this.finds('.spec-question-path').isDisplayed();
+};
+
+Maker.prototype.makerMovesQuestion = function (_where, _number) {
+	_where = (typeof _where !== 'undefined') ? _where : 'up';
+	_number = (typeof _number !== 'undefined') ? (_number - 1) : 0;
+
+	var _dir = (_where == 'up') ? { x: 0, y: 500 } : { x: 0, y: -500 },
+		_el = this.finds('.spec-maker-move-question-' + _number);
+
+	brw.actions().mouseDown(_el).perform();
+	this.waits(2000);
+	brw.actions().mouseMove(_el, _dir).perform();
+	return brw.actions().mouseUp().perform();
+};
+
+Maker.prototype.movesSlidebar = function (_distance) {
+	var _el = this.findsAll('.rz-pointer').first();
+
+	brw.actions().mouseDown(_el).perform();
+	this.waits(2000);
+	return brw.actions().mouseMove(_el, {
+		x: _distance,
+		y: 0
+	}).perform();
+};
+
+Maker.prototype.opensPathQuestion = function (_number) {
+	_number = (typeof _number !== 'undefined') ? _number : 1;
+
+	return this.findsAll('.spec-path-question').then(function (elements) {
+		elements[_number - 1].click();
+	});
+};
+
+Maker.prototype.previewsQrvey = function () {
+	return this.finds('.spec-design-preview-link').click();
+};
+
+Maker.prototype.publishWebform = function () {
+	this.finds('.spec-tab-to-share').click();
+	return this.finds('.spec-qrvey-btn-active').click();
+};
+
+Maker.prototype.search = function (_text) {
+	this.finds('.spec_search_input').sendKeys(_text);
+	return this.waits(2000);
 };
 
 Maker.prototype.selectQuestionFromDropdown = function (typeOfQuestion) {
@@ -1265,62 +1197,91 @@ Maker.prototype.selectQuestionFromDropdown = function (typeOfQuestion) {
 	return defer.promise;
 };
 
-Maker.prototype.getQuestionType = function () {
-	var defer = protractor.promise.defer();
-
-	element(by.css('.question-type-selector')).getText().then(function (_text) {
-		defer.fulfill(_text.toLowerCase());
-	});
-
-	return defer.promise;
-};
-
-Maker.prototype.isQuizOnMaker = function () {
-	var defer = protractor.promise.defer();
-
-	this.getsTextExists('Quiz').then(function (_val) {
-		console.log('isQuizOnMaker', _val);
-		defer.fulfill(_val);
-	});
-
-	return defer.promise;
-};
-
-Maker.prototype.buildQuestion = function (type) {
-	var defer = protractor.promise.defer();
-	var _this = this;
-
-	if (type !== 'checklist' && type !== 'nps') {
-		this.selectQuestionFromDropdown(type).then(function () {
-			return _this.isQuizOnMaker();
-		}).then(function (_isQuizOnMaker) {
-			return _this.createsQuestionByType(type, _isQuizOnMaker);
-		}).then(function () {
-			defer.fulfill();
-		});
-	} else {
-		this.isQuizOnMaker().then(function (_isQuizOnMaker) {
-			return _this.createsQuestionByType(type, _isQuizOnMaker);
-		}).then(function () {
-			defer.fulfill();
-		});
+Maker.prototype.selectTemplate = function (_category) {
+	switch (_category) {
+		case 'friends':
+			return this.finds('.spec-friends-templates').click();
+		case 'customers':
+			return this.finds('.spec-customers-templates').click();
+		case 'colleagues':
+			return this.finds('.spec-colleagues-templates').click();
+		case 'event':
+			return this.finds('.spec-event-templates').click();
+		case 'students':
+			return this.finds('.spec-students-templates').click();
 	}
-
-	return defer.promise;
 };
 
-Maker.prototype.addIntroPage = function () {
-	this.findsAll('.spec-design-add-state').first().click();
-	this.finds('.spec-design-add-intro').click();
-	this.finds('#form_intro_title').clear().sendKeys(rand.getParagraph(4));
-	this.finds('#form_intro_content').clear().sendKeys(rand.getParagraph(20));
-	this.finds('#form_intro_button').clear().sendKeys(rand.getParagraph(1));
-	return this.finds('#form_intro_title').click();
+Maker.prototype.selectsOptionOfQuestion = function (_number) {
+	_number = (_number > 0) ? _number : 0;
+
+	var _el = this.findsAll('.spec-select-option-question').last();
+	this.waits(200);
+	_el.click();
+	return _el.all(by.css('.options span')).get(_number).click();
 };
 
-Maker.prototype.publishWebform = function () {
-	this.finds('.spec-tab-to-share').click();
-	return this.finds('.spec-qrvey-btn-active').click();
+Maker.prototype.selectsOtherQuestion = function () {
+	return this.finds('.spec-other-write-awnswer');
+};
+
+Maker.prototype.toDoLogin = function (_username, _password) {
+	_username = (typeof _username !== 'undefined') ? _username : configer.get('username');
+	_password = (typeof _password !== 'undefined') ? _password : configer.get('password');
+
+	this.goTo('/login');
+	this.finds('#spec-inputlogin-user').sendKeys(_username);
+	this.finds('#spec-inputlogin-password').sendKeys(_password);
+	this.finds('.spec-login-btn').click();
+	return this.waitsFor('.spec-qrvey-logo-exp');
+};
+
+Maker.prototype.toDoRegister = function (_username, _password) {
+	_username = (typeof _username !== 'undefined') ? _username : 'testingqrvey+' + randomId() + '@gmail.com';
+	_password = (typeof _password !== 'undefined') ? _password : '123456';
+
+	logger.log('register username', _username);
+
+	this.goTo('/register');
+	this.finds('#spec-input-useremail-register').sendKeys(_username);
+	this.finds('#spec-input-userpass-register').sendKeys(_password);
+	this.finds('.spec-register-btn').click();
+
+	return this.waitsFor('.spec-qrvey-logo-exp');
+};
+
+Maker.prototype.touchesDeleteOptionMenuQrvey = function (_number) {
+	_number = (typeof _number !== 'undefined') ? _number : 1;
+	_number = (_number - 1 < 0) ? 0 : _number - 1;
+
+	return this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey-delete-option')).click();
+};
+
+Maker.prototype.touchesMenuQrvey = function (_number) {
+	_number = (typeof _number !== 'undefined') ? (_number - 1) : 0;
+
+	return this.getsTotal('qrvey in qrveys').then(function (count) {
+		if (count === 0) {
+
+			var _el = (!isMobile) ? '.spec_dropdown_create_survey_button.dash-btn-desk' : '.spec_dropdown_create_survey_button.dash-btn-mobile';
+			this.finds(_el).click();
+			this.waits(2000);
+
+			this.finds('.spec-button-create-survey').click();
+
+			this.waits(2000);
+			brw.get(brw.baseUrl);
+		}
+
+		this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey')).click();
+	});
+};
+
+Maker.prototype.touchsDuplicateOptionMenuQrvey = function (_number) {
+	_number = (typeof _number !== 'undefined') ? _number : 1;
+	_number = _number - 1;
+
+	return this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey-duplicate-option')).click();
 };
 
 module.exports = new Maker();

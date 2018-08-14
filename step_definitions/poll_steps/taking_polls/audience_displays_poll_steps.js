@@ -19,7 +19,7 @@ module.exports = function() {
 
 		logger.log('the code is:', _code);
 		logger.log('CODE RESPONSE: ', _code);
-		user.putCodeInAudiencePage(_code).then(cb);
+		taker.putCodeInAudiencePage(_code).then(cb);
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be present$/, function(text, type, cb) {
@@ -36,7 +36,7 @@ module.exports = function() {
 		var _code = rand.getText(5);
 
 		logger.log('the code is:', _code);
-		user.putCodeInAudiencePage(_code).then(cb);
+		taker.putCodeInAudiencePage(_code).then(cb);
 	});
 
 	Given(/^there is an audience poll with one "([^"]*)" poll$/, function(typeOfQuestion, cb) {

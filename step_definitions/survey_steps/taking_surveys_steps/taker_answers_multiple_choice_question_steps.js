@@ -39,7 +39,7 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the desired answer choice$/, function(cb) {
-		user.choicesAnswer('multiple').then(cb);
+		taker.choicesAnswer('multiple').then(cb);
 	});
 
 	When(/^the user selects the Other option$/, function(cb) {
@@ -55,16 +55,16 @@ module.exports = function() {
 	});
 
 	When(/^clicks on the Ok button$/, function(cb) {
-		user.takerClicksOnOk().then(cb);
+		taker.clicksOnOk().then(cb);
 	});
 
 	When(/^the user selects (\d+) answer choices$/, function(numberOfAnswers, cb) {
-		user.touchsMultipleAnswers(numberOfAnswers).then(cb);
+		taker.touchsMultipleAnswers(numberOfAnswers).then(cb);
 	});
 
 	When(/^the user selects (\d+) answer choices in the widget$/, function(numberOfAnswers, cb) {
 		skipSync(true);
-		user.touchsMultipleAnswers(numberOfAnswers).then(cb);
+		taker.touchsMultipleAnswers(numberOfAnswers).then(cb);
 	});
 
 	When(/^selects the "([^"]*)" option$/, function(arg1, cb) {
@@ -72,6 +72,6 @@ module.exports = function() {
 	});
 
 	When(/^writes their own answer$/, function(cb) {
-		user.writesOtherAnswer('My own other answer').then(cb);
+		taker.writesOtherAnswer('My own other answer').then(cb);
 	});
 };

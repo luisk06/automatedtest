@@ -65,6 +65,6 @@ module.exports = function() {
 	});
 
 	When(/^the user selects answers in "([^"]*)" question in widget$/, function(typeOfQuestion, cb) {
-		user.answersQuestion('short_text-widget').then(cb);
+		taker.answersQuestion('short_text-widget').then(cb);
 	});
 };

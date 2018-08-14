@@ -17,14 +17,14 @@ module.exports = function() {
 	When(/^the user selects they stop$/, function(cb) {
 		brw.ignoreSynchronization = true;
 
-		user.movesSlidebar(1200);
-		user.movesSlidebar(-1200).then(function(){
+		maker.movesSlidebar(1200);
+		maker.movesSlidebar(-1200).then(function(){
 			cb();
 		});
 	});
 
 	When(/^clicks on Ok$/, function(cb) {
-		user.takerClicksOnOk().then(function () {
+		taker.clicksOnOk().then(function () {
 			cb();
 		});
 	});

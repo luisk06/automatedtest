@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user selects answers in "([^"]*)" question$/, function(typeOfQuestion, cb) {
-		user.answersQuestion(typeOfQuestion).then(function(){
+		taker.answersQuestion(typeOfQuestion).then(function(){
 			switch (typeOfQuestion) {
 				case 'short text':
 				case 'short_text':

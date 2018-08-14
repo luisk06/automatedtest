@@ -18,13 +18,13 @@ module.exports = function() {
 	});
 
 	Given(/^the user created the "([^"]*)"$/, function(type, cb) {
-		user.createsWebform({
+		maker.createsWebform({
 			'type': (type == 'form') ? 'forms' : type
 		}).then(cb);
 	});
 
 	When(/^the user created the "([^"]*)" with "([^"]*)" as title$/, function(type, title, cb) {
-		user.createsWebform({ 'type': type , 'title': title}).then(cb);
+		maker.createsWebform({ 'type': type , 'title': title}).then(cb);
 	});
 
 	Given(/^the user created the "([^"]*)" with "([^"]*)" question in "([^"]*)"$/, function(typeOfQrvey, typeOfQuestion, stateOfQrvey, cb) {

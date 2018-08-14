@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that the user created a "([^"]*)" question$/, function(typeOfQuestion, cb) {
-		user.createsQuestionByType(typeOfQuestion).then(function() {
+		maker.createsQuestionByType(typeOfQuestion).then(function() {
 			if (typeOfQuestion == 'multiple choice' || typeOfQuestion == 'multiple_choice' || typeOfQuestion == 'multiple-choice') {
 				user.createsMultiChoiceOptions(2).then(cb);
 			} else cb();
@@ -27,7 +27,7 @@ module.exports = function() {
 	});
 
 	Then(/^the user clicks on OK button$/, function(cb) {
-		user.takerClicksOnOk().then(cb);
+		taker.clicksOnOk().then(cb);
 	});
 
 	Then(/^the user clicks on Close this Windows button$/, function(cb) {

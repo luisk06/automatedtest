@@ -17,10 +17,10 @@ module.exports = function () {
 	});
 
 	When(/^the user has added questions$/, function (cb) {
-		user.createsMultiChoiceTypeQuestion('Title').then(function () {
-			user.finds('.spec-multichoice-option-1').sendKeys('Option 1').then(function () {
-				user.finds('.spec-multichoice-option-2').sendKeys('Option 2').then(cb);
-			});
+		maker.createsMultiChoiceTypeQuestion('Title').then(function () {
+			user.finds('.spec-multichoice-option-1').sendKeys('Option 1');
+		}).then(function () {
+			user.finds('.spec-multichoice-option-2').sendKeys('Option 2').then(cb);
 		});
 	});
 

@@ -25,6 +25,6 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on a "([^"]*)" template category$/, function( category, cb) {
-		user.selectTemplate(category).then(cb);
+		maker.selectTemplate(category).then(cb);
 	});
 };

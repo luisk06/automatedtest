@@ -116,6 +116,6 @@ module.exports = function() {
 	});
 
 	When(/^the user selects "([^"]*)" answers$/, function(optionAnswers, cb) {
-		user.choicesAnswer(optionAnswers).then(cb);
+		taker.choicesAnswer(optionAnswers).then(cb);
 	});
 };

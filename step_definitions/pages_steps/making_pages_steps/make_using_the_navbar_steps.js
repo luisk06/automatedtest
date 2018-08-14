@@ -36,7 +36,7 @@ module.exports = function() {
 	});
 
 	Given(/^the user has a "([^"]*)" page$/, function(type, cb) {
-		user.createsPages(type).then(cb);
+		maker.createsPages(type).then(cb);
 	});
 
 	When(/^the user clicks on Authentificacions button$/, function(cb) {

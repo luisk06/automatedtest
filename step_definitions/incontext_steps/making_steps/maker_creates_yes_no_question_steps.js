@@ -27,10 +27,10 @@ module.exports = function() {
 			case 'multiple choice':
 			case 'multiple_choice':
 			case 'multiple-choice':
-				user.answersMultipleChoiceQuestion().then(cb);
+				taker.answersMultipleChoiceQuestion().then(cb);
 				break;
 			case 'numeric':
-				user.answersNumericQuestion(12).then(cb);
+				taker.answersNumericQuestion(12).then(cb);
 				break;
 			case 'ranking':
 				navigate.sendKeys('.spec-edit-question-name-any', 'The ' + typeOfQuestion + ' question title');

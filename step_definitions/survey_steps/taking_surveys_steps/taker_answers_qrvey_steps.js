@@ -13,7 +13,7 @@ module.exports = function() {
 			return user.openUrl(_data.url);
 		}).then(function() {
 			skipSync(true);
-			user.takesQrveyShared().then(cb);
+			taker.takesQrveyShared().then(cb);
 		});
 	});
 
@@ -41,17 +41,17 @@ module.exports = function() {
 			return user.openUrl(_data.url);
 		}).then(function() {
 			skipSync(true);
-			return user.takesQrveyShared();
+			return taker.takesQrveyShared();
 		}).then(function() {
-			return user.choicesAnswer('yes');
+			return taker.choicesAnswer('yes');
 		}).then(function() {
-			user.takerClicksOnOk().then(cb);
+			taker.clicksOnOk().then(cb);
 		});
 	});
 
 	When(/^the user clicks the user me to qrvey.com button$/, function(cb) {
 		user.waits(2000);
-		user.takerFinish(false).then(cb);
+		taker.finish(false).then(cb);
 	});
 
 	Then(/^the user should jump to qrvey page$/, function(cb) {

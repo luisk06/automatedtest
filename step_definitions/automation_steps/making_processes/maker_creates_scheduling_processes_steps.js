@@ -8,13 +8,13 @@ module.exports = function () {
 
 	Given(/^the user creates a "([^"]*)" in "([^"]*)" app$/, function (typeOf, typeOfApp, cb) {
 		if (typeOfApp == 'automation') {
-			user.createsProcess().then(cb);
+			maker.createsProcess().then(cb);
 		}
 	});
 
 	Given(/^the user creates a "([^"]*)" in "([^"]*)" app with "([^"]*)" as title$/, function (typeOf, typeOfApp, title, cb) {
 		if (typeOfApp == 'automation') {
-			user.createsProcess(title).then(cb);
+			maker.createsProcess(title).then(cb);
 		} else throw new Error('Not a valid app');
 	});
 
