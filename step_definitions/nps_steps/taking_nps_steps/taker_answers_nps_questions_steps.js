@@ -28,7 +28,7 @@ module.exports = function() {
 	When(/^the user clicks on OK button in the preview$/, function(cb) {
 		var el = '.button.yellow.okbtn.ico-check.spec-user-response-ok';
 
-		user.waitsFor(el); // Wait for other element finish to load
+		webpage.waitsFor(el); // Wait for other element finish to load
 		user.finds(el).click().then(cb);
 	});
 };

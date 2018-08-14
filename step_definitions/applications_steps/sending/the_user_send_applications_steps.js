@@ -67,9 +67,9 @@ module.exports = function () {
 
 	Then(/^the send app notify should be displayed$/, function (cb) {
 		var el = '.toast.succesfully';
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 
-		element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
+		webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 			expect(_isdisplayed).to.be.true;
 		}, function () {
 			cb('Error, the element "' + el + '" is not displayed');
@@ -84,7 +84,7 @@ module.exports = function () {
 		var el = '.error-message';
 
 		user.waits(1000).then(function () {
-			element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
+			webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
 				cb('Error, the element "' + el + '" is not displayed');
@@ -96,7 +96,7 @@ module.exports = function () {
 		var el = '.modal-dialog';
 
 		user.waits(1000).then(function () {
-			element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
+			webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
 				cb('Error, the element "' + el + '" is not displayed');
@@ -106,7 +106,7 @@ module.exports = function () {
 
 	Then(/^the application "([^"]*)" should be displayed$/, function (el, cb) {
 		user.waits(1000).then(function () {
-			element(by.model(el)).isDisplayed().then(function (_isdisplayed) {
+			webpage.isDisplayed(element(by.model(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
 				cb('Error, the element "' + el + '" is not displayed');

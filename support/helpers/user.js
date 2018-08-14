@@ -568,18 +568,6 @@ var User = function () {
 		return this.finds('.spec-design-preview-link').click();
 	};
 
-	this.isClickableAnElement = function (_selector) {
-		var clickable = true;
-
-		try {
-			this.finds(_selector).click();
-		} catch (e) {
-			clickable = false;
-		}
-
-		return clickable;
-	};
-
 	this.forgotPassword = function (username) {
 		this.finds('.spec-user-forgot-password').clear().sendKeys(username);
 		return this.finds('.spec-user-forgot-password-btn').click();
@@ -617,14 +605,6 @@ var User = function () {
 
 	this.isVisibleQuestionPath = function () {
 		return this.finds('.spec-question-path').isDisplayed();
-	};
-
-	this.getsTextExists = function (_text) {
-		return element.all(by.xpath('//*[contains(text(),\'' + _text + '\')]')).count().then(function (arr) {
-			return (arr > 0);
-		}, function () {
-			return false;
-		});
 	};
 
 	this.getsInputTextExists = function (_locator, _text) {
@@ -2303,17 +2283,6 @@ var User = function () {
 
 		element(by.css('.question-type-selector')).getText().then(function(_text){
 			defer.fulfill(_text.toLowerCase());
-		});
-
-		return defer.promise;
-	};
-
-	this.isQuizOnMaker = function(){
-		var defer = protractor.promise.defer();
-
-		this.getsTextExists('Quiz').then(function(_val){
-			console.log('isQuizOnMaker', _val);
-			defer.fulfill(_val);
 		});
 
 		return defer.promise;

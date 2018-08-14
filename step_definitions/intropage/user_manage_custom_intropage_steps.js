@@ -32,7 +32,7 @@ module.exports = function () {
 
     Then(/^the user publish the webform$/, function (cb) {
         user.publishWebform().then(function () {
-            //     return user.getsTextExists('nps');
+            //     return webpage.getsTextExists('nps');
             // }).then(function (isNps) {
             //     console.log('isNps', isNps);
             expect(user.finds('.spec-webform-incomplete-alert').isPresent()).to.eventually.be.false.and.notify(cb);

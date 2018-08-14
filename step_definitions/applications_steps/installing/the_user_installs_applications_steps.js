@@ -13,7 +13,7 @@ module.exports = function () {
 	});
 
 	When(/^the user go to recived apps$/, function (cb) {
-		user.waitsFor('.spec-apps-shared-unread');
+		webpage.waitsFor('.spec-apps-shared-unread');
 		user.findsAll('.tab-container .tab').get(1).click().then(cb);
 	});
 
@@ -34,36 +34,20 @@ module.exports = function () {
 	});
 
 	Then(/^the user should not have applications shared$/, function (cb) {
-		// user.waits(1000);
-
-		// user.findsAll('.my-apps .module').count().then(function(_count){
-		// 	expect(_count).to.be.equal(0);
-		// }).then(cb);
-
 		var el = '.my-apps';
 
-		element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
+		webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 			expect(_isdisplayed).to.be.true;
 		}, function () {
 			cb('Error, the element "' + el + '" is not displayed');
 		}).then(cb);
 	});
 
-	// Then(/^the install bar should be displayed$/, function (cb) {
-	// 	var el = '.progress-install';
-
-	// 	element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
-	// 		expect(_isdisplayed).to.be.true;
-	// 	}, function () {
-	// 		cb('Error, the element "' + el + '" is not displayed');
-	// 	}).then(cb);
-	// });
-
 	Then(/^the tab should be changed by applications$/, function (cb) {
 		var el = '.error-message';
 
 		user.waits(1000).then(function () {
-			element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
+			webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
 				cb('Error, the element "' + el + '" is not displayed');
@@ -73,9 +57,9 @@ module.exports = function () {
 
 	Then(/^the application installed notify should be displayed$/, function (cb) {
 		var el = '.toast.succesfully';
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 
-		element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
+		webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 			expect(_isdisplayed).to.be.true;
 		}, function () {
 			cb('Error, the element "' + el + '" is not displayed');
@@ -84,8 +68,6 @@ module.exports = function () {
 
 	Then(/^there should be (\d+) applications installed$/, function (num, cb) {
 		user.waits(200);
-
-		// brw.enterRepl();
 
 		user.findsAll('.my-apps .module').count().then(function (_count) {
 			expect(_count).to.be.equal(+num + 1);

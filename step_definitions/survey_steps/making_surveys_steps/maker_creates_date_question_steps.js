@@ -84,21 +84,21 @@ module.exports = function() {
 		// Filling the calendars
 		if (rangeName == 'before'){
 			user.finds('.max').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if (rangeName == 'after'){
 			user.finds('.min').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if(rangeName == 'between'){
 			user.finds('.max').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click();
 
 			user.finds('.min').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}
 	});

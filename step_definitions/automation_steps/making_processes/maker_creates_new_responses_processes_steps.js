@@ -61,9 +61,9 @@ module.exports = function() {
 
 	Then(/^the user go to back the "([^']*)" dashabord$/, function(dashboard, cb) {
 		if (dashboard == 'qrvey') {
-			expect(user.whereIAm()).to.eventually.be.equal('/').and.notify(cb);
+			expect(webpage.getCurrentUrl()).to.eventually.be.equal('/').and.notify(cb);
 		} else if (dashboard == 'automation') {
-			expect(user.whereIAm()).to.eventually.be.contain('automation').and.notify(cb);
+			expect(webpage.getCurrentUrl()).to.eventually.be.contain('automation').and.notify(cb);
 		}
 	});
 };

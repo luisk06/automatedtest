@@ -14,9 +14,8 @@ module.exports = function() {
 	});
 
 	When(/^the user go to "([^"]*)" dashboard$/, function(dashboard, cb) {
-		var urlToGo=brw.baseUrl+'/application/'+appID+'/workflows';
-
-		navigate.goToUrl(urlToGo).then(cb);
+		var urlToGo = brw.baseUrl + '/application/' + appID + '/workflows';
+		webpage.openUrl(urlToGo).then(cb);
 	});
 
 	When(/^the user opens the first process$/, function(cb) {

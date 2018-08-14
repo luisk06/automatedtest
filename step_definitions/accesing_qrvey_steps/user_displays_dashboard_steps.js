@@ -12,7 +12,9 @@ module.exports = function() {
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be displayed$/, function(identifier, type, cb) {
-		expect(navigate.isDisplayed('.spec_' + identifier + '_' + type), err.elementNotFound('.spec_' + identifier + '_' + type, type)).to.eventually.be.true.and.notify(cb);
+		expect(
+			webpage.isDisplayed('.spec_' + identifier + '_' + type)
+		).to.eventually.be.true.and.notify(cb);
 	});
 
 	When(/^"([^"]*)" "([^"]*)" is not displayed$/, function(identifier, type, cb) {
@@ -24,7 +26,9 @@ module.exports = function() {
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be displayed on the "([^"]*)"$/, function(identifier, type, location, cb) {
-		expect(navigate.isDisplayed('.spec_' + location + '_' + identifier + '_' + type), err.elementNotFound('.spec_' + location + '_' + identifier + '_' + type, type)).to.eventually.be.true.and.notify(cb);
+		expect(
+			webpage.isDisplayed('.spec_' + location + '_' + identifier + '_' + type)
+		).to.eventually.be.true.and.notify(cb);
 	});
 
 	Then(/^the list of qrveys should not be empty$/, function(cb) {

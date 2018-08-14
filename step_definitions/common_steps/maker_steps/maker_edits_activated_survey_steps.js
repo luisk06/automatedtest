@@ -70,7 +70,7 @@ module.exports = function () {
 		user.finds('#question-1').click().then(cb);
 
 		// var el = '.spec-question-title';
-		// user.waitsFor(el);
+		// webpage.waitsFor(el);
 		// element(by.css(el)).click().then(cb);
 	});
 

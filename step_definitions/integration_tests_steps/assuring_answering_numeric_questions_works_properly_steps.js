@@ -10,8 +10,8 @@ module.exports = function() {
 	var userPass = '123456';
 
 	Given(/^that there is a qrvey with a numeric question$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.login(configer.get('username'), userPass);
 		qrvey.createQrvey('Assuring numeric question works properly test qrvey', 'Assuring the numeric repetitive bugs will not continue to show up');
 		qrvey.questionType('spec_nu_qt');
@@ -43,8 +43,8 @@ module.exports = function() {
 	});
 
 	Given(/^that there is a qrvey with an optional numeric question$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.login(configer.get('username'), userPass);
 		qrvey.createQrvey('Assuring numeric question works properly test qrvey', 'Assuring the repetitive bugs will not continue to show up');
 		qrvey.questionType('spec_nu_qt');
@@ -84,8 +84,8 @@ module.exports = function() {
 	});
 
 	Given(/^that there is a qrvey with a numeric question that allows decimals but has no min max$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.login(configer.get('username'), userPass);
 		qrvey.createQrvey('Assuring numeric question works properly test qrvey', 'Assuring the numeric repetitive bugs will not continue to show up');
 		qrvey.questionType('spec_nu_qt');

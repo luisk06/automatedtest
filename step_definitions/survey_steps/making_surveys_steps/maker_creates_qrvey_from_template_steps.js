@@ -88,7 +88,7 @@ module.exports = function() {
 
 	Then(/^the template should appear in the favorites$/, function(cb) {
 		user.finds('.spec-fav-templates').click();
-		user.waitsFor('.tabs-template-list .itemtab:nth-child(1) span.active');
+		webpage.waitsFor('.tabs-template-list .itemtab:nth-child(1) span.active');
 
 		user.finds('.spec-templates-selected-0 .name').getText().then(function(res) {
 			logger.log('res: -> ', res);

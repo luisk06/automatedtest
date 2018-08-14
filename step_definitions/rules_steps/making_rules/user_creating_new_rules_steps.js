@@ -19,7 +19,7 @@ module.exports = function() {
 	});
 
 	When(/^the user type the name and description rule$/, function(cb) {
-		user.waitsFor('.automatiq-modal');
+		webpage.waitsFor('.automatiq-modal');
 
 		user.finds('.spec-input-new-process-name').sendKeys(rand.getSentence(5));
 		user.finds('.spec-input-new-process-description').sendKeys(rand.getSentence(8)).then(cb);
@@ -75,7 +75,7 @@ module.exports = function() {
 	});
 
 	When(/^the user go back to the dashboard$/, function(cb) {
-		user.goBack(cb);
+		webpage.goBack(cb);
 	});
 
 	Then(/^in the dashboard should has (\d+) new rule$/, function(num, cb) {

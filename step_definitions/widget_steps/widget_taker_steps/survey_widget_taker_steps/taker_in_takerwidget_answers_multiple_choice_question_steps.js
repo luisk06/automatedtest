@@ -52,7 +52,7 @@ module.exports = function() {
 	});
 
 	When(/^the user take the embedded qrvey$/, function(cb) {
-		user.waitsFor('.button-cta');
+		webpage.waitsFor('.button-cta');
 		brw.switchTo().frame(element(by.css('#iframe-icf')));
 		user.waits(20000);
 		brw.ignoreSynchronization = true;

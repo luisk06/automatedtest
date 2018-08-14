@@ -16,8 +16,8 @@ module.exports = function() {
 		firstNamePromise = protractor.promise.defer();
 
 	Given(/^the user logs in with "([^"]*)"$/, function(email, cb) {
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.openUrl('/');
 		randNumber = rand.getNumber({
 			min: 1,
 			max: 10000
@@ -82,8 +82,8 @@ module.exports = function() {
 	});
 
 	Then(/^the new password should be changed$/, function(cb) {
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		console.log('userEmail', user.validUser());
 		user_login.login(user.validUser(), newPass);
 		expect(navigate.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
@@ -94,8 +94,8 @@ module.exports = function() {
 		profile.clickChangePassword();
 		profile.modifyPassword(newPass, oldPass);
 
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.login(user.validUser(), oldPass);
 
 		expect(navigate.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);

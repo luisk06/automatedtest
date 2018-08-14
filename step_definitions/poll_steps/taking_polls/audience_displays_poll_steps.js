@@ -23,7 +23,7 @@ module.exports = function() {
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be present$/, function(text, type, cb) {
-		user.getsTextExists('spec_' + text + '_' + type).then(function(_exist) {
+		webpage.getsTextExists('spec_' + text + '_' + type).then(function(_exist) {
 			expect(_exist).to.be.true;
 		}).then(cb);
 	});

@@ -18,7 +18,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Slide Active page$/, function(cb) {
-		user.waitsFor('.toggle');
+		webpage.waitsFor('.toggle');
 		element.all(by.css('.pages-list.qrvey-list.qrvey-pages-list .page .toggle')).first().click().then(cb);
 	});
 

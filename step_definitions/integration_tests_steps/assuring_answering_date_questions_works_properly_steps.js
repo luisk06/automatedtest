@@ -11,8 +11,9 @@ module.exports = function() {
 		qrveyQuestionName = null;
 
 	Given(/^that there is a qrvey with a date question$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
+
 		user_login.login(configer.get('username'), '123456');
 		qrvey.createQrvey('Assuring date question works properly test qrvey', 'Assuring the repetitive bugs will not continueé to show up');
 		qrvey.questionType('spec_da_qt');
@@ -31,8 +32,9 @@ module.exports = function() {
 	});
 
 	Given(/^that there is a qrvey with an optional date question$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
+
 		user_login.login(configer.get('username'), configer.get('password'));
 		qrvey.createQrvey('Assuring date question works properly test qrvey', 'Assuring the repetitive bugs will not continueé to show up');
 		qrvey.questionType('spec_da_qt');
@@ -64,7 +66,7 @@ module.exports = function() {
 
 		logger.log('qrveyUrl', qrveyUrl);
 
-		brw.get(qrveyUrl).then(function() {
+		webpage.openUrl(qrveyUrl).then(function() {
 			qrvey.pressTakeQrvey().then(function() {
 				element(by.binding('question.text')).getText().then(function(questionName) {
 					//logger.log(e);

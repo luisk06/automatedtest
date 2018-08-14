@@ -20,7 +20,7 @@ module.exports = function() {
 	Then(/^the user should not jump to the finish qrvey page$/, function(cb) {
 		var el = '.head-module-answer h2';
 
-		user.isDisplayed(el).then(function(isdisplayed) {
+		webpage.isDisplayed(el).then(function(isdisplayed) {
 			if (!isdisplayed) {
 				expect(isdisplayed).to.be.false;
 				cb();
@@ -55,6 +55,6 @@ module.exports = function() {
 	});
 
 	Then(/^the user should jump to qrvey page$/, function(cb) {
-		expect(user.whereIAm()).to.eventually.contain('qrvey.com').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('qrvey.com').and.notify(cb);
 	});
 };

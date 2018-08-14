@@ -17,7 +17,7 @@ module.exports = function() {
 		navigate.clicksButton('.spec-tab-to-share');
 		logger.log('Element -->:', '/' + _type);
 
-		user.whereIAm().then(function(_url) {
+		webpage.getCurrentUrl().then(function(_url) {
 			logger.log('Url -->:', _url);
 			expect(_url).to.be.contain('share');
 		}).then(cb);
@@ -29,7 +29,7 @@ module.exports = function() {
 		navigate.clicksButton('.spec-tab-to-share');
 		logger.log('Element -->:', '/' + _type);
 
-		user.whereIAm().then(function(_url) {
+		webpage.getCurrentUrl().then(function(_url) {
 			logger.log('Url -->:', _url);
 			expect(_url).to.be.contain('/design');
 		}).then(cb);
@@ -56,11 +56,11 @@ module.exports = function() {
 	When(/^clicks on Activate button in "([^"]*)"$/, function(typeOfQrvey, cb) {
 		var _el = user.finds('.spec-qrvey-btn-active');
 
-		user.waitsForElement(_el);
+		webpage.waitsForElement(_el);
 
 		if(typeOfQrvey == 'forms'){
 			_el.click().then(function(){
-				user.waitsFor('.pause');
+				webpage.waitsFor('.pause');
 
 				user.finds('.pause').isPresent().then(function (_isPresent) {
 					expect(_isPresent).to.be.true;

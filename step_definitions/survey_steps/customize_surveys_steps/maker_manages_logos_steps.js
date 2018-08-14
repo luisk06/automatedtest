@@ -37,7 +37,7 @@ module.exports = function() {
 	Then(/^the new logo should be displayed$/, function(cb) {
 		var el = '.spec_customize_custom_logo';
 
-		user.waitsFor(el).then(function() {
+		webpage.waitsFor(el).then(function() {
 			expect(user.finds(el).getAttribute('src')).to.eventually.not.be.eql(logoUrl).and.notify(cb);
 		});
 	});
@@ -45,7 +45,7 @@ module.exports = function() {
 	Then(/^the "([^"]*)" option should be displayed$/, function(arg1, cb) {
 		// var el = '.spec-customize-' + arg1 + '-logo';
 
-		// user.waitsFor(el).then(function() {
+		// webpage.waitsFor(el).then(function() {
 		//     expect(navigate.isDisplayed(el)).to.eventually.be.true.and.notify(cb);
 		// });
 		cb();
@@ -54,7 +54,7 @@ module.exports = function() {
 	Then(/^the "([^"]*)" notification should be displayed$/, function(arg1, cb) {
 		var el = '.alert-wrapper.' + arg1;
 
-		// user.waitsFor(el).then(function() {
+		// webpage.waitsFor(el).then(function() {
 		expect(navigate.isDisplayed(el)).to.eventually.be.true.and.notify(cb);
 		// });
 	});

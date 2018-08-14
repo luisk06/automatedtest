@@ -75,6 +75,6 @@ module.exports = function () {
 	});
 
 	Then(/^the user go to back the dashabord$/, function (cb) {
-		expect(user.whereIAm()).to.eventually.be.equal('/').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.be.equal('/').and.notify(cb);
 	});
 };

@@ -10,7 +10,7 @@ module.exports = function() {
 	});
 
 	When(/^the user open the url site$/, function(cb) {
-		user.goTo('/dashboard').then(cb);
+		webpage.goTo('/dashboard').then(cb);
 	});
 
 	Then(/^the user is inside the dashboard$/, function(cb) {
@@ -18,7 +18,7 @@ module.exports = function() {
 			// console.log('cookie test 2', cookie);
 		});
 
-		user.waitsFor('.spec_qrvey_logo');
+		webpage.waitsFor('.spec_qrvey_logo');
 		cb();
 	});
 };

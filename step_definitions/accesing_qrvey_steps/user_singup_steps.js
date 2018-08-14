@@ -7,14 +7,14 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user filled up all mandatory fields$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl + '/register');
+		webpage.deleteAllCookies();
+		webpage.goTo('/register');
 		user_login.signup(rand.getEmail({ domain: 'gmail.com' }), '123456').then(cb);
 	});
 
 	Given(/^the user try register without password$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl + '/register');
+		webpage.deleteAllCookies();
+		webpage.goTo('/register');
 		element(by.css('#spec-input-useremail-register')).sendKeys(rand.getEmail({ domain: 'gmail.com' }));
 		element(by.css('#spec-input-userpass-register')).sendKeys('');
 		user.finds('.tagged').click().then(function() {

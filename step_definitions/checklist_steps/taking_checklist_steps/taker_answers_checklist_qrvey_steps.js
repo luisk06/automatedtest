@@ -48,7 +48,7 @@ module.exports = function () {
 	Then(/^the user should be on thankyou page$/, function (cb) {
 		var el = '.new-end-page';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
@@ -57,7 +57,7 @@ module.exports = function () {
 	Then(/^the qrveys stays on same the question$/, function (cb) {
 		var el = '.spec-user-response-ok';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		element(by.css(el)).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);

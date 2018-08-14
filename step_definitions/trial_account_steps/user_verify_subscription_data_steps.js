@@ -9,7 +9,7 @@ module.exports = function() {
 	When(/^the user click on the Done button$/, function(cb) {
 		var el = '.spec-button-done';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 
@@ -20,7 +20,7 @@ module.exports = function() {
 	Then(/^the subscription status should be basic$/, function(cb) {
 		var el = '.spec_status_subscription';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).getText().then(function(_text) {
 			expect(_text).to.be.equal('Basic - monthly');
 		}).then(cb);

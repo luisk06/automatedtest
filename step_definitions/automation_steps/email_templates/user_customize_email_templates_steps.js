@@ -10,7 +10,7 @@ module.exports = function () {
 	When(/^the user write a text in the header for the template$/, function (cb) {
 		brw.ignoreSynchronization = true;
 		//browser.explore();
-		user.waitsForElement(emailTemplateEditorLocator);
+		webpage.waitsForElement(emailTemplateEditorLocator);
 		brw.switchTo().frame(emailTemplateEditorLocator.getWebElement());
 		user.findsAll('.mce-item-table tr td').get(0).sendKeys('Header edited').then(cb);
 	});
@@ -49,7 +49,7 @@ module.exports = function () {
 
 	When(/^the user clicks on the "([^"]*)" element$/, function (templateElement, cb) {
 		brw.ignoreSynchronization = true;
-		user.waitsForElement(emailTemplateEditorLocator);
+		webpage.waitsForElement(emailTemplateEditorLocator);
 		brw.switchTo().frame(emailTemplateEditorLocator.getWebElement());
 
 		if(templateElement == 'header'){

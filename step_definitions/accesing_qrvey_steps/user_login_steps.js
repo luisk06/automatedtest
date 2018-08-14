@@ -7,8 +7,8 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user doesn't have qrveys$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.setCredentials(configer.get('username'), configer.get('password')).then(cb);
 	});
 
@@ -25,13 +25,13 @@ module.exports = function() {
 	});
 
 	When(/^the user logs in$/, function(cb) {
-		navigate.goToUrl(brw.baseUrl);
+		webpage.goTo('/');
 		user_login.login(configer.get('username'), configer.get('password')).then(cb);
 	});
 
 	Then(/^their dashboard should be displayed$/, function(cb) {
-		brw.waitForAngular();
-		expect(navigate.getCurrentUrl()).to.eventually.not.contain('login').and.notify(cb);
+		webpage.waitForAngular();
+		expect(webpage.getCurrentUrl()).to.eventually.not.contain('login').and.notify(cb);
 	});
 
 	Then(/^no Qrveys should be displayed$/, function(cb) {
@@ -51,8 +51,8 @@ module.exports = function() {
 	});
 
 	When(/^has verified its email$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.login(configer.get('username'), configer.get('password')).then(cb);
 	});
 
@@ -62,8 +62,8 @@ module.exports = function() {
 
 	Given(/^the user have qrveys$/, function(cb) {
 		us.isLogged().then(function(_userId) {
-			brw.driver.manage().deleteAllCookies();
-			navigate.goToUrl(brw.baseUrl);
+			webpage.deleteAllCookies();
+			webpage.goTo('/');
 			user_login.login(configer.get('username'), configer.get('password'));
 			qrvey.createQrvey(_userId, 'Qrvey question management test', 'Add and remove').then(cb);
 		});
@@ -78,14 +78,14 @@ module.exports = function() {
 	});
 
 	Given(/^the user has not register$/, function(cb) {
-		brw.driver.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 
 		var email = rand.getEmail();
 		user_login.setCredentials(email, configer.get('password')).then(cb);
 	});
 
 	Then(/^the invalid user name or password message should be displayed in the login$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('login').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('login').and.notify(cb);
 	});
 };

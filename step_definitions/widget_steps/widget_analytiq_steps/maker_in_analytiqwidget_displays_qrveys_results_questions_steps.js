@@ -25,7 +25,7 @@ module.exports = function() {
 	});
 
 	When(/^that the user are in the "([^"]*)" widget$/, function(shouldBeIn, cb) {
-		user.whereIAm().then(function(_url) {
+		webpage.getCurrentUrl().then(function(_url) {
 			expect(_url).to.contain(shouldBeIn);
 		}).then(cb);
 	});

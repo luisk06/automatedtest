@@ -32,12 +32,12 @@ module.exports = function() {
 	});
 
 	When(/^the user writes (.*) in the input$/, function(answer, cb) {
-		user.waitsFor('.spec-taker-answer-numeric-question-read');
+		webpage.waitsFor('.spec-taker-answer-numeric-question-read');
 		user.answersNumericQuestion(answer).then(cb);
 	});
 
 	When(/^the user writes (.*) in the numeric input$/, function(answer, cb) {
-		user.waitsFor('.spec-taker-answer-numeric-question');
+		webpage.waitsFor('.spec-taker-answer-numeric-question');
 		user.answersNumericQuestionNoMask(answer).then(cb);
 	});
 

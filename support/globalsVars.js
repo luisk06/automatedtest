@@ -20,6 +20,9 @@ global._ = require('lodash');
 global.async = require('async');
 global.dropFile = require('./helpers/drop-file.js');
 
+// NewOnes
+global.webpage = require('./helpers/webpage');
+
 // Random Answers Module
 global.chance = require('chance').Chance();
 global.rand = require('./helpers/random');

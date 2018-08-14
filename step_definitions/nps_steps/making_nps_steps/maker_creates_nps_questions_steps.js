@@ -65,7 +65,7 @@ module.exports = function() {
 	Then(/^the "([^"]*)" text should display "([^"]*)" in the qrvey$/, function(arg1, arg2, cb) {
 		var _text = arg2;
 
-		user.getsTextExists(_text).then(function(_exist) {
+		webpage.getsTextExists(_text).then(function(_exist) {
 			expect(_exist).to.be.true;
 		}).then(cb);
 	});

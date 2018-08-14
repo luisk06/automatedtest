@@ -22,8 +22,8 @@ module.exports = function() {
 
 	Given(/^the presenter opens the poll url$/, function(cb) {
 		user.openUrl(configer.get('url_presenter')).then(function() {
-			user.whereIAm().then(function(_url) {
-				logger.log('whereIAmApp', _url);
+			webpage.getCurrentUrl().then(function(_url) {
+				logger.log('getCurrentUrl', _url);
 				expect(_url).to.be.contain('poll-view');
 			}).then(cb);
 		});
@@ -37,7 +37,7 @@ module.exports = function() {
 	Then(/^a "([^"]*)" "([^"]*)" should be displayed on the "([^"]*)" as a svg$/, function(identifier, type, location, cb) {
 		var _el = '.spec_' + location + '_' + identifier + '_' + type + ' svg';
 
-		user.waitsFor(_el).then(function() {
+		webpage.waitsFor(_el).then(function() {
 			expect(navigate.isDisplayed(_el), err.elementNotFound(_el, type)).to.eventually.be.true.and.notify(cb);
 		});
 	});
@@ -50,7 +50,7 @@ module.exports = function() {
 	Then(/^the number of answers should be (\d+) more$/, function(numberOfAnswers, cb) {
 		var _el = '.spec_polling_presenter_poll_results_graphic svg';
 
-		user.waitsFor(_el).then(function() {
+		webpage.waitsFor(_el).then(function() {
 			user.waits(2500).then(function() {
 				user.finds('.spec_polling_presenter_counter_answers').getAttribute('innerHTML').then(function(_html) {
 					expect(_html).to.be.equal('Answered: ' + numberOfAnswers);
@@ -62,7 +62,7 @@ module.exports = function() {
 	Then(/^a "([^"]*)" "([^"]*)" should not be displayed$/, function(identifier, type, cb) {
 		var _element = by.css('.spec_' + identifier + '_' + type);
 		user.waits(1000).then(function(){
-			user.waitsFor(_element);
+			webpage.waitsFor(_element);
 			cb();
 		});
 	});

@@ -50,16 +50,16 @@ module.exports = function() {
 		var branch = branchList.get(branchNumber - 1);
 
 		branch.element(locatorBranchInput).sendKeys(branchText).then(cb);
-		
-	}); 
+
+	});
 
 	When(/^the webform should be activatable on "([^"]*)"$/, function(typeOfQrvey, cb) {
 		var _el = element(by.css('.spec-qrvey-btn-active'));
 		//browser.explore();
-		user.waitsForElement(_el);
+		webpage.waitsForElement(_el);
 		if(typeOfQrvey == 'forms'){
 			_el.click().then(function(){
-				user.waitsFor('.pause');
+				webpage.waitsFor('.pause');
 				element(by.css('.pause')).isPresent().then(function (_isPresent) {
 					expect(_isPresent).to.be.true;
 				}).then(cb);

@@ -98,7 +98,7 @@ module.exports = function() {
 	});
 
 	Then(/^the text "([^"]*)" should be exist$/, function(arg1, cb) {
-		user.getsTextExists(arg1).then(function(_value) {
+		webpage.getsTextExists(arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

@@ -23,7 +23,7 @@ module.exports = function() {
 	});
 
 	When(/^the user creates a new webform$/, function(cb) {
-		user.waitsFor('.chooseapp-cta');
+		webpage.waitsFor('.chooseapp-cta');
 		element(by.css('.chooseapp-cta')).click().then(cb);
 	});
 };

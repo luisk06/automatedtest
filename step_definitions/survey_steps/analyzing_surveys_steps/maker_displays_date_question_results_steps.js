@@ -17,8 +17,8 @@ module.exports = function() {
 	});
 
 	Given(/^the user is logged in$/, function(cb) {
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 
 		user_login.login(configer.get('username'), configer.get('password')).then(cb);
 	});
@@ -47,7 +47,7 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" date answer filter should appear in the histogram filters$/, function(arg1, cb) {
-		user.getsTextExists(arg1).then(function(_value) {
+		webpage.getsTextExists(arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});
@@ -55,7 +55,7 @@ module.exports = function() {
 	Then(/^the number of answers should be (\d+)$/, function(num, cb) {
 		if (hasAnswers) {
 			if (num === 0) {
-				user.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
+				webpage.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
 					if (isPresent) {
 						// logger.log('callback 1');
 						cb();
@@ -110,7 +110,7 @@ module.exports = function() {
 	Then(/^the number of answers in the nps should be (\d+)$/, function(num, cb) {
 		if (hasAnswers) {
 			if (num === 0) {
-				user.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
+				webpage.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
 					if (isPresent) {
 						cb();
 					}
@@ -122,7 +122,7 @@ module.exports = function() {
 
 			var el = '.spec-analyzing-answered';
 
-			user.waitsFor(el);
+			webpage.waitsFor(el);
 
 			element(by.css(el)).getText().then(function(res) {
 				expect(+num, err.answersFilter(+num, +res)).to.be.eql(+res);

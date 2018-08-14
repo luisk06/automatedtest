@@ -10,7 +10,7 @@ module.exports = function() {
 		var email = rand.getEmail();
 		var el = 'input[type="email"].textfield-area.requested-email';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 
 		element(by.css(el)).sendKeys(email).then(cb);
 	});

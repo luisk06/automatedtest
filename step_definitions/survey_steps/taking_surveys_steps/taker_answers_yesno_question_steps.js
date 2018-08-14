@@ -13,9 +13,9 @@ module.exports = function() {
 	Then(/^the user should jump to the finished qrvey page$/, function(cb) {
 		var el = '.head-module-answer h2';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 
-		user.isDisplayed(el).then(function(isdisplayed) {
+		webpage.isDisplayed(el).then(function(isdisplayed) {
 			if (isdisplayed) {
 				user.findsAll(el).first().getText().then(function(_text) {
 					expect(_text).to.be.equal('Answers submitted.');
@@ -28,20 +28,20 @@ module.exports = function() {
 		logger.info('scorePage', scorePage);
 
 		if(!scorePage){
-			user.isDisplayed('.no-thnk').then(function(isdisplayed) {
+			webpage.isDisplayed('.no-thnk').then(function(isdisplayed) {
 
 				console.log('looking for .no-thnk', isdisplayed);
 
 				if (isdisplayed){
 
-					user.isDisplayed('.big-check').then(function (isdisplayed) {
+					webpage.isDisplayed('.big-check').then(function (isdisplayed) {
 
 						console.log('looking for .big-check');
 						return expect(isdisplayed).to.be.true;
 
 					}).then(function () {
 
-						return user.isDisplayed('.powered.footer');
+						return webpage.isDisplayed('.powered.footer');
 
 					}).then(function (isdisplayed) {
 
@@ -53,9 +53,9 @@ module.exports = function() {
 					});
 
 				} else {
-					user.waitsFor('.scoreboard');
+					webpage.waitsFor('.scoreboard');
 
-					user.isDisplayed('.scoreboard').then(function (isdisplayed) {
+					webpage.isDisplayed('.scoreboard').then(function (isdisplayed) {
 						return expect(isdisplayed).to.be.true;
 					}).then(function () {
 						return user.finds('.scoreboard .passing-message').getText();
@@ -64,7 +64,7 @@ module.exports = function() {
 						expect(_val).to.be.a('string');
 						return expect(_val.length).to.be.above(1);
 					}).then(function () {
-						return user.isDisplayed('.powered.footer');
+						return webpage.isDisplayed('.powered.footer');
 					}).then(function (isdisplayed) {
 						logger.log('looking for .powered.footer');
 						return expect(isdisplayed).to.be.true;
@@ -81,12 +81,12 @@ module.exports = function() {
 
 			});
 		} else {
-			user.waitsFor('.scoreboard');
+			webpage.waitsFor('.scoreboard');
 
-			user.isDisplayed('.scoreboard').then(function(isdisplayed) {
+			webpage.isDisplayed('.scoreboard').then(function(isdisplayed) {
 				return expect(isdisplayed).to.be.true;
 			}).then(function () {
-				return user.isDisplayed('.powered.footer');
+				return webpage.isDisplayed('.powered.footer');
 			}).then(function (isdisplayed) {
 				console.log('looking for .powered.footer');
 				return expect(isdisplayed).to.be.true;
@@ -107,7 +107,7 @@ module.exports = function() {
 	Then(/^the user should see to the take qrvey page$/, function(cb) {
 		var el = '.spec-user-response-ok';
 
-		user.isDisplayed(el).then(function(isdisplayed) {
+		webpage.isDisplayed(el).then(function(isdisplayed) {
 			expect(isdisplayed).to.be.true;
 		}).then(cb);
 	});

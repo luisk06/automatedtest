@@ -52,7 +52,7 @@ module.exports = function() {
 
 	Then(/^the login page should be displayed with username$/, function(cb) {
 		skipSync(false);
-		expect(user.whereIAm()).to.eventually.equal('/login?email=' + configer.get('username') + '&taken=true').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.equal('/login?email=' + configer.get('username') + '&taken=true').and.notify(cb);
 	});
 
 	Given(/^that the user has provided an email that's already been saved$/, function(cb) {

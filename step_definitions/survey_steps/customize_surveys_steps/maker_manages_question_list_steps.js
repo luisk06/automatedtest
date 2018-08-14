@@ -51,7 +51,7 @@ module.exports = function() {
 		user.findsAll('.spec-dropdown-edit-0').last().click().then(function() {
 			return user.finds('.spec-add-question-as-favorite-edit').click();
 		}).then(function() {
-			return user.getsTextExists('The question has been added to your favorites.');
+			return webpage.getsTextExists('The question has been added to your favorites.');
 		}).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
@@ -67,7 +67,7 @@ module.exports = function() {
 	});
 
 	Then(/^the question "([^"]*)" should be displayed in question list modal$/, function(_title, cb) {
-		user.getsTextExists(_title).then(function(_value) {
+		webpage.getsTextExists(_title).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});
@@ -107,7 +107,7 @@ module.exports = function() {
 	});
 
 	Then(/^the question should be displayed in the design$/, function(cb) {
-		user.getsTextExists('Would you recommend our product to others?').then(function(_value) {
+		webpage.getsTextExists('Would you recommend our product to others?').then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

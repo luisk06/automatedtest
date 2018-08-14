@@ -78,7 +78,7 @@ module.exports = function() {
 	Then(/^the embed window should be hidden$/, function(cb) {
 		var el = '.button.yellow';
 
-		user.waitsFor('.button.yellow');
+		webpage.waitsFor('.button.yellow');
 
 		element(by.css(el)).click().then(function(_isdisplayed) {
 			expect(_isdisplayed).to.be.false.and.notify(cb);

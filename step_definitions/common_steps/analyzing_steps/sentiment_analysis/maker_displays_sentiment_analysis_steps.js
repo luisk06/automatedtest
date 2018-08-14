@@ -6,7 +6,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that there is a webform app with a "([^"]*)" with a Short text question that has (\d+) answers for sentiment analysis$/, function(typeOfQrvey, num, cb) {
-		user.getsTextExists();
+		webpage.getsTextExists();
 
 		us.isLogged().then(function(_userId) {
 			apps.createNewApp('Test Sentiment Analysis').then(function(appData){

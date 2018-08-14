@@ -28,7 +28,7 @@ module.exports = function() {
 	When(/^the user clicks on the Submit button$/, function(cb) {
 		var el = '.spec-user-response-ok.submit-answers';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 };

@@ -26,7 +26,7 @@ module.exports = function() {
 	});
 
 	Then(/^the (\d+) date answer filter should appear in the histogram filters in the nps$/, function(arg1, cb) {
-		user.getsTextExists(arg1).then(function(_value) {
+		webpage.getsTextExists(arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

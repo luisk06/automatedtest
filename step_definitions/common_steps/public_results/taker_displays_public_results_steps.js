@@ -22,7 +22,7 @@ module.exports = function () {
 	});
 
 	Then(/^the analytiq chart for "([^"]*)" question on tabular view should be displayed$/, function (typeOfQuestion, cb) {
-		user.waitsFor('an-tabular-view');
+		webpage.waitsFor('an-tabular-view');
 
 		element(by.css('an-tabular-view')).isDisplayed().then(function (_isDisplayed) {
 			expect(_isDisplayed).to.be.true;

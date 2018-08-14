@@ -24,7 +24,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the "([^"]*)" filter as image$/, function(arg1, cb) {
 		var el = '.spec-filter-container g[data-id="' + options[arg1] + '"]';
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		element(by.css('.spec-filter-container g[data-id="' + options[arg1] + '"]')).click().then(cb);
 	});
 

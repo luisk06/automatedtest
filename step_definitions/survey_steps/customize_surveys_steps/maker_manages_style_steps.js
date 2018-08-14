@@ -46,7 +46,7 @@ module.exports = function() {
 	When(/^the user clicks on the customize reset button$/, function(cb) {
 		var el = '.spec_customize_btn_reset';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 
@@ -55,7 +55,7 @@ module.exports = function() {
 		var rgbFormated = '('.concat(rgb.r).concat(', ').concat(rgb.g).concat(', ').concat(rgb.b).concat(')');
 		var el = '.spec_customize_color_option_' + arg1;
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).getAttribute('value').then(function(_value) {
 			expect(_value).to.be.equal(arg2); // Error, asigna valor al ingresar el valor
 		}).then(function() {
@@ -68,7 +68,7 @@ module.exports = function() {
 	});
 
 	Then(/^the text "([^"]*)" should be diplayed$/, function(text, cb) {
-		user.getsTextExists(text).then(function(_value) {
+		webpage.getsTextExists(text).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});
@@ -76,7 +76,7 @@ module.exports = function() {
 	When(/^the user changes the "([^"]*)" color by "([^"]*)"$/, function(arg1, arg2, cb) {
 		var el = '.spec_customize_color_option_' + arg1;
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click();
 		user.finds('.inputhex').clear().sendKeys(arg2).then(cb);
 	});
@@ -135,7 +135,7 @@ module.exports = function() {
 	Then(/^the "([^"]*)" style created should be exist in the list$/, function(arg1, cb) {
 		var el = '.spec_customize_themes_nameInput';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.getsInputTextExists(el, arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);

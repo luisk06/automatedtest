@@ -24,7 +24,7 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" message should be diplayed$/, function(message, cb) {
-		user.getsTextExists(message).then(function(_value) {
+		webpage.getsTextExists(message).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

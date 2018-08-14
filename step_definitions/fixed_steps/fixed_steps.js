@@ -88,7 +88,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the active button$/, function(cb) {
 		user.finds('.spec-qrvey-btn-active').click();
-		user.waitsFor('.modal-box.new-nps-modal.spec-confirm-end-qrvey');
+		webpage.waitsFor('.modal-box.new-nps-modal.spec-confirm-end-qrvey');
 		user.finds('.modal-box.new-nps-modal.spec-confirm-end-qrvey .button').click().then(cb);
 	});
 
@@ -162,7 +162,7 @@ module.exports = function() {
 			if (view !== 'Tabular View'){
 				user.finds('.spec-filter-analyze').click();
 				user.finds('#spec-panelview-tabular').click();
-				user.waitsFor('.dx-datagrid-headers');
+				webpage.waitsFor('.dx-datagrid-headers');
 			}
 		}).then(cb);
 	});

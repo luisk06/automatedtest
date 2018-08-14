@@ -45,7 +45,7 @@ module.exports = function() {
 			brw.executeScript('window.scrollTo(0,0);').then(function(){
 				user.finds('.spec-automation-btn-activate').click();
 
-				user.isDisplayed('.workflow-notification-modal').then(function (isdisplayed) {
+				webpage.isDisplayed('.workflow-notification-modal').then(function (isdisplayed) {
 					expect(isdisplayed).to.be.false;
 				}).then(cb);
 			});

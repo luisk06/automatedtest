@@ -121,13 +121,13 @@ module.exports = function () {
 	});
 
 	Then(/^the scoreboard should be displayed$/, function (cb) {
-		user.isDisplayed('.circle').then(function (isdisplayed) {
+		webpage.isDisplayed('.circle').then(function (isdisplayed) {
 			expect(isdisplayed).to.be.true;
 		}).then(cb);
 	});
 
 	Then(/^the scoreboard should not be displayed$/, function (cb) {
-		user.isDisplayed('.circle').then(function (isdisplayed) {
+		webpage.isDisplayed('.circle').then(function (isdisplayed) {
 			expect(isdisplayed).to.be.false;
 		}).then(cb);
 	});
