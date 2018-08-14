@@ -162,7 +162,7 @@ var User = function () {
 
 			_this.finds('.spec_editing_title_description textarea').clear().sendKeys(
 				rand.getParagraph(10)
-			).getAttribute('value').then(function(_val){
+			).getAttribute('value').then(function (_val) {
 				expect(_val.length).to.be.equal(176);
 			});
 
@@ -180,7 +180,7 @@ var User = function () {
 
 			var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
 
-			if(typeQrvey == 'nps') _this.waits(300);
+			if (typeQrvey == 'nps') _this.waits(300);
 
 			_this.finds(clickQuestionName).click();
 		});
@@ -348,10 +348,10 @@ var User = function () {
 		});
 	};
 
-	this.createsTitleForQuestion = function(text){
+	this.createsTitleForQuestion = function (text) {
 		return this.findsAll('.spec-edit-question-name-any').last().clear().sendKeys(
 			rand.getParagraph(20)
-		).getAttribute('value').then(function(_val){
+		).getAttribute('value').then(function (_val) {
 			expect(_val.length).to.be.equal(160);
 		});
 	};
@@ -362,7 +362,7 @@ var User = function () {
 		var _type = (typeof type === 'undefined') ? 'multichoice' : type;
 
 		async.during(function (cb) {
-			hasClass(_this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function(_val){
+			hasClass(_this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
 				logger.log('val', !_val);
 				return cb(null, !_val);
 			});
@@ -375,7 +375,7 @@ var User = function () {
 		});
 
 		var el = null;
-		_this.findsAll('.icon.q-icon-add').count().then(function(_count){
+		_this.findsAll('.icon.q-icon-add').count().then(function (_count) {
 			async.times(_count, function (n, next) {
 				el = _this.finds('.spec-' + _type + '-option-' + (n + 1));
 				scrollIntoElement(el);
@@ -400,7 +400,7 @@ var User = function () {
 
 		this.finds('.spec-slidebar-question-type-answer-left').sendKeys(
 			rand.getParagraph(10)
-		).getAttribute('value').then(function(_val){
+		).getAttribute('value').then(function (_val) {
 			expect(_val.length).to.be.equal(54);
 		});
 
@@ -410,7 +410,7 @@ var User = function () {
 			expect(_val.length).to.be.equal(54);
 		});
 
-		if (_number != 3){
+		if (_number != 3) {
 			this.finds('.spec-slidebar-number-option-' + _number).click();
 		}
 
@@ -418,7 +418,7 @@ var User = function () {
 	};
 
 	this.createsDateQuestion = function (params = {}) {
-		if (params.isQuiz){
+		if (params.isQuiz) {
 			element(by.css('.right-answer-input input')).click();
 			element(by.css('.mat-calendar-body-today')).click();
 		}
@@ -437,7 +437,7 @@ var User = function () {
 		});
 	};
 
-	this.createOptionsDropdown = function(numOpt = 9){
+	this.createOptionsDropdown = function (numOpt = 9) {
 		var list = '';
 		var index = 1;
 
@@ -460,7 +460,7 @@ var User = function () {
 	};
 
 	this.createsYesOrNotQuestion = function (params = {}) {
-		if(params.isQuiz) this.finds('.spec-quiz-right-answer-Yes').click();
+		if (params.isQuiz) this.finds('.spec-quiz-right-answer-Yes').click();
 
 		qrvey.questionType('spec_yn_qt');
 		return this.createsTitleForQuestion();
@@ -472,7 +472,7 @@ var User = function () {
 	};
 
 	this.createsRankingQuestion = function (params = {}) {
-		if (params.isQuiz){
+		if (params.isQuiz) {
 			element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
 			element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
 		}
@@ -715,15 +715,15 @@ var User = function () {
 		return element;
 	};
 
-	this.isPresent = function(_el){
+	this.isPresent = function (_el) {
 		return this.finds(_el).isPresent();
 	};
 
-	this.findsValue = function (_el){
+	this.findsValue = function (_el) {
 		return this.finds(_el).getAttribute('value');
 	};
 
-	this.findsContainingText = function (_el, _val){
+	this.findsContainingText = function (_el, _val) {
 		return element(by.cssContainingText(_el, _val));
 	};
 
@@ -1311,14 +1311,14 @@ var User = function () {
 		async.during(function (cb) {
 			_this.finds('.spec-add-option-image-question').isDisplayed().then(function (_displayed) {
 				return cb(null, _displayed);
-			}).catch(function(){
+			}).catch(function () {
 				return cb(null, false);
 			});
 		}, function (next) {
 			_this.finds('.spec-add-option-image-question').click();
 			next();
 		}, function (err) {
-			if(err) throw err;
+			if (err) throw err;
 		});
 
 		var n = 0;
@@ -1342,10 +1342,10 @@ var User = function () {
 					_this.finds('.spec-design-modal-image-url').clear().sendKeys(_url).getAttribute('value').then(function (_value) {
 						expect(_value).to.be.equal(_url);
 
-						_this.finds('.spec-design-modal-done-button').click().then(function(){
+						_this.finds('.spec-design-modal-done-button').click().then(function () {
 							return _this.waits(500);
-						}).then(function(){
-							if (params.isQuiz){
+						}).then(function () {
+							if (params.isQuiz) {
 								return _this.findsAll('.spec-quiz-right-answer + input:not(.spec-quiz-right-answer)').get(n).sendKeys(
 									rand.getWord(5)
 								);
@@ -1424,7 +1424,7 @@ var User = function () {
 		// 			if (err) throw err;
 		// 			else logger.log('completed');
 
-					// deferred.fulfill();
+		// deferred.fulfill();
 		// 		});
 		// 	});
 		// } else if (_typeOfInput == 'desktop') {
@@ -2180,14 +2180,14 @@ var User = function () {
 			});
 
 		}, function (err) {
-			if(err) defer.reject();
+			if (err) defer.reject();
 			defer.fulfill();
 		});
 
 		return defer.promise;
 	};
 
-	this.selectQuestionFromDropdown = function (typeOfQuestion){
+	this.selectQuestionFromDropdown = function (typeOfQuestion) {
 		var defer = protractor.promise.defer();
 
 		var _text = '';
@@ -2291,27 +2291,27 @@ var User = function () {
 				expect(hasClass(element(by.id('spec-slidebar-number-option-7')), 'active')).to.eventually.not.be.true;
 				expect(hasClass(element(by.id('spec-slidebar-number-option-9')), 'active')).to.eventually.not.be.true;
 			}
-		}).then(function(){
+		}).then(function () {
 			defer.fulfill();
 		});
 
 		return defer.promise;
 	};
 
-	this.getQuestionType = function(){
+	this.getQuestionType = function () {
 		var defer = protractor.promise.defer();
 
-		element(by.css('.question-type-selector')).getText().then(function(_text){
+		element(by.css('.question-type-selector')).getText().then(function (_text) {
 			defer.fulfill(_text.toLowerCase());
 		});
 
 		return defer.promise;
 	};
 
-	this.isQuizOnMaker = function(){
+	this.isQuizOnMaker = function () {
 		var defer = protractor.promise.defer();
 
-		this.getsTextExists('Quiz').then(function(_val){
+		this.getsTextExists('Quiz').then(function (_val) {
 			console.log('isQuizOnMaker', _val);
 			defer.fulfill(_val);
 		});
@@ -2319,11 +2319,11 @@ var User = function () {
 		return defer.promise;
 	};
 
-	this.buildQuestion = function (type){
+	this.buildQuestion = function (type) {
 		var defer = protractor.promise.defer();
 		var _this = this;
 
-		if (type !== 'checklist' && type !== 'nps'){
+		if (type !== 'checklist' && type !== 'nps') {
 			this.selectQuestionFromDropdown(type).then(function () {
 				return _this.isQuizOnMaker();
 			}).then(function (_isQuizOnMaker) {
