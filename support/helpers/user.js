@@ -214,7 +214,10 @@ var User = function () {
 				} else _this.finds('.spec_edit_question_overlay').click();
 			}
 
-			if (typeQrvey == 'nps' || typeQrvey == 'checklist') user.finds('.spec-question-title').click();
+			if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
+				_this.waits(1300);
+				user.finds('.spec-question-title').click();
+			}
 
 			var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
 

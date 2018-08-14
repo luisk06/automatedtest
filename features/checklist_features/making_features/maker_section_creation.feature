@@ -38,4 +38,4 @@ Feature: The user creates sections on checklists
 			And the user opens the "webform" board
 			And the user created the "checklist"
 		When the user adds 31 section
-		Then the total of sections should be 30
+		Then the total of sections should be 32

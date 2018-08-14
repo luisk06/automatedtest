@@ -6,7 +6,7 @@ module.exports = function() {
 
 	When(/^the user fill section title$/, function(cb) {
 		var _sectionTittle = 'Mark your favourites online sites';
-		user.finds('.name-check-q input').sendKeys(_sectionTittle).then(cb);
+		user.finds('.spec-edit-question-name-any').sendKeys(_sectionTittle).then(cb);
 	});
 
 	When(/^the user opens the section$/, function(cb) {
@@ -17,7 +17,7 @@ module.exports = function() {
 
 	When(/^the user fill required options title$/, function(cb) {
 		var i = 1;
-		element.all(by.css('.input-ans-name')).each(function(item) {
+		element.all(by.css('.answer input')).each(function(item) {
 			item.sendKeys('Store ' + i);
 			i++;
 		}).then(cb);
@@ -30,7 +30,7 @@ module.exports = function() {
 
 	When(/^the user clicks outside the checklist section$/, function(cb) {
 		scrollToTop();
-		browser.actions().mouseMove(element(by.css('#allow-intropage'))).click().perform().then(function(){
+		browser.actions().mouseMove(element(by.css('app-email-request p'))).click().perform().then(function(){
 			cb();
 		});
 	});
@@ -54,7 +54,7 @@ module.exports = function() {
 
 	When(/^the user clicks add option (\d+) times$/, function(_numberOfOptions, cb) {
 		var i = 0;
-		var addOption = user.findsAll('a.add-check').first();
+		var addOption = user.findsAll('.spec-add-option-multichoice-question-0').first();
 		for (i = 0; i < _numberOfOptions; i++) {
 			addOption.click();
 			user.waits(600);
@@ -63,7 +63,7 @@ module.exports = function() {
 	});
 
 	Then(/^the section is saved$/, function(cb) {
-		var section = by.css('.checklist-created-question');
+		var section = by.css('.spec_edit_question_overlay');
 
 		user.waits(800);
 
@@ -75,13 +75,13 @@ module.exports = function() {
 	});
 
 	When(/^the user adds (\d+) section$/, function(numberOfSections, cb) {
-		var addButton = by.css('.check-add-state'),
-			addSection = by.css('.spec-checklist-add-section');
+		var addButton = by.css('.spec-design-add-state'),
+			addSection = by.css('.spec-design-add-new-question');
 
 		var i = 0;
 		var array = gArray(numberOfSections);
 		async.eachSeries(array, function(item, next){
-			element.all(addButton).first().click().then(function() {
+			element.all(addButton).last().click().then(function() {
 				user.waits(1000);
 				browser.executeScript('arguments[0].click()',element(addSection)).then(function(){
 					logger.info('finished i:',i);
@@ -97,20 +97,20 @@ module.exports = function() {
 
 	Then(/^the total options should be (\d+)$/, function(_numberOfOptions, cb) {
 		var numberOfOptions = parseInt(_numberOfOptions);
-		expect(element.all(by.css('.checklist-edit-question .edit-check')).count()).to.eventually.be.equal(numberOfOptions).and.notify(cb);
+		expect(element.all(by.css('app-checklist .check')).count()).to.eventually.be.equal(numberOfOptions).and.notify(cb);
 	});
 
 	Then(/^all add buttons must be disabled$/, function(cb) {
-		element.all(by.css('.checklist-edit-question .edit-check')).then(function(els) {
+		element.all(by.css('app-checklist div.answer')).then(function(els) {
 			els.forEach(function(ele, i, a) {
-				expect(hasClass(a[i].element(by.css('a.add-check')), 'disabled-check')).to.eventually.be.true;
+				expect(hasClass(a[i].element(by.css('i.add')), 'disabled')).to.eventually.be.true;
 			});
 		}).then(cb);
 	});
 
 	Then(/^the total of sections should be (\d+)$/, function(_numberOfSections, cb) {
 		var numberOfSections = parseInt(_numberOfSections);
-		expect(element.all(by.css('.check-created-question-container')).count()).to.eventually.be.equal(numberOfSections).and.notify(cb);
+		expect(element.all(by.css('app-question app-editable-card')).count()).to.eventually.be.equal(numberOfSections).and.notify(cb);
 	});
 
 	Then(/^the text on banner should display (\d+) sections$/, function(number, cb) {
