@@ -762,6 +762,10 @@ var User = function () {
 		return this.finds(_el).getAttribute('value');
 	};
 
+	this.findsContainingText = function (_el, _val){
+		return element(by.cssContainingText(_el, _val));
+	};
+
 	this.findsOn = function (ele) {
 		var i = 0;
 
@@ -776,9 +780,7 @@ var User = function () {
 						i++;
 					});
 
-					if (i >= 2) {
-						return item;
-					}
+					if (i >= 2) return item;
 				});
 			} else {
 				logger.log('Element -->: ' + ele + ' was not displayed');
