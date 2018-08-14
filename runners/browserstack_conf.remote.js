@@ -1,6 +1,6 @@
 var _baseUrl = 'https://automatedqastg.qrvey.com',
-	_bsUser = require('./support/config/config.browserstack').userBs,
-	_bsKey = require('./support/config/config.browserstack').keyBs;
+	_bsUser = require('./../support/config/config.browserstack').userBs,
+	_bsKey = require('./../support/config/config.browserstack').keyBs;
 
 //Selenium fast add-on
 // require('./support/fast-selenium');
@@ -24,7 +24,7 @@ var $config = {
 	},
 	maxSessions: 2,
 	specs: [
-		'features/**/**.feature'
+		'../features/**/**.feature'
 	],
 	allScriptsTimeout: 300000,
 	getPageTimeout: 100000,
@@ -33,16 +33,16 @@ var $config = {
 	frameworkPath: require.resolve('protractor-cucumber-framework'),
 	cucumberOpts: {
 		require: [
-			'step_definitions/**/*_steps.js',
-			'support/apiservices/*.js',
-			'support/config/*.js',
-			'support/globals/*.js',
-			'support/helpers/*.js',
-			'support/ngModules/*.js',
-			'support/hooks/AfterFeatures.js',
-			'support/hooks/afterHook.js',
-			'support/hooks/beforeHook.js',
-			'support/hooks/hooks.js',
+			'../step_definitions/**/*_steps.js',
+			'../support/apiservices/*.js',
+			'../support/config/*.js',
+			'../support/globals/*.js',
+			'../support/helpers/*.js',
+			'../support/ngModules/*.js',
+			'../support/hooks/AfterFeatures.js',
+			'../support/hooks/afterHook.js',
+			'../support/hooks/beforeHook.js',
+			'../support/hooks/hooks.js'
 		],
 		format: 'pretty',
 		tags: ['@complete', '~@formsMaking', '~@surveyMaking', '~@branchesMaking', '~@widgets', '~@iframes', '~@todo', '~@tests'],
@@ -59,11 +59,11 @@ var $config = {
 		// require('./support/disableNgAnimate');
 
 		// globalsVars
-		require('./support/globalsVars');
+		require('./../support/globalsVars');
 		global.chai = require('chai');
 
 		// Globals functions to the Spec
-		require('./support/globalsFunctions');
+		require('./../support/globalsFunctions');
 
 		// Config to promise Chai
 		chai.use(require('sinon-chai'));

@@ -1,46 +1,51 @@
 var _baseUrl = '';
-var _server = '';
 
-if (process.env.SERVER == 'dev'){
-	_server = _baseUrl = 'qdev';
-}
-else if (process.env.SERVER == 'manual'){
-	_server = _baseUrl = 'manualqastg';
-}
-else if (process.env.SERVER == 'automated'){
-	_server = _baseUrl = 'automatedqastg';
-}
-else if (process.env.SERVER == 'oem'){
-	_server = _baseUrl = 'oemstg';
-}
-else { // Stg by default
-	_server = _baseUrl = 'qstg';
-}
+if (process.env.SERVER == 'dev') _baseUrl = 'https://qdev.qrvey.com';
+else if (process.env.SERVER == 'qa') _baseUrl = 'https://qastg.qrvey.com';
+else if (process.env.SERVER == 'staging') _baseUrl = 'https://qstg.qrvey.com';
 
 //Selenium fast add-on
-// require('./support/fast-selenium');
+require('./../support/fast-selenium');
 
 var $config = {
 	seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
 	ignoreUncaughtExceptions: true, // to protractor v4.0.10
-	baseUrl: 'https://' + _baseUrl + '.qrvey.com' + '/app/index.html#',
-	capabilities: {
+	baseUrl: _baseUrl + '/app/index.html#',
+	multiCapabilities: [{
 		'browserstack.user': process.env.BROWSERSTACK_USER,
 		'browserstack.key': process.env.BROWSERSTACK_ACCESSKEY,
+		'name': process.env.JOB_NAME + '_job' + process.env.BUILD_NUMBER + '_chrome_browser_v55',
 		'os': 'OS X',
-		'os_version': 'High Sierra',
+		'os_version': 'Sierra',
 		'browserName': 'Chrome',
-		'browser_version': '64.0',
+		'browser_version': '55.0',
 		'resolution': '1920x1080',
-		'name': process.env.JOB_NAME + ' in Jenkins with Chrome',
-		'browserstack.chrome.driver': '2.35',
+		'browserstack.chrome.driver': '2.29',
 		'chromeOptions': {
-			'args': ['--window-size=1920,1080']
+			'args': ['--window-size=1920,1080'],
+			'prefs': {
+				'profile.managed_default_content_settings.notifications': 1
+			}
 		}
-	},
+	}, {
+		'browserstack.user': process.env.BROWSERSTACK_USER,
+		'browserstack.key': process.env.BROWSERSTACK_ACCESSKEY,
+		'name': process.env.JOB_NAME + '_job' + process.env.BUILD_NUMBER + '_firefox_browser_v55',
+		'os': 'OS X',
+		'os_version': 'Sierra',
+		'browserName': 'firefox',
+		'browser_version': '55.0',
+		'resolution': '1920x1080',
+		'chromeOptions': {
+			'args': ['--window-size=1920,1080'],
+			'prefs': {
+				'profile.managed_default_content_settings.notifications': 1
+			}
+		}
+	}],
 	maxSessions: 2,
 	specs: [
-		'features/**/**.feature'
+		'../features/**/**.feature'
 	],
 	allScriptsTimeout: 300000,
 	getPageTimeout: 100000,
@@ -49,25 +54,26 @@ var $config = {
 	frameworkPath: require.resolve('protractor-cucumber-framework'),
 	cucumberOpts: {
 		require: [
-			'step_definitions/**/*_steps.js',
-			'support/apiservices/*.js',
-			'support/config/*.js',
-			'support/helpers/*.js',
-			'support/ngModules/*.js',
-			'support/hooks/AfterFeatures.js',
-			'support/hooks/afterHook.js',
-			'support/hooks/beforeHook.js',
-			'support/hooks/hooks.js',
+			'../step_definitions/**/*_steps.js',
+			'../support/apiservices/*.js',
+			'../support/config/*.js',
+			'../support/globals/*.js',
+			'../support/helpers/*.js',
+			'../support/ngModules/*.js',
+			'../support/hooks/AfterFeatures.js',
+			'../support/hooks/afterHook.js',
+			'../support/hooks/beforeHook.js',
+			'../support/hooks/hooks.js'
 		],
 		format: 'pretty',
-		tags: ['@complete', '~@widgets', '~@iframe', '~@todo', '~@tests'],
+		tags: ['@complete', '~@widgets', '~@iframes', '~@todo', '~@tests'],
 		keepAlive: false,
 		'no-colors': true
 	},
 	onPrepare: function() {
-		global.env = process.env.SERVER;
-		global.server = _server;
-		global.stripeStatus = (_server == 'oemstg' || _server == 'oemdev') ? false : true;
+		global.env = 'staging';
+		global.server = 'qstg';
+		global.stripeStatus = true;
 
 		global.rootServer = 'browserstack';
 
@@ -75,10 +81,11 @@ var $config = {
 		// require('./support/disableNgAnimate');
 
 		// globalsVars
-		require('./support/globalsVars');
+		// require('./support/globalsVars');
+		global.chai = require('chai');
 
 		// Globals functions to the Spec
-		require('./support/globalsFunctions');
+		// require('./support/globalsFunctions');
 
 		// Config to promise Chai
 		chai.use(require('sinon-chai'));
@@ -94,7 +101,7 @@ var $config = {
 
 		// General config to API
 		var _config = {
-			'url': 'https://' + _baseUrl + '.qrvey.com',
+			'url': _baseUrl,
 			'apiVersion': 'v3',
 			'environment': 'STAGING',
 			// 'username': 'testingqrvey+' + randomId() + '@gmail.com',
