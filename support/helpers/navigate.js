@@ -122,7 +122,7 @@ var Navigate = function() {
 			}
 		}, function() {
 			// logger.log(obj+ " -- not found: " + err );
-			throw 'element not found';
+			throw new Error('element not found');
 		});
 	};
 
@@ -233,7 +233,7 @@ var Navigate = function() {
 				return false;
 			} else return true;
 		}, function() {
-			throw 'element not found';
+			throw new Error('element not found');
 		});
 	};
 };

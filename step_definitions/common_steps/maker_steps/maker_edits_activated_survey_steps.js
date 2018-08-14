@@ -58,7 +58,7 @@ module.exports = function () {
 	When(/^the user clicks on description check$/, function (cb) {
 		user.finds('.spec_allow_intropage').click().then(
 			function () {
-				throw 'Description check is not blocked';
+				throw new Error('Description check is not blocked');
 			},
 			function () {
 				cb();
@@ -97,7 +97,7 @@ module.exports = function () {
 	When(/^the user try edits the question$/, function (cb) {
 		user.finds('.spec-edit-question-name-0').click().then(
 			function () {
-				throw 'Question is not blocked';
+				throw new Error('Question is not blocked');
 			},
 			function () {
 				cb();

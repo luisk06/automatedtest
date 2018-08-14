@@ -61,7 +61,7 @@ module.exports = function() {
 						cb();
 					}
 
-					throw 'Error in the app';
+					throw new Error('Error in the app');
 				});
 			}
 
@@ -115,7 +115,7 @@ module.exports = function() {
 						cb();
 					}
 
-					throw 'Error in the app';
+					throw new Error('Error in the app');
 				});
 			}
 			user.waits(1200);
@@ -169,8 +169,7 @@ module.exports = function() {
 				return _item.click(function() {
 					logger.log('found i', i);
 				}, function() {
-					logger.log('Error, not found element ' + btn + ' in the ' + i + ' position');
-					throw 'Error, not found element ' + btn + ' in the ' + i + ' position';
+					throw new Error('Error, not found element ' + btn + ' in the ' + i + ' position');
 				}).then(cb);
 			}
 

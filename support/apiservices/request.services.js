@@ -44,18 +44,18 @@ var RequestService = function() {
 			logger.log('-------------------------------');
 
 			request(options, function(error, response, body) {
-				if (error) throw 'Request Fail: ' + error;
+				if (error) throw new Error('Request Fail: ' + error);
 
 				logger.info('response:', body);
 
 				_callback(body, error);
 			});
-		} else throw 'Undefined the Url in the config';
+		} else throw new Error('Undefined the Url in the config');
 	};
 
 	this.sendCustomUrlInfo = function(_options, _callback) {
 		if (configer.get('url') != 'login' && !configer.get('isLogged')) {
-			throw 'Not logged in';
+			throw new Error('Not logged in');
 		} else {
 			logger.info('The user is logged');
 		}
@@ -88,13 +88,13 @@ var RequestService = function() {
 			logger.log('-------------------------------');
 
 			request(options, function(error, response, body) {
-				if (error) throw 'Request Fail: ' + error;
+				if (error) throw new Error('Request Fail: ' + error);
 
 				logger.info('response:', body);
 
 				_callback(body, error);
 			});
-		} else throw 'Undefined the Url in the config';
+		} else throw new Error('Undefined the Url in the config');
 	};
 };
 

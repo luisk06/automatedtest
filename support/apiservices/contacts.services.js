@@ -16,7 +16,7 @@ var ContactsService = function() {
 				logger.error('Error, no response in getAll function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -41,7 +41,7 @@ var ContactsService = function() {
 				logger.error('Error, no response in getAll function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -69,7 +69,7 @@ var ContactsService = function() {
 				logger.error('Error, no response in getAll function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -90,7 +90,7 @@ var ContactsService = function() {
 				logger.error('Error, no response in getAllTags function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -115,7 +115,7 @@ var ContactsService = function() {
 				logger.error('Error, no response in createTag function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -144,7 +144,7 @@ var ContactsService = function() {
 				logger.error('Error, no response in deleteTags function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 

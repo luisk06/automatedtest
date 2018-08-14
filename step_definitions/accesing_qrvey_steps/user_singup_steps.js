@@ -18,7 +18,7 @@ module.exports = function() {
 		element(by.css('#spec-input-useremail-register')).sendKeys(rand.getEmail({ domain: 'gmail.com' }));
 		element(by.css('#spec-input-userpass-register')).sendKeys('');
 		user.finds('.tagged').click().then(function() {
-			throw 'Password is empty';
+			throw new Error('Password is empty');
 		}, function() {
 			cb();
 		});

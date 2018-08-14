@@ -9,7 +9,7 @@ module.exports = function () {
 	When(/^the user clicks on the Add button$/, function (cb) {
 		var _el = user.findsAll('.spec-design-add-state');
 		_el.count().then(function (_count) {
-			if (_count == 0) throw 'The element was not found, it not possible to clicks';
+			if (_count == 0) throw new Error('The element was not found, it not possible to clicks');
 			else {
 				_el.get(_count - 1).click().then(cb);
 			}
@@ -28,7 +28,7 @@ module.exports = function () {
 
 		var _el = user.findsAll('.spec-design-' + opt);
 		_el.count().then(function (_count) {
-			if (_count == 0) throw 'The element was not found, it not possible to clicks';
+			if (_count == 0) throw new Error('The element was not found, it not possible to clicks');
 			else {
 				_el.get(_count - 1).click().then(cb);
 			}

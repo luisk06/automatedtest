@@ -16,7 +16,7 @@ var StylesService = function() {
 				logger.error('Error, no response in getAll styles function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -37,7 +37,7 @@ var StylesService = function() {
 				logger.error('Error, no response in delete style function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 

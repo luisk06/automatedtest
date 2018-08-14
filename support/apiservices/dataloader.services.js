@@ -33,7 +33,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in createDataloader function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -58,7 +58,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in getES function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -92,7 +92,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in createES function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -124,7 +124,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in testConnectionES function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -154,7 +154,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in getIndexesES function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -185,7 +185,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in getIndexTypesES function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -217,7 +217,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in getQuestionModelES function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -243,7 +243,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in getQuestionModel function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -303,7 +303,7 @@ var DataloaderService = function() {
 				logger.error('Error, no response in uploadFile function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -392,11 +392,11 @@ var DataloaderService = function() {
 					return _this.elasticsearch(_appId, _user, _name);
 				} else if (_state == 'draft'){
 					return _this.elasticsearchAsDraft(_appId, _user, _name);
-				} else throw 'Type is undefined or ilegal string: ' + _state;
+				} else throw new Error('Type is undefined or ilegal string: ' + _state);
 			} else if (_type == 'dataloader') {
 				logger.log('create a dataloader');
 				return _this.dataloader(_appId, _user, _name);
-			} else throw 'Type is undefined or ilegal string: ' + _type;
+			} else throw new Error('Type is undefined or ilegal string: ' + _type);
 		})
 			.then(function (_data) {
 				logger.log('Finish the creating a ' + _type);

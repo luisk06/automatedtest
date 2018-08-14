@@ -3,7 +3,7 @@
 var PublicResultsService = function() {
 
 	this.getPublicResultsURL = function(qrveyID) {
-		if(typeof qrveyID == 'undefined' || qrveyID == null) throw 'QrveyID must ve a value';
+		if (typeof qrveyID == 'undefined' || qrveyID == null) throw new Error('QrveyID must ve a value');
 
 		var defer = protractor.promise.defer(),
 			options = {
@@ -18,7 +18,7 @@ var PublicResultsService = function() {
 				logger.error('Error, no response in getPublicResultsURL public results function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 

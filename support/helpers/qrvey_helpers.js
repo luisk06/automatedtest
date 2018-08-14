@@ -382,7 +382,7 @@ var Qrveyhelpers = function() {
 			} else return true;
 		}, function() {
 			// logger.log(obj+ " -- not found: " + err );
-			throw 'element not found';
+			throw new Error('element not found');
 		});
 	};
 
@@ -394,7 +394,7 @@ var Qrveyhelpers = function() {
 			} else return true;
 		}, function() {
 			// logger.log(obj+ " -- not found: " + err );
-			throw 'element not found';
+			throw new Error('element not found');
 		});
 	};
 
@@ -474,7 +474,7 @@ var Qrveyhelpers = function() {
 			return res;
 		}, function(err) {
 			logger.log('element: ' + tab + err);
-			throw 'element: ' + tab + ' not found---' + err;
+			throw new Error('element: ' + tab + ' not found---' + err);
 		});
 	};
 

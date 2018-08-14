@@ -4,7 +4,7 @@ var QrveyService = function () {
 
 	this.validField = function (_field, _name, _nameFunction) {
 		if (typeof _field === 'undefined') {
-			throw 'Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function';
+			throw new Error('Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function');
 		}
 
 		return this;
@@ -30,7 +30,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -66,12 +66,12 @@ var QrveyService = function () {
 
 				var msj = 'Error, qrvey is not IN_PROGRESS status in create function.';
 				logger.error(msj);
-				throw msj;
+				throw new Error(msj);
 			} catch (err) {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -96,7 +96,7 @@ var QrveyService = function () {
 			}
 			next();
 		}, function (err) {
-			if (err) throw 'Error choosing right question on quiz, ' + err;
+			if (err) throw new Error('Error choosing right question on quiz, ' + err);
 		});
 	};
 
@@ -114,7 +114,7 @@ var QrveyService = function () {
 		switch (configer.get('typeOfQrvey')) {
 			case null:
 			case undefined:
-				throw 'This options is undefined or null';
+				throw new Error('This options is undefined or null');
 			case 'qrvey':
 				_qrveyObject.appType = 'SURVEY';
 				break;
@@ -142,7 +142,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in update function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -178,7 +178,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in activate function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -216,7 +216,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in activateQuestion function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -242,7 +242,7 @@ var QrveyService = function () {
 				logger.error('Error, no response.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -267,7 +267,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in shared function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -292,7 +292,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in delete function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -317,7 +317,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in shared function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -342,7 +342,7 @@ var QrveyService = function () {
 				logger.error('Error, no response in shared function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -416,7 +416,7 @@ var QrveyService = function () {
 				}
 			} catch (e) {
 				logger.log('You should not take questions', e);
-				throw e;
+				throw new Error(e);
 			}
 
 			logger.log('========================================');
@@ -435,7 +435,7 @@ var QrveyService = function () {
 			}
 
 			logger.error('qrveyActive: Err ', _resp);
-			throw _resp;
+			throw new Error(_resp);
 
 		}).catch(function () {
 			defer.reject();
@@ -657,7 +657,7 @@ var QrveyService = function () {
 			}
 
 			logger.error('qrveyActive: Err ', _resp);
-			throw _resp;
+			throw new Error(_resp);
 
 		}).catch(function () {
 			defer.reject();
@@ -719,9 +719,7 @@ var QrveyService = function () {
 			} else if (_state == 'finished') {
 				logger.log('create a qrvey in finished state');
 				return _this.createQuestionAsFinished(_appId, _user, _name, _type);
-			} else {
-				throw 'State is undefined or ilegal string: ' + _state;
-			}
+			} else throw new Error('State is undefined or ilegal string: ' + _state);
 		}).then(function (_data) {
 			logger.log('Finish the create qrvey as ' + _state);
 			defer.fulfill(_data);
@@ -816,7 +814,7 @@ var QrveyService = function () {
 		if (_type == 'survey') configer.set('typeOfQrvey', 'survey');
 		else if (_type == 'questionnaire') configer.set('typeOfQrvey', 'onlineform');
 		else if (_type == 'progressive') configer.set('typeOfQrvey', 'progressiveapp');
-		else throw 'This app doesnt support multiple questions';
+		else throw new Error('This app doesnt support multiple questions');
 
 		var defer = protractor.promise.defer(),
 			_this = this;
@@ -836,7 +834,7 @@ var QrveyService = function () {
 			} else if (_state == 'finished') {
 				logger.log('create a branch in finished state');
 				return _this.createBranchsAsFinished(_appId, _user, _name, _type);
-			} else throw 'State is undefined or ilegal string: ' + _state;
+			} else throw new Error('State is undefined or ilegal string: ' + _state);
 		}).then(function (_data) {
 			logger.log('Finish the create a branch as ' + _state);
 			defer.fulfill(_data);
@@ -856,7 +854,7 @@ var QrveyService = function () {
 		if (_type == 'survey') configer.set('typeOfQrvey', 'survey');
 		else if (_type == 'forms') configer.set('typeOfQrvey', 'form');
 		else if (_type == 'quiz') configer.set('typeOfQrvey', 'quiz');
-		else throw 'This app doesnt support multiple questions';
+		else throw new Error('This app doesnt support multiple questions');
 
 		var defer = protractor.promise.defer(),
 			_this = this;
@@ -873,7 +871,7 @@ var QrveyService = function () {
 			} else if (_state == 'draft') {
 				logger.log('create a webform with all questions in draft state');
 				return _this.createAllQuestionsAsDraft(_appId, _user, _type);
-			} else throw 'The state is undefined or ilegal string: ' + _state;
+			} else throw new Error('The state is undefined or ilegal string: ' + _state);
 		}).then(function (_data) {
 			logger.log('Finish the create a webform with all questions as ' + _state);
 			defer.fulfill(_data);
@@ -892,7 +890,7 @@ var QrveyService = function () {
 
 		if (_type == 'survey') configer.set('typeOfQrvey', 'qrvey');
 		else if (_type == 'progressive') configer.set('typeOfQrvey', 'progressiveapp');
-		else throw 'This app doesnt support cross tab';
+		else throw new Error('This app doesnt support cross tab');
 
 		var defer = protractor.promise.defer(),
 			_this = this;
@@ -911,7 +909,7 @@ var QrveyService = function () {
 			} else if (_state == 'finished') {
 				logger.log('create a branch in finished state');
 				_this.createCrossTabAsFinished(_appId, _user, _type);
-			} else throw 'The state is undefined or ilegal string: ' + _state;
+			} else throw new Error('The state is undefined or ilegal string: ' + _state);
 		}).then(function (_data) {
 			logger.log('Finish the create branch as ' + _state);
 			defer.fulfill(_data);
@@ -950,7 +948,7 @@ var QrveyService = function () {
 			if (typeof _state === 'undefined' || _state == 'active') {
 				logger.log('create a chart builder in active state');
 				return _this.createChartBuilderAsActive(_appId, _user, _type, _chartType);
-			} else throw 'The state is undefined or ilegal string: ' + _state;
+			} else throw new Error('The state is undefined or ilegal string: ' + _state);
 		}).then(function (_data) {
 			logger.log('Finish the create chart builder as active');
 			defer.fulfill(_data);
@@ -996,7 +994,7 @@ var QrveyService = function () {
 				}
 			} catch (e) {
 				logger.log('There are not questions', e);
-				throw e;
+				throw new Error(e);
 			}
 
 			logger.log('========================================');
@@ -1015,7 +1013,7 @@ var QrveyService = function () {
 			}
 
 			logger.error('qrveyActive: Err ', _resp);
-			throw _resp;
+			throw new Error(_resp);
 
 		}).catch(function () {
 			defer.reject();
@@ -1070,12 +1068,12 @@ var QrveyService = function () {
 						if (typeof item !== 'undefined') configer.set('QrveyAnswerId' + _num, item.id);
 						next();
 					}, function (err) {
-						if (err) throw 'Error on setting qrveyAnswerID on createAllQuestionsAsActive method, ' + err;
+						if (err) throw new Error('Error on setting qrveyAnswerID on createAllQuestionsAsActive method, ' + err);
 					});
 				}
 			} catch (e) {
 				logger.log('No lleva preguntas', e);
-				throw e;
+				throw new Error(e);
 			}
 
 			logger.log('========================================');
@@ -1095,7 +1093,7 @@ var QrveyService = function () {
 			}
 
 			logger.error('qrveyActive: Err ', _resp);
-			throw _resp;
+			throw new Error(_resp);
 
 		}).catch(function () {
 			defer.reject();
@@ -1155,7 +1153,7 @@ var QrveyService = function () {
 				}
 			} catch (e) {
 				logger.log('There are not questions', e);
-				throw e;
+				throw new Error(e);
 			}
 
 			logger.log('========================================');
@@ -1173,7 +1171,7 @@ var QrveyService = function () {
 				return defer.fulfill(_resp);
 			} else {
 				logger.error('qrveyActive: Err ', _resp);
-				throw _resp;
+				throw new Error(_resp);
 			}
 		}).catch(function () {
 			defer.reject();
@@ -1228,7 +1226,7 @@ var QrveyService = function () {
 				}
 			} catch (e) {
 				logger.log('There are no questions', e);
-				throw e;
+				throw new Error(e);
 			}
 
 			logger.log('========================================');
@@ -1246,7 +1244,7 @@ var QrveyService = function () {
 				return defer.fulfill(_resp);
 			} else {
 				logger.error('qrveyActive: Err ', _resp);
-				throw _resp;
+				throw new Error(_resp);
 			}
 		}).catch(function () {
 			defer.reject();

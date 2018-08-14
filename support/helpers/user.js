@@ -521,7 +521,7 @@ var User = function () {
 
 		_length = Object.keys(_titles).length;
 
-		if (_length < 2) throw 'Error, the minium question is 2';
+		if (_length < 2) throw new Error('Error, the minium question is 2');
 
 		if (_length > 2) {
 			for (i = 0; i <= _length - 3; i++) {
@@ -1228,7 +1228,7 @@ var User = function () {
 	};
 
 	this.putCodeInAudiencePage = function (_code) {
-		if (typeof _code === 'undefined') throw 'Error, lack the code';
+		if (typeof _code === 'undefined') throw new Error('Error, lack the code');
 
 		logger.log('the code is:', _code);
 		return this.finds('.spec_audiencepage_enter_access_code_input').sendKeys(_code);
@@ -2022,7 +2022,7 @@ var User = function () {
 			this.findsAll('.pages-list.qrvey-list.qrvey-pages-list .page .toggle').first().click();
 
 			deferred.fulfill();
-		} else throw 'The action is not supported yet';
+		} else throw new Error('The action is not supported yet');
 
 		return deferred.promise;
 	};
@@ -2175,7 +2175,7 @@ var User = function () {
 			}).catch(function (err) {
 				if (err.name !== 'NoSuchElementError' && err.name !== 'StaleElementReferenceError') {
 					logger.error('ERROR', err);
-					throw err;
+					throw new Error(err);
 				}
 			});
 

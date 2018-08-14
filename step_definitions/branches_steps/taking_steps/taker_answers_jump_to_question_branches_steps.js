@@ -92,7 +92,7 @@ module.exports = function() {
 		element(by.xpath('//*[contains(text(),"' + questionTitle + '")]')).isDisplayed().then(function(_isDisplayed) {
 			expect(_isDisplayed).to.be.true;
 		}, function() {
-			throw 'Question title: ' + questionTitle + 'is not present on page';
+			throw new Error('Question title: ' + questionTitle + 'is not present on page');
 		}).then(cb);
 	});
 };

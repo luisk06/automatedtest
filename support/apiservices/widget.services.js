@@ -17,9 +17,7 @@ var WidgetsService = function() {
 			request = request.defaults({
 				jar: true
 			});
-		} else {
-			throw 'It has already been started plugin';
-		}
+		} else throw new Error('It has already been started plugin');
 
 		return this;
 	};
@@ -39,7 +37,7 @@ var WidgetsService = function() {
 
 	this.validField = function(_field, _name, _nameFunction) {
 		if (typeof _field === 'undefined') {
-			throw 'Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function';
+			throw new Error('Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function');
 		}
 
 		return this;
@@ -71,7 +69,7 @@ var WidgetsService = function() {
 			logger.log('Error in the login function');
 			logger.log(_resp);
 
-			throw _resp;
+			throw new Error(_resp);
 		});
 
 		return defer.promise;
@@ -106,13 +104,13 @@ var WidgetsService = function() {
 				} else {
 					var msj = 'Fail, qrvey is not IN_PROGRESS status in create function.';
 					logger.log(msj);
-					throw msj;
+					throw new Error(msj);
 				}
 			} else {
 				logger.log('Error, no response in create function.');
 				logger.log(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -139,7 +137,7 @@ var WidgetsService = function() {
 				defer.fulfill(_resp);
 			} else {
 				logger.log('Error, no response in update function.');
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -163,7 +161,7 @@ var WidgetsService = function() {
 				defer.fulfill(JSON.parse(_resp));
 			} else {
 				logger.log('Error, no response in activate function.');
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -188,7 +186,7 @@ var WidgetsService = function() {
 				logger.log('Error, no response in shared function.');
 				logger.log(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -213,7 +211,7 @@ var WidgetsService = function() {
 				logger.log('Error, no response in delete function.');
 				logger.log(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -257,7 +255,7 @@ var WidgetsService = function() {
 				_callback(body, error);
 			});
 		} else {
-			throw 'Indefined the Url in the config';
+			throw new Error('Indefined the Url in the config');
 		}
 	};
 
@@ -285,7 +283,7 @@ var WidgetsService = function() {
 							logger.log('status: ', _resp);
 							logger.log('========================================');
 						} else {
-							throw 'qrveyActive: Err ' + _resp.status + ' ' + _resp.message;
+							throw new Error('qrveyActive: Err ' + _resp.status + ' ' + _resp.message);
 						}
 						_this.shared(_qrveyId).then(function(_url) {
 							logger.log('===============qrveyUrl===============');
@@ -981,7 +979,7 @@ var WidgetsService = function() {
 				return qrveyIDForWidget;
 			}
 		} else {
-			throw 'Url should not be empty';
+			throw new Error('Url should not be empty');
 		}
 	};
 };

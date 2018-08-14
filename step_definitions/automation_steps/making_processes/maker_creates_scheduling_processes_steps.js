@@ -15,7 +15,7 @@ module.exports = function () {
 	Given(/^the user creates a "([^"]*)" in "([^"]*)" app with "([^"]*)" as title$/, function (typeOf, typeOfApp, title, cb) {
 		if (typeOfApp == 'automation') {
 			user.createsProcess(title).then(cb);
-		} else throw 'Not a valid app';
+		} else throw new Error('Not a valid app');
 	});
 
 	When(/^the user selects the king of process as "([^"]*)"$/, function (typeOfProcess, cb) {

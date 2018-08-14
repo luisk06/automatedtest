@@ -4,7 +4,7 @@ var ApplicationServices = function() {
 
 	this.validField = function(field, name, nameFunction) {
 		if (typeof field === 'undefined') {
-			throw 'Undefined ' + name + ' of App in ' + nameFunction + ' function';
+			throw new Error('Undefined ' + name + ' of App in ' + nameFunction + ' function');
 		}
 
 		return this;
@@ -30,7 +30,7 @@ var ApplicationServices = function() {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -63,7 +63,7 @@ var ApplicationServices = function() {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -93,7 +93,7 @@ var ApplicationServices = function() {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -120,7 +120,7 @@ var ApplicationServices = function() {
 				logger.error('Error, no response in update function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -141,7 +141,7 @@ var ApplicationServices = function() {
 				logger.error('Error, no response in delete function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 

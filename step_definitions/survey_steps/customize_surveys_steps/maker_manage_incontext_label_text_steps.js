@@ -5,7 +5,7 @@ module.exports = function() {
 	Given = this.Given;
 	When = this.When;
 	Then = this.Then;
-	
+
 	var _label = '',
 		_title = '';
 
@@ -47,7 +47,7 @@ module.exports = function() {
 
 	Then(/^the customize incontext position button for "([^"]*)" should be disabled$/, function(position, cb) {
 		element(by.css('.spec-tab-'+position)).click().then(function(){
-			throw 'Element should not be clickable for Observer';
+			throw new Error('Element should not be clickable for Observer');
 		},function(err){
 			expect(err.message.toString()).to.be.contain('is not clickable at point');
 		}).then(cb);

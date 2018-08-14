@@ -33,13 +33,13 @@ var UserService = function () {
 					logger.error('Error, no response in create function.');
 					logger.error(_resp);
 
-					throw _resp;
+					throw new Error(_resp);
 				}
 			} catch (err) {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -71,7 +71,7 @@ var UserService = function () {
 			};
 
 		rs.sendInfo(options, function (_resp) {
-			if (typeof _resp === 'undefined') throw 'The server not response.';
+			if (typeof _resp === 'undefined') throw new Error('The server not response.');
 
 			try {
 				_resp = JSON.parse(_resp);
@@ -82,12 +82,12 @@ var UserService = function () {
 					logger.log('=====================================');
 
 					return defer.fulfill(_resp.user.userid);
-				} else throw 'Error in login function' + _resp.toString();
+				} else throw new Error('Error in login function' + _resp.toString());
 			} catch (err) {
 				logger.error('Error, no response in login.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -113,12 +113,12 @@ var UserService = function () {
 					return defer.fulfill(_resp);
 				}
 			} catch (err) {
-				if (err) throw err;
+				if (err) throw new Error(err);
 			}
 
 			logger.error('Error, no response in set flag function.');
 			logger.error(_resp);
-			throw _resp;
+			throw new Error(_resp);
 		});
 
 		return defer.promise;
@@ -148,7 +148,7 @@ var UserService = function () {
 					throw _resp;
 				}
 			} catch (err) {
-				if (err) throw err;
+				if (err) throw new Error(err);
 			}
 		});
 

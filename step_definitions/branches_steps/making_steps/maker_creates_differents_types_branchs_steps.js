@@ -42,7 +42,7 @@ module.exports = function() {
 				user.findsAll('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span').get(numberOfQuestion).click().then(cb);
 			} else if(_count > 1) {
 				user.finds('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span').click().then(cb);
-			} else throw 'There arent elements to click';
+			} else throw new Error('There arent elements to click');
 		});
 	});
 

@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = function() {
-	
+
 	Given = this.Given;
 	When = this.When;
 	Then = this.Then;
 
 	Given(/^that the user has no qrveys$/, function(cb) {
 		if (!isRemote) user.deteleAllQrveys().then(cb);
-		else throw 'This server is not remote';
+		else throw new Error('This server is not remote');
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be displayed$/, function(identifier, type, cb) {
