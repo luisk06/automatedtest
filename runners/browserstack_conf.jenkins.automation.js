@@ -17,8 +17,6 @@ else { // Stg by default
 	_server = _baseUrl = 'qstg';
 }
 
-//Selenium fast add-on
-// require('./support/fast-selenium');
 
 var $config = {
 	seleniumAddress: 'http://hub-cloud.browserstack.com/wd/hub',
@@ -71,9 +69,6 @@ var $config = {
 
 		global.rootServer = 'browserstack';
 
-		// disableNgAnimate
-		// require('./support/disableNgAnimate');
-
 		// globalsVars
 		require('./../support/globalsVars');
 		global.chai = require('chai');
@@ -98,29 +93,12 @@ var $config = {
 			'url': 'https://' + _baseUrl + '.qrvey.com',
 			'apiVersion': 'v3',
 			'environment': 'STAGING',
-			// 'username': 'testingqrvey+' + randomId() + '@gmail.com',
 			'password': '123456'
 		};
-
-		// General config to Widgets
-		// var _configW = {
-		// 	'url': 'https://qwidgets.herokuapp.com',
-		// 	'token': 'TlyeWkQ5tH4m05r3WXUqc9ILayESPlhd6hJaCut0'
-		// };
 
 		// Envirotment
 		configer.setup(_config);
 		configer.set('environment', 'SAUCE');
-
-		// Config to User
-		// us.getting().then(function(userInfo){
-		// 	console.log('userInfo', userInfo);
-
-		// 	user.setSetting('validUser', configer.get('username'));
-		// 	user.setSetting('validPass', configer.get('password'));
-
-		// 	ws.config(_configW);
-		// });
 	},
 	onComplete: function() {
 		logger.log('onComplete');
