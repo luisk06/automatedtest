@@ -81,7 +81,7 @@ var Qrveyhelpers = function() {
 				_type = 'spec_ua_qt';
 				break;
 			default:
-				throw new Error('Error, type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
+				throw new Error('The type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
 		}
 
 		return _type;

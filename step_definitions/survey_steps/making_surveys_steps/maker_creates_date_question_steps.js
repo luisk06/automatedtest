@@ -18,18 +18,20 @@ module.exports = function() {
 	});
 
 	Given(/^the user created the "([^"]*)"$/, function(type, cb) {
-		user.createsQrvey({ 'type': type }).then(cb);
+		user.createsWebform({
+			'type': (type == 'form') ? 'forms' : type
+		}).then(cb);
 	});
 
 	When(/^the user created the "([^"]*)" with "([^"]*)" as title$/, function(type, title, cb) {
-		user.createsQrvey({ 'type': type , 'title': title}).then(cb);
+		user.createsWebform({ 'type': type , 'title': title}).then(cb);
 	});
 
 	Given(/^the user created the "([^"]*)" with "([^"]*)" question in "([^"]*)"$/, function(typeOfQrvey, typeOfQuestion, stateOfQrvey, cb) {
 		us.isLogged().then(function(_userId) {
-			qs.createQrvey(appID, _userId, typeOfQrvey, typeOfQuestion, stateOfQrvey).then(function(data){
-				// console.log('data', data);
-			}).then(cb);
+			return qs.createQrvey(appID, _userId, typeOfQrvey, typeOfQuestion, stateOfQrvey);
+		}).then(function(data){
+			cb();
 		});
 	});
 
@@ -51,11 +53,15 @@ module.exports = function() {
 	});
 
 	Then(/^the publish page should be displayed$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
+		expect(
+			navigate.getCurrentUrl()
+		).to.eventually.contain('share').and.notify(cb);
 	});
 
 	Then(/^the publish page should not be displayed$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.not.contain('share').and.notify(cb);
+		expect(
+			navigate.getCurrentUrl()
+		).to.eventually.not.contain('share').and.notify(cb);
 	});
 
 	Given(/^the user opens the create webform menu$/, function(cb) {
@@ -74,27 +80,26 @@ module.exports = function() {
 		// if (rangeName != 'between') user.finds('.spec_edit_question_overlay').click();
 
 		var newDate = new Date().getDate();
-		// console.log('newDate', newDate);
 
 		// Filling the calendars
 		if (rangeName == 'before'){
 			user.finds('.max').click();
 			user.waitsFor('.mat-calendar');
 
-			element(by.cssContainingText('.mat-calendar-body-cell-content', newDate.toString())).click().then(cb);
+			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if (rangeName == 'after'){
 			user.finds('.min').click();
 			user.waitsFor('.mat-calendar');
 
-			element(by.cssContainingText('.mat-calendar-body-cell-content', newDate.toString())).click().then(cb);
+			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if(rangeName == 'between'){
 			user.finds('.max').click();
 			user.waitsFor('.mat-calendar');
-			element(by.cssContainingText('.mat-calendar-body-cell-content', newDate.toString())).click();
+			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click();
 
 			user.finds('.min').click();
 			user.waitsFor('.mat-calendar');
-			element(by.cssContainingText('.mat-calendar-body-cell-content', newDate.toString())).click().then(cb);
+			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}
 	});
 };

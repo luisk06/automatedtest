@@ -60,13 +60,13 @@ module.exports = function() {
 					}).then(function () {
 						return user.finds('.scoreboard .passing-message').getText();
 					}).then(function (_val) {
-						console.log('VAL ---->' , _val);
+						logger.log('VAL ---->' , _val);
 						expect(_val).to.be.a('string');
 						return expect(_val.length).to.be.above(1);
 					}).then(function () {
 						return user.isDisplayed('.powered.footer');
 					}).then(function (isdisplayed) {
-						console.log('looking for .powered.footer');
+						logger.log('looking for .powered.footer');
 						return expect(isdisplayed).to.be.true;
 					}).then(function () {
 						cb();

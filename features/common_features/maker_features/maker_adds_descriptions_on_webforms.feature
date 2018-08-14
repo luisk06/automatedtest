@@ -1,12 +1,24 @@
-@intropage @complete
+@complete @making @description @makingDescription @validations
 
-Feature: Managing the custom intro page
+Feature: The user add description into the questions
 
 	As an user
-	I want to custom intro page
-	In order to show a custom information after each webform
+	I want to set a description into the question
+	In order to show more details about how to answer the question
 
-	Scenario Outline: the user add a custom intro page to <webform> with <question> question
+	Scenario: the user remove the description in date question on survey
+		Given the user has "basic" plan
+			And the user has an app
+			And the user has login
+			And the user opens the just created app
+			And the user opens the "webform" board
+			And the user created the "survey"
+			And the user just added "date" question
+		When the user add description into the question
+			And the user clicks on remove description into the question
+		Then the description field should be hidden
+
+	Scenario Outline: the user add the description in <question> question on <webform>
 		Given the user has "basic" plan
 			And the user has an app
 			And the user has login
@@ -14,7 +26,7 @@ Feature: Managing the custom intro page
 			And the user opens the "webform" board
 			And the user created the "<webform>"
 			And the user just added "<question>" question
-		When the user add a custom intro page
+		When the user add description into the question
 		Then the user publish the webform
 
 		Examples:
@@ -37,7 +49,6 @@ Feature: Managing the custom intro page
 			| survey  	 | us_address 		|
 			| survey  	 | address 			|
 			| survey  	 | password 		|
-
 			| form  	 | date     		|
 			| form  	 | multiple_choice 	|
 			| form  	 | short_text 		|
@@ -56,7 +67,6 @@ Feature: Managing the custom intro page
 			| form  	 | us_address 		|
 			| form  	 | address 			|
 			| form  	 | password 		|
-
 			| quiz 	  	 | date     		|
 			| quiz 	  	 | multiple_choice 	|
 			| quiz 	  	 | short_text 		|
@@ -64,6 +74,5 @@ Feature: Managing the custom intro page
 			| quiz 	  	 | ranking 			|
 			| quiz 	  	 | numeric 			|
 			| quiz 	  	 | image 			|
-
 			| checklist  | checklist 		|
 			| nps  		 | nps 				|

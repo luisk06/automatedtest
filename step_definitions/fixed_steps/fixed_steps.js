@@ -11,7 +11,7 @@ module.exports = function() {
 		us.isLogged().then(function() {
 			//user.waits(5000);
 			apps.createNewApp().then(function(appData){
-				console.log('appData', appData);
+				logger.log('appData', appData);
 				appID = appData.appid;
 				appNAME = appData.name;
 				appDESCRIPTION = appData.description;

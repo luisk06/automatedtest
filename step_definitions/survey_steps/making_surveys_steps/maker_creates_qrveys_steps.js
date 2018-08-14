@@ -53,7 +53,7 @@ module.exports = function() {
 	});
 
 	Given(/^that the user clicks on create qrvey and assigns a name and description$/, function(cb) {
-		user.createsQrvey().then(cb);
+		user.createsWebform().then(cb);
 	});
 
 	When(/^the user clicks Yes on templates notification$/, function(cb) {
