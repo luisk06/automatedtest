@@ -1,22 +1,26 @@
 'use strict';
 
-var Taker = function () {};
+const util = require('util');
+const Userb = require('./userb');
 
-Taker.prototype = userb.prototype;
-Taker.prototype.constructor = Taker;
+var Taker = function () {
+	Userb.call(this);
+};
+
+util.inherits(Taker, Userb);
 
 Taker.prototype.answerAll = function (rightAnswers) {
 	var defer = protractor.promise.defer();
 	var idx = 0;
-	var _this = this;
+	var self = this;
 
 	rightAnswers = (typeof rightAnswers !== 'undefined') ? rightAnswers : true;
 
 	async.during(function (cb) {
 
-		_this.waits(400);
+		self.waits(400);
 
-		_this.findsAll('.spec-user-response-ok').get(idx).isDisplayed().then(function (_isDisplayed) {
+		self.findsAll('.spec-user-response-ok').get(idx).isDisplayed().then(function (_isDisplayed) {
 			logger.warn('Displayed:', _isDisplayed);
 			return cb(null, _isDisplayed);
 		}).catch(function (err) {
@@ -32,11 +36,11 @@ Taker.prototype.answerAll = function (rightAnswers) {
 
 		logger.info('IDX', idx);
 
-		_this.getTypeQuestionOnTaker(idx).then(function (_type) {
+		self.getTypeQuestionOnTaker(idx).then(function (_type) {
 			logger.info('type', _type);
 
-			if (rightAnswers) return _this.choicesRightAnswer(_type, idx);
-			else return _this.choicesRandomAnswer(_type, idx);
+			if (rightAnswers) return self.choicesRightAnswer(_type, idx);
+			else return self.choicesRandomAnswer(_type, idx);
 		}).then(function () {
 
 			idx++;
@@ -103,7 +107,7 @@ Taker.prototype.answersEmailQuestion = function () {
 
 Taker.prototype.answersExpressionQuestion = function () {
 	var el = '.spec-expression-word-check';
-	var _this = this;
+	var self = this;
 	this.waitsForPresence(el);
 
 	return this.findsAll('.spec-expression-word-check').count().then(function (_count) {
@@ -113,7 +117,7 @@ Taker.prototype.answersExpressionQuestion = function () {
 			float: false
 		});
 		logger.log('index:', index);
-		_this.findsAll('.spec-expression-word-check').get(index).click();
+		self.findsAll('.spec-expression-word-check').get(index).click();
 	});
 };
 
@@ -132,7 +136,7 @@ Taker.prototype.answersExpressionWithCategoriesQuestion = function () {
 	el2 = '.expression-words:nth-child(' + (index == 0 ? 'odd' : 'even') + ') .word-check';
 
 	this.waitsFor(el2);
-	var _this = this;
+	var self = this;
 
 	return this.findsAll(el2).count().then(function (_count) {
 		num = rand.getNumber({
@@ -140,7 +144,7 @@ Taker.prototype.answersExpressionWithCategoriesQuestion = function () {
 			max: (_count > 1) ? _count - 1 : 1,
 			float: false
 		});
-		_this.findsAll(el2).get(num).click();
+		self.findsAll(el2).get(num).click();
 	});
 };
 
@@ -483,13 +487,13 @@ Taker.prototype.answersYesNoQuestion = function () {
 };
 
 Taker.prototype.choicesAnswer = function (_type) {
-	var _this = this;
+	var self = this;
 
 	if (_type == 'multiple') return this.finds('.spec-multiple-choise-option-0').click();
 	else if (_type == 'no' || _type == 'yes') {
 		var _el = '.spec-answer-yesno-question-option-' + _type;
 		return this.finds(_el).click().then(function () {
-			expect(_this.finds(_el).getAttribute('checked')).to.eventually.be.equal('true');
+			expect(self.finds(_el).getAttribute('checked')).to.eventually.be.equal('true');
 		});
 	} else throw new Error('Error, It doesnt exists it parameter');
 };
@@ -651,7 +655,7 @@ Taker.prototype.finish = function (_confirm) {
 		this.waits('.spec-done-submit-take-qrvey');
 		this.finds('.spec-done-submit-take-qrvey').click().then(function () {
 			skipSync(false);
-			return _this.waits(2000);
+			return self.waits(2000);
 		});
 	} else if (_confirm === false) {
 		this.finds('.spec-failed-submit-take-qrvey').click();
@@ -712,11 +716,11 @@ Taker.prototype.touchStarts = function () {
 
 Taker.prototype.touchsMultipleAnswers = function (numberOfAnswers) {
 	var deferred = protractor.promise.defer();
-	var _this = this;
+	var self = this;
 
 	async.times(numberOfAnswers, function (n, next) {
-		_this.finds('.spec-multiple-choise-option-multi-' + n).click();
-		_this.waits(500).then(function () {
+		self.finds('.spec-multiple-choise-option-multi-' + n).click();
+		self.waits(500).then(function () {
 			next();
 		});
 	}, function () {

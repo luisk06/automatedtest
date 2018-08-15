@@ -1,5 +1,7 @@
 'use strict';
 
+const chance = require('chance').Chance();
+
 var Random = function() {
 	this.getEmail = function(_domain) {
 		return 'testingqrvey+' + chance.email((typeof _domain !== 'undefined') ? _domain : {

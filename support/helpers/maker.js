@@ -1,9 +1,13 @@
 'use strict';
 
-var Maker = function () {};
+const util = require('util');
+const Userb = require('./userb');
 
-Maker.prototype = userb.prototype;
-Maker.prototype.constructor = Maker;
+var Maker = function () {
+	Userb.call(this);
+};
+
+util.inherits(Maker, Userb);
 
 Maker.prototype.actionSearch = function () {
 	this.finds('.spec_search_input').sendKeys(protractor.Key.ENTER);
@@ -78,7 +82,7 @@ Maker.prototype.addImageTitles = function () {
 			i = n + 1;
 			_title = rand.getText(maxNum);
 
-			_this.finds('.spec-design-image-title-' + i).sendKeys(_title).getAttribute('value').then(function (_text) {
+			self.finds('.spec-design-image-title-' + i).sendKeys(_title).getAttribute('value').then(function (_text) {
 				logger.log('text1', _title);
 				logger.log('text2', _text);
 
@@ -131,19 +135,19 @@ Maker.prototype.addsNewQuestion = function () {
 
 Maker.prototype.buildQuestion = function (type) {
 	var defer = protractor.promise.defer();
-	var _this = this;
+	var self = this;
 
 	if (type !== 'checklist' && type !== 'nps') {
 		this.selectQuestionFromDropdown(type).then(function () {
-			return _this.isQuizOnMaker();
+			return self.isQuizOnMaker();
 		}).then(function (_isQuizOnMaker) {
-			return _this.createsQuestionByType(type, _isQuizOnMaker);
+			return self.createsQuestionByType(type, _isQuizOnMaker);
 		}).then(function () {
 			defer.fulfill();
 		});
 	} else {
 		this.isQuizOnMaker().then(function (_isQuizOnMaker) {
-			return _this.createsQuestionByType(type, _isQuizOnMaker);
+			return self.createsQuestionByType(type, _isQuizOnMaker);
 		}).then(function () {
 			defer.fulfill();
 		});
@@ -222,7 +226,7 @@ Maker.prototype.createsDateQuestion = function (params = {}) {
 
 	qrvey.questionType('spec_da_qt');
 	return this.createsTitleForQuestion().then(function () {
-		return _this.clicksOutside();
+		return self.clicksOutside();
 	});
 };
 
@@ -230,7 +234,7 @@ Maker.prototype.createsDropdownQuestion = function () {
 	qrvey.questionType('spec_dr_qt');
 
 	return this.createsTitleForQuestion().then(function () {
-		return _this.createOptionsDropdown();
+		return self.createOptionsDropdown();
 	});
 };
 
@@ -243,7 +247,7 @@ Maker.prototype.createsExpressionQuestion = function () {
 
 Maker.prototype.createsImageQuestion = function (params = {}) {
 	var deferred = protractor.promise.defer(),
-		_this = this,
+		self = this,
 		count = 0;
 
 	if (typeof params.typeOfInput === 'undefined') params.typeOfInput = 'url';
@@ -251,13 +255,13 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 	this.createsTitleForQuestion();
 
 	async.during(function (cb) {
-		_this.finds('.spec-add-option-image-question').isDisplayed().then(function (_displayed) {
+		self.finds('.spec-add-option-image-question').isDisplayed().then(function (_displayed) {
 			return cb(null, _displayed);
 		}).catch(function () {
 			return cb(null, false);
 		});
 	}, function (next) {
-		_this.finds('.spec-add-option-image-question').click();
+		self.finds('.spec-add-option-image-question').click();
 		next();
 	}, function (err) {
 		if (err) throw new Error(err);
@@ -265,7 +269,7 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 
 	var n = 0;
 
-	_this.findsAll('.spec-image-upload-option-url').count().then(function (_count) {
+	self.findsAll('.spec-image-upload-option-url').count().then(function (_count) {
 		count = _count;
 
 		logger.log('params.typeOfInput', params.typeOfInput);
@@ -277,29 +281,29 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 
 			async.times(count, function (n, next) {
 				var _url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
-				var el = _this.finds('.spec-image-upload-option-url-' + n);
+				var el = self.finds('.spec-image-upload-option-url-' + n);
 
 				el.click();
 
-				_this.finds('.spec-design-modal-image-url').clear().sendKeys(_url).getAttribute('value').then(function (_value) {
+				self.finds('.spec-design-modal-image-url').clear().sendKeys(_url).getAttribute('value').then(function (_value) {
 					expect(_value).to.be.equal(_url);
 
-					_this.finds('.spec-design-modal-done-button').click().then(function () {
-						return _this.waits(500);
+					self.finds('.spec-design-modal-done-button').click().then(function () {
+						return self.waits(500);
 					}).then(function () {
 						if (params.isQuiz) {
-							return _this.findsAll('.spec-quiz-right-answer + input:not(.spec-quiz-right-answer)').get(n).sendKeys(
+							return self.findsAll('.spec-quiz-right-answer + input:not(.spec-quiz-right-answer)').get(n).sendKeys(
 								rand.getWord(5)
 							);
 						} else {
-							return _this.findsAll('.label-container input').get(n).sendKeys(
+							return self.findsAll('.label-container input').get(n).sendKeys(
 								rand.getWord(5)
 							);
 						}
 					}).then(function () {
 						logger.log('Finish log');
 
-						_this.waits(500);
+						self.waits(500);
 						logger.log('i', n);
 						next();
 					});
@@ -318,7 +322,7 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 			// scrollIntoElement(el, function () {
 			// 	// scrollAxisY(num.toString());
 			// 	el.click();
-			// 	_this.waits(100);
+			// 	self.waits(100);
 			// 	n++;
 
 			// 	next();
@@ -346,18 +350,18 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 
 	// 		async.eachSeries(gArray(num), function (n, next) {
 
-	// 			var _el = _this.finds('.spec-design-modal-image-url');
+	// 			var _el = self.finds('.spec-design-modal-image-url');
 	// 			var _url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
-	// 			var el = _this.finds('.spec-image-upload-option-url-' + i);
+	// 			var el = self.finds('.spec-image-upload-option-url-' + i);
 	// 			el.click();
 
 	// 			_el.clear().sendKeys(_url).getAttribute('value').then(function (_value) {
 	// 				expect(_value).to.be.equal(_url);
 
-	// 				_this.finds('.spec-design-modal-done-button').click().then(function () {
+	// 				self.finds('.spec-design-modal-done-button').click().then(function () {
 	// 					logger.log('Finish log');
 
-	// 					_this.waits(500);
+	// 					self.waits(500);
 	// 					logger.log('i', i);
 	// 					i++;
 	// 				}).then(function () { next(); });
@@ -378,18 +382,18 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 
 	// 	this.findsAll('.spec-image-upload-option-desktop').count().then(function (num) {
 	// 		async.times(num, function (i, next) {
-	// 			var _el = _this.finds('.spec-image-upload-option-desktop-' + i); //start in 0
+	// 			var _el = self.finds('.spec-image-upload-option-desktop-' + i); //start in 0
 	// 			logger.log('i', i);
 	// 			logger.log(absolutePath);
 
 	// 			_el.sendKeys(absolutePath);
 	// 			var _ele = element.all(by.css('.image-container img')).get(i);
 
-	// 			_this.waitsElementPresence(_ele);
+	// 			self.waitsElementPresence(_ele);
 
 	// 			_ele.getAttribute('src').then(function (_text) {
 	// 				expect(_text).to.not.be.equal('');
-	// 				_this.waits(900);
+	// 				self.waits(900);
 	// 				next();
 	// 			});
 	// 		}, function (err) {
@@ -421,22 +425,22 @@ Maker.prototype.createsListOptions = function (type) {
 	var _type = (typeof type === 'undefined') ? 'multichoice' : type;
 
 	async.during(function (cb) {
-		hasClass(_this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
+		hasClass(self.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
 			logger.log('val', !_val);
 			return cb(null, !_val);
 		});
 	}, function (next) {
-		_this.waits(400);
-		_this.findsAll('.icon.q-icon-add').last().click().then(function () {
+		self.waits(400);
+		self.findsAll('.icon.q-icon-add').last().click().then(function () {
 			i++;
 			next();
 		});
 	});
 
 	var el = null;
-	_this.findsAll('.icon.q-icon-add').count().then(function (_count) {
+	self.findsAll('.icon.q-icon-add').count().then(function (_count) {
 		async.times(_count, function (n, next) {
-			el = _this.finds('.spec-' + _type + '-option-' + (n + 1));
+			el = self.finds('.spec-' + _type + '-option-' + (n + 1));
 			scrollIntoElement(el);
 			el.sendKeys('Option ' + (n + 1)).then(function () {
 				next();
@@ -450,12 +454,12 @@ Maker.prototype.createsListOptions = function (type) {
 };
 
 Maker.prototype.createsMultiChoiceTypeQuestion = function (params = {}) {
-	var _this = this;
+	var self = this;
 
 	if (params.isQuiz) this.finds('.answer .right-answer input').first().click();
 
 	return this.createsTitleForQuestion().then(function () {
-		return _this.createsListOptions('multichoice');
+		return self.createsListOptions('multichoice');
 	});
 };
 
@@ -653,7 +657,7 @@ Maker.prototype.createsRankingQuestion = function (params = {}) {
 	qrvey.questionType('spec_rn_qt');
 
 	return this.createsTitleForQuestion().then(function () {
-		return _this.createsListOptions('ranking');
+		return self.createsListOptions('ranking');
 	});
 };
 
@@ -663,10 +667,10 @@ Maker.prototype.createsRatingQuestion = function () {
 };
 
 Maker.prototype.createsSectionQuestion = function () {
-	var _this = this;
+	var self = this;
 
 	return this.createsTitleForQuestion().then(function () {
-		return _this.createsListOptions('multichoice');
+		return self.createsListOptions('multichoice');
 	});
 };
 
@@ -795,15 +799,15 @@ Maker.prototype.fillExpressionQuestionFromId = function (number, title) {
 Maker.prototype.fillImageQuestionFromId = function (number, title) {
 	var locatorQuestionContainer = '.spec-question-container-';
 	var questionContainer = this.finds(locatorQuestionContainer + number);
-	var _this = this;
+	var self = this;
 
 	var i = 0;
 	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function () {
 		return questionContainer.all(by.css('.spec-image-upload-option-url')).each(function () {
-			_this.waits(890);
+			self.waits(890);
 			questionContainer.element(by.css('.spec-image-upload-option-url-' + i)).click();
 
-			var _el = _this.finds('.spec-design-modal-image-url');
+			var _el = self.finds('.spec-design-modal-image-url');
 			var _url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
 
 			_el.clear().sendKeys(_url).then(function () {
@@ -811,7 +815,7 @@ Maker.prototype.fillImageQuestionFromId = function (number, title) {
 			}).then(function (_value) {
 				expect(_value).to.be.equal(_url);
 			}).then(function () {
-				_this.finds('.spec-design-modal-done-button').click();
+				self.finds('.spec-design-modal-done-button').click();
 			});
 
 			i++;
@@ -836,18 +840,18 @@ Maker.prototype.fillMultipleChoiceQuestionFromId = function (number, title) {
 };
 
 Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey) {
-	var _this = this;
+	var self = this;
 
 	return this.finds('.spec_title_description').click().then(function () {
 		scrollToTop();
 
-		_this.finds('.spec_editing_title_description input').clear().sendKeys(
+		self.finds('.spec_editing_title_description input').clear().sendKeys(
 			rand.getParagraph(2)
 		).getAttribute('value').then(function (_val) {
 			expect(_val.length).to.be.equal(36);
 		});
 
-		_this.finds('.spec_editing_title_description textarea').clear().sendKeys(
+		self.finds('.spec_editing_title_description textarea').clear().sendKeys(
 			rand.getParagraph(10)
 		).getAttribute('value').then(function (_val) {
 			expect(_val.length).to.be.equal(176);
@@ -856,20 +860,20 @@ Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey
 	}).then(function () {
 		if (typeQrvey == 'quiz' || typeQrvey == 'survey' || typeQrvey == 'forms') {
 			if (typeQrvey == 'survey') {
-				_this.finds('.question-preview-mode').click();
-			} else _this.finds('.spec_edit_question_overlay').click();
+				self.finds('.question-preview-mode').click();
+			} else self.finds('.spec_edit_question_overlay').click();
 		}
 
 		if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
-			_this.waits(1300);
+			self.waits(1300);
 			user.finds('.spec-question-title').click();
 		}
 
 		var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
 
-		if (typeQrvey == 'nps') _this.waits(300);
+		if (typeQrvey == 'nps') self.waits(300);
 
-		_this.finds(clickQuestionName).click();
+		self.finds(clickQuestionName).click();
 	});
 };
 

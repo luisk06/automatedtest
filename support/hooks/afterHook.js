@@ -16,7 +16,7 @@ module.exports = function TakeScreenshot() {
 		if (env != 'browserstack' && scenario.isFailed()) takeScreenshot(scenario, callback);
 		else takeScreenshot(scenario, callback);
 
-		scenario.attach(user.validUser());
+		scenario.attach(user.getSetting('validUser'));
 	});
 };
 

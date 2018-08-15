@@ -21,13 +21,12 @@ global.async = require('async');
 global.dropFile = require('./helpers/drop-file.js');
 
 // NewOnes
-global.userb = require('./helpers/userb');
 global.webpage = require('./helpers/webpage');
 global.taker = require('./helpers/taker');
 global.maker = require('./helpers/maker');
+console.log('taker root', taker);
 
 // Random Answers Module
-global.chance = require('chance').Chance();
 global.rand = require('./helpers/random');
 
 //New
