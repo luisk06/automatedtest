@@ -15,5 +15,5 @@ Feature: The user adds text
 			And the user created the "checklist"
 		When the user add a text
 			And the user fills text body
-			And the user clicks on design button
+			And the user clicks outside the checklist section
 		Then the text is saved
