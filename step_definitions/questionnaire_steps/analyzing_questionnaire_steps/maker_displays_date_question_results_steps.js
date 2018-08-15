@@ -39,14 +39,14 @@ module.exports = function() {
 	});
 
 	When(/^the first result must be "([^"]*)"$/, function(result, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element.all(by.css('.dx-data-row td')).get(0).getText().then(function(_value) {
 			expect(_value).to.be.equal(result);
 		}).then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" option of analyze section$/, function(section, cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 		if (section == 'edit') {
 			element(by.css('.form-edit')).click().then(cb);
 		} else {
@@ -64,7 +64,7 @@ module.exports = function() {
 
 	When(/^the user clicks aggregate menu$/, function(cb) {
 		user.finds('body').click();
-		user.waits(2000);
+		webpage.waits(2000);
 
 		var el = '.dx-dropdowneditor-button.dx-button-normal.dx-widget';
 
@@ -77,15 +77,15 @@ module.exports = function() {
 	});
 
 	When(/^the user hits the count option$/, function(cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 		browser.actions().mouseMove(element(by.css('.dx-texteditor-buttons-container')), {x:20,y:30}).click().perform();
-		user.waits(2500).then(function () {
+		webpage.waits(2500).then(function () {
 			cb(); // Should be thus
 		});
 	});
 
 	Then(/^the user can see the number of answers$/, function(cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 
 		element.all(by.css('.dx-data-row')).count().then(function(num){
 			expect(element(by.xpath('//div[contains(text(),\'Count:\')]')).getText()).to.eventually.be.equal('Count: '+num).and.notify(cb);

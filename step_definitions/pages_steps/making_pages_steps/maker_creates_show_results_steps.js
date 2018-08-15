@@ -5,7 +5,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user delete all the pages$/, function (cb) {
-		user.waits(500).then(function(){
+		webpage.waits(500).then(function(){
 			user.findsAll('.pages-list li').count().then(function(num) {
 				logger.log('Elementos----', num);
 

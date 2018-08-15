@@ -24,7 +24,7 @@ module.exports = function() {
 	});
 
 	When(/^the user enter to config page$/, function(cb) {
-		user.navTo('/configuration').then(cb);
+		webpage.navTo('/configuration').then(cb);
 	});
 
 	When(/^clicks on Stripe Connect button$/, function(cb) {

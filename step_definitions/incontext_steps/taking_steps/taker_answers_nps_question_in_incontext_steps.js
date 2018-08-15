@@ -30,7 +30,7 @@ module.exports = function() {
 					x: -400,
 					y: 0
 				}).mouseUp().perform().then(function(){
-					user.waits(800);
+					webpage.waits(800);
 				}).then(cb);
 			} else if (typeOfQuestion == 'short_text') {
 				element(by.css('.textfield-area')).sendKeys('Texto..').then(cb);

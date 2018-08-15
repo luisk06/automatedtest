@@ -866,7 +866,7 @@ Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey
 
 		if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
 			self.waits(1300);
-			user.finds('.spec-question-title').click();
+			self.finds('.spec-question-title').click();
 		}
 
 		var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
@@ -999,8 +999,8 @@ Maker.prototype.getQuestionType = function () {
 Maker.prototype.getTypeQuestionOnTaker = function (idx) {
 	var defer = protractor.promise.defer();
 
-	user.waits(500);
-	user.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
+	webpage.waits(500);
+	this.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
 		defer.fulfill(_type);
 	});
 
@@ -1027,6 +1027,11 @@ Maker.prototype.getsTotal = function (_repeat) { // 'question in qrveyObject'
 
 Maker.prototype.getsTotalByCss = function (_class) {
 	return this.findsAll(_class).count();
+};
+
+Maker.prototype.goToTaken = function () {
+	this.waits(2000);
+	return this.finds('.spec_taken_qrveys_button').click();
 };
 
 Maker.prototype.isQuizOnMaker = function () {

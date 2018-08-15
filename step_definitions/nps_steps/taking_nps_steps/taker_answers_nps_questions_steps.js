@@ -12,7 +12,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'nps', 'nps');
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 

@@ -5,9 +5,9 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user filter "([^"]*)" responses$/, function (checkType, cb) {
-		user.waits(500).then(function() {
+		webpage.waits(500).then(function() {
 			user.finds('.checklist-responses-filter .spec-filter-analyze-histogram').click().then(function() {
-				user.waits(800).then(function(){
+				webpage.waits(800).then(function(){
 					user.finds('.spec-filter-'+checkType).click().then(cb);
 				});
 			});
@@ -36,7 +36,7 @@ module.exports = function() {
 	});
 
 	Then(/^the total of "([^"]*)" answers should be (\d+)$/, function (typeOfView, num, cb) {
-		user.waits(500).then(function() {
+		webpage.waits(500).then(function() {
 			brw.executeScript('window.scrollTo(0,0);').then(function() {
 				user.finds('.spec-filter-analyze').click().then(function() {
 					user.finds('#spec-panelview-' + typeOfView).click();

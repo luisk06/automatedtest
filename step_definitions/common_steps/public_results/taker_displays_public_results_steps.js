@@ -10,7 +10,7 @@ module.exports = function () {
 		var qrveyID = configer.get('QrveyId');
 		prs.getPublicResultsURL(qrveyID).then(function (data) {
 			logger.log('data', data);
-			user.openUrl(data.url).then(cb);
+			webpage.openUrl(data.url).then(cb);
 		});
 	});
 
@@ -38,7 +38,7 @@ module.exports = function () {
 	});
 
 	When(/^the user waits (\d+) seconds$/, function (seconds, cb) {
-		user.waits(seconds * 1000);
+		webpage.waits(seconds * 1000);
 		cb();
 	});
 };

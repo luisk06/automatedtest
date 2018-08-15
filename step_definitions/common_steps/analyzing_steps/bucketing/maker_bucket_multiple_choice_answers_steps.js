@@ -11,7 +11,7 @@ module.exports = function() {
 		if (typeOfQrvey == 'incontextfeedback') {
 			index = i - 1;
 		}
-		user.waits(600).then(function() {
+		webpage.waits(600).then(function() {
 			var _element = user.findsAll('.spec_' + btn + '_' + i).get(index);
 			_element.click().then(cb);
 		});
@@ -24,7 +24,7 @@ module.exports = function() {
 		if (typeOfQrvey == 'incontextfeedback') {
 			index = i - 1;
 		}
-		user.waits(600).then(function() {
+		webpage.waits(600).then(function() {
 			element(by.css('.spec-download-drop')).click().then(function(){
 				var _element = user.findsAll('.spec_bucket_button_' + i).get(index);
 				_element.click().then(cb);
@@ -69,9 +69,9 @@ module.exports = function() {
 		for (var i = 0; i < numberOfQuestions; i++) {
 			var answer = user.findsAll('.spec-bucket-answer').get(0);
 			answer.element(by.css('.spec-bucket-select')).click().then(function() {
-				user.waits(500).then(function() {
+				webpage.waits(500).then(function() {
 					answer.all(by.repeater('(k, v) in buckets')).get(bucketNumber - 1).click().then(function() {
-						user.waits(1000);
+						webpage.waits(1000);
 					});
 				});
 			});
@@ -80,7 +80,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on "([^"]*)" "([^"]*)"$/, function(identifier, tagType, cb) {
-		user.waits(500);
+		webpage.waits(500);
 		user.finds('.spec_' + identifier + '_' + tagType).click().then(cb);
 	});
 
@@ -90,7 +90,7 @@ module.exports = function() {
 	});
 
 	Then(/^the total of "([^"]*)" should be (\d+)$/, function(type, number, cb) {
-		user.waits(5000);
+		webpage.waits(5000);
 		expect(element.all(by.css('.spec-' + type)).count()).to.eventually.be.equal(parseInt(number)).and.notify(cb);
 	});
 
@@ -105,7 +105,7 @@ module.exports = function() {
 	});
 
 	Then(/^the total of bucket label should be (\d+)$/, function(number, cb) {
-		user.waits(1400);
+		webpage.waits(1400);
 		expect(element.all(by.css('.bucket_label')).count()).to.eventually.be.equal(parseInt(number)).and.notify(cb);
 	});
 };

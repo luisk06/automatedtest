@@ -25,7 +25,7 @@ module.exports = function() {
 				maker.createsRatingQuestion(_title).then(cb);
 				break;
 			case 'short_text':
-				user.createsTextFiledQuestion(_title).then(cb);
+				maker.createsTextFiledQuestion(_title).then(cb);
 				break;
 			case 'short-text':
 				maker.createsShortTextFiledQuestion(_title).then(cb);
@@ -92,7 +92,7 @@ module.exports = function() {
 	});
 
 	Then(/^all the question are deletes$/, function(cb) {
-		user.waits(600);
+		webpage.waits(600);
 		maker.getsTotal('q in fav_questions').then(function(_count) {
 			expect(_count).to.be.equal(0);
 		}).then(cb);

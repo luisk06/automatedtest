@@ -13,25 +13,25 @@ module.exports = function () {
 					case 'bar':
 						as.createAnswersForBarChartBuilder(_userId, typeOfQrvey, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 					case 'word-cloud':
 						as.createAnswersForWordCloudChartBuilder(_userId, typeOfQrvey, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 					case 'line':
 						as.createAnswersForLineChartBuilder(_userId, typeOfQrvey, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 					case 'symbol':
 						as.createAnswersForSymbolChartBuilder(_userId, typeOfQrvey, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 				}
@@ -57,7 +57,7 @@ module.exports = function () {
 
 	When(/^the user selects "([^"]*)" from "([^"]*)" dropdown$/, function (questionType, dropdownType, cb) {
 		element(by.css('qv-dropdown.spec_bar_' + dropdownType + '_dropdown > div > span')).click().then(function () {
-			user.waits(2000);
+			webpage.waits(2000);
 			var option = element(by.xpath("//qv-dropdown[contains(@class, 'spec_bar_" + dropdownType + "_dropdown')]//div[contains(@class, 'options')]//span[normalize-space(text()) = '" + questionType + "']"));// eslint-disable-line
 			scrollIntoElement(option).then(function(){
 				option.click().then(cb);
@@ -66,14 +66,14 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks on save chart button$/, function (cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 		element(by.css('.spec_save_chart_button')).click().then(function(){
-			user.waits(2000);
+			webpage.waits(2000);
 		}).then(cb);
 	});
 
 	Then(/^a custom panel should be displayed with "([^"]*)" as title$/, function (chartTitle, cb) {
-		user.waits(1300);
+		webpage.waits(1300);
 
 		var chart = element(by.css('.spec-panel-custom-chart'));
 
@@ -136,7 +136,7 @@ module.exports = function () {
 	});
 
 	Then(/^the "([^"]*)" axis label should be "([^"]*)"$/, function (axis, text, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 
 		element(by.css('.spec-' + axis + '-axis-label')).getText().then(function (_text) {
 			expect(_text).to.be.equal(text);
@@ -144,7 +144,7 @@ module.exports = function () {
 	});
 
 	Then(/^the "([^"]*)" axis pivot label should be "([^"]*)"$/, function (axis, text, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 
 		element(by.css('.spec-' + axis + '-axis-label')).getText().then(function (_text) {
 			if (text == 'Yes-No') expect(_text).to.be.equal('Yes/No');
@@ -153,7 +153,7 @@ module.exports = function () {
 	});
 
 	Then(/^the "([^"]*)" axis label should not appear$/, function (axis, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 
 		element(by.css('.spec-'+axis+'-axis-label')).getText().then(function(_text){
 			expect(_text).to.be.equal('');
@@ -170,7 +170,7 @@ module.exports = function () {
 		element.all(by.css('.spec-box-whisker-value line + rect:not([height="0"])')).each(function(_box, index){
 			brw.actions().mouseMove(_box).perform().then(function () {
 				console.log('index', index);
-				user.waits(1000);
+				webpage.waits(1000);
 				expect(element(by.css('.custom-chart-tooltip')).isDisplayed()).to.be.eventually.true;
 			});
 		}).then(cb);

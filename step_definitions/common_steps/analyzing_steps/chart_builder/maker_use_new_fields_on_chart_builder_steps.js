@@ -13,19 +13,19 @@ module.exports = function () {
 					case 'survey':
 						mas.createAnswersForSurvey(_userId, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 					case 'forms':
 						mas.createAnswersForForms(_userId, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 					case 'quiz':
 						mas.createAnswersForQuiz(_userId, num).then(function (data) {
 							logger.log('qrveys.data', data);
-							user.waits(5000);
+							webpage.waits(5000);
 						}).then(cb);
 						break;
 				}

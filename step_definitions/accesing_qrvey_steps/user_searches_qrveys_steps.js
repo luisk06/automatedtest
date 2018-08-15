@@ -16,7 +16,7 @@ module.exports = function() {
 		}).then(function() {
 			return maker.createsMultiChoiceTypeQuestion(_title);
 		}).then(function() {
-			return user.createsMultiChoiceOptions();
+			return maker.createsListOptions('multichoice');
 		}).then(function() {
 			return maker.clicksOutside();
 		}).then(function() {
@@ -41,7 +41,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on taken qrveys button$/, function(cb) {
-		user.goToTaken().then(cb);
+		maker.goToTaken().then(cb);
 	});
 
 	When(/^the user inputs a query in the search field that matches with a taken qrvey$/, function(cb) {

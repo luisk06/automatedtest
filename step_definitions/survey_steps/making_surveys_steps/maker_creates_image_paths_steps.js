@@ -26,7 +26,7 @@ module.exports = function() {
 			user.findsAll('.spec-image-upload-option-desktop').each(function() {
 				user.finds('.spec-image-upload-option-desktop-' + i).sendKeys(absolutePath).getAttribute('value').then(function(_text) {
 					expect(_text.slice(12, _text.length)).to.be.equal('google.png');
-					user.waits(500);
+					webpage.waits(500);
 				});
 
 				i++;

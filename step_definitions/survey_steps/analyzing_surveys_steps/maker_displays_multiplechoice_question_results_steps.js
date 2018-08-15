@@ -12,7 +12,7 @@ module.exports = function() {
 				appID = appData.appid;
 				as.createAnswers(_userId, typeOfQrvey, typeOfQuestion, num).then(function(_data) {
 					logger.log('qrveys.data', _data);
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});

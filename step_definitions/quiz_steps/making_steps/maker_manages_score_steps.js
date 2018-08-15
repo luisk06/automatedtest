@@ -90,7 +90,7 @@ module.exports = function () {
 			logger.info('questions', model.questions);
 			return qs.activate(appID, configer.get('QrveyId'), JSON.stringify(model));
 		}).then(function (resp) {
-			return user.openUrl(resp.url);
+			return webpage.openUrl(resp.url);
 		}).then(function () {
 			cb();
 		});

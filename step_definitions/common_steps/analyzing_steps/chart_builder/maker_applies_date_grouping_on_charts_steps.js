@@ -30,7 +30,7 @@ module.exports = function () {
 	};
 
 	Then(/^the x asis labels should match with "([^"]*)" date group$/, function (dateGroup, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var _answersArray = getDateLabels(dateGroup);
 
 		element.all(by.css('.spec-text-labels g')).each(function(label){
@@ -41,7 +41,7 @@ module.exports = function () {
 	});
 
 	Then(/^the pie texts should match with "([^"]*)" date group labels$/, function (dateGroup, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var _answersArray = getDateLabels(dateGroup);
 
 		element.all(by.css('.spec-piechart-graph g.fan')).each(function(label){
@@ -52,7 +52,7 @@ module.exports = function () {
 	});
 
 	Then(/^the heatmap labels should match with "([^"]*)" date group labels$/, function (dateGroup, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var _answersArray = getDateLabels(dateGroup);
 
 		element.all(by.css('.spec-heatmap-label')).each(function(label){

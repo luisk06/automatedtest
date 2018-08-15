@@ -17,9 +17,9 @@ module.exports = function() {
 	});
 
 	When(/^the user open the project url$/, function (cb) {
-		user.waits(1000);
+		webpage.waits(1000);
 		element(by.css('.project-url a')).getText().then(function(_url){
-			user.openUrl(_url).then(cb);
+			webpage.openUrl(_url).then(cb);
 		});
 
 	});

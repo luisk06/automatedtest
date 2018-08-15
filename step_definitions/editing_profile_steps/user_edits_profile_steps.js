@@ -24,7 +24,7 @@ module.exports = function() {
 		});
 
 		user_login.login(email, '123456').then(function() {
-			user.waits(2000);
+			webpage.waits(2000);
 		}).then(cb);
 	});
 
@@ -84,8 +84,8 @@ module.exports = function() {
 	Then(/^the new password should be changed$/, function(cb) {
 		webpage.deleteAllCookies();
 		webpage.goTo('/');
-		console.log('userEmail', user.validUser());
-		user_login.login(user.validUser(), newPass);
+		console.log('userEmail', user.getSetting('validUser'));
+		user_login.login(user.getSetting('validUser'), newPass);
 		expect(webpage.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
 	});
 
@@ -96,7 +96,7 @@ module.exports = function() {
 
 		webpage.deleteAllCookies();
 		webpage.goTo('/');
-		user_login.login(user.validUser(), oldPass);
+		user_login.login(user.getSetting('validUser'), oldPass);
 
 		expect(webpage.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
 	});

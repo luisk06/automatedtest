@@ -96,7 +96,7 @@ module.exports = function() {
 			return qs.createQrvey(appID, _userId, typeOfQrvey, typeOfQuestion, 'active', options, extraOptions);
 		}).then(function(_data) {
 			logger.log('qrveys.data', _data);
-			user.waits(5000);
+			webpage.waits(5000);
 		}).then(cb);
 	});
 

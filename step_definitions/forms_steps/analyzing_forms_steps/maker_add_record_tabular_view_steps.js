@@ -24,7 +24,7 @@ module.exports = function () {
 
 	When(/^the user clicks the "([^"]*)" button to confirm$/, function (button, cb) {
 		if (button == 'add') {
-			user.waits(5000).then(function () {
+			webpage.waits(5000).then(function () {
 				brw.switchTo().defaultContent();
 				element(by.css('.spec_apply_filter_button')).click().then(cb);
 			});
@@ -40,7 +40,7 @@ module.exports = function () {
 	});
 
 	Then(/^the table should have (\d+) records$/, function (rows, cb) {
-		user.waits(5000);
+		webpage.waits(5000);
 
 		brw.enterRepl();
 
@@ -52,7 +52,7 @@ module.exports = function () {
 	});
 
 	Then(/^the table should be empty$/, function (cb) {
-		user.waits(5000).then(function () {
+		webpage.waits(5000).then(function () {
 			element.all(by.css('.dx-data-row td')).count().then(function (num) {
 				expect(num.toString()).to.be.equal('0');
 			}).then(cb);
@@ -60,21 +60,21 @@ module.exports = function () {
 	});
 
 	When(/^the user close the modal in analyze$/, function (cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 		user.finds('.AN-close-modal').click().then(cb);
 	});
 
 	When(/^the user closes the modal in analyze$/, function (cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		browser.actions().mouseMove(element(by.css('.AN-close-modal'))).click().perform();
-		user.waits(500).then(cb);
+		webpage.waits(500).then(cb);
 
 	});
 
 	Then(/^the modal should not be hidden$/, function (cb) {
 		var el = '.spec_apply_filter_button';
 
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			element(by.css(el)).isDisplayed().then(function (_isdisplayed) {
 				// console.log('Is displayed');
 				expect(_isdisplayed).to.be.true;

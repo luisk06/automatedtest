@@ -71,13 +71,13 @@ module.exports = function() {
 
 	When(/^the user clicks on select entries$/, function(cb) {
 		element(by.css('.spec-google-select-entries-button')).click().then(function() {
-			user.waits(600);
+			webpage.waits(600);
 		}).then(cb);
 	});
 
 	When(/^the user clicks on test$/, function(cb) {
 		element(by.css('.spec-webhook-test-button')).click().then(function() {
-			user.waits(600);
+			webpage.waits(600);
 		}).then(cb);
 	});
 
@@ -119,7 +119,7 @@ module.exports = function() {
 	});
 
 	Then(/^the numbers of rows should be (\d+)$/, function(num, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element.all(by.css('.spec-lookup-row-container')).count().then(function(_value) {
 			expect(_value).to.be.equal(parseInt(num));
 		}).then(cb);

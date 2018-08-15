@@ -7,7 +7,7 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user clicks on AddCondition$/, function (cb) {
-		user.waits(300);
+		webpage.waits(300);
 		user.findsXpath('//span[contains(text(),"+ Add Condition")]').click().then(cb);
 	});
 
@@ -25,7 +25,7 @@ module.exports = function () {
 	});
 
 	When(/^the user selects the "([^"]*)" action inside a condition$/, function (typeOfAction, cb) {
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			return element.all(by.css('.spec-automatiq-select-action-open')).get(0).click();
 		}).then(function () {
 			element.all(by.css('.spec-automatiq-select-action-' + typeOfAction)).get(0).click().then(cb);
@@ -84,13 +84,13 @@ module.exports = function () {
 	});
 
 	Then(/^the page is saved$/, function (cb) {
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			expect(element.all(by.repeater('page in PD.data.pages track by page.pageid')).count()).to.eventually.be.above(0).and.notify(cb);
 		});
 	});
 
 	Then(/^the process is saved$/, function (cb) {
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			expect(element.all(by.repeater('process in WD.processes.data')).count()).to.eventually.be.above(0).and.notify(cb);
 		});
 	});

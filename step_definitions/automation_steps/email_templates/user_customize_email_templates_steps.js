@@ -67,7 +67,7 @@ module.exports = function () {
 			remote = require('selenium-webdriver/remote'),
 			absolutePath = path.resolve(__dirname, '../../../support/logos/google.png');
 
-		user.waits(5000).then(function(){
+		webpage.waits(5000).then(function(){
 			brw.switchTo().defaultContent();
 			user.finds('.hidden-upload');
 
@@ -77,7 +77,7 @@ module.exports = function () {
 
 			user.finds('.hidden-upload').sendKeys(absolutePath).getAttribute('value').then(function (_text) {
 				expect(_text.slice(12, _text.length)).to.be.equal('google.png');
-				user.waits(5000);
+				webpage.waits(5000);
 			}).then(cb);
 		});
 	});

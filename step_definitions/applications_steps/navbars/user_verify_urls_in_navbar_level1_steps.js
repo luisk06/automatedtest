@@ -12,7 +12,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the "([^"]*)" in menu first level$/, function(option, cb) {
 		user.finds('.spec-dropdown-menu-main').click();
-		user.waits(600);
+		webpage.waits(600);
 		user.finds('.spec_' + option + '_button').click().then(cb);
 	});
 

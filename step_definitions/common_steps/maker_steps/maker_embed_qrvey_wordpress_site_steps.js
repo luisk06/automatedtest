@@ -16,8 +16,8 @@ module.exports = function() {
 		}
 
 		skipSync(true);
-		user.waits(2500);
-		user.openUrl(_url, true).then(cb);
+		webpage.waits(2500);
+		webpage.openUrl(_url, true).then(cb);
 	});
 
 	When(/^the user makes login into "([^"]*)" dashboard$/, function(site, cb) {
@@ -64,9 +64,9 @@ module.exports = function() {
 
 		skipSync(true);
 
-		user.waits(2500).then(function() {
+		webpage.waits(2500).then(function() {
 			logger.log('site');
-			user.openUrl(_url, true).then(cb);
+			webpage.openUrl(_url, true).then(cb);
 		});
 
 		if (site == 'wix') {

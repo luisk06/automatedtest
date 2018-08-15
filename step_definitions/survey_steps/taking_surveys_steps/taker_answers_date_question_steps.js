@@ -17,7 +17,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks the Ok button$/, function(cb) {
-		user.waits(1000);
+		webpage.waits(1000);
 		user.findsAll('.spec-user-response-ok').get(0).click().then(cb);
 	});
 

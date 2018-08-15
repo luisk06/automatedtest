@@ -9,7 +9,7 @@ module.exports = function() {
 
 	Given(/^the user has an app$/, function(cb) {
 		us.isLogged().then(function() {
-			//user.waits(5000);
+			//webpage.waits(5000);
 			apps.createNewApp().then(function(appData){
 				logger.log('appData', appData);
 				appID = appData.appid;
@@ -42,12 +42,12 @@ module.exports = function() {
 
 	Given(/^the user opened his app on "([^"]*)"$/, function(site, cb) {
 		if(site == 'page-flows'){
-			user.waits(1000);
-			user.navTo('/application/' + appID + '/pages').then(cb);
+			webpage.waits(1000);
+			webpage.navTo('/application/' + appID + '/pages').then(cb);
 		}else if(site == 'config'){
-			user.navTo('/application/' + appID).then(cb);
+			webpage.navTo('/application/' + appID).then(cb);
 		}else{
-			user.navTo('/application/' + appID + '/' + site).then(cb);
+			webpage.navTo('/application/' + appID + '/' + site).then(cb);
 		}
 	});
 
@@ -107,7 +107,7 @@ module.exports = function() {
 
 	Then(/^the webform should be activated correctly$/, function(cb) {
 		user.finds('.spec-qrvey-btn-active').click();
-		user.waits(500);
+		webpage.waits(500);
 		element(by.css('.button.yellow.pause')).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
@@ -115,7 +115,7 @@ module.exports = function() {
 
 	Then(/^the webform should be reactivated correctly$/, function(cb) {
 		user.finds('.button.yellow.reactivate.activate-qrvey-btn').click();
-		user.waits(500);
+		webpage.waits(500);
 		element(by.css('.button.yellow.pause')).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);

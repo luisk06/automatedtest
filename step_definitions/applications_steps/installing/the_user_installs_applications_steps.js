@@ -23,7 +23,7 @@ module.exports = function () {
 
 	When(/^the user clicks on install option$/, function (cb) {
 		user.finds('.installApp').click();
-		user.waits(2000).then(function () {
+		webpage.waits(2000).then(function () {
 			cb();
 		});
 	});
@@ -46,7 +46,7 @@ module.exports = function () {
 	Then(/^the tab should be changed by applications$/, function (cb) {
 		var el = '.error-message';
 
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
@@ -67,7 +67,7 @@ module.exports = function () {
 	});
 
 	Then(/^there should be (\d+) applications installed$/, function (num, cb) {
-		user.waits(200);
+		webpage.waits(200);
 
 		user.findsAll('.my-apps .module').count().then(function (_count) {
 			expect(_count).to.be.equal(+num + 1);

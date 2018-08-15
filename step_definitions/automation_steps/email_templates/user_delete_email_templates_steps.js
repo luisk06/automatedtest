@@ -12,7 +12,7 @@
 // 	});
 
 // 	Then(/^the template was deleted$/, function (cb) {
-// 		user.waits(3000);
+// 		webpage.waits(3000);
 // 		element.all(by.css('.template-box .content p')).get(0).getText().then(function (name) {
 // 			expect(name).to.be.equal('TNE');
 // 		}).then(cb);

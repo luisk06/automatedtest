@@ -7,7 +7,7 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user clicks on "([^"]*)" view tab$/, function (view, cb) {
-		user.waits(1300);
+		webpage.waits(1300);
 		element(by.css('.spec-customize-tab-' + view)).click().then(cb);
 	});
 
@@ -25,7 +25,7 @@ module.exports = function () {
 
 	Then(/^the online view should be displayed with "([^"]*)" column$/, function (column, cb) {
 		brw.ignoreSynchronization = true;
-		user.waits(1500);
+		webpage.waits(1500);
 		brw.switchTo().frame(element(by.id('preview-frame')).getWebElement()).then(function () {
 			expect(hasClass(element(by.css('.spec-preview-container')), 'spec-' + column + '-columns')).to.eventually.be.true;
 		}).then(function () {
@@ -36,7 +36,7 @@ module.exports = function () {
 
 	Then(/^the online view should be displayed with "([^"]*)" label$/, function (label, cb) {
 		brw.ignoreSynchronization = true;
-		user.waits(1500);
+		webpage.waits(1500);
 		brw.switchTo().frame(element(by.id('preview-frame')).getWebElement()).then(function () {
 			expect(hasClass(element(by.css('.spec-preview-container')), 'spec-label-' + label)).to.eventually.be.true;
 		}).then(function () {

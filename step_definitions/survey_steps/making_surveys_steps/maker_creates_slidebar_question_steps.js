@@ -16,7 +16,7 @@ module.exports = function() {
 			.clear()
 			.sendKeys(titleText);
 
-		user.waits(1000);
+		webpage.waits(1000);
 
 		el
 			.getAttribute('value')
@@ -24,7 +24,7 @@ module.exports = function() {
 				expect(_text).to.be.equal(titleText);
 			});
 
-		// user.waits(500);
+		// webpage.waits(500);
 
 		el = user.finds('.spec-slidebar-question-type-answer-left');
 
@@ -32,7 +32,7 @@ module.exports = function() {
 			.clear()
 			.sendKeys(leftText);
 
-		user.waits(1000);
+		webpage.waits(1000);
 
 		el
 			.getAttribute('value')
@@ -41,7 +41,7 @@ module.exports = function() {
 			});
 
 
-		user.waits(500);
+		webpage.waits(500);
 
 		el = user.finds('.spec-slidebar-question-type-answer-right');
 
@@ -50,7 +50,7 @@ module.exports = function() {
 			.clear()
 			.sendKeys(rigthText);
 
-		user.waits(500);
+		webpage.waits(500);
 
 		el
 			.getAttribute('value')

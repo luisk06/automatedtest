@@ -49,14 +49,14 @@ module.exports = function() {
 	});
 
 	Then(/^the textfield question should be displayed$/, function(cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element.all(by.css('app-question')).get(1).isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
 	});
 
 	Then(/^the add textfield question button should be displayed$/, function(cb) {
-		user.waits(100);
+		webpage.waits(100);
 		element.all(by.css('.spec-design-add-state')).last().click().then(function(){
 			expect(element(by.css('.spec-design-add-text')).isPresent()).to.eventually.be.true.and.notify(cb);
 		});

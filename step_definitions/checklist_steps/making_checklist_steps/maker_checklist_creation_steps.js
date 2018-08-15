@@ -26,7 +26,7 @@ module.exports = function() {
 	});
 
 	Then(/^The "([^"]*)" and "([^"]*)" should appear on survey tittle$/, function(_name, _description, cb) {
-		user.waits(2000).then(function(){
+		webpage.waits(2000).then(function(){
 			element(by.css('.spec-tab-to-desing')).click();
 		});
 

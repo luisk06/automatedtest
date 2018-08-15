@@ -16,11 +16,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Yes for max data points$/, function(cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element(by.id('rdmaxDataPoints1')).click().then(cb);
 	});
 
-	
+
 	When(/^the user inputs (\d+) max data points$/, function(num, cb) {
 		element.all(by.css('qv-numeric[qv-on-change="onMultiseriesChange"] input')).last().clear().sendKeys(num).then(cb);
 	});
@@ -31,6 +31,6 @@ module.exports = function() {
 		}).then(cb);
 	});
 
-	
-	
+
+
 };

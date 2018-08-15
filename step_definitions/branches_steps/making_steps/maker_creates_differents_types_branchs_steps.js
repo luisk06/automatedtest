@@ -32,7 +32,7 @@ module.exports = function() {
 
 	When(/^the user selects the (\d+) answer for "([^"]*)" option in the (\d+) box$/, function(numberOfQuestion, typeOfQuestion, numberBox, cb) {
 		user.finds('.spec-branch-singleselection-options-dropdown').click();
-		user.waits(2000);
+		webpage.waits(2000);
 
 		var el = user.findsAll('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span');
 

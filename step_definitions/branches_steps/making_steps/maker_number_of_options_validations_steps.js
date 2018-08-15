@@ -18,14 +18,14 @@ module.exports = function() {
 				var questionContainer = qrvey.getQuestionContainer(questionNumber);
 
 				var el = questionContainer.element(by.css('.spec_edit_question_overlay'));
-				user.waits(3000);
+				webpage.waits(3000);
 
 				el.click().then(function(){
 					var addBranch = questionContainer.element(by.css('.spec-question-add-branch'));
 					// scrollToTop();
 					scrollAxisY('500').then(function(){
 						addBranch.click().then(function(){
-							user.waits(2000);
+							webpage.waits(2000);
 							scrollToTop().then(next);
 						});
 					});
@@ -42,7 +42,7 @@ module.exports = function() {
 		var branch = qrvey.getBranchesListFromQuestion(questionNumber).get(branchNumber-1);
 		var dropdown = branch.element(by.css('.spec-branch-dropdown-answers'));
 		var _opt = optionNumber-1;
-		user.waits(1800).then(function(){
+		webpage.waits(1800).then(function(){
 			dropdown.click().then(function(){
 				var option = dropdown.element(by.css('.spec-branch-answer-option-' + (_opt)));
 				user.waitForElement(option);
@@ -53,9 +53,9 @@ module.exports = function() {
 
 	When(/^the user add another if-answer option on branch (\d+) from question (\d+)$/, function(branchNumber, questionNumber, cb) {
 		var branch = qrvey.getBranchesListFromQuestion(questionNumber).get(branchNumber-1);
-		user.waits(800);
+		webpage.waits(800);
 		branch.all(by.css('.spec-branch-add-if-option')).first().click().then(function(){
-			user.waits(700);
+			webpage.waits(700);
 		}).then(cb);
 	});
 
@@ -83,17 +83,17 @@ module.exports = function() {
 			case 'multiple choice':
 				var firstDropdown = branch.all(by.css('.spec-branch-dropdown-answers')).first();
 				firstDropdown.all(by.css('.options span')).each(function(item, i) {
-					user.waits(800);
+					webpage.waits(800);
 					var dropdown = branch.all(by.css('.spec-branch-dropdown-answers')).get(i);
 					dropdown.click().then(function(){
 						var _opt = dropdown.element(by.css('.spec-branch-answer-option-'+i));
 						user.waitForElement(_opt);
 						scrollToBottom();
-						user.waits(1000);
+						webpage.waits(1000);
 						_opt.click().then(function(){
-							user.waits(450);
+							webpage.waits(450);
 							branch.all(by.css('.spec-branch-add-if-option')).get(i).click().then(function(){
-								user.waits(450);
+								webpage.waits(450);
 								logger.log(i);
 							});
 						});

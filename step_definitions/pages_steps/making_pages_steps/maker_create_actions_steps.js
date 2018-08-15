@@ -188,7 +188,7 @@ module.exports = function() {
 	When(/^the user select "([^"]*)" record$/, function(record, cb) {
 		var el = user.finds('.add-action-button');
 		brw.executeScript('window.scrollTo(1658, 10);').then(function(){
-			user.waits(2000);
+			webpage.waits(2000);
 			if (record == 'not_found')  el.click().then(cb);
 		});
 	});

@@ -12,7 +12,7 @@ module.exports = function() {
 			apps.createNewApp('Test Sentiment Analysis').then(function(appData){
 				appID = appData.appid;
 				as.createAnswers(_userId, typeOfQrvey, 'short text sentiment', num).then(function(){
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});

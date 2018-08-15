@@ -53,7 +53,7 @@ module.exports = function() {
 	});
 
 	When(/^the user add a new question below the branch and fills it$/, function(cb) {
-		user.waits(1000).then(function() {
+		webpage.waits(1000).then(function() {
 			scrollToBottom();
 			var branchList = qrvey.getBranchesListFromQuestion(1);
 			var branch = branchList.get(0);
@@ -62,7 +62,7 @@ module.exports = function() {
 			branch.all(by.css('.spec-design-add-new-question')).last().click();
 		});
 
-		user.waits(1000).then(function() {
+		webpage.waits(1000).then(function() {
 			// Fill it
 			element.all(by.css('.spec-edit-question-name-any')).last().clear().sendKeys('Would you recommend our product to others 3?');
 
@@ -74,13 +74,13 @@ module.exports = function() {
 	});
 
 	When(/^the user add a new headline below the branch and fills it in a "([^"]*)"$/, function(typeOfQrvey, cb) {
-		user.waits(1000).then(function() {
+		webpage.waits(1000).then(function() {
 			scrollToBottom();
 			element.all(by.css('.spec-design-add-state')).last().click();
 			element.all(by.css('.spec-design-add-text')).last().click();
 		});
 
-		user.waits(1000).then(function() {
+		webpage.waits(1000).then(function() {
 			if (typeOfQrvey == 'progressive') element.all(by.css('.spec_edit_question_overlay')).last().click();
 
 			// Fill it

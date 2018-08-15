@@ -9,7 +9,7 @@ module.exports = function() {
 			apps.createNewApp('Test checklist').then(function(){
 				as.createAnswers(_userId, 'checklist', 'checklist', numAnswers).then(function(_data) {
 					logger.log('data', _data);
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});

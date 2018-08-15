@@ -11,7 +11,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on trigger select$/, function(cb){
-		user.waits(2000).then(function() {
+		webpage.waits(2000).then(function() {
 			user.finds('.spec-selects-process').click();
 			user.finds('.spec-automatiq-select-type').click().then(cb);
 		});
@@ -41,7 +41,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Activate$/, function(cb) {
-		user.waits(5000).then(function(){
+		webpage.waits(5000).then(function(){
 			brw.executeScript('window.scrollTo(0,0);').then(function(){
 				user.finds('.spec-automation-btn-activate').click();
 
@@ -52,7 +52,7 @@ module.exports = function() {
 		});
 	});
 	When(/^the process is activated$/, function(cb) {
-		user.waits(3000).then(function(){
+		webpage.waits(3000).then(function(){
 			cb(); // Should be thus
 		});
 	});

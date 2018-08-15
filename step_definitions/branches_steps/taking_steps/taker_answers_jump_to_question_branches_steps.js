@@ -25,7 +25,7 @@ module.exports = function() {
 			qs.createBranchs(configer.get('AppID'), _userId, typeOfQrvey, questionType).then(function(data) {
 				logger.log('data', data);
 
-				user.openUrl(data.url).then(cb);
+				webpage.openUrl(data.url).then(cb);
 			});
 		});
 	});
@@ -35,7 +35,7 @@ module.exports = function() {
 			qs.createBranchs(configer.get('AppID'), _userId, typeOfQrvey, 'jump_to_end').then(function(data) {
 				logger.log('data', data);
 
-				user.openUrl(data.url).then(cb);
+				webpage.openUrl(data.url).then(cb);
 			});
 		});
 	});
@@ -65,7 +65,7 @@ module.exports = function() {
 	When(/^the user click submit button on "([^"]*)"$/, function(typeOfQrvey, cb) {
 		if (typeOfQrvey == 'questionnaire') {
 			element(by.css('.spec-user-response-ok.submit-answers')).click().then(function() {
-				user.waits(2000);
+				webpage.waits(2000);
 			}).then(cb);
 		} else cb();
 	});
@@ -85,7 +85,7 @@ module.exports = function() {
 	});
 
 	When(/^the user should jump to a question with title "([^"]*)"$/, function(questionTitle, cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 
 		// brw.enterRepl();
 

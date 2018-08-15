@@ -12,7 +12,7 @@ module.exports = function() {
 
 	When(/^the user moves to "([^"]*)" view$/, function(tabOption, cb) {
 		user.finds('.spec-customize-' + tabOption + '-tab').click();
-		user.waits(2000).then(function () {
+		webpage.waits(2000).then(function () {
 			cb(); // Should be thus
 		});
 	});
@@ -25,7 +25,7 @@ module.exports = function() {
 		var el = element(by.css('.spec-tab-' + viewOption));
 		brw.executeScript('arguments[0].scrollIntoView();', el.getWebElement()).then(function() {
 			el.click();
-			user.waits(2000);
+			webpage.waits(2000);
 		}).then(cb);
 	});
 

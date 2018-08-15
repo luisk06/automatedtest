@@ -21,7 +21,7 @@ module.exports = function () {
 			qs.createQrvey(appID, _userId, 'incontext', typeOfQuestion, 'active', options).then(function (_data) {
 				var _url = 'http://qwidgets.herokuapp.com/widget/incontext/q/' + _data.lookupID;
 				logger.log('opening', _url);
-				user.openUrl(_url, true);
+				webpage.openUrl(_url, true);
 				brw.ignoreSynchronization = true;
 			}).then(cb);
 		});

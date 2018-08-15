@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the audience answers the "([^"]*)" poll$/, function(typeOfQuestion, cb) {
-		user.waits(3000).then(function(){
+		webpage.waits(3000).then(function(){
 			if(typeOfQuestion == 'numeric') typeOfQuestion = 'numeric-mask';
 			taker.answersQuestion(typeOfQuestion).then(cb);
 		});

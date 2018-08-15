@@ -9,7 +9,7 @@ module.exports = function() {
 	Given(/^that the user created a "([^"]*)" question$/, function(typeOfQuestion, cb) {
 		maker.createsQuestionByType(typeOfQuestion).then(function() {
 			if (typeOfQuestion == 'multiple choice' || typeOfQuestion == 'multiple_choice' || typeOfQuestion == 'multiple-choice') {
-				user.createsMultiChoiceOptions(2).then(cb);
+				maker.createsListOptions('multichoice').then(cb);
 			} else cb();
 		});
 	});

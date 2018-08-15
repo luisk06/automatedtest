@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'numeric', 'active', typeOption);
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -19,7 +19,7 @@ module.exports = function() {
 			var decimals = {decimal: true};
 			return qs.createQrvey(appID, _userId, 'survey', 'numeric', 'active', typeOption, decimals);
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -27,7 +27,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, webform, 'numeric', 'active', typeOption, { decimal: true });
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 

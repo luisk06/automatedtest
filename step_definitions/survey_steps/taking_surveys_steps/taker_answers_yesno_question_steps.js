@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user selects "([^"]*)" asnwers$/, function(optionAnswers, cb) {
-		user.choicesAnswer(optionAnswers).then(cb);
+		taker.choicesAnswer(optionAnswers).then(cb);
 	});
 
 	Then(/^the user should jump to the finished qrvey page$/, function(cb) {
@@ -99,7 +99,7 @@ module.exports = function() {
 	});
 
 	When(/^the user enters "([^"]*)" as email$/, function(email, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var el = element(by.css('input[type=email]'));
 		el.sendKeys(email).then(cb);
 	});

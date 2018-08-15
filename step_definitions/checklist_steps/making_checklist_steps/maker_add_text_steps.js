@@ -19,7 +19,7 @@ module.exports = function() {
 	});
 
 	Then(/^the text is saved$/, function(cb) {
-		user.waits(800);
+		webpage.waits(800);
 		var section = by.css('.question-preview-mode .headline-preview');
 		element(section).isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;

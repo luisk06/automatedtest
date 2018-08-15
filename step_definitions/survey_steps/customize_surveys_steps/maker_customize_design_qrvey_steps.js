@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that the user is logged in$/, function(cb) {
-		user.toDoLogin().then(cb);
+		maker.toDoLogin().then(cb);
 	});
 
 	Given(/^that the user is editing a qrvey$/, function(cb) {
@@ -31,7 +31,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on customize button$/, function(cb) {
-		user.waits(2000).then(function(){
+		webpage.waits(2000).then(function(){
 			user.finds('.spec-tab-to-customize').click().then(cb);
 		});
 	});
@@ -39,7 +39,7 @@ module.exports = function() {
 	When(/^the user opens the "([^"]*)" module$/, function(moduleOption, cb) {
 		var i = (moduleOption == 'color') ? 0 : 1;
 		user.findsAll('.accordeon-module').get(i).click().then(function() {
-			user.waits(3000);
+			webpage.waits(3000);
 		}).then(cb);
 	});
 

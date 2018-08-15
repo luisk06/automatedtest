@@ -10,7 +10,7 @@ module.exports = function() {
 		var _url = configer.get('url_audience');
 		if (typeof _url === 'undefined') throw new Error('The url to the audience is undefined');
 
-		user.openUrl(_url).then(cb);
+		webpage.openUrl(_url).then(cb);
 	});
 
 	When(/^the audience inputs the code$/, function(cb) {

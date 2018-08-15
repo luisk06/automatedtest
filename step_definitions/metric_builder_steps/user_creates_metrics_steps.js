@@ -78,7 +78,7 @@ module.exports = function () {
     });
 
     Then(/^the metric dashaboard should have (\d+) panel$/, function (num, cb) {
-        user.waits(1500);
+        webpage.waits(1500);
         user.findsAllRepeater('metric in metrics track by metric.metricid').count().then(function (_count) {
             expect(_count).to.be.equal(+num);
         }).then(cb);

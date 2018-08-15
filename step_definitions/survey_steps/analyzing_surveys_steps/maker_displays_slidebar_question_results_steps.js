@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			apps.createNewApp('Test ' + typeOfQrvey + ' slidebar').then(function(){
 				as.createAnswers(_userId, typeOfQrvey, 'slidebar', answers).then(function(){
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});

@@ -28,14 +28,14 @@ module.exports = function() {
 	});
 
 	Then(/^the template was created$/, function(cb) {
-		user.waits(3000);
+		webpage.waits(3000);
 		element.all(by.css('.template-box .content p')).get(1).getText().then(function(name){
 			expect(name).to.be.equal('TN');
 		}).then(cb);
 	});
 
 	Then(/^the template is the default template$/, function(cb) {
-		user.waits(1000);
+		webpage.waits(1000);
 		element.all(by.css('.template .label span')).get(0).getText().then(function(_default){
 			expect(_default).to.be.equal('(Default)');
 		}).then(cb);

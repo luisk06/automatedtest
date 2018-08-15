@@ -31,12 +31,12 @@ module.exports = function() {
 					logger.log('opening', _url);
 					webpage.deleteAllCookies();
 					// console.log('URL', _url);
-					user.openUrl(_url, true);
+					webpage.openUrl(_url, true);
 					brw.ignoreSynchronization = true;
 				} else {
 					logger.log('opening', _data.url);
 					webpage.deleteAllCookies();
-					user.openUrl(_data.url, true);
+					webpage.openUrl(_data.url, true);
 					brw.ignoreSynchronization = true;
 				}
 			}).then(cb);
@@ -85,7 +85,7 @@ module.exports = function() {
 	Then(/^the window should be hidden$/, function(cb) {
 		var el = '.button.yellow';
 
-		user.waits(1000).then(function(){
+		webpage.waits(1000).then(function(){
 			element(by.css(el)).isDisplayed().then(function(_isdisplayed) {
 				expect(_isdisplayed).to.be.false;
 			}, function() {

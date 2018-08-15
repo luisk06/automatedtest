@@ -21,7 +21,7 @@ module.exports = function () {
 	});
 
 	Then(/^the template was edited$/, function (cb) {
-		user.waits(3000);
+		webpage.waits(3000);
 		element.all(by.css('.template-box .content p')).get(1).getText().then(function (name) {
 			expect(name).to.be.equal('TNE');
 		}).then(cb);

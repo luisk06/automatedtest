@@ -18,13 +18,13 @@ module.exports = function() {
 	});
 
 	When(/^the user selects question (\d+) on token modal$/, function(questionNumber, cb) {
-		user.waits(1000).then(function() {
+		webpage.waits(1000).then(function() {
 			element(by.css('.spec-automatiq-token-question-option-' + questionNumber)).click().then(cb);
 		});
 	});
 
 	When(/^the user fills "([^"]*)" on label$/, function(labelText, cb) {
-		user.waits(600).then(function() {
+		webpage.waits(600).then(function() {
 			element(by.css('.spec-automatiq-token-label-input')).sendKeys(labelText).then(cb);
 		});
 	});
@@ -49,7 +49,7 @@ module.exports = function() {
 	});
 
 	Then(/^the token created alert should be displayed$/, function(cb) {
-		user.waits(300).then(function() {
+		webpage.waits(300).then(function() {
 			expect(
 				webpage.isDisplayed(
 					element(by.css('.spec-automatiq-token-exist'))

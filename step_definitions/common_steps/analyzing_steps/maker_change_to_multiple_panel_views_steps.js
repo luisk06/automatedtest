@@ -17,7 +17,7 @@ module.exports = function() {
 			us.isLogged().then(function(_userId) {
 				apps.createNewApp('Test ' + typeOfQrvey + ' ' + typeOfQuestion).then(function(){
 					as.longtextQuestion(_userId, typeOfQrvey, num, null, filtered, text).then(function() {}).then(function(){
-						user.waits(5000);
+						webpage.waits(5000);
 					}).then(cb);
 				});
 			});
@@ -25,7 +25,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on multi-panel view$/, function(cb) {
-		user.waits(3500).then(function() {
+		webpage.waits(3500).then(function() {
 			user.finds('.spec-filter-analyze').click().then(function() {
 				user.finds('#spec-panelview-multi').click().then(cb);
 			});

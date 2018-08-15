@@ -12,7 +12,7 @@ module.exports = function() {
 	});
 
 	Then(/^the webform should be deleted$/, function(cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		expect(maker.getsTotal('qrvey in allQrveys')).to.eventually.be.equal(0).and.notify(cb);
 	});
 

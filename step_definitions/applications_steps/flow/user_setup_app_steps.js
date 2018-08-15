@@ -38,7 +38,7 @@ module.exports = function() {
 		cb();
 
 		/*
-			user.navTo('/configuration').then(cb);
+			webpage.navTo('/configuration').then(cb);
 		*/
 	});
 

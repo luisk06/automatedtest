@@ -11,7 +11,7 @@ module.exports = function() {
 			apps.createNewApp('Test ' + typeOfQrvey + ' Branches').then(function(){
 				as.createAnswersForBranchs(_userId, typeOfQrvey, typeOfBranch, num).then(function(data) {
 					logger.log('qrveys.data', data);
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});

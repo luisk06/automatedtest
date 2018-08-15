@@ -666,7 +666,7 @@ Taker.prototype.finish = function (_confirm) {
 Taker.prototype.getQuizStatus = function () {
 	var defer = protractor.promise.defer();
 
-	user.finds('.circle').getAttribute('class').then(function (_classes) {
+	this.finds('.circle').getAttribute('class').then(function (_classes) {
 		var newValue = _classes.replace('circle', '').trim();
 
 		defer.fulfill(newValue);
@@ -681,8 +681,8 @@ Taker.prototype.getQuizStatus = function () {
 Taker.prototype.getTypeQuestion = function (idx) {
 	var defer = protractor.promise.defer();
 
-	user.waits(500);
-	user.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
+	webpage.waits(500);
+	this.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
 		defer.fulfill(_type);
 	});
 

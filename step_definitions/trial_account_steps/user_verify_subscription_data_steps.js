@@ -14,7 +14,7 @@ module.exports = function() {
 	});
 
 	When(/^the user go to your profile$/, function(cb) {
-		user.navTo('/profile').then(cb);
+		webpage.navTo('/profile').then(cb);
 	});
 
 	Then(/^the subscription status should be basic$/, function(cb) {

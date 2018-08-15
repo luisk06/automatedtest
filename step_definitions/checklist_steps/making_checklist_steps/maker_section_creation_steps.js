@@ -10,7 +10,7 @@ module.exports = function() {
 	});
 
 	When(/^the user opens the section$/, function(cb) {
-		user.waits(2000).then(function(){
+		webpage.waits(2000).then(function(){
 			element(by.css('.checklist-title-question')).click().then(cb);
 		});
 	});
@@ -57,7 +57,7 @@ module.exports = function() {
 		var addOption = user.findsAll('.spec-add-option-multichoice-question-0').first();
 		for (i = 0; i < _numberOfOptions; i++) {
 			addOption.click();
-			user.waits(600);
+			webpage.waits(600);
 		}
 		cb();
 	});
@@ -65,7 +65,7 @@ module.exports = function() {
 	Then(/^the section is saved$/, function(cb) {
 		var section = by.css('.spec_edit_question_overlay');
 
-		user.waits(800);
+		webpage.waits(800);
 
 		element(section).isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
@@ -82,7 +82,7 @@ module.exports = function() {
 		var array = gArray(numberOfSections);
 		async.eachSeries(array, function(item, next){
 			element.all(addButton).last().click().then(function() {
-				user.waits(1000);
+				webpage.waits(1000);
 				browser.executeScript('arguments[0].click()',element(addSection)).then(function(){
 					logger.info('finished i:',i);
 				}).then(function(){

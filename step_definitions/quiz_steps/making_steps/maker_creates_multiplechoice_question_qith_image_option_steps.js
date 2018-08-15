@@ -36,10 +36,10 @@ module.exports = function() {
 
 
 		}
-		user.waits(2500);
+		webpage.waits(2500);
 
 		expect(element(by.css('.spec-image-uploaded')).isDisplayed()).to.eventually.be.true;
-		user.waits(500).then(function () {
+		webpage.waits(500).then(function () {
 			cb(); // Should be thus
 		});
 	});

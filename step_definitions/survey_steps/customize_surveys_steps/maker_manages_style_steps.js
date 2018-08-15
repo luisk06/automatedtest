@@ -34,7 +34,7 @@ module.exports = function() {
 	When(/^the user clicks on "([^"]*)" color option$/, function(arg1, cb) {
 		var el = '.spec_customize_color_option_' + arg1;
 
-		user.waits(el);
+		webpage.waits(el);
 		user.finds(el).click().then(cb);
 	});
 

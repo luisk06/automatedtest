@@ -16,7 +16,7 @@ module.exports = function() {
 
 	When(/^the user open the "([^"]*)"$/, function(typeOfWidget, cb) {
 		brw.ignoreSynchronization = true;
-		user.openUrl('http://qwidgets.herokuapp.com/widget/' + typeOfWidget + '/q/' + qrveyIdForIframe, true);
+		webpage.openUrl('http://qwidgets.herokuapp.com/widget/' + typeOfWidget + '/q/' + qrveyIdForIframe, true);
 
 		brw.switchTo().frame(element(by.tagName('iframe')).getWebElement());
 		cb();

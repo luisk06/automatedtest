@@ -17,8 +17,8 @@ module.exports = function() {
 	});
 
 	Then(/^the user opens the trigger url/, function(cb) {
-		user.waits(2500);
-		user.openUrl(webhookURL, true).then(cb);
+		webpage.waits(2500);
+		webpage.openUrl(webhookURL, true).then(cb);
 	});
 
 	When(/^the user put the sms message$/, function(cb) {

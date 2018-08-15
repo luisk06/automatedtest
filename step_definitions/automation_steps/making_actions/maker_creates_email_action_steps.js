@@ -43,8 +43,6 @@ module.exports = function() {
 	});
 
 	When(/^the user opens the first "([^"]*)" process$/, function( process, cb) {
-		// user.reloadbrw();
-		//brw.explore();
 		user.finds('.spec_workflows_button').click().then(function(){
 			//element.all(by.xpath("//a[contains(@class, 'spec-qrvey-title-link qrvey-title-desktop') and contains(text(),'"+process+"')]")).first().click().then(cb);
 			element.all(by.css('a.spec-qrvey-title-link.qrvey-title-desktop')).first().click().then(cb);
@@ -64,7 +62,7 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the "([^"]*)" in wait$/, function(typeOfAction, cb) {
-		user.waits(1000).then(function(){
+		webpage.waits(1000).then(function(){
 			user.finds('.spec-automatiq-select-action-open').click();
 			user.finds('.spec-automatiq-select-action-' + typeOfAction).click().then(cb);
 		});
@@ -75,7 +73,7 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the "([^"]*)" action$/, function(typeOfAction, cb) {
-		user.waits(1000).then(function(){
+		webpage.waits(1000).then(function(){
 			element(by.css('.spec-automatiq-select-action-open')).click().then(function(){
 				element(by.css('.spec-automatiq-select-action-' + typeOfAction)).click().then(cb);
 			});
@@ -108,14 +106,14 @@ module.exports = function() {
 	When(/^the user put (\d+) contacts in sms$/, function (numOfContacts, cb) {
 		var _contact = '+12028164512';
 
-		user.waits(1000);
+		webpage.waits(1000);
 		user.finds('.spec-automatiq-input-emails input.input').sendKeys(_contact).then(cb);
 	});
 
 	When(/^the user put (\d+) contacts in sms in not found$/, function (numOfContacts, cb) {
 		var _contact = '+12028164512';
 
-		user.waits(1000);
+		webpage.waits(1000);
 		user.findsAll('.spec-automatiq-input-emails input.input').get(1).sendKeys(_contact).then(cb);
 	});
 

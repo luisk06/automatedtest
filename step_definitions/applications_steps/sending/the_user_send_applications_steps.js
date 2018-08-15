@@ -44,7 +44,7 @@ module.exports = function () {
 	When(/^the user writes an valid email$/, function (cb) {
 		user.finds('.contacts_list input').sendKeys(configer.get('username'));
 		element(by.model('name')).click();
-		user.waits(2000).then(function () {
+		webpage.waits(2000).then(function () {
 			cb();
 		});
 	});
@@ -60,7 +60,7 @@ module.exports = function () {
 	When(/^the user writes an invalid email$/, function (cb) {
 		user.finds('.contacts_list input').sendKeys(rand.getEmail());
 		element(by.model('name')).click();
-		user.waits(2000).then(function () {
+		webpage.waits(2000).then(function () {
 			cb();
 		}).then(cb);
 	});
@@ -83,7 +83,7 @@ module.exports = function () {
 	Then(/^the error app notify should be displayed$/, function (cb) {
 		var el = '.error-message';
 
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
@@ -95,7 +95,7 @@ module.exports = function () {
 	Then(/^the send application modal should be displayed$/, function (cb) {
 		var el = '.modal-dialog';
 
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
@@ -105,7 +105,7 @@ module.exports = function () {
 	});
 
 	Then(/^the application "([^"]*)" should be displayed$/, function (el, cb) {
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			webpage.isDisplayed(element(by.model(el))).then(function (_isdisplayed) {
 				expect(_isdisplayed).to.be.true;
 			}, function () {
@@ -117,7 +117,7 @@ module.exports = function () {
 	Then(/^the application "([^"]*)" should be equal$/, function (el, cb) {
 		var textToCompare = (el == 'name') ? appNAME : appDESCRIPTION;
 
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			element(by.model(el)).getAttribute('value').then(function (_text) {
 				expect(_text).to.be.equal(textToCompare);
 			}, function () {

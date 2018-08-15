@@ -11,7 +11,7 @@ module.exports = function() {
 			return qs.createQrvey(appID, _userId, typeOfQrvey, typeOfQuestion);
 		}).then(function(_data) {
 			logger.log('_url:', _data.url);
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -28,17 +28,17 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, typeOfQrvey, 'multiple_questions', 'draft');
 		}).then(function() {
-			user.navTo('/application/' + appID + '/webforms').then(cb);
+			webpage.navTo('/application/' + appID + '/webforms').then(cb);
 		});
 	});
 
 	When(/^the user opens the webform user$/, function(cb) {
 		logger.log('Qrvey Url: ', qrveyURL);
-		user.openUrl(qrveyURL).then(cb);
+		webpage.openUrl(qrveyURL).then(cb);
 	});
 
 	When(/^the user take the qrvey on "([^"]*)"$/, function(typeOfQrvey, cb) {
-		user.waits(5000);
+		webpage.waits(5000);
 
 		brw.ignoreSynchronization = true;
 
@@ -54,7 +54,7 @@ module.exports = function() {
 	When(/^the user take the embedded qrvey$/, function(cb) {
 		webpage.waitsFor('.button-cta');
 		brw.switchTo().frame(element(by.css('#iframe-icf')));
-		user.waits(20000);
+		webpage.waits(20000);
 		brw.ignoreSynchronization = true;
 		user.finds('.spec-taker-qrvey').click().then(cb);
 	});

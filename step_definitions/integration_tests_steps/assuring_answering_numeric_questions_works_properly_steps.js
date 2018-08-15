@@ -72,13 +72,13 @@ module.exports = function() {
 	});
 
 	When(/^the user writes in the input letters or invalid chars$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			navigate.sendKeys('.spec-taker-answer-numeric-question', '&éeç!uoifsdp^ù::`^sfnvrh').then(cb);
 		});
 	});
 
 	When(/^the user writes in the input a valid number$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			navigate.sendKeys('.spec-taker-answer-numeric-question', '50').then(cb);
 		});
 	});
@@ -105,13 +105,13 @@ module.exports = function() {
 	});
 
 	When(/^the user writes in the input a number with more than one decimal symbol$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			navigate.sendKeys('.spec-taker-answer-numeric-question', '24..434').then(cb);
 		});
 	});
 
 	When(/^the user writes in the input a number with one decimal symbol$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			navigate.sendKeys('.spec-taker-answer-numeric-question', '5.42324').then(cb);
 		});
 	});

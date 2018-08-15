@@ -24,7 +24,7 @@ module.exports = function() {
 	});
 
 	When(/^the user edits the questionnaire question$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			brw.ignoreSynchronization = true;
 			brw.switchTo().frame(element(by.css('#update-qrvey-iframe')).getWebElement());
 			element(by.css('.edit-answered')).click().then(cb);
@@ -32,21 +32,21 @@ module.exports = function() {
 	});
 
 	When(/^the user edits the form question$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			brw.ignoreSynchronization = true;
 			brw.switchTo().frame(element(by.css('#update-qrvey-iframe')).getWebElement()).then(cb);
 		});
 	});
 
 	When(/^the user clicks the Update button$/, function(cb) {
-		user.waits(5000).then(function() {
+		webpage.waits(5000).then(function() {
 			brw.switchTo().defaultContent();
 			element(by.css('.spec_apply_filter_button')).click().then(cb);
 		});
 	});
 
 	Then(/^the first form result is updated$/, function(cb) {
-		user.waits(8000).then(function() {
+		webpage.waits(8000).then(function() {
 			user.findsAll('.dx-row.dx-data-row.dx-row-lines.dx-column-lines').get(0).getText().then(function(_newAnswer) {
 				newAnswer = _newAnswer;
 				logger.log('NEWANSWER', newAnswer);

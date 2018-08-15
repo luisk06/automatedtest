@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'multiple_choice');
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -18,7 +18,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'multiple_choice', 'active', 'with_other_option');
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -26,7 +26,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'multiple_choice', 'active', 'with_allow_multiple_selections');
 		}).then(function(_data) {
-			return user.openUrl(_data.url).then(cb);
+			return webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -34,7 +34,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'multiple_choice', 'active', 'with_both');
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 

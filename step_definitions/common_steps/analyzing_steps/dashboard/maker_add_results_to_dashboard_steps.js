@@ -16,7 +16,7 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks on the filter button$/, function (cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 
 		scrollToBottom().then(function(){
 			return element(by.css('.spec-download-drop span')).click();
@@ -25,14 +25,14 @@ module.exports = function () {
 			scrollIntoElement(_el);
 			return _el.click();
 		}).then(function () {
-			user.waits(600).then(function () {
+			webpage.waits(600).then(function () {
 				cb(); // Should be thus
 			});
 		});
 	});
 
 	When(/^the user clicks on the charts filter button$/, function (cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element(by.css('.optionsMenu.filterDropAN')).click().then(cb);
 	});
 

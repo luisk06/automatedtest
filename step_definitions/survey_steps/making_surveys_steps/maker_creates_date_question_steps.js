@@ -11,8 +11,8 @@ module.exports = function() {
 	});
 
 	Given(/^the user has login$/, function(cb) {
-		user.waits(2000);
-		user.toDoLogin().then(function(){
+		webpage.waits(2000);
+		maker.toDoLogin().then(function(){
 			cb(); // Should be thus
 		});
 	});

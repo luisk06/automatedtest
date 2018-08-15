@@ -43,15 +43,15 @@ module.exports = function() {
 			user.finds('.spec-add-option-multichoice-question-0').click();
 
 			user.finds(el1).sendKeys(tx1);
-			user.waits(100);
+			webpage.waits(100);
 			expect(user.finds(el1).getAttribute('value')).to.eventually.be.equal(tx1);
 
 			user.finds(el2).sendKeys(tx2);
-			user.waits(100);
+			webpage.waits(100);
 			expect(user.finds(el2).getAttribute('value')).to.eventually.be.equal(tx2);
 
 			user.finds(el3).sendKeys(tx3);
-			user.waits(100);
+			webpage.waits(100);
 			// brw.enterRepl();
 			expect(user.finds(el3).getAttribute('value')).to.eventually.be.equal(tx3).and.notify(cb);
 		});

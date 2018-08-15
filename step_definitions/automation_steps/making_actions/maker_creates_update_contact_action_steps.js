@@ -9,8 +9,7 @@ module.exports = function() {
 	Given(/^that the user has a "([^"]*)" with registration questions for update contact$/, function(typeOfQrvey, cb) {
 		us.isLogged().then(function(_userId) {
 			qs.createQrvey(appID, _userId, typeOfQrvey, 'registration_questions_update', 'active').then(function(_data) {
-				user.navTo('/application/' + appID + '/webforms');
-				//user.openUrl(data.url)
+				webpage.navTo('/application/' + appID + '/webforms');
 				global.qrveyURL = _data.url;
 			}).then(cb);
 		});
@@ -23,14 +22,14 @@ module.exports = function() {
 			phone: '3219245134'
 		};
 
-		user.waits(5000);
+		webpage.waits(5000);
 		cs.create(_newContact).then(function() {
 			logger.log('create  contact');
 		}).then(cb);
 	});
 
 	When(/^the user take the "([^"]*)" with registration questions for update contacts$/, function(typeOfQrvey, cb) {
-		user.openUrl(global.qrveyURL);
+		webpage.openUrl(global.qrveyURL);
 		webpage.waitsFor('.spec-taker-qrvey');
 		brw.ignoreSynchronization = true;
 

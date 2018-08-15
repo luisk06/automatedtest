@@ -19,7 +19,7 @@ module.exports = function () {
 	});
 
 	When(/^the user selects the king of process as "([^"]*)"$/, function (typeOfProcess, cb) {
-		user.waits(2000).then(function () {
+		webpage.waits(2000).then(function () {
 			user.finds('.spec-automatiq-select-type').click();
 			user.finds('.spec-automatiq-type-' + typeOfProcess).click().then(cb);
 		});
@@ -69,7 +69,7 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks on Save Changes$/, function (cb) {
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			user.finds('.spec-automation-btn-save').click().then(cb);
 		});
 	});

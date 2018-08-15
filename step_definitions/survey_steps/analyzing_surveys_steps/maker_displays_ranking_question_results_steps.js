@@ -24,7 +24,7 @@ module.exports = function() {
 			logger.log('initialPos:', initialPos);
 			logger.log('get:', initialPos + index);
 
-			user.waits(2000);
+			webpage.waits(2000);
 			element.all(by.css('.QTable.preview footer div div.cell.showhide')).get(initialPos + index).click().then(cb);
 		});
 	});
