@@ -50,9 +50,8 @@ Maker.prototype.addFillOptionsToQuestionID = function (numberOfOptions, question
 	}
 };
 
-Maker.prototype.addImageOptions = function (_all_images_possible) {
+Maker.prototype.addImageOptions = function (_all_images_possible = 3) {
 	var deferred = protractor.promise.defer(),
-		all_images_possible = (typeof _all_images_possible == 'undefined') ? 3 : _all_images_possible, // start with 0
 		el = element.all(by.css('.spec-add-option-image-question')).last();
 
 	async.times(all_images_possible, function (n, next) {
@@ -407,22 +406,21 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 	return deferred.promise;
 };
 
-Maker.prototype.createsIncontext = function (_title, _description) {
-	_title = (typeof _title !== 'undefined') ? _title : 'In Context in Qrvey';
-	_description = (typeof _description !== 'undefined') ? _description : 'In Context in Qrvey';
-
+Maker.prototype.createsIncontext = function () {
 	this.finds('.spec_dashboard_create_new_button').click();
 	this.finds('.spec_dropdown_create_incontextfeedback_button').click();
 
-	this.finds('.spec-input-new-incontext-name').sendKeys(_title);
-	this.finds('.spec-input-new-incontext-description').sendKeys(_description);
+	this.finds('.spec-input-new-incontext-name').sendKeys(
+		rand.getParagraph(10)
+	);
+	this.finds('.spec-input-new-incontext-description').sendKeys(
+		rand.getParagraph(30)
+	);
 	return this.finds('.spec-button-create-incontext').click();
 };
 
-Maker.prototype.createsListOptions = function (type) {
+Maker.prototype.createsListOptions = function (type = 'multichoice') {
 	var deferred = protractor.promise.defer();
-	var i = 0;
-	var _type = (typeof type === 'undefined') ? 'multichoice' : type;
 
 	async.during(function (cb) {
 		hasClass(self.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
@@ -432,7 +430,6 @@ Maker.prototype.createsListOptions = function (type) {
 	}, function (next) {
 		self.waits(400);
 		self.findsAll('.icon.q-icon-add').last().click().then(function () {
-			i++;
 			next();
 		});
 	});
@@ -440,7 +437,7 @@ Maker.prototype.createsListOptions = function (type) {
 	var el = null;
 	self.findsAll('.icon.q-icon-add').count().then(function (_count) {
 		async.times(_count, function (n, next) {
-			el = self.finds('.spec-' + _type + '-option-' + (n + 1));
+			el = self.finds('.spec-' + type + '-option-' + (n + 1));
 			scrollIntoElement(el);
 			el.sendKeys('Option ' + (n + 1)).then(function () {
 				next();
@@ -470,10 +467,7 @@ Maker.prototype.createsNps = function () {
 	return this.finds('.spec-button-create-nps').click();
 };
 
-Maker.prototype.createsNpsQuestion = function (_nameEnterprise = '', _textfieldText = '') {
-	_nameEnterprise = (_nameEnterprise != '') ? _nameEnterprise : 'QRVEY';
-	_textfieldText = (_textfieldText != '') ? _textfieldText : 'Could you please explain your choice? Thank you!';
-
+Maker.prototype.createsNpsQuestion = function (_nameEnterprise = 'QRVEY', _textfieldText = 'Could you please explain your choice? Thank you!') {
 	this.finds('.qrvey-info-editor-container').click();
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
 	this.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
@@ -498,7 +492,9 @@ Maker.prototype.createsPages = function (action) {
 
 	this.findsAll('.spec_pages_button').first().click();
 	this.finds('#spec_new_page').click();
-	this.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5));
+	this.finds('.spec-input-new-process-name').clear().sendKeys(
+		rand.getSentence(5)
+	);
 	this.finds('.spec-button-create-process').click();
 
 	this.waitsFor('.spec-automatiq-block-action-view-open');
@@ -507,7 +503,9 @@ Maker.prototype.createsPages = function (action) {
 	this.findsAll('.spec-automatiq-select-action-' + action).get(0).click();
 
 	if (action === 'showmsg') {
-		this.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10));
+		this.finds('.spec-automatiq-show-message input').sendKeys(
+			rand.getSentence(10)
+		);
 		this.finds('.spec-automation-btn-activate').click();
 
 		this.waitsFor('.toggle');
@@ -519,10 +517,7 @@ Maker.prototype.createsPages = function (action) {
 	return deferred.promise;
 };
 
-Maker.prototype.createsPolling = function (_title, _description) {
-	_title = (typeof _title !== 'undefined') ? _title : 'NPS Survey in Qrvey';
-	_description = (typeof _description !== 'undefined') ? _description : 'NPS Survey in Qrvey';
-
+Maker.prototype.createsPolling = function (_title = 'NPS Survey in Qrvey', _description = 'NPS Survey in Qrvey') {
 	this.finds('.spec_dashboard_create_new_button').click();
 	this.finds('.spec_dropdown_create_polling_button').click();
 
@@ -535,11 +530,12 @@ Maker.prototype.createsProcess = function (_title, _description) {
 	this.finds('.spec_workflows_button').click();
 	this.finds('#spec_new_process').click();
 
-	_title = (typeof _title !== 'undefined') ? _title : 'Name its undefined for this process qrvey';
-	_description = (typeof _description !== 'undefined') ? _description : 'No description was defined for this test qrvey';
-
-	this.finds('.spec-input-new-process-name').sendKeys(_title);
-	this.finds('.spec-input-new-process-description').sendKeys(_description);
+	this.finds('.spec-input-new-process-name').sendKeys(
+		rand.getParagraph(10)
+	);
+	this.finds('.spec-input-new-process-description').sendKeys(
+		rand.getParagraph(30)
+	);
 
 	return this.finds('.spec-button-create-process').click();
 };
@@ -680,7 +676,7 @@ Maker.prototype.createsShortTextFiledQuestion = function () {
 };
 
 Maker.prototype.createsSlideBarQuestion = function (params = {}) {
-	var _number = (typeof params._number !== 'undefined') ? params._number : 3;
+	var _stops = (typeof params.stops !== 'undefined') ? params.stops : 3;
 
 	qrvey.questionType('spec_sl_qt');
 	this.waits(200);
@@ -699,15 +695,17 @@ Maker.prototype.createsSlideBarQuestion = function (params = {}) {
 		expect(_val.length).to.be.equal(54);
 	});
 
-	if (_number != 3) {
-		this.finds('.spec-slidebar-number-option-' + _number).click();
+	if (_stops != 3) {
+		this.finds('.spec-slidebar-number-option-' + _stops).click();
 	}
 
 	return this.clicksOutside();
 };
 
 Maker.prototype.createsTextFieldQuestion = function (params = {}) {
-	if (params.isQuiz) this.finds('.answer input').sendKeys('question');
+	if (params.isQuiz) this.finds('.answer input').sendKeys(
+		rand.getParagraph(10)
+	);
 	return this.createsTitleForQuestion();
 };
 
@@ -720,8 +718,8 @@ Maker.prototype.createsTitleForQuestion = function (text) {
 };
 
 Maker.prototype.createsWebform = function (obj) {
-	if (!_.get(obj, 'title')) obj.title = 'Name its undefined for this test qrvey';
-	if (!_.get(obj, 'description')) obj.description = 'No description was defined for this test qrvey';
+	if (!_.get(obj, 'title')) obj.title = rand.getParagraph(10);
+	if (!_.get(obj, 'description')) obj.description = rand.getParagraph(30);
 	if (!_.get(obj, 'type')) obj.type = 'survey';
 	if (obj.type == 'form') obj.type = 'forms';
 
@@ -1049,10 +1047,7 @@ Maker.prototype.isVisibleQuestionPath = function () {
 	return this.finds('.spec-question-path').isDisplayed();
 };
 
-Maker.prototype.makerMovesQuestion = function (_where, _number) {
-	_where = (typeof _where !== 'undefined') ? _where : 'up';
-	_number = (typeof _number !== 'undefined') ? (_number - 1) : 0;
-
+Maker.prototype.makerMovesQuestion = function (_where = 'up', _number = 0) {
 	var _dir = (_where == 'up') ? { x: 0, y: 500 } : { x: 0, y: -500 },
 		_el = this.finds('.spec-maker-move-question-' + _number);
 
@@ -1073,9 +1068,7 @@ Maker.prototype.movesSlidebar = function (_distance) {
 	}).perform();
 };
 
-Maker.prototype.opensPathQuestion = function (_number) {
-	_number = (typeof _number !== 'undefined') ? _number : 1;
-
+Maker.prototype.opensPathQuestion = function (_number = 1) {
 	return this.findsAll('.spec-path-question').then(function (elements) {
 		elements[_number - 1].click();
 	});
@@ -1221,9 +1214,7 @@ Maker.prototype.selectTemplate = function (_category) {
 	}
 };
 
-Maker.prototype.selectsOptionOfQuestion = function (_number) {
-	_number = (_number > 0) ? _number : 0;
-
+Maker.prototype.selectsOptionOfQuestion = function (_number = 0) {
 	var _el = this.findsAll('.spec-select-option-question').last();
 	this.waits(200);
 	_el.click();
@@ -1234,10 +1225,7 @@ Maker.prototype.selectsOtherQuestion = function () {
 	return this.finds('.spec-other-write-awnswer');
 };
 
-Maker.prototype.toDoLogin = function (_username = '', _password = '') {
-	_username = (_username != '') ? _username : configer.get('username');
-	_password = (_password != '') ? _password : configer.get('password');
-
+Maker.prototype.toDoLogin = function (_username = configer.get('username'), _password = configer.get('password')) {
 	webpage.goTo('/login');
 	this.finds('#spec-inputlogin-user').sendKeys(_username);
 	this.finds('#spec-inputlogin-password').sendKeys(_password);
@@ -1245,10 +1233,7 @@ Maker.prototype.toDoLogin = function (_username = '', _password = '') {
 	return this.waitsFor('.spec-qrvey-logo-exp');
 };
 
-Maker.prototype.toDoRegister = function (_username = '', _password = '') {
-	_username = (_username != '') ? _username : 'testingqrvey+' + randomId() + '@gmail.com';
-	_password = (_password != '') ? _password : '123456';
-
+Maker.prototype.toDoRegister = function (_username = 'testingqrvey+' + randomId() + '@gmail.com', _password = '123456') {
 	logger.log('register username', _username);
 
 	webpage.goTo('/register');
@@ -1259,16 +1244,11 @@ Maker.prototype.toDoRegister = function (_username = '', _password = '') {
 	return this.waitsFor('.spec-qrvey-logo-exp');
 };
 
-Maker.prototype.touchesDeleteOptionMenuQrvey = function (_number) {
-	_number = (typeof _number !== 'undefined') ? _number : 1;
-	_number = (_number - 1 < 0) ? 0 : _number - 1;
-
-	return this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey-delete-option')).click();
+Maker.prototype.touchesDeleteOptionMenuQrvey = function (_number = 1) {
+	return this.finds('.spec-qrvey-item-' + (_number - 1)).element(by.css('.spec-touch-menu-qrvey-delete-option')).click();
 };
 
-Maker.prototype.touchesMenuQrvey = function (_number) {
-	_number = (typeof _number !== 'undefined') ? (_number - 1) : 0;
-
+Maker.prototype.touchesMenuQrvey = function (_number = 1) {
 	return this.getsTotal('qrvey in qrveys').then(function (count) {
 		if (count === 0) {
 
@@ -1282,15 +1262,12 @@ Maker.prototype.touchesMenuQrvey = function (_number) {
 			brw.get(brw.baseUrl);
 		}
 
-		this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey')).click();
+		this.finds('.spec-qrvey-item-' + (_number - 1)).element(by.css('.spec-touch-menu-qrvey')).click();
 	});
 };
 
-Maker.prototype.touchsDuplicateOptionMenuQrvey = function (_number) {
-	_number = (typeof _number !== 'undefined') ? _number : 1;
-	_number = _number - 1;
-
-	return this.finds('.spec-qrvey-item-' + _number).element(by.css('.spec-touch-menu-qrvey-duplicate-option')).click();
+Maker.prototype.touchsDuplicateOptionMenuQrvey = function (_number = 1) {
+	return this.finds('.spec-qrvey-item-' + (_number - 1)).element(by.css('.spec-touch-menu-qrvey-duplicate-option')).click();
 };
 
 module.exports = new Maker();
