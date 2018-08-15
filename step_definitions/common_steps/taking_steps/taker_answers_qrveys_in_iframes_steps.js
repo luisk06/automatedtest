@@ -16,14 +16,14 @@ module.exports = function() {
 
 	When(/^the user open the "([^"]*)"$/, function(typeOfWidget, cb) {
 		brw.ignoreSynchronization = true;
-		user.openUrl('http://qwidgets.herokuapp.com/widget/' + typeOfWidget + '/q/' + qrveyIdForIframe, true);
+		webpage.openUrl('http://qwidgets.herokuapp.com/widget/' + typeOfWidget + '/q/' + qrveyIdForIframe, true);
 
 		brw.switchTo().frame(element(by.tagName('iframe')).getWebElement());
 		cb();
 	});
 
 	When(/^the user clicks the Begin button$/, function(cb) {
-		//user.finds('.spec-taker-qrvey').click().then(cb);
+		//maker.finds('.spec-taker-qrvey').click().then(cb);
 		//brw.sleep(10000);
 		brw.ignoreSynchronization = false;
 		cb();

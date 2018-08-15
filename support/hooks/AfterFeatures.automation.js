@@ -41,7 +41,7 @@ module.exports = function() {
 	// }
 
 	registerHandler('AfterScenario', function(event, cb) {
-		logger.log('email used in the scenario: ' + user.validUser());
+		logger.log('email used in the scenario: ' + user.getSetting('validUser'));
 		logger.log('finished running scenario ' + (nameOfScenarios.length + 1));
 		logger.log('-----------------------------------------------');
 		skipSync(false);

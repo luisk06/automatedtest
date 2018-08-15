@@ -7,10 +7,10 @@ module.exports = function() {
 	Then = this.Then;
 
 	Then(/^the "([^"]*)" should have "([^"]*)" as color on "([^"]*)" tab$/, function(arg1, arg2, arg3, cb) {
-		user.finds('.spec-customize-' + arg3 + '-tab').click().then(function(){
+		maker.finds('.spec-customize-' + arg3 + '-tab').click().then(function(){
 			var rgb = utils.hexToRgb(arg2);
 			var rgbFormated = '('.concat(rgb.r).concat(', ').concat(rgb.g).concat(', ').concat(rgb.b).concat(')');
-			user.finds('.spec_customize_color_option_' + arg1).getAttribute('value').then(function(_value) {
+			maker.finds('.spec_customize_color_option_' + arg1).getAttribute('value').then(function(_value) {
 				expect(_value).to.be.equal(arg2); // Error, asigna valor al ingresar el valor
 			}).then(function() {
 				if (arg1 != 'answer_font' && (arg3 != 'presenter' && arg1 != 'main_font')) {

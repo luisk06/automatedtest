@@ -30,7 +30,7 @@ module.exports = function() {
 					x: -400,
 					y: 0
 				}).mouseUp().perform().then(function(){
-					user.waits(800);
+					webpage.waits(800);
 				}).then(cb);
 			} else if (typeOfQuestion == 'short_text') {
 				element(by.css('.textfield-area')).sendKeys('Texto..').then(cb);
@@ -41,7 +41,7 @@ module.exports = function() {
 			//     var any = rand.getNumber({ min: 0, max: 5 });
 			//     any = (any > 0) ? any : 0;
 			//
-			//     user.finds('.spec-taker-rating-select-' + any).click().then(cb);
+			//     maker.finds('.spec-taker-rating-select-' + any).click().then(cb);
 			// }
 		}
 	});

@@ -25,7 +25,7 @@ module.exports = function() {
 		logger.log('absolutePath', absolutePath);
 
 		logoUrl = '';
-		user.finds('.spec_customize_field_updload').clear().sendKeys(absolutePath).getAttribute('value').then(function(_text) {
+		maker.finds('.spec_customize_field_updload').clear().sendKeys(absolutePath).getAttribute('value').then(function(_text) {
 			expect(_text.slice(12, _text.lenght)).to.be.equal(_name);
 		}).then(cb);
 	});
@@ -34,7 +34,7 @@ module.exports = function() {
 		var el = '.spec_customize_custom_logo';
 
 		webpage.waitsFor(el).then(function() {
-			expect(user.finds(el).getAttribute('src')).to.eventually.not.be.eql(logoUrl).and.notify(cb);
+			expect(maker.finds(el).getAttribute('src')).to.eventually.not.be.eql(logoUrl).and.notify(cb);
 		});
 	});
 

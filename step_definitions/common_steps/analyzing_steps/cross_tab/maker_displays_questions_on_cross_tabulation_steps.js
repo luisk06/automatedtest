@@ -11,8 +11,8 @@ module.exports = function() {
 			apps.createNewApp('Test Cross tabulation').then(function(){
 				qs.createCrossTab(_userId, typeOfQrvey).then(function(data) {
 					logger.log('data', data);
-					user.waits(5000);
-					user.openUrl(data.url).then(cb);
+					webpage.waits(5000);
+					webpage.openUrl(data.url).then(cb);
 				});
 			});
 		});
@@ -22,7 +22,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			apps.createNewApp('Test Cross tabulation').then(function(){
 				as.createAnswersForCrossTab(_userId, typeOfQrvey, num).then(function(data) {
-					user.waits(5000);
+					webpage.waits(5000);
 					logger.log('qrveys.data', data);
 				}).then(cb);
 			});
@@ -61,7 +61,7 @@ module.exports = function() {
 		compareDropDown.click().then(function() {
 			compareDropDown.element(by.xpath('.//li[contains(text(), "' + typeOfQuestion + '")]')).click();
 		}).then(function() {
-			user.waits(600).then(function () {
+			webpage.waits(600).then(function () {
 				cb(); // Should be thus
 			});
 		});
@@ -73,7 +73,7 @@ module.exports = function() {
 		compareDropDown.click().then(function() {
 			element(by.css('.spec-crosstab-add-all')).click();
 		}).then(function() {
-			user.waits(600).then(function () {
+			webpage.waits(600).then(function () {
 				cb(); // Should be thus
 			});
 		});
@@ -85,7 +85,7 @@ module.exports = function() {
 		compareDropDown.click().then(function() {
 			element(by.css('.spec-crosstab-remove-all')).click();
 		}).then(function() {
-			user.waits(600).then(function () {
+			webpage.waits(600).then(function () {
 				cb(); // Should be thus
 			});
 		});

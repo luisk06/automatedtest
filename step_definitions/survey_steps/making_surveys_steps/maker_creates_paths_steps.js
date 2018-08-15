@@ -11,12 +11,12 @@ module.exports = function() {
 	});
 
 	When(/^the user adds the answer choices$/, function(cb) {
-		user.createsMultiChoiceOptions(6).then(cb);
+		maker.createsListOptions('multichoice').then(cb);
 	});
 
-	When(/^activates the Paths option$/, function(cb) {
-		user.activatesPath().then(cb);
-	});
+	// When(/^activates the Paths option$/, function(cb) {
+	// 	user.activatesPath().then(cb);
+	// });
 
 	Then(/^the user will see the paths they created below the question as tabs$/, function(cb) {
 		maker.opensPathQuestion(1).then(cb);

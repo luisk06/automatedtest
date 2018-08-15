@@ -40,40 +40,40 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Authentificacions button$/, function(cb) {
-		user.finds('.add-authentication').click().then(cb);
+		maker.finds('.add-authentication').click().then(cb);
 	});
 
 	When(/^the user opens the form$/, function(cb) {
-		user.finds('.automatiq-block.automatiq-block-view').click().then(cb);
+		maker.finds('.automatiq-block.automatiq-block-view').click().then(cb);
 	});
 
 	When(/^the user opens the dropdown$/, function(cb) {
-		user.findsAll('.automatiq-select').get(1).click().then(cb);
+		maker.findsAll('.automatiq-select').get(1).click().then(cb);
 	});
 
 	When(/^the user selects the sign up form$/, function(cb) {
-		user.finds('.select-search input').sendKeys('Sign Up Form');
-		user.findsAll('.li-qrvey').first().click().then(cb);
+		maker.finds('.select-search input').sendKeys('Sign Up Form');
+		maker.findsAll('.li-qrvey').first().click().then(cb);
 	});
 
 	When(/^the user selects the fields for the login form$/, function(cb) {
-		user.findsAll('.form-group .row input').get(1).sendKeys('Email');
-		user.findsAll('.form-group:nth-child(2) .row .automatiq-select').get(0).click();
-		user.findsAll('.form-group:nth-child(2) .row .automatiq-select li').get(1).click().then(cb);
+		maker.findsAll('.form-group .row input').get(1).sendKeys('Email');
+		maker.findsAll('.form-group:nth-child(2) .row .automatiq-select').get(0).click();
+		maker.findsAll('.form-group:nth-child(2) .row .automatiq-select li').get(1).click().then(cb);
 	});
 
 	When(/^the user selects the logout page$/, function(cb) {
-		user.findsAll('.form-group:nth-child(3) .row .automatiq-select').get(0).click();
-		user.findsAll('.form-group:nth-child(3) .row .automatiq-select li').get(0).click().then(cb);
+		maker.findsAll('.form-group:nth-child(3) .row .automatiq-select').get(0).click();
+		maker.findsAll('.form-group:nth-child(3) .row .automatiq-select li').get(0).click().then(cb);
 	});
 
 	When(/^the user clicks on Publish$/, function(cb) {
 		//brw.explore();
-		user.finds('.spec-automation-btn-activate').click().then(cb);
+		maker.finds('.spec-automation-btn-activate').click().then(cb);
 	});
 
 	Then(/^the x button should be displayed$/, function(cb) {
-		var el = user.finds('.add-authentication .close').isDisplayed();
+		var el = maker.finds('.add-authentication .close').isDisplayed();
 
 		expect(el).to.eventually.be.true.and.notify(cb);
 	});

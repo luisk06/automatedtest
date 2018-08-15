@@ -12,15 +12,15 @@ module.exports = function () {
 
 
 	When(/^the user picks "([^"]*)" from "([^"]*)" dropdown$/, function (optionToPick, dropdownType, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element(by.css('.spec-' + dropdownType + '-dropdown > div > span')).click().then(function () {
-			user.waits(800);
+			webpage.waits(800);
 			element(by.xpath("//qv-dropdown[contains(@class, 'spec-" + dropdownType + "-dropdown')]//div[contains(@class, 'options')]//span[contains(text(),'" + optionToPick + "')]")).click().then(cb); // eslint-disable-line
 		});
 	});
 
 	When(/^the user picks "([^"]*)" from "([^"]*)" layer dropdown$/, function (optionToPick, dropdownType, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var panelContainer = element.all(containerLocator).last();
 		panelContainer.element(by.css('.spec-' + dropdownType + '-dropdown > div > span')).click().then(function () {
 			panelContainer.element(by.xpath(".//qv-dropdown[contains(@class, 'spec-" + dropdownType + "-dropdown')]//div[contains(@class, 'options')]//span[contains(text(),'" + optionToPick + "')]")).click().then(cb); // eslint-disable-line
@@ -28,14 +28,14 @@ module.exports = function () {
 	});
 
 	Then(/^the y axis label number (\d+) on combo should be "([^"]*)"$/, function (number, text, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element.all(by.css('.spec-y-axis-label-combo')).get(number-1).getText().then(function(_text){
 			expect(_text).to.be.equal(text);
 		}).then(cb);
 	});
 
 	When(/^the user clicks on chart options tab$/, function (cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 		element(by.css('.spec-chart-options-tab')).click().then(cb);
 	});
 
@@ -72,7 +72,7 @@ module.exports = function () {
 		element(trendLineGraphLocator).all(by.tagName('circle')).each(function(_circle){
 			brw.actions().mouseMove(_circle).perform().then(function () {
 				// console.log('index', index);
-				user.waits(1000);
+				webpage.waits(1000);
 				expect(element(by.css('.spec-trend-tooltip')).isDisplayed()).to.be.eventually.true;
 			});
 		}).then(cb);
@@ -84,7 +84,7 @@ module.exports = function () {
 		element.all(circleLocator).each(function(_circle){
 			brw.actions().mouseMove(_circle).perform().then(function () {
 				// console.log('index', index);
-				user.waits(1000);
+				webpage.waits(1000);
 				expect(element(tooltip).isDisplayed()).to.be.eventually.true;
 				expect(element(tooltip).getText()).to.not.eventually.include('NaN');
 			});
@@ -99,7 +99,7 @@ module.exports = function () {
 				y: 0
 			}).perform().then(function () {
 				// console.log('index', index);
-				user.waits(1000);
+				webpage.waits(1000);
 				expect(element(tooltip).isDisplayed()).to.be.eventually.true;
 				expect(element(tooltip).getText()).to.not.eventually.include('NaN');
 			});
@@ -111,7 +111,7 @@ module.exports = function () {
 		element.all(barLocator).each(function(_circle){
 			brw.actions().mouseMove(_circle).perform().then(function () {
 				// console.log('index', index);
-				user.waits(1000);
+				webpage.waits(1000);
 				expect(element(tooltip).isDisplayed()).to.be.eventually.true;
 				element(tooltip).getText().then(function(_text){
 					// console.log('texto: ', _text);
@@ -125,7 +125,7 @@ module.exports = function () {
 	Then(/^the bars should be displayed as "([^"]*)"$/, function (visual, cb) {
 		var barsLocator = by.css('.spec-bar-value');
 		element.all(barsLocator).each(function(_circle){
-			user.waits(1000);
+			webpage.waits(1000);
 			expect(hasClass(_circle, 'spec-bar-'+visual)).to.be.eventually.true;
 		}).then(cb);
 	});

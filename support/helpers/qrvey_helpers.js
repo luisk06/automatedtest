@@ -197,7 +197,7 @@ var Qrveyhelpers = function() {
 	};
 
 	this.addUrlToImageModal = function() {
-		var _el = user.finds('.spec-design-modal-image-url'),
+		var _el = maker.finds('.spec-design-modal-image-url'),
 			_url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
 
 		return _el.clear().sendKeys(_url).then(function() {
@@ -205,7 +205,7 @@ var Qrveyhelpers = function() {
 				expect(_value).to.be.equal(_url);
 			});
 		}).then(function() {
-			user.finds('.spec-design-modal-done-button').click();
+			maker.finds('.spec-design-modal-done-button').click();
 		});
 	};
 
@@ -224,7 +224,7 @@ var Qrveyhelpers = function() {
 		}).then(function() {
 			questionContainer.all(by.repeater('answer in question.answers')).each(function(item, index) {
 				item.element(by.css('.spec-design-image-title')).sendKeys('Option ' + (index + 1)).then(function() {
-					user.waits(890);
+					webpage.waits(890);
 					item.element(by.css('.spec-image-upload-option-url')).click().then(function() {
 						_this.addUrlToImageModal();
 					});
@@ -270,9 +270,9 @@ var Qrveyhelpers = function() {
 		var i = 1;
 		return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function() {
 			return questionContainer.all(by.css('.spec-image-upload-option-url')).each(function() {
-				user.waits(890);
+				webpage.waits(890);
 				questionContainer.element(by.css('.spec-image-upload-option-url-' + i)).click();
-				var _el = user.finds('.spec-design-modal-image-url'),
+				var _el = maker.finds('.spec-design-modal-image-url'),
 					_url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
 
 				_el.clear().sendKeys(_url).then(function() {
@@ -280,7 +280,7 @@ var Qrveyhelpers = function() {
 						expect(_value).to.be.equal(_url);
 					});
 				}).then(function() {
-					user.finds('.spec-design-modal-done-button').click();
+					maker.finds('.spec-design-modal-done-button').click();
 				});
 				i++;
 			}).then(function() {

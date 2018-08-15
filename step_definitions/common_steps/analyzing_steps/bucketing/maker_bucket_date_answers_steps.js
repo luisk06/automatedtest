@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			apps.createNewApp('Test ' + typeSurvey + ' date').then(function(){
 				as.dateQuestion(_userId, typeSurvey, num, datesArray.rows()).then(function(){
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});

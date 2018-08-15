@@ -7,8 +7,8 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^user moves to "([^"]*)" tab$/, function(tab, cb) {
-		user.waits(5000);
-		user.finds('.dropdown-group-member').click().then(function(){
+		webpage.waits(5000);
+		maker.finds('.dropdown-group-member').click().then(function(){
 			element(by.css('.icn'+tab+' span')).click().then(cb);
 		});
 	});
@@ -18,8 +18,8 @@ module.exports = function() {
 		logger.log('i', i);
 		var index = i-1;
 		logger.log(index);
-		user.waits(2000).then(function(){
-			var _element = user.findsAll('.spec-' + btn + '-'+i).get(index);
+		webpage.waits(2000).then(function(){
+			var _element = maker.findsAll('.spec-' + btn + '-'+i).get(index);
 			_element.click().then(cb);
 		});
 	});

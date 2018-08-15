@@ -9,15 +9,14 @@ module.exports = function() {
 	Given(/^that the user has a "([^"]*)" with registration questions$/, function(typeOfQrvey, cb) {
 		us.isLogged().then(function(_userId) {
 			qs.createQrvey(appID, _userId, typeOfQrvey, 'registration_questions', 'active').then(function(_data) {
-				user.navTo('/application/' + appID + '/webforms');
-				//user.openUrl(data.url)
+				webpage.navTo('/application/' + appID + '/webforms');
 				global.qrveyURL = _data.url;
 			}).then(cb);
 		});
 	});
 
 	When(/^the user take the "([^"]*)" with registration questions$/, function(typeOfQrvey, cb) {
-		user.openUrl(global.qrveyURL);
+		webpage.openUrl(global.qrveyURL);
 		webpage.waitsFor('.spec-taker-qrvey');
 		brw.ignoreSynchronization = true;
 
@@ -66,7 +65,7 @@ module.exports = function() {
 	});
 
 	When(/^the user opens the addressbook$/, function(cb) {
-		user.waits(10000).then(function(){
+		webpage.waits(10000).then(function(){
 			element(by.css('.spec-dropdown-menu-main')).click().then(function(){
 				element(by.css('.spec_address_book_button')).click().then(cb);
 			});

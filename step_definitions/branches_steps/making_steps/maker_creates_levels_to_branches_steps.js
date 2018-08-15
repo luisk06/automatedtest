@@ -10,7 +10,7 @@ module.exports = function() {
 	var locatorBranchInput = by.css('.spec-branch-text-input');
 
 	When(/^the user selects the option number (\d+)$/, function(numberAnswer, cb) {
-		user.waits(500).then(function() {
+		webpage.waits(500).then(function() {
 			element(by.css('.spec-branch-dropdown-answers')).click();
 			element(by.css('.spec-branch-answer-option-' + (numberAnswer - 1))).click().then(cb);
 		});
@@ -21,7 +21,7 @@ module.exports = function() {
 		var branch = branchList.get(branchNumber - 1);
 		switch (branchType){
 			case 'single-selection':
-				user.waits(500).then(function() {
+				webpage.waits(500).then(function() {
 					branch.element(by.css('.spec-branch-singleselection-options-dropdown span')).click();
 					branch.element(by.css('.spec-branch-singleselection-option-' + (numberAnswer - 1))).click().then(cb);
 				});
@@ -30,13 +30,13 @@ module.exports = function() {
 				cb();
 				break;
 			case 'image':
-				user.waits(500).then(function() {
+				webpage.waits(500).then(function() {
 					branch.element(by.css('.spec-branch-image-options-dropdown span')).click();
 					branch.all(by.css('.spec-branch-image-options-dropdown li')).get(numberAnswer - 1).click().then(cb);
 				});
 				break;
 			case 'yes-no':
-				user.waits(500).then(function() {
+				webpage.waits(500).then(function() {
 					branch.element(by.css('.spec-branch-yes-no-options-dropdown span')).click();
 					branch.all(by.css('.spec-branch-yes-no-options-dropdown li')).get(numberAnswer - 1).click().then(cb);
 				});

@@ -148,12 +148,10 @@ Taker.prototype.answersExpressionWithCategoriesQuestion = function () {
 	});
 };
 
-Taker.prototype.answersImageQuestion = function (num) { /* To review */
+Taker.prototype.answersImageQuestion = function (num = 1) { /* To review */
 	var deferred = protractor.promise.defer();
 	var array = [];
 	var sw = false;
-
-	num = (typeof num === 'undefined') ? 1 : num;
 
 	this.findsAll('.list-answers-multiple').count().then(function (_count) {
 		async.times(num, function (n, next) {
@@ -190,17 +188,14 @@ Taker.prototype.answersLongTextQuestion = function () {
 };
 
 Taker.prototype.answersLookupQuestion = function (type) {
-	var _max = (type == 'lookup_webhook') ? 10 : 5;
-	var number = rand.getNumber({
-		min: 1,
-		max: _max
-	});
-
-	logger.log('option number', number);
-
 	this.waits(500);
 	this.finds('.spec-taker-lookup-select').click();
-	return this.finds('.spec-taker-lookup-option-' + number).click();
+	return this.finds('.spec-taker-lookup-option-' +
+		rand.getNumber({
+			min: 1,
+			max: (type == 'lookup_webhook') ? 10 : 5
+		})
+	).click();
 };
 
 Taker.prototype.answersMultipleChoiceQuestion = function () {
@@ -258,17 +253,12 @@ Taker.prototype.answersPaymentsQuestion = function () {
 
 Taker.prototype.answersPhoneNumberQuestion = function () {
 	var _phone = rand.getPhone();
-
 	logger.log('input phone', _phone);
-
 	return this.finds('.spec-taker-onlineform-numberquestion-input').sendKeys(_phone);
 };
 
 Taker.prototype.answersQuestion = function (typeOfQuestion) {
 	var deferred = protractor.promise.defer();
-	deferred.fulfill();
-
-	var _val = null; // eslint-disable-line
 
 	switch (typeOfQuestion) {
 		case 'dropdown':
@@ -646,9 +636,7 @@ Taker.prototype.enterInAudicencePage = function () {
 	return this.finds('.spec_audiencepage_begin_poll_button').click();
 };
 
-Taker.prototype.finish = function (_confirm) {
-	_confirm = (typeof _confirm !== 'undefined') ? _confirm : true;
-
+Taker.prototype.finish = function (_confirm = true) {
 	if (_confirm === true) {
 		this.waitsFor('.spec-user-email-field-confirm');
 		this.finds('.spec-user-email-field-confirm').sendKeys(configer.get('username'));
@@ -666,7 +654,7 @@ Taker.prototype.finish = function (_confirm) {
 Taker.prototype.getQuizStatus = function () {
 	var defer = protractor.promise.defer();
 
-	user.finds('.circle').getAttribute('class').then(function (_classes) {
+	this.finds('.circle').getAttribute('class').then(function (_classes) {
 		var newValue = _classes.replace('circle', '').trim();
 
 		defer.fulfill(newValue);
@@ -678,11 +666,11 @@ Taker.prototype.getQuizStatus = function () {
 	return defer.promise;
 };
 
-Taker.prototype.getTypeQuestion = function (idx) {
+Taker.prototype.getTypeQuestion = function (idx = 0) {
 	var defer = protractor.promise.defer();
 
-	user.waits(500);
-	user.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
+	webpage.waits(500);
+	this.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
 		defer.fulfill(_type);
 	});
 
@@ -701,7 +689,7 @@ Taker.prototype.movesSlidebar = function (_distance) {
 };
 
 Taker.prototype.putCodeInAudiencePage = function (_code) {
-	if (typeof _code === 'undefined') throw new Error('Error, lack the code');
+	if (!code) throw new Error('Error, lack the code');
 
 	logger.log('the code is:', _code);
 	return this.finds('.spec_audiencepage_enter_access_code_input').sendKeys(_code);

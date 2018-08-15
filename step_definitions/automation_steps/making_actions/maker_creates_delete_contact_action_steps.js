@@ -9,8 +9,7 @@ module.exports = function() {
 	Given(/^that the user has a "([^"]*)" with "([^"]*)" question for delete contact$/, function(typeOfQrvey, typeOfQuestion, cb) {
 		us.isLogged().then(function(_userId) {
 			qs.createQrvey(appID, _userId, typeOfQrvey, typeOfQuestion, 'active').then(function(_data) {
-				user.navTo('/application/' + appID + '/webforms');
-				//user.openUrl(data.url)
+				webpage.navTo('/application/' + appID + '/webforms');
 				global.qrveyURL = _data.url;
 			}).then(cb);
 		});
@@ -31,7 +30,7 @@ module.exports = function() {
 	});
 
 	When(/^the user take the "([^"]*)" for delete contact$/, function(typeOfQrvey, cb) {
-		user.openUrl(global.qrveyURL);
+		webpage.openUrl(global.qrveyURL);
 		webpage.waitsFor('.spec-taker-qrvey');
 		brw.ignoreSynchronization = true;
 

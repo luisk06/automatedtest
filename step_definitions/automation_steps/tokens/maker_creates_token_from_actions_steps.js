@@ -7,14 +7,14 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user selects examine data app type as "([^"]*)"$/, function(qrveyType, cb) {
-		user.finds('.spec-examinedata-select-qrvey-type').click().then(function(){
-			user.finds('.spec-examinedata-qrvey-' + qrveyType).click().then(cb);
+		maker.finds('.spec-examinedata-select-qrvey-type').click().then(function(){
+			maker.finds('.spec-examinedata-qrvey-' + qrveyType).click().then(cb);
 		});
 	});
 
 	When(/^the user selects qrvey number (\d+) from the "([^"]*)" list$/, function(optionNumber, actionType, cb) {
-		user.finds('.spec-'+ actionType +'-select-qrvey').click().then(function(){
-			user.finds('.spec-'+actionType+'-qrvey-option-' + optionNumber).click().then(cb);
+		maker.finds('.spec-'+ actionType +'-select-qrvey').click().then(function(){
+			maker.finds('.spec-'+actionType+'-qrvey-option-' + optionNumber).click().then(cb);
 		});
 	});
 

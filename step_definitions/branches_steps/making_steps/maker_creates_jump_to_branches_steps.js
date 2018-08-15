@@ -18,7 +18,7 @@ module.exports = function () {
 
 	When(/^the user selects "([^"]*)" question type for question (\d+)$/, function (typeOfQuestion, questionNumber, cb) {
 		var _type = qrvey.getQuestionType(typeOfQuestion);
-		user.waits(1500);
+		webpage.waits(1500);
 
 		qrvey.questionTypeFromId(questionNumber, _type).then(function () {
 			if (_type == 'slider bar') {
@@ -31,7 +31,7 @@ module.exports = function () {
 	});
 
 	When(/^the user fill "([^"]*)" question options from question (\d+)$/, function (typeOfQuestion, questionNumber, cb) {
-		user.waits(500).then(function () {
+		webpage.waits(500).then(function () {
 			maker.fillQuestionByTypeAndID(questionNumber, typeOfQuestion).then(cb);
 		});
 	});
@@ -58,21 +58,21 @@ module.exports = function () {
 		qrvey.selectBranchesAction(action, questionNumber, branchNumber, levelNumber).then(function () {
 			var branchList = qrvey.getBranchesListFromQuestion(questionNumber, levelNumber);
 			var branch = branchList.get(branchNumber - 1);
-			user.waits(3000);
+			webpage.waits(3000);
 			if (action == 'end'){
-				user.waits(1000).then(function () {
+				webpage.waits(1000).then(function () {
 					branch.element(by.css('.spec-branch-dropdown')).click().then(function () {
 						branch.element(by.css('.spec-branch-jump-end')).click().then(cb);
 					});
 				});
 			} else if (action == 'follow branch'){
-				user.waits(1000).then(function () {
+				webpage.waits(1000).then(function () {
 					branch.element(by.css('.spec-branch-dropdown')).click().then(function () {
 						branch.element(by.css('.spec-branch-action-follow')).click().then(cb);
 					});
 				});
 			} else if (action == 'follow branch then end') {
-				user.waits(1000).then(function () {
+				webpage.waits(1000).then(function () {
 					branch.element(by.css('.spec-branch-dropdown')).click().then(function () {
 						branch.element(by.css('.spec-branch-action-follow-end')).click().then(cb);
 					});
@@ -84,7 +84,7 @@ module.exports = function () {
 	When(/^the user selects "([^"]*)" action for branch (\d+) level (\d+) on question (\d+)$/, function (action, branchNumber, levelNumber, questionNumber, cb) {
 		var branchList = qrvey.getBranchesListFromQuestion(questionNumber, levelNumber);
 		var branch = branchList.get(branchNumber - 1);
-		user.waits(2000);
+		webpage.waits(2000);
 		browser.actions().mouseMove(branch.element(by.css('.spec-branch-dropdown')), {x:48,y:12}).click().perform().then(function () {
 			branch.element(by.css('.spec-branch-action-' + action)).click().then(cb);
 		});
@@ -93,7 +93,7 @@ module.exports = function () {
 	When(/^the user choses rating options on for "([^"]*)" option on branch (\d+) level (\d+) from question (\d+)$/, function (option, branchNumber, levelNumber, questionNumber, cb) {
 		var branchList = qrvey.getBranchesListFromQuestion(questionNumber, levelNumber);
 		var branch = branchList.get(branchNumber - 1);
-		user.waits(2000);
+		webpage.waits(2000);
 		if(option == 'Between, inclusive'){
 			var ratingFromDropdown = branch.element(locatorRatingFromDropDown);
 			ratingFromDropdown.click().then(function(){
@@ -116,7 +116,7 @@ module.exports = function () {
 	When(/^the user select a date for "([^"]*)" option on branch (\d+) level (\d+) from question (\d+)$/, function (option, branchNumber, levelNumber, questionNumber, cb) {
 		var branchList = qrvey.getBranchesListFromQuestion(questionNumber, levelNumber);
 		var branch = branchList.get(branchNumber - 1);
-		user.waits(2000);
+		webpage.waits(2000);
 		var dateDropdownMin = branch.element(locatorDateDropdown);
 		if(option == 'Between, inclusive'){
 
@@ -149,19 +149,19 @@ module.exports = function () {
 		var branch = branchList.get(branchNumber - 1);
 
 		if (type == 'jump to'){
-			user.waits(1000).then(function () {
+			webpage.waits(1000).then(function () {
 				branch.element(by.css('.spec-branch-dropdown')).click().then(function () {
 					branch.element(by.css('.spec-branch-jump-option-' + optionNumber)).click().then(cb);
 				});
 			});
 		} else if (type == 'follow branch'){
-			user.waits(1000).then(function () {
+			webpage.waits(1000).then(function () {
 				branch.element(by.css('.spec-branch-dropdown')).click().then(function () {
 					branch.element(by.css('.spec-branch-action-follow')).click().then(cb);
 				});
 			});
 		} else if (type == 'follow branch then end') {
-			user.waits(1000).then(function () {
+			webpage.waits(1000).then(function () {
 				branch.element(by.css('.spec-branch-dropdown')).click().then(function () {
 					branch.element(by.css('.spec-branch-action-follow-end')).click().then(cb);
 				});
@@ -172,7 +172,7 @@ module.exports = function () {
 	When(/^the user selects jump to end on branch (\d+) from question (\d+)$/, function (branchNumber, questionNumber, cb) {
 		var branchList = qrvey.getBranchesListFromQuestion(questionNumber);
 		var branch = branchList.get(branchNumber - 1);
-		user.waits(1000).then(function () {
+		webpage.waits(1000).then(function () {
 			return branch.element(by.css('.spec-branch-dropdown')).click();
 		}).then(function () {
 			branch.element(by.css('.spec-branch-jump-end')).click().then(cb);
@@ -204,7 +204,7 @@ module.exports = function () {
 
 	Then(/^the user shoud be able to move to share tab$/, function (cb) {
 		var el = '.spec-tab-to-share';
-		user.waits(3000);
+		webpage.waits(3000);
 		element(by.css(el)).click().then(function () {
 			var has_Class = hasClass(element(by.css(el)), 'active');
 			expect(has_Class).to.eventually.be.true.and.notify(cb);

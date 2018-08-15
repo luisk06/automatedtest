@@ -13,11 +13,11 @@ module.exports = function () {
 	});
 
 	When(/^the user moves to "([^"]*)" tab$/, function (tabType, cb) {
-		user.finds('.spec-tab-' + tabType).click().then(cb);
+		maker.finds('.spec-tab-' + tabType).click().then(cb);
 	});
 
 	When(/^the user clicks on reset filters$/, function (cb) {
-		user.finds('.spec-analyze-btn-reset-all').click().then(cb);
+		maker.finds('.spec-analyze-btn-reset-all').click().then(cb);
 	});
 
 	Then(/^the number of excluded answers should be (\d+)$/, function (numberExcluded, cb) {

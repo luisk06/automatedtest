@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'slide_bar', 'active', numbersStops);
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 

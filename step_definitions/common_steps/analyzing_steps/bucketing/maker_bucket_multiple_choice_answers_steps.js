@@ -11,8 +11,8 @@ module.exports = function() {
 		if (typeOfQrvey == 'incontextfeedback') {
 			index = i - 1;
 		}
-		user.waits(600).then(function() {
-			var _element = user.findsAll('.spec_' + btn + '_' + i).get(index);
+		webpage.waits(600).then(function() {
+			var _element = maker.findsAll('.spec_' + btn + '_' + i).get(index);
 			_element.click().then(cb);
 		});
 	});
@@ -24,9 +24,9 @@ module.exports = function() {
 		if (typeOfQrvey == 'incontextfeedback') {
 			index = i - 1;
 		}
-		user.waits(600).then(function() {
+		webpage.waits(600).then(function() {
 			element(by.css('.spec-download-drop')).click().then(function(){
-				var _element = user.findsAll('.spec_bucket_button_' + i).get(index);
+				var _element = maker.findsAll('.spec_bucket_button_' + i).get(index);
 				_element.click().then(cb);
 			});
 		});
@@ -46,7 +46,7 @@ module.exports = function() {
 			case 'date':
 				for (i = 0; i < numberOfBuckets; i++) {
 					text = 'Bucket ' + (i + 1);
-					user.finds('.spec_bucket_name_input').sendKeys(text);
+					maker.finds('.spec_bucket_name_input').sendKeys(text);
 					brw.actions().sendKeys(protractor.Key.ENTER).perform();
 				}
 				cb();
@@ -57,7 +57,7 @@ module.exports = function() {
 					text = (typeOfQuestion == 'negative') ? 'Negative ' : 'Positive ';
 					text += (i + 1);
 
-					user.finds('.spec_bucket_name_input').sendKeys(text);
+					maker.finds('.spec_bucket_name_input').sendKeys(text);
 					brw.actions().sendKeys(protractor.Key.ENTER).perform();
 				}
 				cb();
@@ -67,11 +67,11 @@ module.exports = function() {
 
 	When(/^the user adds (\d+) question to bucket (\d+)$/, function(numberOfQuestions, bucketNumber, cb) {
 		for (var i = 0; i < numberOfQuestions; i++) {
-			var answer = user.findsAll('.spec-bucket-answer').get(0);
+			var answer = maker.findsAll('.spec-bucket-answer').get(0);
 			answer.element(by.css('.spec-bucket-select')).click().then(function() {
-				user.waits(500).then(function() {
+				webpage.waits(500).then(function() {
 					answer.all(by.repeater('(k, v) in buckets')).get(bucketNumber - 1).click().then(function() {
-						user.waits(1000);
+						webpage.waits(1000);
 					});
 				});
 			});
@@ -80,17 +80,17 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on "([^"]*)" "([^"]*)"$/, function(identifier, tagType, cb) {
-		user.waits(500);
-		user.finds('.spec_' + identifier + '_' + tagType).click().then(cb);
+		webpage.waits(500);
+		maker.finds('.spec_' + identifier + '_' + tagType).click().then(cb);
 	});
 
 	When(/^the user clicks on "([^"]*)" "([^"]*)" on bucket (\d+)$/, function(identifier, tagType, bucketNumer, cb) {
-		var buckets = user.findsAll('.spec-bucket-item');
+		var buckets = maker.findsAll('.spec-bucket-item');
 		buckets.get(bucketNumer - 1).element(by.css('.spec_' + identifier + '_' + tagType)).click().then(cb);
 	});
 
 	Then(/^the total of "([^"]*)" should be (\d+)$/, function(type, number, cb) {
-		user.waits(5000);
+		webpage.waits(5000);
 		expect(element.all(by.css('.spec-' + type)).count()).to.eventually.be.equal(parseInt(number)).and.notify(cb);
 	});
 
@@ -105,7 +105,7 @@ module.exports = function() {
 	});
 
 	Then(/^the total of bucket label should be (\d+)$/, function(number, cb) {
-		user.waits(1400);
+		webpage.waits(1400);
 		expect(element.all(by.css('.bucket_label')).count()).to.eventually.be.equal(parseInt(number)).and.notify(cb);
 	});
 };

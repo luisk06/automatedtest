@@ -7,11 +7,11 @@ module.exports = function() {
 
 	When(/^the user adds (\d+) question to "([^"]*)" bucket (\d+)$/, function (numberOfQuestions, bucketType, bucketNumber, cb) {
 		for(var i = 0; i<numberOfQuestions; i++){
-			var answer = user.findsAll('.spec-bucket-answer.'+bucketType).get(0);
+			var answer = maker.findsAll('.spec-bucket-answer.'+bucketType).get(0);
 			answer.element(by.css('.spec-bucket-select')).click().then(function(){
-				user.waits(500).then(function(){
+				webpage.waits(500).then(function(){
 					answer.all(by.repeater('(k, v) in buckets')).get(bucketNumber - 1).click().then(function (){
-						user.waits(1000);
+						webpage.waits(1000);
 					});
 				});
 			});
@@ -26,7 +26,7 @@ module.exports = function() {
 			x: _direction,
 			y: 0
 		}).mouseUp().perform().then(function(){
-			user.waits(800);
+			webpage.waits(800);
 		}).then(cb);
 	});
 

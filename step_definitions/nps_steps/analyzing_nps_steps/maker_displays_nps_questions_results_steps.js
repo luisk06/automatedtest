@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			apps.createNewApp('Test NPS').then(function(){
 				as.createAnswers(_userId, 'nps', 'nps', num, array.rows()).then(function(){
-					user.waits(5000);
+					webpage.waits(5000);
 				}).then(cb);
 			});
 		});
@@ -18,7 +18,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)" of the just created nps$/, function(identifier, type, cb) {
 		var _class = '.spec_' + identifier + '_' + type + '_' + configer.get('QrveyId');
-		user.finds(_class).click().then(function() {
+		maker.finds(_class).click().then(function() {
 			var button = $('.spec-btn-filter-histogram-');
 			var isClickable = EC.elementToBeClickable(button);
 			brw.wait(isClickable, 20000);

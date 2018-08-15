@@ -10,7 +10,7 @@ module.exports = function() {
 		scrollToBottom().then(function(){
 			element(by.css('.showmore-down')).click().then(function() {
 				scrollToBottom();
-				user.waits(1200);
+				webpage.waits(1200);
 			}).then(cb);
 		});
 	});
@@ -22,7 +22,7 @@ module.exports = function() {
 			scrollToBottom();
 			// console.log('KEY: ', key);
 			brw.actions().mouseMove(_allElements.get(key).element(by.css('img.pic'))).click().perform();
-			user.waits(1500);
+			webpage.waits(1500);
 			next();
 		});
 		scrollAxisY('1800');
@@ -36,7 +36,7 @@ module.exports = function() {
 			scrollAxisY(1800);
 			// console.log('KEY: ', key);
 			brw.actions().mouseMove(_allElements.get(0).element(by.css('img.pic'))).click().perform();
-			user.waits(1500);
+			webpage.waits(1500);
 			next();
 		});
 		scrollAxisY('1800');
@@ -48,13 +48,13 @@ module.exports = function() {
 	});
 
 	Then(/^the number of excluded records should be (\d+)$/, function (numberExcluded, cb) {
-		user.waits(1300);
+		webpage.waits(1300);
 		var repeater = by.repeater('item in vm.IRPaginate[results.questionid].EXCLUDED.Items  track by item.answerid');
 		expect(element.all(repeater).count()).to.eventually.be.equal(parseInt(numberExcluded)).and.notify(cb);
 	});
 
 	Then(/^the number of excluded records should be greater than 0$/, function (cb) {
-		user.waits(1300);
+		webpage.waits(1300);
 		var repeater = by.repeater('item in vm.IRPaginate[results.questionid].EXCLUDED.Items  track by item.answerid');
 		expect(element.all(repeater).count()).to.eventually.be.above(0).and.notify(cb);
 	});

@@ -24,7 +24,7 @@ module.exports = function() {
 			logger.log('initialPos:', initialPos);
 			logger.log('get:', initialPos + index);
 
-			user.waits(2000);
+			webpage.waits(2000);
 			element.all(by.css('.QTable.preview footer div div.cell.showhide')).get(initialPos + index).click().then(cb);
 		});
 	});
@@ -38,14 +38,14 @@ module.exports = function() {
 				cb();
 			} else {
 				logger.log('else');
-				user.finds('.showmore-rigth').click();
+				maker.finds('.showmore-rigth').click();
 				brw.sleep(750);
 			}
 		}).then(cb);
 	});
 
 	When(/^the user opens the filterbar$/, function(cb){
-		user.finds('.spec-open-filter-bar').click().then(cb);
+		maker.finds('.spec-open-filter-bar').click().then(cb);
 	});
 
 	Then(/^the (\d+),(\d+) ranking answer filter should appear in the histogram filters$/, function(arg1, arg2, cb) {

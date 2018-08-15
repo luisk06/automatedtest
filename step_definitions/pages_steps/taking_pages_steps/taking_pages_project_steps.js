@@ -7,19 +7,19 @@ module.exports = function() {
 	var _pagesURL = ''; // eslint-disable-line
 
 	When(/^the user activate the main page$/, function (cb) {
-		user.findsAll('.toggle span').get(0).click().then(cb);
+		maker.findsAll('.toggle span').get(0).click().then(cb);
 	});
 
 	When(/^the user clicks the copy project url button$/, function (cb) {
-		user.finds('.project-url input').getAttribute('value').then(function(value){
+		maker.finds('.project-url input').getAttribute('value').then(function(value){
 			_pagesURL = value;
 		}).then(cb);
 	});
 
 	When(/^the user open the project url$/, function (cb) {
-		user.waits(1000);
+		webpage.waits(1000);
 		element(by.css('.project-url a')).getText().then(function(_url){
-			user.openUrl(_url).then(cb);
+			webpage.openUrl(_url).then(cb);
 		});
 
 	});

@@ -10,7 +10,7 @@ module.exports = function () {
 		us.isLogged().then(function (_userId) {
 			qs.createQrvey(appID, _userId, 'checklist').then(function (data) {
 				logger.log('data', data);
-				user.openUrl(data.url);
+				webpage.openUrl(data.url);
 			}).then(cb);
 		});
 	});
@@ -28,9 +28,9 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks the submit button$/, function (cb) {
-		user.finds('.ico-check.spec-user-response-ok').click().then(cb);
+		maker.finds('.ico-check.spec-user-response-ok').click().then(cb);
 
-		// user.waits(600, function(){
+		// webpage.waits(600, function(){
 		// 	logger.log('voy a hacer el click');
 		// 	element(by.css('.spec-save-google-sheet-button')).click().then(cb);
 		// });
@@ -49,7 +49,7 @@ module.exports = function () {
 		var el = '.new-end-page';
 
 		webpage.waitsFor(el);
-		user.finds(el).isDisplayed().then(function (_isDisplays) {
+		maker.finds(el).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
 	});

@@ -21,7 +21,7 @@ module.exports = function() {
 		var el = '.spec-automatiq-block-action-view-open';
 
 		webpage.waitsFor(el);
-		user.findsAll(el).get(0).click().then(cb);
+		maker.findsAll(el).get(0).click().then(cb);
 	});
 
 	When(/^the user put the message in sms$/, function(cb) {
@@ -38,18 +38,18 @@ module.exports = function() {
 	When(/^the user selects the schedule process (\d+) of the list in pages design$/, function(position, cb) {
 		var el = '.spec-qrvey-flow';
 
-		user.finds('.action-another-process .automatiq-select').click();
+		maker.finds('.action-another-process .automatiq-select').click();
 		webpage.waitsFor(el);
-		user.findsAll(el).get(position - 1).click().then(cb);
+		maker.findsAll(el).get(position - 1).click().then(cb);
 	});
 
 	When(/^the user writes the message$/, function(cb) {
-		user.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10)).then(cb);
+		maker.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10)).then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" process (\d+)$/, function(typeOfProccess, position, cb) {
-		user.findsAll('.automatiq-select span').get(2).click().then(function() {
-			user.findsAll('.spec-automatiq-list-items div li').get(position).click();
+		maker.findsAll('.automatiq-select span').get(2).click().then(function() {
+			maker.findsAll('.spec-automatiq-list-items div li').get(position).click();
 		}).then(cb);
 	});
 
@@ -65,7 +65,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on "([^"]*)" condition$/, function(condition, cb) {
-		var el = user.findsAll('.spec-automatiq-add-condition-examine a');
+		var el = maker.findsAll('.spec-automatiq-add-condition-examine a');
 
 		if (condition == 'add_condition') el.get(1).click().then(cb);
 		else el.get(0).click().then(cb);
@@ -108,10 +108,10 @@ module.exports = function() {
 
 	When(/^the user sort the condition "([^"]*)"$/, function(condition, cb) {
 
-		user.findsAll('.spec-automatiq-select-action-open').get(4).click();
-		user.findsAll('.spec-automatiq-sort-option ul div li').get(0).click();
-		user.findsAll('.spec-automatiq-sort-by .spec-automatiq-select-action-open').click().then(function() {
-			var el = user.findsAll('.spec-automatiq-sort-by ul li');
+		maker.findsAll('.spec-automatiq-select-action-open').get(4).click();
+		maker.findsAll('.spec-automatiq-sort-option ul div li').get(0).click();
+		maker.findsAll('.spec-automatiq-sort-by .spec-automatiq-select-action-open').click().then(function() {
+			var el = maker.findsAll('.spec-automatiq-sort-by ul li');
 
 			if (condition == 'asc') el.get(0).click();
 			else el.get(1).click();
@@ -119,24 +119,24 @@ module.exports = function() {
 	});
 
 	When(/^the user fills a new action inside "([^"]*)"$/, function(action, cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click().then(function () {
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(1).click().then(function () {
 			//webpage.waitsFor('.spec-automatiq-select-action-open');
-			var el = user.findsAll('.spec-automatiq-select-action-open');
+			var el = maker.findsAll('.spec-automatiq-select-action-open');
 
 			if (action == 'examinedata') el.get(5).click();
 			else if (action == 'findrecord') el.get(2).click();
 			else el.get(1).click();
 
-			user.findsAll('.spec-automatiq-select-action-send-sms').get(1).click().then(cb);
+			maker.findsAll('.spec-automatiq-select-action-send-sms').get(1).click().then(cb);
 		});
 	});
 
 	When(/^the user fills a new update action inside "([^"]*)" with record found$/, function (action, cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
-		var el = user.findsAll('.at-action-dd .spec-automatiq-select-action-open');
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
+		var el = maker.findsAll('.at-action-dd .spec-automatiq-select-action-open');
 		el.get(1).click();
 		// brw.explore();
-		user.findsAll('.spec-automatiq-select-action-update-webform').get(1).click().then(cb);
+		maker.findsAll('.spec-automatiq-select-action-update-webform').get(1).click().then(cb);
 	});
 
 	When(/^the user fills a new sms action inside "([^"]*)" with record not found$/, function (action, cb) {
@@ -151,27 +151,27 @@ module.exports = function() {
 	});
 
 	When(/^the user add an add contact action inside "([^"]*)"$/, function(action, cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
-		var el = user.findsAll('.at-action-dd .spec-automatiq-select-action-open');
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
+		var el = maker.findsAll('.at-action-dd .spec-automatiq-select-action-open');
 		if (action == 'examinedata') el.get(6).click();
 		else el.get(1).click();
-		user.findsAll('.spec-automatiq-select-action-add-contact').get(1).click().then(cb);
+		maker.findsAll('.spec-automatiq-select-action-add-contact').get(1).click().then(cb);
 	});
 
 	When(/^the user add an update contact action inside "([^"]*)"$/, function(action, cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
-		var el = user.findsAll('.at-action-dd .spec-automatiq-select-action-open');
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
+		var el = maker.findsAll('.at-action-dd .spec-automatiq-select-action-open');
 		if (action == 'examinedata') el.get(4).click();
 		else el.get(1).click();
-		user.findsAll('.spec-automatiq-select-action-update-contact').get(1).click().then(cb);
+		maker.findsAll('.spec-automatiq-select-action-update-contact').get(1).click().then(cb);
 	});
 
 	When(/^the user add an delete contact action inside "([^"]*)"$/, function(action, cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
-		var el = user.findsAll('.at-action-dd .spec-automatiq-select-action-open');
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(1).click();
+		var el = maker.findsAll('.at-action-dd .spec-automatiq-select-action-open');
 		if (action == 'examinedata') el.get(4).click();
 		else el.get(1).click();
-		user.findsAll('.spec-automatiq-select-action-delete-contact').get(1).click().then(cb);
+		maker.findsAll('.spec-automatiq-select-action-delete-contact').get(1).click().then(cb);
 	});
 
 	When(/^the user fills the fields for update contact in pages$/, function(cb) {
@@ -186,110 +186,110 @@ module.exports = function() {
 	});
 
 	When(/^the user select "([^"]*)" record$/, function(record, cb) {
-		var el = user.finds('.add-action-button');
+		var el = maker.finds('.add-action-button');
 		brw.executeScript('window.scrollTo(1658, 10);').then(function(){
-			user.waits(2000);
+			webpage.waits(2000);
 			if (record == 'not_found')  el.click().then(cb);
 		});
 	});
 
 	When(/^the user selects the "([^"]*)" type in examinedata of "([^"]*)"$/, function(typeOfQrvey, typeOfRecord, cb) {
 		if(typeOfRecord=='pages'){
-			user.findsAll('.spec-examinedata-select-qrvey-type').click();
-			user.finds('.spec-examinedata-qrvey-' + typeOfQrvey).click().then(cb);
+			maker.findsAll('.spec-examinedata-select-qrvey-type').click();
+			maker.finds('.spec-examinedata-qrvey-' + typeOfQrvey).click().then(cb);
 		}else{
-			user.findsAll('.spec-automatiq-find-record-app span').click();
-			user.finds('.spec-automatiq-find-' + typeOfQrvey).click().then(cb);
+			maker.findsAll('.spec-automatiq-find-record-app span').click();
+			maker.finds('.spec-automatiq-find-' + typeOfQrvey).click().then(cb);
 		}
 	});
 
 	When(/^the user selects the "([^"]*)" type in find record of "([^"]*)"$/, function(typeOfQrvey, typeOfRecord, cb) {
 		if(typeOfRecord == 'pages'){
-			user.findsAll('.spec-automatiq-find-record-app span').click();
-			user.finds('.spec-automatiq-find-' + typeOfQrvey).click().then(cb);
+			maker.findsAll('.spec-automatiq-find-record-app span').click();
+			maker.finds('.spec-automatiq-find-' + typeOfQrvey).click().then(cb);
 		}else{
 			typeOfQrvey = (typeOfQrvey == 'forms')? 'form' : typeOfQrvey;
-			user.findsAll('.spec-automatiq-find-record-app span').click();
-			user.finds('.spec-automatiq-find-' + typeOfQrvey).click().then(cb);
+			maker.findsAll('.spec-automatiq-find-record-app span').click();
+			maker.finds('.spec-automatiq-find-' + typeOfQrvey).click().then(cb);
 		}
 	});
 
 	When(/^the user selects the qrvey in position (\d+) in find record$/, function(position, cb) {
 		var el = '.spec-select-qrvey-find-record li';
 
-		user.findsAll('.spec-automatiq-find-record-select-qrvey').click();
+		maker.findsAll('.spec-automatiq-find-record-select-qrvey').click();
 		webpage.waitsFor(el);
-		user.findsAll(el).get(position).click().then(cb);
+		maker.findsAll(el).get(position).click().then(cb);
 	});
 
 	When(/^the user selects the qrvey in position (\d+) in examine data$/, function(position, cb) {
 		var el = '.spec-select-qrvey-examinedata li';
 
-		user.findsAll('.spec-select-qrvey-examinedata').click();
+		maker.findsAll('.spec-select-qrvey-examinedata').click();
 		webpage.waitsFor(el);
-		user.findsAll(el).get(position).click().then(cb);
+		maker.findsAll(el).get(position).click().then(cb);
 	});
 
 	When(/^the user select the address question to compare$/, function(cb) {
-		user.finds('.spec-automatiq-select-field span').click();
-		user.findsAll('.spec-automatiq-select-field ul div li').get(0).click();
-		user.finds('.spec-automatiq-input-equals').sendKeys(chance.street()).then(cb);
+		maker.finds('.spec-automatiq-select-field span').click();
+		maker.findsAll('.spec-automatiq-select-field ul div li').get(0).click();
+		maker.finds('.spec-automatiq-input-equals').sendKeys(chance.street()).then(cb);
 	});
 
 	When(/^the user select the email question to compare$/, function(cb) {
-		user.finds('.spec-automatiq-select-field span').click();
-		user.findsAll('.spec-automatiq-select-field ul div li').get(1).click();
+		maker.finds('.spec-automatiq-select-field span').click();
+		maker.findsAll('.spec-automatiq-select-field ul div li').get(1).click();
 
-		user.finds('.spec-automatiq-select-condition span').click();
-		user.findsAll('.spec-automatiq-select-condition ul div li').get(0).click();
+		maker.finds('.spec-automatiq-select-condition span').click();
+		maker.findsAll('.spec-automatiq-select-condition ul div li').get(0).click();
 
-		/*user.finds('.spec-automatiq-filter-text input').sendKeys('carlos.vibanco@qrvey.com').then(cb);*/
-		user.finds('.spec-automatiq-input-equals').sendKeys('carlos.vibanco@qrvey.com').then(cb);
+		/*maker.finds('.spec-automatiq-filter-text input').sendKeys('carlos.vibanco@qrvey.com').then(cb);*/
+		maker.finds('.spec-automatiq-input-equals').sendKeys('carlos.vibanco@qrvey.com').then(cb);
 	});
 
 	When(/^the user clicks on add condition$/, function(cb) {
-		user.findsAll('.spec-automatiq-add-condition-examine a').get(1).click().then(cb);
+		maker.findsAll('.spec-automatiq-add-condition-examine a').get(1).click().then(cb);
 	});
 
 	When(/^the user opens the actions in record$/, function(cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(2).click().then(cb);
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(2).click().then(cb);
 	});
 
 	When(/^the user opens the actions in "([^"]*)" record$/, function(record, cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(3).click().then(cb);
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(3).click().then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" action in record$/, function(action, cb) {
-		user.findsAll('.spec-automatiq-select-action-open').get(2).click();
-		user.findsAll('.spec-automatiq-select-action-' + action).get(2).click().then(cb);
+		maker.findsAll('.spec-automatiq-select-action-open').get(2).click();
+		maker.findsAll('.spec-automatiq-select-action-' + action).get(2).click().then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" action in "([^"]*)" record$/, function(action, record, cb) {
-		user.findsAll('.spec-automatiq-select-action-open').get(3).click();
-		user.findsAll('.spec-automatiq-select-action-' + action).get(3).click().then(cb);
+		maker.findsAll('.spec-automatiq-select-action-open').get(3).click();
+		maker.findsAll('.spec-automatiq-select-action-' + action).get(3).click().then(cb);
 	});
 
 	When(/^the user writes the message in record$/, function(cb) {
-		user.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10)).then(cb);
+		maker.finds('.spec-automatiq-show-message input').sendKeys(rand.getSentence(10)).then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" type in show results$/, function(typeOfQrvey, cb) {
-		user.finds('.spec-automatiq-show-results-select-qrvey span').click();
-		user.finds('.spec-show-results-' + typeOfQrvey).click().then(cb);
+		maker.finds('.spec-automatiq-show-results-select-qrvey span').click();
+		maker.finds('.spec-show-results-' + typeOfQrvey).click().then(cb);
 	});
 
 	When(/^the user selects the qrvey in position (\d+) in show results$/, function(position, cb) {
 		var el = '.spec-show-results-qrvey ul div li';
 
-		user.findsAll('.spec-show-results-qrvey').click();
+		maker.findsAll('.spec-show-results-qrvey').click();
 		webpage.waitsFor(el);
-		user.findsAll(el).get(position).click().then(cb);
+		maker.findsAll(el).get(position).click().then(cb);
 	});
 
 	When(/^the user select "([^"]*)" view in "([^"]*)"$/, function(_view, typeOfQrvey, cb) {
 		var view = '';
 
-		user.finds('.automatiq-select-results-view').click();
+		maker.finds('.automatiq-select-results-view').click();
 
 		if (_view == 'detailed') view = 0;
 		else if (_view == 'summary') view = 1;
@@ -301,7 +301,7 @@ module.exports = function() {
 	});
 
 	When(/^the user fills the url$/, function(cb) {
-		user.finds('.spec-load-url-form-control').sendKeys('qrvey.com').then(cb);
+		maker.finds('.spec-load-url-form-control').sendKeys('qrvey.com').then(cb);
 	});
 
 };

@@ -18,26 +18,26 @@ module.exports = function() {
 	});
 
 	When(/^the user selects "([^"]*)" like an app type from the dropdown$/, function(qrveyAppType, cb) {
-		user.finds('.spec-lookup-dropdown-qrvey-app-select').click();
-		user.finds('.spec-lookup-dropdown-qrvey-app-selected-' + qrveyAppType).click().then(cb);
+		maker.finds('.spec-lookup-dropdown-qrvey-app-select').click();
+		maker.finds('.spec-lookup-dropdown-qrvey-app-selected-' + qrveyAppType).click().then(cb);
 	});
 
 	When(/^the user clicks on the Edit button for modify the lookup rows$/, function(cb) {
-		user.finds('.spec-lookup-edit-btn').click().then(cb);
+		maker.finds('.spec-lookup-edit-btn').click().then(cb);
 	});
 
 	When(/^the user selects the form from the dropdown$/, function(cb) {
 		webpage.waitsFor('.modal-dialog');
-		user.finds('.automatiq-select').click();
+		maker.finds('.automatiq-select').click();
 
 		webpage.waitsFor('.scroll-select');
-		user.finds('.scroll-select .select-search input').sendKeys('qrvey');
-		user.findsAll('.scroll-select li:not(.select-search)').first().click().then(cb);
+		maker.finds('.scroll-select .select-search input').sendKeys('qrvey');
+		maker.findsAll('.scroll-select li:not(.select-search)').first().click().then(cb);
 	});
 
 	When(/^the user selects the columm to show$/, function(cb) {
-		user.finds('.spec-google-display-column-dropdown').click();
-		user.finds('.spec-google-display-column-dropdown + .options span').click().then(cb);
+		maker.finds('.spec-google-display-column-dropdown').click();
+		maker.finds('.spec-google-display-column-dropdown + .options span').click().then(cb);
 	});
 
 	When(/^the user selects the value to show$/, function(cb) {
@@ -71,13 +71,13 @@ module.exports = function() {
 
 	When(/^the user clicks on select entries$/, function(cb) {
 		element(by.css('.spec-google-select-entries-button')).click().then(function() {
-			user.waits(600);
+			webpage.waits(600);
 		}).then(cb);
 	});
 
 	When(/^the user clicks on test$/, function(cb) {
 		element(by.css('.spec-webhook-test-button')).click().then(function() {
-			user.waits(600);
+			webpage.waits(600);
 		}).then(cb);
 	});
 
@@ -119,7 +119,7 @@ module.exports = function() {
 	});
 
 	Then(/^the numbers of rows should be (\d+)$/, function(num, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element.all(by.css('.spec-lookup-row-container')).count().then(function(_value) {
 			expect(_value).to.be.equal(parseInt(num));
 		}).then(cb);

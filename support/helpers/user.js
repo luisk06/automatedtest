@@ -175,7 +175,7 @@ var User = function () {
 
 			if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
 				_this.waits(1300);
-				user.finds('.spec-question-title').click();
+				_this.finds('.spec-question-title').click();
 			}
 
 			var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
@@ -2092,8 +2092,8 @@ var User = function () {
 	this.getTypeQuestionOnTaker = function (idx) {
 		var defer = protractor.promise.defer();
 
-		user.waits(500);
-		user.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
+		webpage.waits(500);
+		this.findsAll('[data-qtype]').get(idx).getAttribute('data-qtype').then(function (_type) {
 			defer.fulfill(_type);
 		});
 
@@ -2103,7 +2103,7 @@ var User = function () {
 	this.getQuizStatus = function () {
 		var defer = protractor.promise.defer();
 
-		user.finds('.circle').getAttribute('class').then(function (_classes) {
+		this.finds('.circle').getAttribute('class').then(function (_classes) {
 			var newValue = _classes.replace('circle', '').trim();
 
 			defer.fulfill(newValue);

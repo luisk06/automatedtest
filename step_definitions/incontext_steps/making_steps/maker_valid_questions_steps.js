@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Then(/^the alert should be displayed$/, function(cb) {
-		user.finds('.alert-template.alert-error').isDisplayed().then(function(_isDisplayed) {
+		maker.finds('.alert-template.alert-error').isDisplayed().then(function(_isDisplayed) {
 			expect(_isDisplayed).to.be.true;
 		}).then(cb);
 	});

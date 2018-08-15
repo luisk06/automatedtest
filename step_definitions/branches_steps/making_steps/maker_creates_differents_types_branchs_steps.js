@@ -9,7 +9,7 @@ module.exports = function() {
 	When(/^the user selects if answer is "([^"]*)" in "([^"]*)"$/, function(typeOfOption, typeOfQuestion, cb) {
 		var idx = -1;
 
-		user.finds('.spec-branch-ifansweris-dropdown').click();
+		maker.finds('.spec-branch-ifansweris-dropdown').click();
 
 		if(typeOfQuestion == 'multiple choice' || typeOfQuestion == 'ranking'){
 			if(typeOfOption === 'equal') idx = 0;
@@ -21,33 +21,33 @@ module.exports = function() {
 			else if(typeOfOption === 'does not contain') idx = 1;
 		}
 
-		var counter = user.findsAll('.spec-branch-ifansweris-dropdown .options');
+		var counter = maker.findsAll('.spec-branch-ifansweris-dropdown .options');
 
 		counter.count().then(function(count){
 			if(count > 0) counter.get(idx).click().then(cb);
-			else user.finds('.spec-branch-ifansweris-optionlist .options').click().then(cb);
+			else maker.finds('.spec-branch-ifansweris-optionlist .options').click().then(cb);
 		});
 
 	});
 
 	When(/^the user selects the (\d+) answer for "([^"]*)" option in the (\d+) box$/, function(numberOfQuestion, typeOfQuestion, numberBox, cb) {
-		user.finds('.spec-branch-singleselection-options-dropdown').click();
-		user.waits(2000);
+		maker.finds('.spec-branch-singleselection-options-dropdown').click();
+		webpage.waits(2000);
 
-		var el = user.findsAll('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span');
+		var el = maker.findsAll('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span');
 
 		el.count().then(function(_count){
 			// console.log('count', _count);
 			if(_count == 1){
-				user.findsAll('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span').get(numberOfQuestion).click().then(cb);
+				maker.findsAll('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span').get(numberOfQuestion).click().then(cb);
 			} else if(_count > 1) {
-				user.finds('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span').click().then(cb);
+				maker.finds('.spec-question-container-' + numberBox + ' .spec-branch-singleselection-options-dropdown .options span').click().then(cb);
 			} else throw new Error('There arent elements to click');
 		});
 	});
 
 	When(/^the user clicks on add new box button on branchs$/, function(cb) {
-		user.finds('.spec_branchs_add_box_option').click().then(cb);
+		maker.finds('.spec_branchs_add_box_option').click().then(cb);
 	});
 
 	When(/^the user wirte an option to "([^"]*)" question$/, function(typeOfQuestion, cb) {

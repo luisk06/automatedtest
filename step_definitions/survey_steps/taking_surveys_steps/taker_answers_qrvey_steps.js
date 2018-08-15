@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'yes_no');
 		}).then(function(_data) {
-			return user.openUrl(_data.url);
+			return webpage.openUrl(_data.url);
 		}).then(function() {
 			skipSync(true);
 			taker.takesQrveyShared().then(cb);
@@ -38,7 +38,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'yes_no');
 		}).then(function(_data) {
-			return user.openUrl(_data.url);
+			return webpage.openUrl(_data.url);
 		}).then(function() {
 			skipSync(true);
 			return taker.takesQrveyShared();
@@ -50,7 +50,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks the user me to qrvey.com button$/, function(cb) {
-		user.waits(2000);
+		webpage.waits(2000);
 		taker.finish(false).then(cb);
 	});
 

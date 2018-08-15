@@ -10,7 +10,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, 'survey', 'numeric', 'active', typeOption);
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -19,7 +19,7 @@ module.exports = function() {
 			var decimals = {decimal: true};
 			return qs.createQrvey(appID, _userId, 'survey', 'numeric', 'active', typeOption, decimals);
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -27,7 +27,7 @@ module.exports = function() {
 		us.isLogged().then(function(_userId) {
 			return qs.createQrvey(appID, _userId, webform, 'numeric', 'active', typeOption, { decimal: true });
 		}).then(function(_data) {
-			user.openUrl(_data.url).then(cb);
+			webpage.openUrl(_data.url).then(cb);
 		});
 	});
 
@@ -54,13 +54,13 @@ module.exports = function() {
 
 		switch (webform) {
 			case 'survey':
-				_ele = user.finds('.numeric-input-text');
+				_ele = maker.finds('.numeric-input-text');
 				break;
 			case 'questionnaire':
-				_ele = user.finds('.spec-taker-answer-numeric-question');
+				_ele = maker.finds('.spec-taker-answer-numeric-question');
 				break;
 			default:
-				_ele = user.finds('.numeric-input-text');
+				_ele = maker.finds('.numeric-input-text');
 		}
 
 		if(sw == 'focus') _ele.click().then(cb);
@@ -68,7 +68,7 @@ module.exports = function() {
 	});
 
 	When(/^the input has (.*) as answer$/, function(answer, cb) {
-		user.finds('.spec-taker-answer-numeric-question-read').getAttribute('value').then(function(_text) {
+		maker.finds('.spec-taker-answer-numeric-question-read').getAttribute('value').then(function(_text) {
 			expect(_text).to.be.equal(answer);
 		}).then(cb);
 	});
@@ -79,17 +79,17 @@ module.exports = function() {
 
 		switch (webform) {
 			case 'survey':
-				_focusedInput = user.finds('.spec-taker-answer-numeric-question');
-				_notFocusedInput = user.finds('.spec-taker-answer-numeric-question-read');
+				_focusedInput = maker.finds('.spec-taker-answer-numeric-question');
+				_notFocusedInput = maker.finds('.spec-taker-answer-numeric-question-read');
 				break;
 			case 'questionnaire':
 			case 'forms':
-				_focusedInput = user.finds('.numeric-input-number');
-				_notFocusedInput = user.finds('.spec-taker-answer-numeric-question');
+				_focusedInput = maker.finds('.numeric-input-number');
+				_notFocusedInput = maker.finds('.spec-taker-answer-numeric-question');
 				break;
 			default:
-				_focusedInput = user.finds('.spec-taker-answer-numeric-question');
-				_notFocusedInput = user.finds('.spec-taker-answer-numeric-question-read');
+				_focusedInput = maker.finds('.spec-taker-answer-numeric-question');
+				_notFocusedInput = maker.finds('.spec-taker-answer-numeric-question-read');
 		}
 
 		var _el = (sw == 'focus') ?  _focusedInput : _notFocusedInput;
@@ -100,7 +100,7 @@ module.exports = function() {
 	});
 
 	When(/^numeric input has (.*) as (.*) answer$/, function(answer, type, cb) {
-		var _el = user.finds('.spec-taker-answer-numeric-question');
+		var _el = maker.finds('.spec-taker-answer-numeric-question');
 
 		_el.getAttribute('value').then(function(_text) {
 			expect(_text).to.be.equal(answer);

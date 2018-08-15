@@ -23,6 +23,6 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Never Expire$/, function(cb) {
-		user.finds('.spec-active-never-expire + label').click().then(cb);
+		maker.finds('.spec-active-never-expire + label').click().then(cb);
 	});
 };

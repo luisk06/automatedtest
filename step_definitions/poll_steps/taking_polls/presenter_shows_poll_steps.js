@@ -21,7 +21,7 @@ module.exports = function() {
 	});
 
 	Given(/^the presenter opens the poll url$/, function(cb) {
-		user.openUrl(configer.get('url_presenter')).then(function() {
+		webpage.openUrl(configer.get('url_presenter')).then(function() {
 			webpage.getCurrentUrl().then(function(_url) {
 				logger.log('getCurrentUrl', _url);
 				expect(_url).to.be.contain('poll-view');
@@ -51,8 +51,8 @@ module.exports = function() {
 		var _el = '.spec_polling_presenter_poll_results_graphic svg';
 
 		webpage.waitsFor(_el).then(function() {
-			user.waits(2500).then(function() {
-				user.finds('.spec_polling_presenter_counter_answers').getAttribute('innerHTML').then(function(_html) {
+			webpage.waits(2500).then(function() {
+				maker.finds('.spec_polling_presenter_counter_answers').getAttribute('innerHTML').then(function(_html) {
 					expect(_html).to.be.equal('Answered: ' + numberOfAnswers);
 				}).then(cb);
 			});
@@ -61,7 +61,7 @@ module.exports = function() {
 
 	Then(/^a "([^"]*)" "([^"]*)" should not be displayed$/, function(identifier, type, cb) {
 		var _element = by.css('.spec_' + identifier + '_' + type);
-		user.waits(1000).then(function(){
+		webpage.waits(1000).then(function(){
 			webpage.waitsFor(_element);
 			cb();
 		});

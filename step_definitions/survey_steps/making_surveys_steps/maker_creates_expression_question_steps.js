@@ -51,7 +51,7 @@ module.exports = function() {
 	});
 
 	Then(/^the suggested expressions should be displayed$/, function(cb) {
-		user.waits(2000).then(function() {
+		webpage.waits(2000).then(function() {
 			expect(element(by.css('.suggestion-list')).isDisplayed()).to.eventually.be.true.and.notify(cb);
 		});
 	});

@@ -9,7 +9,7 @@ module.exports = function() {
 	Then(/^the slider bar should be displayed$/, function(cb) {
 		var _el = '.spec-time-slider-container';
 
-		user.finds(_el).isDisplayed().then(function(_displayed) {
+		maker.finds(_el).isDisplayed().then(function(_displayed) {
 			expect(_displayed).to.be.true;
 		}).then(cb);
 	});

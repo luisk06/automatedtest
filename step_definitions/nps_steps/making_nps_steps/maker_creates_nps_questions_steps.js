@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user do clicks on Create New$/, function(cb) {
-		user.finds('.spec_dashboard_create_new_button').click().then(cb);
+		maker.finds('.spec_dashboard_create_new_button').click().then(cb);
 	});
 
 	When(/^the user writes the "([^"]*)" as "([^"]*)" in "([^"]*)" type of qrvey$/, function(context, field, typeQrvey, cb) {
@@ -17,11 +17,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks Create Quick "([^"]*)" button$/, function(type, cb) {
-		user.finds('.spec-button-create-' + type.toLowerCase()).click().then(cb);
+		maker.finds('.spec-button-create-' + type.toLowerCase()).click().then(cb);
 	});
 
 	When(/^the user writes the "([^"]*)" of your own enterprise$/, function(context, cb) {
-		user.finds('.spec-nps-title-question-input').clear().sendKeys(context).then(cb);
+		maker.finds('.spec-nps-title-question-input').clear().sendKeys(context).then(cb);
 	});
 
 	When(/^the user writes "([^"]*)" on enterprise input$/, function(context, cb) {
@@ -38,25 +38,25 @@ module.exports = function() {
 
 	When(/^the user deletes the textfield question$/, function(cb) {
 		scrollToBottom();
-		user.finds('.spec-dropdown-0').click();
+		maker.finds('.spec-dropdown-0').click();
 		browser.executeScript('arguments[0].click()',element(by.css('#spec_remove_question'))).then(cb);
 	});
 
 	When(/^the user click on Add text field question$/, function(cb) {
 		element.all(by.css('.spec-design-add-state')).last().click().then(function(){
-			user.finds('.spec-design-add-text').click();
+			maker.finds('.spec-design-add-text').click();
 		}).then(cb);
 	});
 
 	Then(/^the textfield question should be displayed$/, function(cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		element.all(by.css('app-question')).get(1).isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
 	});
 
 	Then(/^the add textfield question button should be displayed$/, function(cb) {
-		user.waits(100);
+		webpage.waits(100);
 		element.all(by.css('.spec-design-add-state')).last().click().then(function(){
 			expect(element(by.css('.spec-design-add-text')).isPresent()).to.eventually.be.true.and.notify(cb);
 		});
@@ -86,7 +86,7 @@ module.exports = function() {
 
 	Then(/^the "([^"]*)" as text should be displayed in the "([^"]*)" by "([^"]*)"$/, function(textToValidate, field, typeOfQrvey, cb) {
 		var _class = '.spec-create-' + typeOfQrvey + '-valid-enter-' + field,
-			_el = user.finds(_class);
+			_el = maker.finds(_class);
 
 		_el.isDisplayed().then(function(_displayed) {
 			expect(_displayed, err.isNotDisplayed(_class, _displayed)).to.be.true;

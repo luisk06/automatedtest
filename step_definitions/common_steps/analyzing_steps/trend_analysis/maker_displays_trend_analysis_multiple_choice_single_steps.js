@@ -19,7 +19,7 @@ module.exports = function () {
 	});
 
 	When(/^user turn "([^"]*)" the "([^"]*)" on "([^"]*)"$/, function (switchMode, toggleSeriesItem, typeOfQrvey, cb) {
-		user.waits(2500);
+		webpage.waits(2500);
 		brw.executeScript('window.scrollTo(0,0);').then(function () {
 			var _class = by.css('.spec-timeseries-switch');
 			var number = (toggleSeriesItem == 'time_series') ? 0 : 1;
@@ -32,8 +32,8 @@ module.exports = function () {
 		logger.log('i', i);
 		var index = i - 1;
 		logger.log(index);
-		user.waits(2000).then(function () {
-			var _element = user.findsAll('.spec-' + btn + '-' + i).get(index);
+		webpage.waits(2000).then(function () {
+			var _element = maker.findsAll('.spec-' + btn + '-' + i).get(index);
 			_element.click().then(cb);
 		});
 	});
@@ -148,12 +148,12 @@ module.exports = function () {
 			case 'image':
 			case 'yes-no':
 			case 'date':
-				user.waits(1100);
+				webpage.waits(1100);
 				repeater = by.css('.spec-trend-bar');
 				element.all(repeater).then(function (els) {
 					els.forEach(function (ele, i, a) {
 						brw.actions().mouseMove(a[i]).perform().then(function () {
-							user.waits(500);
+							webpage.waits(500);
 							element(by.css('.spec-trend-tooltip-down')).getText().then(function (_text) {
 								if (_text !== '') {
 									logger.log(_text);
@@ -170,13 +170,13 @@ module.exports = function () {
 				break;
 			case 'short-text':
 			case 'long-text':
-				user.waits(1100);
+				webpage.waits(1100);
 				repeater = by.css('.spec-trend-bar');
 				var _element = element(by.css('.spec-trend-tooltip-down span'));
 				element.all(repeater).each(function (bar) {
 					brw.actions().mouseMove(bar).perform().then(function () {
 						webpage.waitsForElement(_element);
-						user.waits(500);
+						webpage.waits(500);
 						// browser.explore();
 						_element.getText().then(function (_text) {
 							if (_text !== '') {
@@ -196,12 +196,12 @@ module.exports = function () {
 				}).then(cb);
 				break;
 			case 'ranking':
-				user.waits(1100);
+				webpage.waits(1100);
 				repeater = by.css('.spec-trend-bar');
 				element.all(repeater).then(function (els) {
 					els.forEach(function (ele, i, a) {
 						brw.actions().mouseMove(a[i]).perform().then(function () {
-							user.waits(500);
+							webpage.waits(500);
 							element(by.css('.spec-trend-tooltip-down')).getText().then(function (_text) {
 								if (_text !== '') {
 									logger.log(_text);
@@ -268,12 +268,12 @@ module.exports = function () {
 				valueCompare = parseInt(_totalAnswers);
 				break;
 		}
-		user.waits(1100);
+		webpage.waits(1100);
 		element.all(repeater).then(function (els) {
 			expect(els.length, 'No items to loop').to.be.above(0);
 			els.forEach(function (ele, i, a) {
 				brw.actions().mouseMove(a[i]).perform().then(function () {
-					user.waits(500);
+					webpage.waits(500);
 					element(by.css('.spec-trend-tooltip-up')).getText().then(function (_text) {
 						if (_text !== '') {
 							var text = _text.trim().split('(');

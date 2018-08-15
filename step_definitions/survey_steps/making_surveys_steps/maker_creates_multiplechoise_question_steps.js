@@ -22,7 +22,7 @@ module.exports = function() {
 				if (index + 1 <= numOpt) list += '\n';
 			}
 
-			user.finds('.dropdown-text').sendKeys(list).then(cb);
+			maker.finds('.dropdown-text').sendKeys(list).then(cb);
 		}
 	});
 
@@ -40,20 +40,20 @@ module.exports = function() {
 		var tx3 = 'Money can not be eaten';
 
 		maker.createsMultiChoiceTypeQuestion('Would you recommend our product to others?').then(function() {
-			user.finds('.spec-add-option-multichoice-question-0').click();
+			maker.finds('.spec-add-option-multichoice-question-0').click();
 
-			user.finds(el1).sendKeys(tx1);
-			user.waits(100);
-			expect(user.finds(el1).getAttribute('value')).to.eventually.be.equal(tx1);
+			maker.finds(el1).sendKeys(tx1);
+			webpage.waits(100);
+			expect(maker.finds(el1).getAttribute('value')).to.eventually.be.equal(tx1);
 
-			user.finds(el2).sendKeys(tx2);
-			user.waits(100);
-			expect(user.finds(el2).getAttribute('value')).to.eventually.be.equal(tx2);
+			maker.finds(el2).sendKeys(tx2);
+			webpage.waits(100);
+			expect(maker.finds(el2).getAttribute('value')).to.eventually.be.equal(tx2);
 
-			user.finds(el3).sendKeys(tx3);
-			user.waits(100);
+			maker.finds(el3).sendKeys(tx3);
+			webpage.waits(100);
 			// brw.enterRepl();
-			expect(user.finds(el3).getAttribute('value')).to.eventually.be.equal(tx3).and.notify(cb);
+			expect(maker.finds(el3).getAttribute('value')).to.eventually.be.equal(tx3).and.notify(cb);
 		});
 	});
 
@@ -71,7 +71,7 @@ module.exports = function() {
 
 	When(/^the user writes the title of question$/, function(cb) {
 		var _title = rand.getText(161);
-		var el = user.findsAll('.spec-edit-question-name-any').last();
+		var el = maker.findsAll('.spec-edit-question-name-any').last();
 
 		el.clear().sendKeys(_title);
 		user.wait(200);

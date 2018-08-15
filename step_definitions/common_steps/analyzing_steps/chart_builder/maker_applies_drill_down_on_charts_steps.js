@@ -14,30 +14,30 @@ module.exports = function () {
 	var clickedPortionText = '';
 
 	When(/^the user clicks "([^"]*)" on drill down list$/, function (optionToPick, cb) {
-		user.waits(700);
+		webpage.waits(700);
 		element(by.xpath("//ul[contains(@class, 'spec-drill-down-list')]/li[text() = '" + optionToPick + "']")).click().then(cb);// eslint-disable-line
 	});
 
 	Then(/^the see data option should not appear$/, function (cb) {
-		user.waits(700);
+		webpage.waits(700);
 		var seeDataBtn = element(by.xpath("//ul[contains(@class, 'spec-drill-down-list')]/li[text() = 'See Data']"));// eslint-disable-line
 		expect(seeDataBtn.isPresent(), 'See data button should not be displayed').to.be.eventually.false.and.notify(cb);
 	});
 
 	When(/^the user clicks on the bar (\d+)$/, function (index, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var bar = element.all(barsLocator).get(index - 1);
 		bar.click().then(cb);
 	});
 
 	When(/^the user clicks on the dot (\d+)$/, function (index, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var line = element.all(linesLocator).get(index - 1);
 		line.click().then(cb);
 	});
 
 	When(/^the user clicks on the word (\d+)$/, function (index, cb) {
-		user.waits(1500);
+		webpage.waits(1500);
 		var word = element.all(wordsLocator).get(index - 1);
 		word.click().then(function(){
 			word.getText().then(function(_res){
@@ -48,12 +48,12 @@ module.exports = function () {
 
 	When(/^the user clicks on the symbol (\d+)$/, function (index, cb) {
 		// browser.explore();
-		user.waits(1400);
+		webpage.waits(1400);
 		brw.actions().mouseMove(element.all(symbolsLocator).get(index - 1)).mouseMove({
 			x: 7,
 			y: 0
 		}).click().perform().then(function(){
-			user.waits(1000);
+			webpage.waits(1000);
 			// console.log('click');
 		}).then(cb);
 	});
@@ -97,7 +97,7 @@ module.exports = function () {
 	});
 
 	Then(/^the "([^"]*)" axis label with drilldown should have "([^"]*)"$/, function (axis, text, cb) {
-		user.waits(1200);
+		webpage.waits(1200);
 		element(by.css('.spec-'+axis+'-axis-label')).getText().then(function(_text){
 			expect(_text).to.be.equal('Multiple Choice > ' + clickedPortionText + ' ' + text);
 		}).then(cb);

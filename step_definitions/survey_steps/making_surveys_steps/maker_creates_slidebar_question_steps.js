@@ -10,13 +10,13 @@ module.exports = function() {
 		var leftText = 'Very Satisfied';
 		var rigthText = 'Very Unsatisfied';
 
-		var el = user.finds('.spec-edit-question-name-any');
+		var el = maker.finds('.spec-edit-question-name-any');
 
 		el
 			.clear()
 			.sendKeys(titleText);
 
-		user.waits(1000);
+		webpage.waits(1000);
 
 		el
 			.getAttribute('value')
@@ -24,15 +24,15 @@ module.exports = function() {
 				expect(_text).to.be.equal(titleText);
 			});
 
-		// user.waits(500);
+		// webpage.waits(500);
 
-		el = user.finds('.spec-slidebar-question-type-answer-left');
+		el = maker.finds('.spec-slidebar-question-type-answer-left');
 
 		el
 			.clear()
 			.sendKeys(leftText);
 
-		user.waits(1000);
+		webpage.waits(1000);
 
 		el
 			.getAttribute('value')
@@ -41,16 +41,16 @@ module.exports = function() {
 			});
 
 
-		user.waits(500);
+		webpage.waits(500);
 
-		el = user.finds('.spec-slidebar-question-type-answer-right');
+		el = maker.finds('.spec-slidebar-question-type-answer-right');
 
 
 		el
 			.clear()
 			.sendKeys(rigthText);
 
-		user.waits(500);
+		webpage.waits(500);
 
 		el
 			.getAttribute('value')

@@ -10,7 +10,7 @@ module.exports = function () {
 	var locatorFileListItem = by.css('tr[ng-repeat="file in userUploadedFiles track by $index"]');
 
 	When(/^the user opened the manager files$/, function (cb) {
-		user.findsLinkText('Add / Manage Files').click().then(cb);
+		maker.findsLinkText('Add / Manage Files').click().then(cb);
 	});
 
 	Then(/^the user should stay on the manager files url$/, function (cb) {
@@ -18,7 +18,7 @@ module.exports = function () {
 	});
 
 	Then(/^should not have pdf on the list$/, function (cb) {
-		user.finds('.empty-files span').getText().then(function(_text){
+		maker.finds('.empty-files span').getText().then(function(_text){
 			expect(_text).to.be.equal('No files uploaded');
 		}).then(cb);
 	});

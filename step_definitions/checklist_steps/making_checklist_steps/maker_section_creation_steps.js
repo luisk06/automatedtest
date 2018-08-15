@@ -6,11 +6,11 @@ module.exports = function() {
 
 	When(/^the user fill section title$/, function(cb) {
 		var _sectionTittle = 'Mark your favourites online sites';
-		user.finds('.spec-edit-question-name-any').sendKeys(_sectionTittle).then(cb);
+		maker.finds('.spec-edit-question-name-any').sendKeys(_sectionTittle).then(cb);
 	});
 
 	When(/^the user opens the section$/, function(cb) {
-		user.waits(2000).then(function(){
+		webpage.waits(2000).then(function(){
 			element(by.css('.checklist-title-question')).click().then(cb);
 		});
 	});
@@ -25,7 +25,7 @@ module.exports = function() {
 
 	When(/^the user clicks outside the section box$/, function(cb) {
 		scrollToTop();
-		user.finds('.spec_title_description').click().then(cb);
+		maker.finds('.spec_title_description').click().then(cb);
 	});
 
 	When(/^the user clicks outside the checklist section$/, function(cb) {
@@ -41,11 +41,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks outside the section box on Not Widget$/, function(cb) {
-		user.finds('.spec-tab-to-desing').click().then(cb);
+		maker.finds('.spec-tab-to-desing').click().then(cb);
 	});
 
 	When(/^the user try to click outside the section box$/, function(cb) {
-		user.finds('.spec_title_description').click().then(function(){
+		maker.finds('.spec_title_description').click().then(function(){
 			cb('the element is clickeabled');
 		}).catch(function(){
 			cb();
@@ -54,10 +54,10 @@ module.exports = function() {
 
 	When(/^the user clicks add option (\d+) times$/, function(_numberOfOptions, cb) {
 		var i = 0;
-		var addOption = user.findsAll('.spec-add-option-multichoice-question-0').first();
+		var addOption = maker.findsAll('.spec-add-option-multichoice-question-0').first();
 		for (i = 0; i < _numberOfOptions; i++) {
 			addOption.click();
-			user.waits(600);
+			webpage.waits(600);
 		}
 		cb();
 	});
@@ -65,7 +65,7 @@ module.exports = function() {
 	Then(/^the section is saved$/, function(cb) {
 		var section = by.css('.spec_edit_question_overlay');
 
-		user.waits(800);
+		webpage.waits(800);
 
 		element(section).isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
@@ -82,7 +82,7 @@ module.exports = function() {
 		var array = gArray(numberOfSections);
 		async.eachSeries(array, function(item, next){
 			element.all(addButton).last().click().then(function() {
-				user.waits(1000);
+				webpage.waits(1000);
 				browser.executeScript('arguments[0].click()',element(addSection)).then(function(){
 					logger.info('finished i:',i);
 				}).then(function(){
@@ -114,14 +114,14 @@ module.exports = function() {
 	});
 
 	Then(/^the text on banner should display (\d+) sections$/, function(number, cb) {
-		var _element = user.finds('.summary.questions b');
+		var _element = maker.finds('.summary.questions b');
 		_element.getText().then(function(actualNumber) {
 			expect(actualNumber).to.equal(number);
 		}).then(cb);
 	});
 
 	Then(/^the remaining sections to add should be (\d+)$/, function(number, cb) {
-		var _element = user.finds('.counter-questions b');
+		var _element = maker.finds('.counter-questions b');
 		_element.getText().then(function(actualNumber) {
 			var _actualNumber = actualNumber.match(/\d+/)[0];
 			expect(_actualNumber).to.equal(number);

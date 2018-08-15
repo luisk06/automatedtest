@@ -7,12 +7,12 @@ module.exports = function() {
 	Then = this.Then;
 
 	Then(/^the user skip the answer$/, function (cb) {
-		user.finds('.skipbutton.skipbtn').click().then(cb);
+		maker.finds('.skipbutton.skipbtn').click().then(cb);
 	});
 
 	Given(/^the user has login$/, function(cb) {
-		user.waits(2000);
-		user.toDoLogin().then(function(){
+		webpage.waits(2000);
+		maker.toDoLogin().then(function(){
 			cb(); // Should be thus
 		});
 	});
@@ -36,8 +36,8 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the subform option$/, function(cb) {
-		user.finds('.spec-touch-menu-qrvey').click();
-		user.finds('.spec-touch-menu-qrvey-duplicate-option + span').click().then(cb);
+		maker.finds('.spec-touch-menu-qrvey').click();
+		maker.finds('.spec-touch-menu-qrvey-duplicate-option + span').click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" option in the subform$/, function(option, cb) {
@@ -49,7 +49,7 @@ module.exports = function() {
 			idx = 2;
 		}
 
-		user.findsAll('.actions-subforms li').get(idx).click().then(cb);
+		maker.findsAll('.actions-subforms li').get(idx).click().then(cb);
 	});
 
 	Then(/^the publish page should be displayed$/, function(cb) {
@@ -65,7 +65,7 @@ module.exports = function() {
 	});
 
 	Given(/^the user opens the create webform menu$/, function(cb) {
-		user.finds('.chooseapp-cta').click().then(cb);
+		maker.finds('.chooseapp-cta').click().then(cb);
 	});
 
 	When(/^the user writes the date question$/, function(cb) {
@@ -73,33 +73,33 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the "([^"]*)" range$/, function(rangeName, cb) {
-		user.finds('.dropdown-trigger').click();
-		user.finds('.spec-maker-range-' + rangeName).click();
+		maker.finds('.dropdown-trigger').click();
+		maker.finds('.spec-maker-range-' + rangeName).click();
 
 		// opening the calendar
-		// if (rangeName != 'between') user.finds('.spec_edit_question_overlay').click();
+		// if (rangeName != 'between') maker.finds('.spec_edit_question_overlay').click();
 
 		var newDate = new Date().getDate();
 
 		// Filling the calendars
 		if (rangeName == 'before'){
-			user.finds('.max').click();
+			maker.finds('.max').click();
 			webpage.waitsFor('.mat-calendar');
 
-			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
+			maker.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if (rangeName == 'after'){
-			user.finds('.min').click();
+			maker.finds('.min').click();
 			webpage.waitsFor('.mat-calendar');
 
-			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
+			maker.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if(rangeName == 'between'){
-			user.finds('.max').click();
+			maker.finds('.max').click();
 			webpage.waitsFor('.mat-calendar');
-			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click();
+			maker.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click();
 
-			user.finds('.min').click();
+			maker.finds('.min').click();
 			webpage.waitsFor('.mat-calendar');
-			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
+			maker.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}
 	});
 };

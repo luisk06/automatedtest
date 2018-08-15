@@ -26,8 +26,8 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the kind of new response as "([^']*)"$/, function(typeOfProcess, cb) {
-		user.finds('.spec-automatiq-select').click();
-		user.finds('.spec-select-option-' + typeOfProcess).click().then(cb);
+		maker.finds('.spec-automatiq-select').click();
+		maker.finds('.spec-select-option-' + typeOfProcess).click().then(cb);
 	});
 
 	When(/^the user selects the qrvey (\d+) of the list of "([^']*)"$/, function(numElement, typeOfProcess, cb) {
@@ -46,7 +46,7 @@ module.exports = function() {
 	});
 
 	When(/^the user write the data value$/, function (cb) {
-		user.finds('.spec-automatiq-answer-field').sendKeys('Barranquilla').then(cb);
+		maker.finds('.spec-automatiq-answer-field').sendKeys('Barranquilla').then(cb);
 	});
 
 	When(/^the user select a sentiment of type "([^']*)"$/, function(typeOfSentiment, cb) {
@@ -55,8 +55,8 @@ module.exports = function() {
 		else if(typeOfSentiment == 'neutral') pos = 2;
 		else if(typeOfSentiment == 'negative') pos = 3;
 
-		user.finds('.spec-automatiq-sentiment-field').click();
-		user.findsAll('.spec-automatiq-sentiment-field li').get(pos).click().then(cb);
+		maker.finds('.spec-automatiq-sentiment-field').click();
+		maker.findsAll('.spec-automatiq-sentiment-field li').get(pos).click().then(cb);
 	});
 
 	Then(/^the user go to back the "([^']*)" dashabord$/, function(dashboard, cb) {

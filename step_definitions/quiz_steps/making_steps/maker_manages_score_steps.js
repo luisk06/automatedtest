@@ -7,20 +7,20 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user opens the score box$/, function (cb) {
-		user.finds('.card.q-editable-card.border-top').click().then(cb);
+		maker.finds('.card.q-editable-card.border-top').click().then(cb);
 	});
 
 	When(/^the user clicks on the score check$/, function (cb) {
-		user.finds('.showScore').click().then(cb);
+		maker.finds('.showScore').click().then(cb);
 	});
 
 	When(/^the user puts the max score$/, function (cb) {
-		user.findsName('score').sendKeys('1').then(cb);
+		maker.findsName('score').sendKeys('1').then(cb);
 	});
 
 	When(/^the user puts the message of "([^"]*)" field$/, function (scoreState, cb) {
 		// brw.enterRepl();
-		user.findsName(scoreState + 'msg').sendKeys(scoreState + ' msg').then(cb);
+		maker.findsName(scoreState + 'msg').sendKeys(scoreState + ' msg').then(cb);
 	});
 
 	Given(/^the user has a "([^"]*)" with some questions$/, function (typeOfQrvey, arr, cb) {
@@ -90,7 +90,7 @@ module.exports = function () {
 			logger.info('questions', model.questions);
 			return qs.activate(appID, configer.get('QrveyId'), JSON.stringify(model));
 		}).then(function (resp) {
-			return user.openUrl(resp.url);
+			return webpage.openUrl(resp.url);
 		}).then(function () {
 			cb();
 		});
@@ -133,19 +133,19 @@ module.exports = function () {
 	});
 
 	Then(/^the success message should be displayed on the quiz$/, function (cb) {
-		user.finds('.passing-message').getText().then(function (_text) {
+		maker.finds('.passing-message').getText().then(function (_text) {
 			expect(_text).to.be.equal('The success message');
 		}).then(cb);
 	});
 
 	Then(/^the wrong message should be displayed on the quiz$/, function (cb) {
-		user.finds('.passing-message').getText().then(function (_text) {
+		maker.finds('.passing-message').getText().then(function (_text) {
 			expect(_text).to.be.equal('The wrong message');
 		}).then(cb);
 	});
 
 	Then(/^the message should be displayed on the quiz$/, function (cb) {
-		user.finds('.passing-message').getText().then(function (_text) {
+		maker.finds('.passing-message').getText().then(function (_text) {
 			expect(_text).to.be.a('string');
 			// expect(_text).to.have.lengthOf.above(1);
 		}).then(cb);
