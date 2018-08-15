@@ -17,11 +17,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the "([^"]*)" filter by dropdown$/, function(typeOfFilter, cb) {
-		navigate.clicksButton('.spec_filter_by_' + typeOfFilter + '_dropdown').then(cb);
+		user.finds('.spec_filter_by_' + typeOfFilter + '_dropdown').click().then(cb);
 	});
 
 	When(/^selects the "([^"]*)" option in the filter$/, function(type, cb) {
-		navigate.clicksButton('.spec-status-' + type.toLowerCase()).then(cb);
+		user.finds('.spec-status-' + type.toLowerCase()).click().then(cb);
 	});
 
 	Then(/^only the qrveys in "([^"]*)" state should be displayed$/, function(type, cb) {

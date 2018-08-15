@@ -10,21 +10,21 @@ module.exports = function() {
 
 	When(/^the user selects the (\d+) position template$/, function(template, cb) {
 		pos = template-1;
-		navigate.clicksButton('.spec-templates-selected-' + pos).then(cb);
+		user.finds('.spec-templates-selected-' + pos).then(cb).click();
 	});
 
 	When(/^the user clicks on Select Template for qrvey with branches$/, function(cb) {
-		navigate.clicksButton('.spec-selected-template-' + pos).then(cb);
+		user.finds('.spec-selected-template-' + pos).then(cb).click();
 	});
 
 	When(/^the user activate the qrvey$/, function(cb) {
-		navigate.clicksButton('.spec-tab-to-share');
-		navigate.clicksButton('.spec_template_lose_ok');
-		navigate.clicksButton('.spec-tab-to-share');
-		navigate.clicksButton('.spec-qrvey-btn-active').then(cb);
+		user.finds('.spec-tab-to-share').click();
+		user.finds('.spec_template_lose_ok').click();
+		user.finds('.spec-tab-to-share').click();
+		user.finds('.spec-qrvey-btn-active').click().then(cb);
 	});
 
 	When(/^the user clicks on a "([^"]*)" template category$/, function( category, cb) {
-		user.selectTemplate(category).then(cb);
+		maker.selectTemplate(category).then(cb);
 	});
 };

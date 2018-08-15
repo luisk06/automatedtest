@@ -11,6 +11,6 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the amount of stars$/, function(cb) {
-		user.takerTouchStarts().then(cb);
+		taker.touchStarts().then(cb);
 	});
 };

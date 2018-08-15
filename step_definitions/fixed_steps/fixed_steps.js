@@ -83,12 +83,12 @@ module.exports = function() {
 
 	When(/^the user clicks on the publish tab$/, function(cb) {
 		user.finds('.spec-tab-to-share').click();
-		expect(navigate.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
 	});
 
 	When(/^the user clicks on the active button$/, function(cb) {
 		user.finds('.spec-qrvey-btn-active').click();
-		user.waitsFor('.modal-box.new-nps-modal.spec-confirm-end-qrvey');
+		webpage.waitsFor('.modal-box.new-nps-modal.spec-confirm-end-qrvey');
 		user.finds('.modal-box.new-nps-modal.spec-confirm-end-qrvey .button').click().then(cb);
 	});
 
@@ -102,7 +102,7 @@ module.exports = function() {
 
 	Then(/^the publish page is show correctly$/, function(cb) {
 		user.finds('.spec-tab-to-share').click();
-		expect(navigate.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
 	});
 
 	Then(/^the webform should be activated correctly$/, function(cb) {
@@ -162,7 +162,7 @@ module.exports = function() {
 			if (view !== 'Tabular View'){
 				user.finds('.spec-filter-analyze').click();
 				user.finds('#spec-panelview-tabular').click();
-				user.waitsFor('.dx-datagrid-headers');
+				webpage.waitsFor('.dx-datagrid-headers');
 			}
 		}).then(cb);
 	});

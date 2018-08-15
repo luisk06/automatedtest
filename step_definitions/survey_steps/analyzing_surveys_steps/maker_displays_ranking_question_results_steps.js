@@ -31,14 +31,14 @@ module.exports = function() {
 
 	When(/^the user clicks on the show more button in the questions answers$/, function(cb) {
 		brw.sleep(3000);
-		navigate.textPresence('Try resetting your filters to see results').then(function(res) {
+		webpage.getsTextExists('Try resetting your filters to see results').then(function(res) {
 			hasAnswers = !res;
 			logger.log('hasAnswers', hasAnswers);
 			if (!hasAnswers) {
 				cb();
 			} else {
 				logger.log('else');
-				navigate.clicksButton('.showmore-rigth');
+				user.finds('.showmore-rigth').click();
 				brw.sleep(750);
 			}
 		}).then(cb);

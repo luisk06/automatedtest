@@ -42,7 +42,7 @@ module.exports = function() {
 	Then(/^the button should be activated with the text "([^"]*)"$/, function(text, cb) {
 		var el = '.stripe_connected';
 
-		user.waitsFor(el).then(function() {
+		webpage.waitsFor(el).then(function() {
 			expect(element(by.css(el)).getText()).to.eventually.be.equal(text).and.notify(cb);
 		});
 	});

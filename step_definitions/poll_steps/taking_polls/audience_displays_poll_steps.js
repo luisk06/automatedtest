@@ -8,22 +8,22 @@ module.exports = function() {
 
 	When(/^the audience opens the audience URL$/, function(cb) {
 		var _url = configer.get('url_audience');
-		if (typeof _url === 'undefined') throw 'The url to the audience is undefined';
+		if (typeof _url === 'undefined') throw new Error('The url to the audience is undefined');
 
 		user.openUrl(_url).then(cb);
 	});
 
 	When(/^the audience inputs the code$/, function(cb) {
 		var _code = configer.get('audience_code');
-		if (typeof _code === 'undefined') throw 'The code is undefined';
+		if (typeof _code === 'undefined') throw new Error('The code is undefined');
 
 		logger.log('the code is:', _code);
 		logger.log('CODE RESPONSE: ', _code);
-		user.putCodeInAudiencePage(_code).then(cb);
+		taker.putCodeInAudiencePage(_code).then(cb);
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be present$/, function(text, type, cb) {
-		user.getsTextExists('spec_' + text + '_' + type).then(function(_exist) {
+		webpage.getsTextExists('spec_' + text + '_' + type).then(function(_exist) {
 			expect(_exist).to.be.true;
 		}).then(cb);
 	});
@@ -36,7 +36,7 @@ module.exports = function() {
 		var _code = rand.getText(5);
 
 		logger.log('the code is:', _code);
-		user.putCodeInAudiencePage(_code).then(cb);
+		taker.putCodeInAudiencePage(_code).then(cb);
 	});
 
 	Given(/^there is an audience poll with one "([^"]*)" poll$/, function(typeOfQuestion, cb) {

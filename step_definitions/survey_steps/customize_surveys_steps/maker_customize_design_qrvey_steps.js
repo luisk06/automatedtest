@@ -11,11 +11,11 @@ module.exports = function() {
 	});
 
 	Given(/^that the user is editing a qrvey$/, function(cb) {
-		user.createsWebform().then(cb);
+		maker.createsWebform().then(cb);
 	});
 
 	Given(/^that the user is editing a "([^"]*)"$/, function(typeOfQrvey, cb) {
-		user.createsWebform({
+		maker.createsWebform({
 			'title': 'Test Customize ' + typeOfQrvey,
 			'description': 'Test description',
 			'type': typeOfQrvey
@@ -23,7 +23,7 @@ module.exports = function() {
 	});
 
 	Given(/^that the user is editing a "([^"]*)" with "([^"]*)" as tittle$/, function(typeOfQrvey, title, cb) {
-		user.createsWebform({
+		maker.createsWebform({
 			'title': title + ' ' + typeOfQrvey,
 			'description': 'Test description',
 			'type': typeOfQrvey
@@ -66,7 +66,7 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" button should be displayed$/, function(btnName, cb) {
-		expect(navigate.isDisplayed('.spec_' + btnName + '_button')).to.eventually.be.true.and.notify(cb);
+		expect(webpage.isDisplayed('.spec_' + btnName + '_button')).to.eventually.be.true.and.notify(cb);
 	});
 
 	Then(/^the "([^"]*)" title should be displayed$/, function(arg1, cb) {
@@ -86,7 +86,7 @@ module.exports = function() {
 	});
 
 	Then(/^the user clicks on the "([^"]*)" "([^"]*)" on the "([^"]*)"$/, function(identifier, type, location, cb) {
-		navigate.clicksButton('.spec_' + location + '_' + identifier + '_' + type).then(cb);
+		user.finds('.spec_' + location + '_' + identifier + '_' + type).click().then(cb);
 	});
 
 	Given(/^the user fills "([^"]*)" into the "([^"]*)" field on the "([^"]*)"$/, function(keys, fieldName, location, cb) {
@@ -94,16 +94,16 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" button on modal should be displayed$/, function(arg1, cb) {
-		expect(navigate.isDisplayed('.spec_customize_' + arg1 + '_button')).to.eventually.be(true).and.notify(cb);
+		expect(webpage.isDisplayed('.spec_customize_' + arg1 + '_button')).to.eventually.be(true).and.notify(cb);
 	});
 
 	Then(/^the text "([^"]*)" should be exist$/, function(arg1, cb) {
-		user.getsTextExists(arg1).then(function(_value) {
+		webpage.getsTextExists(arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});
 
 	Then(/^the "([^"]*)" "([^"]*)" on the "([^"]*)" should be displayed$/, function(identifier, type, location, cb) {
-		expect(navigate.isDisplayed('.spec_' + location + '_' + identifier + '_' + type)).to.eventually.be.true.and.notify(cb);
+		expect(webpage.isDisplayed('.spec_' + location + '_' + identifier + '_' + type)).to.eventually.be.true.and.notify(cb);
 	});
 };

@@ -45,18 +45,18 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the database origin$/, function(cb) {
-		user.waitsFor('.spec-dropdown-database');
+		webpage.waitsFor('.spec-dropdown-database');
 
 		element(by.css('.spec-dropdown-database span')).click();
 		element.all(by.css('.spec-dropdown-database .options.show span')).get(1).click().then(cb);
 	});
 
 	When(/^the user selects a row on aurora$/, function(cb) {
-		user.waitsFor('.dbtable-views-table');
+		webpage.waitsFor('.dbtable-views-table');
 		element.all(by.css('.dbtable-views-table tr')).get(1).click().then(cb);
 	});
 
 	Then(/^the user should be in the dataloader analyze$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('loader-analyze').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('loader-analyze').and.notify(cb);
 	});
 };

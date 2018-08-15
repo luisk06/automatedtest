@@ -13,7 +13,7 @@ module.exports = function() {
 		// console.log('DATE:', timeStamp);
 
 		skipSync(true);
-		user.answersDateQuestionByClick(timeStamp).then(cb);
+		taker.answersDateQuestionByClick(timeStamp).then(cb);
 	});
 
 	When(/^the user clicks the Ok button$/, function(cb) {

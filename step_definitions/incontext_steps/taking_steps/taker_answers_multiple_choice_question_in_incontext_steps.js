@@ -29,13 +29,13 @@ module.exports = function() {
 				if (typeOfQrvey == 'incontext' || typeOfQrvey == 'progressive') {
 					var _url = configer.get('url') + '/widget/' + typeOfQrvey + '/q/' + _data.lookupID;
 					logger.log('opening', _url);
-					brw.manage().deleteAllCookies();
+					webpage.deleteAllCookies();
 					// console.log('URL', _url);
 					user.openUrl(_url, true);
 					brw.ignoreSynchronization = true;
 				} else {
 					logger.log('opening', _data.url);
-					brw.manage().deleteAllCookies();
+					webpage.deleteAllCookies();
 					user.openUrl(_data.url, true);
 					brw.ignoreSynchronization = true;
 				}

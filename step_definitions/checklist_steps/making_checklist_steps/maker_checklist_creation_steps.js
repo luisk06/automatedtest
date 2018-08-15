@@ -30,7 +30,7 @@ module.exports = function() {
 			element(by.css('.spec-tab-to-desing')).click();
 		});
 
-		user.waitsFor('.checklist-saved');
+		webpage.waitsFor('.checklist-saved');
 
 		var _elementTitle = user.finds('.checklist-saved');
 		_elementTitle.getText().then(function(_actualTitleText) {

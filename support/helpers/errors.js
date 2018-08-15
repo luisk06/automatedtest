@@ -112,7 +112,7 @@ var Errors = function() {
 		if (this.listErrs.hasOwnPropert(_name)) {
 			var _handlerError = this.listErrs[_name];
 			return _handlerError = (typeof _helper !== 'undefined') ? (_handlerError + _helper) : _handlerError;
-		} else  throw 'Error, la clave ingresada no existe';
+		} else throw new Error('Error, la clave ingresada no existe');
 	};
 
 	this.get = function(_name, _helper) {

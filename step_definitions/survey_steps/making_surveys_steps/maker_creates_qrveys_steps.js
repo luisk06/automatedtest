@@ -22,9 +22,9 @@ module.exports = function() {
 		} else if (nameButton == 'New Qrvey') {
 			user.finds('.spec_dashboard_create_new_button').click().then(cb);
 		} else if (nameButton == 'Delete') {
-			user.touchesDeleteOptionMenuQrvey(cb);
+			maker.touchesDeleteOptionMenuQrvey(cb);
 		} else if (nameButton == 'Duplicate') {
-			user.touchsDuplicateOptionMenuQrvey(cb);
+			maker.touchsDuplicateOptionMenuQrvey(cb);
 		}
 	});
 
@@ -44,8 +44,8 @@ module.exports = function() {
 	});
 
 	Then(/^the new qrvey is created as a draft on the dashboard$/, function(cb) {
-		navigate.clicksButton('#linkToDashboard');
-		expect(user.currentStateQrvey()).to.eventually.have.string('Draft').and.notify(cb);
+		user.finds('#linkToDashboard').click();
+		expect(maker.currentStateQrvey()).to.eventually.have.string('Draft').and.notify(cb);
 	});
 
 	Then(/^the survey should be duplicated$/, function(cb) {
@@ -53,7 +53,7 @@ module.exports = function() {
 	});
 
 	Given(/^that the user clicks on create qrvey and assigns a name and description$/, function(cb) {
-		user.createsWebform().then(cb);
+		maker.createsWebform().then(cb);
 	});
 
 	When(/^the user clicks Yes on templates notification$/, function(cb) {
@@ -65,19 +65,23 @@ module.exports = function() {
 	});
 
 	When(/^the user open the just created webform$/, function(cb) {
-		element.all(by.css('.spec-qrvey-title-link')).get(0).click().then(cb);
+		user.findsAll('.spec-qrvey-title-link').get(0).click().then(cb);
 	});
 
 	Then(/^the template is chosen and the questions are plugged in to the qrvey$/, function(cb) {
 		user.finds('.spec-selected-template-1').click();
-		navigate.clicksButton('.spec-use-name-description-of-template').then(cb);
+		user.finds('.spec-use-name-description-of-template').click().then(cb);
 	});
 
 	Then(/^Please enter "([^"]*)" message should be displayed$/, function(arg1, cb) {
 		if (arg1 == 'name') {
-			expect(user.finds('.spec-create-survey-valid-enter-name').getAttribute('innerHTML')).to.eventually.be.string('Please enter name').and.notify(cb);
+			expect(
+				user.finds('.spec-create-survey-valid-enter-name').getText()
+			).to.eventually.be.string('Please enter name').and.notify(cb);
 		} else if (arg1 == 'description') {
-			expect(user.finds('.spec-create-survey-valid-enter-description').getAttribute('innerHTML')).to.eventually.be.string('Please enter description').and.notify(cb);
+			expect(
+				user.finds('.spec-create-survey-valid-enter-description').getText()
+			).to.eventually.be.string('Please enter description').and.notify(cb);
 		}
 	});
 };

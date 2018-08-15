@@ -16,11 +16,7 @@ var Config = function() {
 			this._config = _config;
 
 			this.set('QrveyId', 0);
-
-			// logger.log('this is the global configs', this._config);
-		} else {
-			throw 'It has already been started plugin';
-		}
+		} else throw new Error('It has already been started plugin');
 
 		return this;
 	};

@@ -1,33 +1,7 @@
 'use strict';
 
 var User = function () {
-	this.total = null;
-	this.settings = {
-		idUser: '',
-		validUser: '',
-		validPass: '',
-		invalidUser: 'ideawareqa-wrong@gmail.com',
-		invalidPass: 'weloveux',
-		homePage: 'http://www.qrvey.com',
-		pageSleep: 500
-	};
-
-	this.getIdUser = function () {
-		return this.settings.idUser;
-	};
-
-	this.getsTotals = function () {
-		return this.total;
-	};
-
-	this.setTotals = function () {
-		element.all(by.repeater('qrvey in qrveys')).then(function (arr) {
-			this.total = arr.length;
-			return arr.length;
-		}, function () {
-			return null;
-		});
-	};
+	this.settings = {};
 
 	this.setSetting = function (_key, _val) {
 		this.settings[_key] = _val;
@@ -80,7 +54,7 @@ var User = function () {
 		var deferred = protractor.promise.defer();
 
 		this.deleteAllCookies();
-		brw.get(this.settings.homePage).then(function () {
+		brw.get('http://www.qrvey.com').then(function () {
 			this.waits(500);
 			deferred.fulfill();
 		});
@@ -114,22 +88,6 @@ var User = function () {
 		});
 
 		return deferred.promise;
-	};
-
-	this.validUser = function () {
-		return this.settings.validUser;
-	};
-
-	this.validPass = function () {
-		return this.settings.validPass;
-	};
-
-	this.invalidUser = function () {
-		return this.settings.invalidUser;
-	};
-
-	this.invalidPass = function () {
-		return this.settings.invalidPass;
 	};
 
 	this.toDoLogin = function (_username, _password) {
@@ -563,7 +521,7 @@ var User = function () {
 
 		_length = Object.keys(_titles).length;
 
-		if (_length < 2) throw 'Error, the minium question is 2';
+		if (_length < 2) throw new Error('Error, the minium question is 2');
 
 		if (_length > 2) {
 			for (i = 0; i <= _length - 3; i++) {
@@ -610,18 +568,6 @@ var User = function () {
 		return this.finds('.spec-design-preview-link').click();
 	};
 
-	this.isClickableAnElement = function (_selector) {
-		var clickable = true;
-
-		try {
-			this.finds(_selector).click();
-		} catch (e) {
-			clickable = false;
-		}
-
-		return clickable;
-	};
-
 	this.forgotPassword = function (username) {
 		this.finds('.spec-user-forgot-password').clear().sendKeys(username);
 		return this.finds('.spec-user-forgot-password-btn').click();
@@ -659,14 +605,6 @@ var User = function () {
 
 	this.isVisibleQuestionPath = function () {
 		return this.finds('.spec-question-path').isDisplayed();
-	};
-
-	this.getsTextExists = function (_text) {
-		return element.all(by.xpath('//*[contains(text(),\'' + _text + '\')]')).count().then(function (arr) {
-			return (arr > 0);
-		}, function () {
-			return false;
-		});
 	};
 
 	this.getsInputTextExists = function (_locator, _text) {
@@ -1270,7 +1208,7 @@ var User = function () {
 	};
 
 	this.putCodeInAudiencePage = function (_code) {
-		if (typeof _code === 'undefined') throw 'Error, lack the code';
+		if (typeof _code === 'undefined') throw new Error('Error, lack the code');
 
 		logger.log('the code is:', _code);
 		return this.finds('.spec_audiencepage_enter_access_code_input').sendKeys(_code);
@@ -2064,7 +2002,7 @@ var User = function () {
 			this.findsAll('.pages-list.qrvey-list.qrvey-pages-list .page .toggle').first().click();
 
 			deferred.fulfill();
-		} else throw 'The action is not supported yet';
+		} else throw new Error('The action is not supported yet');
 
 		return deferred.promise;
 	};
@@ -2217,7 +2155,7 @@ var User = function () {
 			}).catch(function (err) {
 				if (err.name !== 'NoSuchElementError' && err.name !== 'StaleElementReferenceError') {
 					logger.error('ERROR', err);
-					throw err;
+					throw new Error(err);
 				}
 			});
 
@@ -2345,17 +2283,6 @@ var User = function () {
 
 		element(by.css('.question-type-selector')).getText().then(function(_text){
 			defer.fulfill(_text.toLowerCase());
-		});
-
-		return defer.promise;
-	};
-
-	this.isQuizOnMaker = function(){
-		var defer = protractor.promise.defer();
-
-		this.getsTextExists('Quiz').then(function(_val){
-			console.log('isQuizOnMaker', _val);
-			defer.fulfill(_val);
 		});
 
 		return defer.promise;

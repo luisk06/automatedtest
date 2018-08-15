@@ -18,7 +18,7 @@ module.exports = function() {
 
 	When(/^the user answers the "([^"]*)" question$/, function(typeOfQuestion, cb) {
 		skipSync(true);
-		user.answersQuestion(typeOfQuestion).then(cb);
+		taker.answersQuestion(typeOfQuestion).then(cb);
 	});
 
 	When(/^clicks on the Ok button again$/, function(cb) {
@@ -28,7 +28,7 @@ module.exports = function() {
 	When(/^the user clicks on OK button in the preview$/, function(cb) {
 		var el = '.button.yellow.okbtn.ico-check.spec-user-response-ok';
 
-		user.waitsFor(el); // Wait for other element finish to load
+		webpage.waitsFor(el); // Wait for other element finish to load
 		user.finds(el).click().then(cb);
 	});
 };

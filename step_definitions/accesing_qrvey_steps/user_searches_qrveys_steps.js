@@ -11,32 +11,32 @@ module.exports = function() {
 		max_total = 0;
 
 	Given(/^the user has answer some qrveys$/, function(cb) {
-		user.toDoLogin().then(function() {
-			return user.createsWebform({ 'title': _title });
+		maker.toDoLogin().then(function() {
+			return maker.createsWebform({ 'title': _title });
 		}).then(function() {
-			return user.createsMultiChoiceTypeQuestion(_title);
+			return maker.createsMultiChoiceTypeQuestion(_title);
 		}).then(function() {
 			return user.createsMultiChoiceOptions();
 		}).then(function() {
-			return user.clicksOutside();
+			return maker.clicksOutside();
 		}).then(function() {
-			return user.activatesQrvey();
+			return maker.activatesQrvey();
 		}).then(function() {
-			return user.findsUrlToTaker();
+			return maker.findsUrlToTaker();
 		}).then(function() {
-			return user.openUrl();
+			return webpage.openUrl('/');
 		}).then(function() {
 			skipSync(true);
-			return user.takesQrveyShared();
+			return taker.takesQrveyShared();
 		}).then(function() {
-			return user.choicesAnswer('multiple');
+			return taker.choicesAnswer('multiple');
 		}).then(function() {
-			return user.takerClicksOnOk();
+			return taker.clicksOnOk();
 		}).then(function() {
-			return user.takerFinish(true);
+			return taker.finish(true);
 		}).then(function() {
 			skipSync(false);
-			return user.toDoLogin().then(cb);
+			return maker.toDoLogin().then(cb);
 		});
 	});
 
@@ -45,7 +45,7 @@ module.exports = function() {
 	});
 
 	When(/^the user inputs a query in the search field that matches with a taken qrvey$/, function(cb) {
-		user.search(_title).then(function() {
+		maker.search(_title).then(function() {
 			user.finds('.spec_search_input').getAttribute('value').then(function(_value) {
 				expect(_value).to.be.equal(_title);
 			}).then(cb);
@@ -53,26 +53,26 @@ module.exports = function() {
 	});
 
 	When(/^the user press enter button$/, function(cb) {
-		user.actionSearch().then(function() {
-			max_total = user.getsTotal('qrvey in taken_qrveys');
+		maker.actionSearch().then(function() {
+			max_total = maker.getsTotal('qrvey in taken_qrveys');
 			expect(max_total).to.eventually.be.least(1);
 		}).then(cb);
 	});
 
 	Then(/^only the qrveys that have in their title, description and responses, one or more words equal to the query should be displayed$/, function(cb) {
-		user.getsTotal('qrvey in taken_qrveys').then(function() {
-			return user.search(_title);
+		maker.getsTotal('qrvey in taken_qrveys').then(function() {
+			return maker.search(_title);
 		}).then(function() {
-			return user.actionSearch();
+			return maker.actionSearch();
 		}).then(function() {
 			expect(max_total).to.eventually.be.least(1).and.notify(cb);
 		});
 	});
 
 	When(/^the user inputs a query in the search field that don't matches with a taken qrvey$/, function(cb) {
-		user.search(_title_not_macth);
-		user.actionSearch();
-		expect(user.getsTotal('qrvey in taken_qrveys')).to.eventually.be.equal(0).and.notify(cb);
+		maker.search(_title_not_macth);
+		maker.actionSearch();
+		expect(maker.getsTotal('qrvey in taken_qrveys')).to.eventually.be.equal(0).and.notify(cb);
 	});
 
 	Then(/^the Oops No qrveys to match your criteria message should be displayed$/, function(cb) {

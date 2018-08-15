@@ -58,7 +58,7 @@ module.exports = function () {
 	When(/^the user clicks on description check$/, function (cb) {
 		user.finds('.spec_allow_intropage').click().then(
 			function () {
-				throw 'Description check is not blocked';
+				throw new Error('Description check is not blocked');
 			},
 			function () {
 				cb();
@@ -70,7 +70,7 @@ module.exports = function () {
 		user.finds('#question-1').click().then(cb);
 
 		// var el = '.spec-question-title';
-		// user.waitsFor(el);
+		// webpage.waitsFor(el);
 		// element(by.css(el)).click().then(cb);
 	});
 
@@ -97,7 +97,7 @@ module.exports = function () {
 	When(/^the user try edits the question$/, function (cb) {
 		user.finds('.spec-edit-question-name-0').click().then(
 			function () {
-				throw 'Question is not blocked';
+				throw new Error('Question is not blocked');
 			},
 			function () {
 				cb();

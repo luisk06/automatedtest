@@ -22,7 +22,7 @@ module.exports = function() {
 				break;
 		}
 
-		user.waitsFor(_class);
+		webpage.waitsFor(_class);
 
 		user.finds(_class).getText().then(function(text){
 			expect(text).to.be.equal(_text);

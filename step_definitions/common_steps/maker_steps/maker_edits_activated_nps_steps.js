@@ -9,7 +9,7 @@ module.exports = function() {
 	When(/^the user edits textarea of nps$/, function(cb) {
 		user.finds('.spec-nps-answers-textfield').click().then(
 		function(){
-			throw 'Texarea is not blocked';
+			throw new Error('Texarea is not blocked');
 		},
 		function(){
 			cb();

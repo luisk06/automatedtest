@@ -14,11 +14,11 @@ module.exports = function() {
 	});
 
 	When(/^the user adds all images possible to question since "([^"]*)"$/, function(typeOfInput, cb) {
-		user.createsImageQuestion(typeOfInput).then(cb);
+		maker.createsImageQuestion(typeOfInput).then(cb);
 	});
 
 	When(/^the user adds all title possible to images$/, function(cb) {
-		user.addImageTitles().then(cb);
+		maker.addImageTitles().then(cb);
 	});
 
 	When(/^the user adds (\d+) images to question$/, function(arg1, cb) {

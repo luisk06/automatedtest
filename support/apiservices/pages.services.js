@@ -4,7 +4,7 @@ var PagesService = function() {
 
 	this.validField = function(_field, _name, _nameFunction) {
 		if (typeof _field === 'undefined') {
-			throw 'Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function';
+			throw new Error('Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function');
 		}
 
 		return this;
@@ -36,7 +36,7 @@ var PagesService = function() {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -72,7 +72,7 @@ var PagesService = function() {
 				logger.error('Error, no response in update function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -93,7 +93,7 @@ var PagesService = function() {
 				logger.error('Error, no response in delete function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 

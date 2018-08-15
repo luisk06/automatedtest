@@ -10,7 +10,7 @@ module.exports = function() {
 		var el = '.spec-cc-success';
 
 		user.finds('.spec-button-subscribe').click();
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 
 		user.finds(el).getText().then(function(_text){
 			expect(_text).to.be.equal('Your credit card is valid.');

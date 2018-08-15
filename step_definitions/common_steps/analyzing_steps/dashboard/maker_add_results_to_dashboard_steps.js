@@ -52,6 +52,6 @@ module.exports = function () {
 	});
 
 	Then(/^the chart can be deleted$/, function (cb) {
-		user.deleteAnDashboard(appID).then(cb);
+		maker.deleteAnDashboard(appID).then(cb);
 	});
 };

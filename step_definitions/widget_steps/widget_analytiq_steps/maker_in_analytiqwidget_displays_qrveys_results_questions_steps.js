@@ -21,11 +21,11 @@ module.exports = function() {
 	Given(/^that the user open the "([^"]*)" widget with the responses$/, function(nameWidget, cb) {
 		if (typeof qrveyIDForWidget !== 'undefined') {
 			ws.open(nameWidget, qrveyIDForWidget, cb);
-		} else throw 'qrveyIDForWidget is undefined';
+		} else throw new Error('qrveyIDForWidget is undefined');
 	});
 
 	When(/^that the user are in the "([^"]*)" widget$/, function(shouldBeIn, cb) {
-		user.whereIAm().then(function(_url) {
+		webpage.getCurrentUrl().then(function(_url) {
 			expect(_url).to.contain(shouldBeIn);
 		}).then(cb);
 	});

@@ -18,13 +18,13 @@ module.exports = function() {
 	});
 
 	Given(/^the user created the "([^"]*)"$/, function(type, cb) {
-		user.createsWebform({
+		maker.createsWebform({
 			'type': (type == 'form') ? 'forms' : type
 		}).then(cb);
 	});
 
 	When(/^the user created the "([^"]*)" with "([^"]*)" as title$/, function(type, title, cb) {
-		user.createsWebform({ 'type': type , 'title': title}).then(cb);
+		maker.createsWebform({ 'type': type , 'title': title}).then(cb);
 	});
 
 	Given(/^the user created the "([^"]*)" with "([^"]*)" question in "([^"]*)"$/, function(typeOfQrvey, typeOfQuestion, stateOfQrvey, cb) {
@@ -54,13 +54,13 @@ module.exports = function() {
 
 	Then(/^the publish page should be displayed$/, function(cb) {
 		expect(
-			navigate.getCurrentUrl()
+			webpage.getCurrentUrl()
 		).to.eventually.contain('share').and.notify(cb);
 	});
 
 	Then(/^the publish page should not be displayed$/, function(cb) {
 		expect(
-			navigate.getCurrentUrl()
+			webpage.getCurrentUrl()
 		).to.eventually.not.contain('share').and.notify(cb);
 	});
 
@@ -84,21 +84,21 @@ module.exports = function() {
 		// Filling the calendars
 		if (rangeName == 'before'){
 			user.finds('.max').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if (rangeName == 'after'){
 			user.finds('.min').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}else if(rangeName == 'between'){
 			user.finds('.max').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click();
 
 			user.finds('.min').click();
-			user.waitsFor('.mat-calendar');
+			webpage.waitsFor('.mat-calendar');
 			user.findsContainingText('.mat-calendar-body-cell-content', newDate.toString()).click().then(cb);
 		}
 	});

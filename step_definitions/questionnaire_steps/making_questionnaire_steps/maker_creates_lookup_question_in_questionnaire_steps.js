@@ -27,10 +27,10 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the form from the dropdown$/, function(cb) {
-		user.waitsFor('.modal-dialog');
+		webpage.waitsFor('.modal-dialog');
 		user.finds('.automatiq-select').click();
 
-		user.waitsFor('.scroll-select');
+		webpage.waitsFor('.scroll-select');
 		user.finds('.scroll-select .select-search input').sendKeys('qrvey');
 		user.findsAll('.scroll-select li:not(.select-search)').first().click().then(cb);
 	});
@@ -51,7 +51,7 @@ module.exports = function() {
 
 	When(/^the user selects "([^"]*)" from lookup dropdown$/, function(lookUpType, cb) {
 		element(by.css('.spec-lookup-dropdown')).click().then(function() {
-			user.waitsFor('.spec-lookup-' + lookUpType + '-option').then(function() {
+			webpage.waitsFor('.spec-lookup-' + lookUpType + '-option').then(function() {
 				element(by.css('.spec-lookup-' + lookUpType + '-option')).click();
 			});
 		}).then(cb);

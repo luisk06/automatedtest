@@ -11,7 +11,7 @@ module.exports = function() {
 	});
 
 	When(/^the user add a new placeholder$/, function(cb) {
-		user.addNewToken('numeric').then(function() {
+		maker.addNewToken('numeric').then(function() {
 			cb();
 		});
 	});

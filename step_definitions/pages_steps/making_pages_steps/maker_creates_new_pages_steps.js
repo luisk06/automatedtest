@@ -17,11 +17,11 @@ module.exports = function() {
 	});
 
 	When(/^the user create a page with "([^"]*)" as title$/, function(title, cb) {
-		user.createPage(title).then(cb);
+		maker.createPage(title).then(cb);
 	});
 
 	When(/^the user create a page$/, function(cb) {
-		user.createPage().then(cb);
+		maker.createPage().then(cb);
 	});
 
 	When(/^the user writes the page name$/, function(cb) {

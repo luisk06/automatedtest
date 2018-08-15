@@ -15,7 +15,7 @@ module.exports = function() {
 	When(/^the user writes "([^"]*)" in the "([^"]*)" "([^"]*)"$/, function(keys, identifier, type, cb) {
 		navigate.sendKeys('.spec_' + identifier + '_' + type + ' div div input', keys);
 		brw.actions().sendKeys(protractor.Key.ENTER).perform();
-		navigate.clicksButton('.tag-template').then(cb);
+		user.finds('.tag-template').click().then(cb);
 	});
 
 	Then(/^the "([^"]*)" short text answer filter should appear in the histogram filters$/, function(arg1, cb) {

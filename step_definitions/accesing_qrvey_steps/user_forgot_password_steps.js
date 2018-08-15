@@ -7,12 +7,12 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user never registred$/, function(cb) {
-		brw.manage().deleteAllCookies();
+		webpage.deleteAllCookies();
 		brw.get(brw.baseUrl + '/').then(cb);
 	});
 
 	Given(/^the user previously registred$/, function(cb) {
-		brw.manage().deleteAllCookies();
+		webpage.deleteAllCookies();
 		brw.get(brw.baseUrl + '/').then(cb);
 	});
 
@@ -34,6 +34,6 @@ module.exports = function() {
 	});
 
 	Then(/^a "([^"]*)" message should be displayed$/, function(arg1, cb) {
-		expect(user.getsTextExists(arg1)).to.eventually.be.true.and.notify(cb);
+		expect(webpage.getsTextExists(arg1)).to.eventually.be.true.and.notify(cb);
 	});
 };

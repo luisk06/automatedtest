@@ -7,11 +7,11 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user do clicks on Create New$/, function(cb) {
-		navigate.clicksButton('.spec_dashboard_create_new_button').then(cb);
+		user.finds('.spec_dashboard_create_new_button').click().then(cb);
 	});
 
 	When(/^the user writes the "([^"]*)" as "([^"]*)" in "([^"]*)" type of qrvey$/, function(context, field, typeQrvey, cb) {
-		user.fillQrveyNameOrDescription(context, field, typeQrvey).then(function(){
+		maker.fillQrveyNameOrDescription(context, field, typeQrvey).then(function(){
 			cb();
 		});
 	});
@@ -65,7 +65,7 @@ module.exports = function() {
 	Then(/^the "([^"]*)" text should display "([^"]*)" in the qrvey$/, function(arg1, arg2, cb) {
 		var _text = arg2;
 
-		user.getsTextExists(_text).then(function(_exist) {
+		webpage.getsTextExists(_text).then(function(_exist) {
 			expect(_exist).to.be.true;
 		}).then(cb);
 	});

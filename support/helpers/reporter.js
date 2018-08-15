@@ -11,5 +11,5 @@ try {
 
 	module.exports = reporter;
 } catch (err) {
-	if(err) throw err;
+	if (err) throw new Error(err);
 }

@@ -9,7 +9,7 @@ module.exports = function() {
 	When(/^the user clicks on the "([^"]*)" option in apps$/, function(option, cb) {
 		var el = '.spec-new-app-select-module-'+option;
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 
@@ -70,7 +70,7 @@ module.exports = function() {
 		}
 
 		expect(user.finds(el).getText()).to.eventually.be.equal('Untitled ' + title);
-		expect(navigate.getCurrentUrl()).to.eventually.contain('/application/');
-		expect(navigate.getCurrentUrl()).to.eventually.contain('/design/').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('/application/');
+		expect(webpage.getCurrentUrl()).to.eventually.contain('/design/').and.notify(cb);
 	});
 };

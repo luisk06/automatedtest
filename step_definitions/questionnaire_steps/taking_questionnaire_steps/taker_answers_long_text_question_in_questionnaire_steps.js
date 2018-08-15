@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user selects answers in "([^"]*)" question$/, function(typeOfQuestion, cb) {
-		user.answersQuestion(typeOfQuestion).then(function(){
+		taker.answersQuestion(typeOfQuestion).then(function(){
 			switch (typeOfQuestion) {
 				case 'short text':
 				case 'short_text':
@@ -28,7 +28,7 @@ module.exports = function() {
 	When(/^the user clicks on the Submit button$/, function(cb) {
 		var el = '.spec-user-response-ok.submit-answers';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 };

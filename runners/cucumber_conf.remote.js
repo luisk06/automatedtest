@@ -1,6 +1,5 @@
 var notifier = require('node-notifier'),
-	_runAnyTest = false,
-	_baseUrl = 'https://oemdev.qrvey.com';
+	_baseUrl = 'https://automatedqastg.qrvey.com';
 
 var $config = {
 	directConnect: true,
@@ -19,49 +18,48 @@ var $config = {
 		}
 	},
 	specs: [
-		'features/**/**.feature'
+		'../features/**/**.feature'
 	],
 	allScriptsTimeout: 50000,
 	framework: 'custom',
 	frameworkPath: require.resolve('protractor-cucumber-framework'),
 	cucumberOpts: {
+		// exclude: ['reporter.js', 'fast-selenium.js', 'trackMouse.js', 'support/trackMouse.js', 'disableNgAnimate.js', 'globalsVars.js', 'globalsFunctions.js'],
 		require: [
-			'step_definitions/**/*_steps.js',
-			'support/apiservices/*.js',
-			'support/config/*.js',
-			'support/helpers/*.js',
-			'support/ngModules/*.js',
-			'support/hooks/AfterFeatures.js',
-			'support/hooks/afterHook.js',
-			'support/hooks/beforeHook.js',
-			'support/hooks/hooks.js',
+			'../step_definitions/**/*_steps.js',
+			'../support/apiservices/*.js',
+			'../support/config/*.js',
+			'../support/helpers/*.js',
+			'../support/overwrite/*.js',
+			'../support/ngModules/disableNgAnimate.js',
+			// '../support/ngModules/trackMouse.js',
+			'../support/hooks/AfterFeatures.js',
+			'../support/hooks/afterHook.js',
+			'../support/hooks/beforeHook.js',
+			'../support/hooks/hooks.js',
 		],
 		format: 'pretty', // format: 'json',
 		tags: ['@complete', '~@widgets', '~@iframes', '~@todo', '~@tests'],
-		keepAlive: false
+		keepAlive: false,
+		'dry-run': false,
+		strict: true
 	},
-	onPrepare: function() {
+	onPrepare: function () {
 		global.env = 'staging';
 		global.server = 'qstg';
-		global.stripeStatus = false;
+		global.stripeStatus = true;
 
 		global.rootServer = 'remote';
-
-		require('log-timestamp');
-
-		// NgModules
-		require('./support/disableNgAnimate');
-		// require('./support/trackMouse');
 
 		// Dimension for test
 		browser.driver.manage().window().setSize(2440, 900);
 		browser.driver.manage().window().maximize();
 
 		// globalsVars
-		require('./support/globalsVars');
+		require('./../support/globalsVars');
 
 		// Globals functions to the Spec
-		require('./support/globalsFunctions');
+		require('./../support/globalsFunctions');
 
 		// Config to promise Chai
 		chai.use(require('sinon-chai'));
@@ -95,23 +93,14 @@ var $config = {
 
 		ws.config(_configW);
 	},
-	onComplete: function() {
-		logger.log('onComplete');
-		_runAnyTest = true;
-	},
-	onCleanUp: function() {
-		if (_runAnyTest && isRemote) {
-			logger.log('CleanUp!');
+	afterLaunch: function () {
+		if (runAnyTest){
+			notifier.notify({
+				title: 'Qrvey',
+				message: 'Finished the tests',
+				icon: './../support/logos/fav1.png'
+			});
 		}
-	},
-	afterLaunch: function(exitCode) {
-		logger.log('afterLaunch', exitCode);
-
-		notifier.notify({
-			title: 'Qrvey',
-			message: 'Finish the tests',
-			icon: './UI/app/fav1.png'
-		});
 	}
 };
 

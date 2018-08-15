@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user is in dashboard$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('/').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('/').and.notify(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" in menu first level$/, function(option, cb) {
@@ -36,6 +36,6 @@ module.exports = function() {
 			urlExpected = option;
 		}
 
-		expect(navigate.getCurrentUrl()).to.eventually.contain(urlExpected).and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain(urlExpected).and.notify(cb);
 	});
 };

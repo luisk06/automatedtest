@@ -39,18 +39,18 @@ module.exports = function JsonOutputHook() {
 					var targetJson = outputDirJson + '/' + _name + '_' + timeStamp + '.json';
 
 					fs.writeFile(outputDirCustom + '/' + _name + '.json', json, function(err) {
-						if(err) throw err;
+						if(err) throw new Error(err);
 					});
 
 					if (typeof process.env.JOB_NAME !== 'undefined'){
 						console.log('customName:', process.env.JOB_NAME.toLowerCase());
 						fs.writeFile(outputDirGeneral + '/' + process.env.JOB_NAME.toLowerCase() + '.json', json, function(err) {
-							if(err) throw err;
+							if(err) throw new Error(err);
 						});
 					}
 
 					fs.writeFile(targetJson, json, function(err) {
-						if(err) throw err;
+						if(err) throw new Error(err);
 
 						var CucumberHtmlReport = require('cucumber-html-reporter'),
 							options = {
@@ -87,6 +87,6 @@ module.exports = function JsonOutputHook() {
 		// 	});
 		// };
 	}catch(e){
-		if(e) throw e;
+		if (e) throw new Error(e);
 	}
 };

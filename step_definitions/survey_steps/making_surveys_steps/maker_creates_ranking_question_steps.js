@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user writes the Ranking question and options$/, function(cb) {
-		user.fillsRankingQuestion({
+		maker.fillsRankingQuestion({
 			'1': 'What is your favorite test question?',
 			'2': 'Yes/no question',
 			'3': 'Ranking question'

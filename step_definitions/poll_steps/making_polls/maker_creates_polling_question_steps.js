@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that the user actives the Never Expire$/, function(cb) {
-		navigate.clicksButton('.spec-active-never-expire + label').then(cb);
+		user.finds('.spec-active-never-expire + label').click().then(cb);
 	});
 
 	When(/^the user actives the "([^"]*)" option$/, function(typeOfOption, cb) {

@@ -8,28 +8,27 @@ module.exports = function() {
 
 	Given(/^that there is a webform app with a "([^"]*)" with a "([^"]*)" question that has (\d+) answers with the following dates:$/, function(typeOfQrvey, typeOfQuestion, num, datesArray, cb) {
 		us.isLogged().then(function(_userId) {
-			apps.createNewApp('Test ' + typeOfQrvey + ' date').then(function(){
-				as.createAnswers(_userId, typeOfQrvey, typeOfQuestion, num, datesArray.rows()).then(function(){
-					user.waits(5000);
-				}).then(cb);
-			});
+			apps.createNewApp('Test ' + typeOfQrvey + ' date');
+		}).then(function(){
+			as.createAnswers(_userId, typeOfQrvey, typeOfQuestion, num, datesArray.rows());
+		}).then(function(){
+			user.waits(5000);
+			cb();
 		});
 	});
 
 	Given(/^the user is logged in$/, function(cb) {
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 
 		user_login.login(configer.get('username'), configer.get('password')).then(cb);
 	});
 
 	When(/^the user clicks on the first "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-		navigate.clicksButton('.spec_' + identifier + '_' + type).then(cb);
+		user.finds('.spec_' + identifier + '_' + type).click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)" of the just created qrvey$/, function(identifier, type, cb) {
-		// navigate.clicksButton('.spec_' + identifier + '_' + type + '_' + configer.get('QrveyId')).then(cb);
-
 		user.finds('.recordsForms').click().then(cb);
 	});
 
@@ -47,7 +46,7 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" date answer filter should appear in the histogram filters$/, function(arg1, cb) {
-		user.getsTextExists(arg1).then(function(_value) {
+		webpage.getsTextExists(arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});
@@ -55,13 +54,13 @@ module.exports = function() {
 	Then(/^the number of answers should be (\d+)$/, function(num, cb) {
 		if (hasAnswers) {
 			if (num === 0) {
-				user.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
+				webpage.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
 					if (isPresent) {
 						// logger.log('callback 1');
 						cb();
 					}
 
-					throw 'Error in the app';
+					throw new Error('Error in the app');
 				});
 			}
 
@@ -110,19 +109,19 @@ module.exports = function() {
 	Then(/^the number of answers in the nps should be (\d+)$/, function(num, cb) {
 		if (hasAnswers) {
 			if (num === 0) {
-				user.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
+				webpage.getsTextExists('There are no responses for the selected range. Try resetting!').then(function(isPresent) {
 					if (isPresent) {
 						cb();
 					}
 
-					throw 'Error in the app';
+					throw new Error('Error in the app');
 				});
 			}
 			user.waits(1200);
 
 			var el = '.spec-analyzing-answered';
 
-			user.waitsFor(el);
+			webpage.waitsFor(el);
 
 			element(by.css(el)).getText().then(function(res) {
 				expect(+num, err.answersFilter(+num, +res)).to.be.eql(+res);
@@ -169,8 +168,7 @@ module.exports = function() {
 				return _item.click(function() {
 					logger.log('found i', i);
 				}, function() {
-					logger.log('Error, not found element ' + btn + ' in the ' + i + ' position');
-					throw 'Error, not found element ' + btn + ' in the ' + i + ' position';
+					throw new Error('Error, not found element ' + btn + ' in the ' + i + ' position');
 				}).then(cb);
 			}
 
@@ -218,7 +216,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-		navigate.clicksButton('.spec_' + identifier + '_' + type).then(cb);
+		user.finds('.spec_' + identifier + '_' + type).click().then(cb);
 	});
 
 	When(/^the user closes the histogram$/, function(cb) {

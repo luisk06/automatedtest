@@ -5,7 +5,7 @@ module.exports = function() {
 	Given = this.Given;
 	When = this.When;
 	Then = this.Then;
-	
+
 	var _label = '',
 		_title = '';
 
@@ -33,7 +33,7 @@ module.exports = function() {
 	});
 
 	Then(/^the incontext on "([^"]*)" position should contain customized title$/, function(position, cb) {
-		if(navigate.isDisplayed('.spec-incontext-' +position + ' .content .titlecontent')){
+		if(webpage.isDisplayed('.spec-incontext-' +position + ' .content .titlecontent')){
 			user.finds('.spec-incontext-' + position + ' .content .titlecontent').getText().then(function(text){
 				expect(text).to.be.equal(_title);
 			}).then(cb);
@@ -47,7 +47,7 @@ module.exports = function() {
 
 	Then(/^the customize incontext position button for "([^"]*)" should be disabled$/, function(position, cb) {
 		element(by.css('.spec-tab-'+position)).click().then(function(){
-			throw 'Element should not be clickable for Observer';
+			throw new Error('Element should not be clickable for Observer');
 		},function(err){
 			expect(err.message.toString()).to.be.contain('is not clickable at point');
 		}).then(cb);

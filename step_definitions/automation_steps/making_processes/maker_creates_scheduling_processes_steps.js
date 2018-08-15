@@ -8,14 +8,14 @@ module.exports = function () {
 
 	Given(/^the user creates a "([^"]*)" in "([^"]*)" app$/, function (typeOf, typeOfApp, cb) {
 		if (typeOfApp == 'automation') {
-			user.createsProcess().then(cb);
+			maker.createsProcess().then(cb);
 		}
 	});
 
 	Given(/^the user creates a "([^"]*)" in "([^"]*)" app with "([^"]*)" as title$/, function (typeOf, typeOfApp, title, cb) {
 		if (typeOfApp == 'automation') {
-			user.createsProcess(title).then(cb);
-		} else throw 'Not a valid app';
+			maker.createsProcess(title).then(cb);
+		} else throw new Error('Not a valid app');
 	});
 
 	When(/^the user selects the king of process as "([^"]*)"$/, function (typeOfProcess, cb) {
@@ -75,6 +75,6 @@ module.exports = function () {
 	});
 
 	Then(/^the user go to back the dashabord$/, function (cb) {
-		expect(user.whereIAm()).to.eventually.be.equal('/').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.be.equal('/').and.notify(cb);
 	});
 };

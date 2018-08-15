@@ -32,7 +32,7 @@ module.exports = function() {
 
 	When(/^the user take the "([^"]*)" for delete contact$/, function(typeOfQrvey, cb) {
 		user.openUrl(global.qrveyURL);
-		user.waitsFor('.spec-taker-qrvey');
+		webpage.waitsFor('.spec-taker-qrvey');
 		brw.ignoreSynchronization = true;
 
 		if(typeOfQrvey == 'forms'){

@@ -4,7 +4,7 @@ var ProcessService = function() {
 
 	this.validField = function(_field, _name, _nameFunction) {
 		if (typeof _field === 'undefined') {
-			throw 'Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function';
+			throw new Error('Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function');
 		}
 
 		return this;
@@ -38,12 +38,12 @@ var ProcessService = function() {
 
 				var msj = 'Error, qrvey is not NOT_RUNNING status in create function.';
 				logger.error(msj);
-				throw msj;
+				throw new Error(msj);
 			} catch (err) {
 				logger.error('Error, no response in create function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -73,7 +73,7 @@ var ProcessService = function() {
 				logger.error('Error, no response in update function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 
@@ -136,7 +136,7 @@ var ProcessService = function() {
 				logger.error('Error, no response in getAll styles function.');
 				logger.error(_resp);
 
-				throw _resp;
+				throw new Error(_resp);
 			}
 		});
 

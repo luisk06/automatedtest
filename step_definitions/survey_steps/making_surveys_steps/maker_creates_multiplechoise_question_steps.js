@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^that the user selects "([^"]*)" question type from the dropdown$/, function(typeOfQuestion, cb) {
-		user.selectQuestionFromDropdown(typeOfQuestion).then(function(){
+		maker.selectQuestionFromDropdown(typeOfQuestion).then(function(){
 			cb();
 		});
 	});
@@ -39,7 +39,7 @@ module.exports = function() {
 		var tx2 = 'Water is great';
 		var tx3 = 'Money can not be eaten';
 
-		user.createsMultiChoiceTypeQuestion('Would you recommend our product to others?').then(function() {
+		maker.createsMultiChoiceTypeQuestion('Would you recommend our product to others?').then(function() {
 			user.finds('.spec-add-option-multichoice-question-0').click();
 
 			user.finds(el1).sendKeys(tx1);
@@ -62,11 +62,11 @@ module.exports = function() {
 	});
 
 	When(/^Allow multiple selections checkboxes$/, function(cb) {
-		user.activatesAllowMultipleSelections().then(cb);
+		maker.activatesAllowMultipleSelections().then(cb);
 	});
 
 	When(/^clicks on the Allow multiple selections checkbox$/, function(cb) {
-		user.activatesAllowMultipleSelections().then(cb);
+		maker.activatesAllowMultipleSelections().then(cb);
 	});
 
 	When(/^the user writes the title of question$/, function(cb) {

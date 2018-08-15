@@ -20,7 +20,7 @@ module.exports = function() {
 	When(/^the user opens the actions panel$/, function(cb) {
 		var el = '.spec-automatiq-block-action-view-open';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.findsAll(el).get(0).click().then(cb);
 	});
 
@@ -39,7 +39,7 @@ module.exports = function() {
 		var el = '.spec-qrvey-flow';
 
 		user.finds('.action-another-process .automatiq-select').click();
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.findsAll(el).get(position - 1).click().then(cb);
 	});
 
@@ -54,11 +54,11 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the "([^"]*)" process (\d+) in "([^"]*)"$/, function (typeOfProccess, position, typeOfAction, cb) {
-		
+
 		element(by.css('.spec-examinedata-select-qrvey-type')).click().then(function () {
 			element(by.css('.spec-examinedata-qrvey-quiz')).click().then(function(){
 				element(by.css('.spec-examinedata-select-qrvey')).click().then(function(){
-					element.all(by.css('.spec-automatiq-list-items div li')).get(position).click();					
+					element.all(by.css('.spec-automatiq-list-items div li')).get(position).click();
 				});
 			});
 		}).then(cb);
@@ -102,7 +102,7 @@ module.exports = function() {
 		var _pos;
 		if(limit == 'min') _pos = 0;
 		else if(limit == 'max') _pos = 1;
-		
+
 		element.all(by.css('.spec-automatiq-filter-text input')).get(_pos).sendKeys(value).then(cb);
 	});
 
@@ -120,7 +120,7 @@ module.exports = function() {
 
 	When(/^the user fills a new action inside "([^"]*)"$/, function(action, cb) {
 		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click().then(function () {
-			//user.waitsFor('.spec-automatiq-select-action-open');
+			//webpage.waitsFor('.spec-automatiq-select-action-open');
 			var el = user.findsAll('.spec-automatiq-select-action-open');
 
 			if (action == 'examinedata') el.get(5).click();
@@ -140,7 +140,7 @@ module.exports = function() {
 	});
 
 	When(/^the user fills a new sms action inside "([^"]*)" with record not found$/, function (action, cb) {
-		//browser.explore();		
+		//browser.explore();
 		scrollToBottom().then(function(){
 			element.all(by.css('.spec-automatiq-block-action-view-open')).get(2).click().then(function () {
 				element.all(by.css('.at-action-dd .spec-automatiq-select-action-open')).get(2).click().then(function(){
@@ -218,7 +218,7 @@ module.exports = function() {
 		var el = '.spec-select-qrvey-find-record li';
 
 		user.findsAll('.spec-automatiq-find-record-select-qrvey').click();
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.findsAll(el).get(position).click().then(cb);
 	});
 
@@ -226,7 +226,7 @@ module.exports = function() {
 		var el = '.spec-select-qrvey-examinedata li';
 
 		user.findsAll('.spec-select-qrvey-examinedata').click();
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.findsAll(el).get(position).click().then(cb);
 	});
 
@@ -282,7 +282,7 @@ module.exports = function() {
 		var el = '.spec-show-results-qrvey ul div li';
 
 		user.findsAll('.spec-show-results-qrvey').click();
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.findsAll(el).get(position).click().then(cb);
 	});
 

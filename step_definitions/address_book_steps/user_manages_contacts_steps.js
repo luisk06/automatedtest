@@ -73,7 +73,7 @@ module.exports = function() {
 		var _el = '.spec-addressbook-name',
 			_el2 = element.all(by.css(_el));
 
-		user.waitsFor(_el).then(function() {
+		webpage.waitsFor(_el).then(function() {
 			logger.log('userName', userName);
 
 			_el2.count().then(function(num) {
@@ -95,7 +95,9 @@ module.exports = function() {
 	});
 
 	Then(/^the modal still should be displayed$/, function(cb) {
-		element(by.css('.modal')).isDisplayed().then(function(_isDisplays) {
+		var el = element(by.css('.modal'));
+
+		webpage.isDisplayed(el).then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
 	});

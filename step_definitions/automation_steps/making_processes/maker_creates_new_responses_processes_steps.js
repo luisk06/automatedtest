@@ -15,7 +15,7 @@ module.exports = function() {
 			} else if (typeOfQrvey == 'nps') {
 				qs.createManyQrvey(_userId, 'nps', 'nps_with_textfield', num).then(cb);
 			} else if (typeOfQrvey == 'checklist') cb();
-			else throw 'Error in the params ' + typeOfQrvey;
+			else throw new Error('Error in the params ' + typeOfQrvey);
 		});
 	});
 
@@ -31,7 +31,7 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the qrvey (\d+) of the list of "([^']*)"$/, function(numElement, typeOfProcess, cb) {
-		if (numElement == 0) throw 'The index should be most of 0';
+		if (numElement == 0) throw new Error('The index should be most of 0');
 
 		typeOfProcess = (typeOfProcess == 'forms')? 'form' : typeOfProcess;
 
@@ -40,7 +40,7 @@ module.exports = function() {
 
 		_el.click();
 		_el2.count().then(function(_count) {
-			if (_count == 0) throw 'The list doesnt have items for clicks';
+			if (_count == 0) throw new Error('The list doesnt have items for clicks');
 			else _el2.get(numElement).click().then(cb);
 		});
 	});
@@ -61,9 +61,9 @@ module.exports = function() {
 
 	Then(/^the user go to back the "([^']*)" dashabord$/, function(dashboard, cb) {
 		if (dashboard == 'qrvey') {
-			expect(user.whereIAm()).to.eventually.be.equal('/').and.notify(cb);
+			expect(webpage.getCurrentUrl()).to.eventually.be.equal('/').and.notify(cb);
 		} else if (dashboard == 'automation') {
-			expect(user.whereIAm()).to.eventually.be.contain('automation').and.notify(cb);
+			expect(webpage.getCurrentUrl()).to.eventually.be.contain('automation').and.notify(cb);
 		}
 	});
 };

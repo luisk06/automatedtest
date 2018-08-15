@@ -16,7 +16,7 @@ module.exports = function() {
 	});
 
 	When(/^the user selects "([^"]*)" from dropdown$/, function(typeOfView, cb) {
-		user.waitsFor('.spec-filter-analyze');
+		webpage.waitsFor('.spec-filter-analyze');
 		user.finds('.spec-filter-analyze').click().then(function() {
 			user.finds('#spec-panelview-' + typeOfView).click().then(cb);
 		});
@@ -24,7 +24,7 @@ module.exports = function() {
 
 	When(/^the user selects "([^"]*)" from dropdown on "([^"]*)"$/, function(typeOfView, typeOfQrvey, cb) {
 		if (typeOfQrvey !== 'incontextfeedback') {
-			user.waitsFor('.spec-filter-analyze');
+			webpage.waitsFor('.spec-filter-analyze');
 			user.finds('.spec-filter-analyze').click().then(function() {
 				user.finds('#spec-panelview-' + typeOfView).click().then(cb);
 			});
@@ -34,7 +34,7 @@ module.exports = function() {
 
 	When(/^user selects "([^"]*)" from dropdown on "([^"]*)"$/, function(typeOfView, typeOfQrvey, cb) {
 		if (typeOfQrvey !== 'incontextfeedback') {
-			user.waitsFor('.spec-filter-analyze');
+			webpage.waitsFor('.spec-filter-analyze');
 			user.finds('.spec-filter-analyze').click().then(function() {
 				user.finds('#spec-panelview-' + typeOfView).click().then(cb);
 			});

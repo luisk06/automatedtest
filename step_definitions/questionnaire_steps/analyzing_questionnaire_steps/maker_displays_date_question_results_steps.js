@@ -59,7 +59,7 @@ module.exports = function() {
 	});
 
 	When(/^the "([^"]*)" was succefully applied$/, function(option, cb) {
-		expect(user.waitsFor((option == 'bucket') ? '.bucketed-label' : '.dx-group-row')).to.eventually.be.true.and.notify(cb);
+		expect(webpage.waitsFor((option == 'bucket') ? '.bucketed-label' : '.dx-group-row')).to.eventually.be.true.and.notify(cb);
 	});
 
 	When(/^the user clicks aggregate menu$/, function(cb) {
@@ -68,7 +68,7 @@ module.exports = function() {
 
 		var el = '.dx-dropdowneditor-button.dx-button-normal.dx-widget';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		element.all(by.css(el)).get(0).click().then(cb);
 	});
 

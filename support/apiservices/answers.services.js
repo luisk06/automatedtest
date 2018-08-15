@@ -903,9 +903,7 @@ var AnswerService = function() {
 						idx = 1;
 					} else if (num == 21) {
 						idx = 2;
-					} else {
-						throw 'The number ' + num + ' doesn\'t correct, the options are (8, 13, 21)';
-					}
+					} else throw new Error('The number ' + num + ' doesnt correct, the options are (8, 13, 21)');
 
 					answerModel.qrveyID = npsID;
 					answerModel.qstring.q = qstring;

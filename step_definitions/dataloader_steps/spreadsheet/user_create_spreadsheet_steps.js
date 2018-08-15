@@ -51,7 +51,7 @@ module.exports = function() {
 		element(by.xpath('//*[contains(text(),\'Untitled Data Upload\')]')).isDisplayed().then(function(_isDisplayed) {
 			expect(_isDisplayed).to.be.true;
 		}, function() {
-			throw 'The form doesnt exist';
+			throw new Error('The form doesnt exist');
 		}).then(cb);
 	});
 

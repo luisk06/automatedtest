@@ -19,22 +19,22 @@ var $config = {
 		}
 	},
 	specs: [
-		'features/**/**.feature'
+		'../features/**/**.feature'
 	],
 	allScriptsTimeout: 50000,
 	framework: 'custom',
 	frameworkPath: require.resolve('protractor-cucumber-framework'),
 	cucumberOpts: {
 		require: [
-			'step_definitions/**/*_steps.js',
-			'support/apiservices/*.js',
-			'support/config/*.js',
-			'support/helpers/*.js',
-			'support/ngModules/*.js',
-			'support/hooks/AfterFeatures.js',
-			'support/hooks/afterHook.js',
-			'support/hooks/beforeHook.js',
-			'support/hooks/hooks.js',
+			'../step_definitions/**/*_steps.js',
+			'../support/apiservices/*.js',
+			'../support/config/*.js',
+			'../support/helpers/*.js',
+			'../support/ngModules/*.js',
+			'../support/hooks/AfterFeatures.js',
+			'../support/hooks/afterHook.js',
+			'../support/hooks/beforeHook.js',
+			'../support/hooks/hooks.js'
 		],
 		format: 'pretty', // format: 'json',
 		tags: ['@complete', '~@widgets', '~@iframes', '~@todo', '~@tests'],
@@ -51,7 +51,7 @@ var $config = {
 		// require('log-timestamp');
 
 		// NgModules
-		require('./support/disableNgAnimate');
+		require('./../support/disableNgAnimate');
 		// require('./support/trackMouse');
 
 		// Dimension for test
@@ -59,10 +59,10 @@ var $config = {
 		browser.driver.manage().window().maximize();
 
 		// globalsVars
-		require('./support/globalsVars');
+		require('./../support/globalsVars');
 
 		// Globals functions to the Spec
-		require('./support/globalsFunctions');
+		require('./../support/globalsFunctions');
 
 		// Config to promise Chai
 		chai.use(require('sinon-chai'));
@@ -96,23 +96,14 @@ var $config = {
 
 		ws.config(_configW);
 	},
-	onComplete: function() {
-		logger.log('onComplete');
-		_runAnyTest = true;
-	},
-	onCleanUp: function() {
-		if (_runAnyTest && isRemote) {
-			logger.log('CleanUp!');
-		}
-	},
 	afterLaunch: function(exitCode) {
-		logger.log('afterLaunch', exitCode);
-
-		notifier.notify({
-			title: 'Qrvey',
-			message: 'Finish the tests',
-			icon: './UI/app/fav1.png'
-		});
+		if (runAnyTest) {
+			notifier.notify({
+				title: 'Qrvey',
+				message: 'Finished the tests',
+				icon: './../support/logos/fav1.png'
+			});
+		}
 	}
 };
 

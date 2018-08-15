@@ -189,7 +189,7 @@ global.toDate = function (str) {
 
 global.validField = function (_field, _name, _nameFunction) {
 	if (typeof _field === 'undefined') {
-		throw 'Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function';
+		throw new Error('Undefined ' + _name + ' of Qrvey in ' + _nameFunction + ' function');
 	}
 };
 

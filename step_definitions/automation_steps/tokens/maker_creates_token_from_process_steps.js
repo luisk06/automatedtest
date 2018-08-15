@@ -11,7 +11,7 @@ module.exports = function() {
 	});
 
 	When(/^the user selects qrvey (\d+) on token modal$/, function(qrveyNumber, cb) {
-		user.waitsFor('.spec-automatiq-token-select-qrvey');
+		webpage.waitsFor('.spec-automatiq-token-select-qrvey');
 		element(by.css('.spec-automatiq-token-select-qrvey')).click().then(function() {
 			element(by.css('.spec-automatiq-token-qrvey-option-' + qrveyNumber)).click();
 		}).then(cb);
@@ -50,7 +50,11 @@ module.exports = function() {
 
 	Then(/^the token created alert should be displayed$/, function(cb) {
 		user.waits(300).then(function() {
-			expect(element(by.css('.spec-automatiq-token-exist')).isDisplayed()).to.eventually.be.true.and.notify(cb);
+			expect(
+				webpage.isDisplayed(
+					element(by.css('.spec-automatiq-token-exist'))
+				)
+			).to.eventually.be.true.and.notify(cb);
 		});
 	});
 

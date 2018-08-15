@@ -175,7 +175,7 @@ module.exports = function () {
 				var _element = element(by.css('.spec-trend-tooltip-down span'));
 				element.all(repeater).each(function (bar) {
 					brw.actions().mouseMove(bar).perform().then(function () {
-						user.waitsForElement(_element);
+						webpage.waitsForElement(_element);
 						user.waits(500);
 						// browser.explore();
 						_element.getText().then(function (_text) {

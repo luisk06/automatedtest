@@ -32,7 +32,7 @@ var StripeServices = function() {
 			logger.error('Error, no response in setPlan function.');
 			logger.error(_resp);
 
-			throw _resp;
+			throw new Error(_resp);
 		});
 
 		return defer.promise;
@@ -43,7 +43,7 @@ var StripeServices = function() {
 
 		if (planText == 'basic') return 'qrvey-basic-' + _plan;
 		else if (planText == 'standard') return 'qrvey-standard-' + _plan;
-		else throw 'The ' + planText + ' plan is undefined';
+		else throw new Error('The ' + planText + ' plan is undefined');
 	};
 
 	this.subscribe = function(){
@@ -70,7 +70,7 @@ var StripeServices = function() {
 			logger.error('Error, no response in subscribe function.');
 			logger.error(_resp);
 
-			throw _resp;
+			throw new Error(_resp);
 		});
 
 		return defer.promise;

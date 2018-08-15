@@ -18,7 +18,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)" of the just created nps$/, function(identifier, type, cb) {
 		var _class = '.spec_' + identifier + '_' + type + '_' + configer.get('QrveyId');
-		navigate.clicksButton(_class).then(function() {
+		user.finds(_class).click().then(function() {
 			var button = $('.spec-btn-filter-histogram-');
 			var isClickable = EC.elementToBeClickable(button);
 			brw.wait(isClickable, 20000);
@@ -26,7 +26,7 @@ module.exports = function() {
 	});
 
 	Then(/^the (\d+) date answer filter should appear in the histogram filters in the nps$/, function(arg1, cb) {
-		user.getsTextExists(arg1).then(function(_value) {
+		webpage.getsTextExists(arg1).then(function(_value) {
 			expect(_value).to.be.true;
 		}).then(cb);
 	});

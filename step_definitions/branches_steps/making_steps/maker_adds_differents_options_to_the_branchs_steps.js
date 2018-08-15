@@ -91,7 +91,7 @@ module.exports = function() {
 	When(/^the user clicks on New Text Button$/, function(cb) {
 		var _class = '.spec-design-add-text';
 
-		user.waitsFor(_class);
+		webpage.waitsFor(_class);
 		element(by.css(_class)).click().then(cb);
 	});
 };

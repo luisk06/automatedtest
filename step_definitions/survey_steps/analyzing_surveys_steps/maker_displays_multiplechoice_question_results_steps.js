@@ -43,14 +43,14 @@ module.exports = function() {
 	When(/^the user clicks on the "([^"]*)" filter as text$/, function(arg1, cb) {
 		var el = '.spec-filter-container g[data-id="' + arg1 + '"]';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" filter as toggle$/, function(arg1, cb) {
 		var el = '.spec-filter-container toggle[data-id="' + arg1 + '"] i.circle';
 
-		user.waitsFor(el);
+		webpage.waitsFor(el);
 		user.finds(el).click().then(cb);
 	});
 };

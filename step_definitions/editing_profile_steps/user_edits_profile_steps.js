@@ -16,8 +16,8 @@ module.exports = function() {
 		firstNamePromise = protractor.promise.defer();
 
 	Given(/^the user logs in with "([^"]*)"$/, function(email, cb) {
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.openUrl('/');
 		randNumber = rand.getNumber({
 			min: 1,
 			max: 10000
@@ -49,7 +49,7 @@ module.exports = function() {
 		profile.setFirstName(newFirstName);
 		profile.setLastName(newLastName);
 		profile.setOrganization(newOrganization);
-		navigate.clicksButton('#spec_profile_first_name').then(cb);
+		user.finds('#spec_profile_first_name').click().then(cb);
 	});
 
 	Then(/^the user "([^"]*)" should be updated$/, function(identifier, cb) {
@@ -77,16 +77,16 @@ module.exports = function() {
 	});
 
 	When(/^clicks on save$/, function(cb) {
-		navigate.clicksButton('.spec_save_change_password');
-		expect(navigate.textPresence('Changed!')).to.eventually.be.true.and.notify(cb);
+		user.finds('.spec_save_change_password').click();
+		expect(webpage.getsTextExists('Changed!')).to.eventually.be.true.and.notify(cb);
 	});
 
 	Then(/^the new password should be changed$/, function(cb) {
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		console.log('userEmail', user.validUser());
 		user_login.login(user.validUser(), newPass);
-		expect(navigate.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
+		expect(webpage.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
 	});
 
 	Then(/^the user should be able to login with it's new password$/, function(cb) {
@@ -94,11 +94,11 @@ module.exports = function() {
 		profile.clickChangePassword();
 		profile.modifyPassword(newPass, oldPass);
 
-		brw.manage().deleteAllCookies();
-		navigate.goToUrl(brw.baseUrl);
+		webpage.deleteAllCookies();
+		webpage.goTo('/');
 		user_login.login(user.validUser(), oldPass);
 
-		expect(navigate.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
+		expect(webpage.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
 	});
 
 	When(/^the user change you email by a new random email$/, function(cb) {

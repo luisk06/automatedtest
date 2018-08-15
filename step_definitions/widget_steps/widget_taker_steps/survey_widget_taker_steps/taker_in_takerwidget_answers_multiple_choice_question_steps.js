@@ -47,12 +47,12 @@ module.exports = function() {
 			if(typeOfQrvey == 'analyzeForm'){
 				brw.switchTo().frame(element(by.css('#update-qrvey-iframe')).getWebElement());
 			}
-			navigate.clicksButton('.spec-taker-qrvey').then(cb);
+			user.finds('.spec-taker-qrvey').click().then(cb);
 		}
 	});
 
 	When(/^the user take the embedded qrvey$/, function(cb) {
-		user.waitsFor('.button-cta');
+		webpage.waitsFor('.button-cta');
 		brw.switchTo().frame(element(by.css('#iframe-icf')));
 		user.waits(20000);
 		brw.ignoreSynchronization = true;
@@ -61,10 +61,10 @@ module.exports = function() {
 
 	When(/^the user take the qrvey$/, function(cb) {
 		brw.ignoreSynchronization = true;
-		navigate.clicksButton('.spec-taker-qrvey').then(cb);
+		user.finds('.spec-taker-qrvey').click().then(cb);
 	});
 
 	When(/^the user selects answers in "([^"]*)" question in widget$/, function(typeOfQuestion, cb) {
-		user.answersQuestion('short_text-widget').then(cb);
+		taker.answersQuestion('short_text-widget').then(cb);
 	});
 };

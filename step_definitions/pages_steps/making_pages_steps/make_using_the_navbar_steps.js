@@ -18,7 +18,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Slide Active page$/, function(cb) {
-		user.waitsFor('.toggle');
+		webpage.waitsFor('.toggle');
 		element.all(by.css('.pages-list.qrvey-list.qrvey-pages-list .page .toggle')).first().click().then(cb);
 	});
 
@@ -36,7 +36,7 @@ module.exports = function() {
 	});
 
 	Given(/^the user has a "([^"]*)" page$/, function(type, cb) {
-		user.createsPages(type).then(cb);
+		maker.createsPages(type).then(cb);
 	});
 
 	When(/^the user clicks on Authentificacions button$/, function(cb) {
