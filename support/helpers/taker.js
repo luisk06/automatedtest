@@ -301,12 +301,13 @@ Taker.prototype.answersQuestion = function (typeOfQuestion) {
 			});
 			break;
 		case 'numeric':
-			_val = rand.getNumber({
-				min: 1,
-				max: 200,
-				float: false
-			});
-			this.answersNumericQuestionWithoutMask(_val).then(function () {
+			this.answersNumericQuestionWithoutMask(
+				rand.getNumber({
+					min: 1,
+					max: 200,
+					float: false
+				})
+			).then(function () {
 				deferred.fulfill();
 			});
 			break;
@@ -332,11 +333,12 @@ Taker.prototype.answersQuestion = function (typeOfQuestion) {
 			});
 			break;
 		case 'image':
-			_val = rand.getNumber({
-				min: 1,
-				max: 15
-			});
-			this.answersImageQuestion(_val).then(function () {
+			this.answersImageQuestion(
+				rand.getNumber({
+					min: 1,
+					max: 15
+				})
+			).then(function () {
 				deferred.fulfill();
 			});
 			break;
@@ -357,11 +359,12 @@ Taker.prototype.answersQuestion = function (typeOfQuestion) {
 			});
 			break;
 		case 'numeric-mask':
-			_val = rand.getNumber({
-				min: 1,
-				max: 200
-			});
-			this.answersNumericQuestion(_val).then(function () {
+			this.answersNumericQuestion(
+				rand.getNumber({
+					min: 1,
+					max: 200
+				})
+			).then(function () {
 				deferred.fulfill();
 			});
 			break;
@@ -431,13 +434,15 @@ Taker.prototype.answersRatingQuestion = function () {
 };
 
 Taker.prototype.answersShortTextQuestion = function () {
-	var text = rand.getText(256);
-	return this.finds('.spec-taker-short-text-answers').sendKeys(text);
+	return this.finds('.spec-taker-short-text-answers').sendKeys(
+		rand.getText(256)
+	);
 };
 
 Taker.prototype.answersShortTextQuestionWidget = function () {
-	var text = rand.getText(256);
-	return this.finds('.textfield-area').sendKeys(text);
+	return this.finds('.textfield-area').sendKeys(
+		rand.getText(256)
+	);
 };
 
 Taker.prototype.answersSlidebarQuestion = function () {
@@ -445,11 +450,12 @@ Taker.prototype.answersSlidebarQuestion = function () {
 };
 
 Taker.prototype.answersTextFieldQuestion = function () {
-	var _text = rand.getText(177);
 	this.waits(1300);
 
 	var _textArea = this.finds('.spec-nps-answers-textfield');
-	_textArea.sendKeys(_text);
+	_textArea.sendKeys(
+		rand.getText(177)
+	);
 
 	return _textArea.getAttribute('value').then(function (_mytext) {
 		expect(_mytext.length).to.be.equal(176);
@@ -469,20 +475,23 @@ Taker.prototype.answersUsAddressQuestion = function () {
 
 Taker.prototype.answersYesNoQuestion = function () {
 	var options = ['yes', 'no'];
-	return this.choicesAnswer(options[Math.floor(Math.random() * options.length)]);
+	return this.choicesAnswer(
+		options[
+			Math.floor(Math.random() * options.length)
+		]
+	);
 };
 
 Taker.prototype.choicesAnswer = function (_type) {
 	var _this = this;
 
-	if (_type == 'multiple') {
-		return this.finds('.spec-multiple-choise-option-0').click();
-	} else if (_type == 'no' || _type == 'yes') {
+	if (_type == 'multiple') return this.finds('.spec-multiple-choise-option-0').click();
+	else if (_type == 'no' || _type == 'yes') {
 		var _el = '.spec-answer-yesno-question-option-' + _type;
 		return this.finds(_el).click().then(function () {
 			expect(_this.finds(_el).getAttribute('checked')).to.eventually.be.equal('true');
 		});
-	} else logger.log('Error, It doesn\'t exists it parameter');
+	} else throw new Error('Error, It doesnt exists it parameter');
 };
 
 Taker.prototype.choicesRandomAnswer = function (_type, _idx) {
@@ -491,7 +500,6 @@ Taker.prototype.choicesRandomAnswer = function (_type, _idx) {
 	var answer = null;
 
 	this.waits(700);
-	// this.waitsFor('.question-number');
 
 	if (_type == 'SINGLE_CHOICE') {
 		answer = chance.integer({ min: 0, max: 4 });
@@ -531,11 +539,6 @@ Taker.prototype.choicesRandomAnswer = function (_type, _idx) {
 		});
 
 		logger.info('DATE', answer);
-		// logger.info('typeof answer.toDate()', typeof answer.toDate());
-		// logger.info('answer.toDate()', answer.toDate());
-		// logger.info('answer.toDate().getDate()', answer.toDate().getDate());
-
-		// brw.enterRepl();
 
 		this.waitsFor('.spec-taker-date-answer-input');
 
@@ -701,12 +704,10 @@ Taker.prototype.putCodeInAudiencePage = function (_code) {
 };
 
 Taker.prototype.touchStarts = function () {
-	var any = rand.getNumber({
+	return this.finds('.spec-taker-rating-select-' + rand.getNumber({
 		min: 0,
 		max: 4
-	});
-
-	return this.finds('.spec-taker-rating-select-' + any).click();
+	})).click();
 };
 
 Taker.prototype.touchsMultipleAnswers = function (numberOfAnswers) {
