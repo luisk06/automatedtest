@@ -21,6 +21,7 @@ global.async = require('async');
 global.dropFile = require('./helpers/drop-file.js');
 
 // NewOnes
+global.userb = require('./helpers/userb');
 global.webpage = require('./helpers/webpage');
 global.taker = require('./helpers/taker');
 

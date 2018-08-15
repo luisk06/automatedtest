@@ -2,7 +2,7 @@
 
 var Taker = function () {};
 
-Taker.prototype = User.prototype;
+Taker.prototype = userb.prototype;
 Taker.prototype.constructor = Taker;
 
 Taker.prototype.answerAll = function (rightAnswers) {
