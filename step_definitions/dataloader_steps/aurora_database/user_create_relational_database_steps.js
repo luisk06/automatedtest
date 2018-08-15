@@ -57,6 +57,6 @@ module.exports = function() {
 	});
 
 	Then(/^the user should be in the dataloader analyze$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('loader-analyze').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('loader-analyze').and.notify(cb);
 	});
 };

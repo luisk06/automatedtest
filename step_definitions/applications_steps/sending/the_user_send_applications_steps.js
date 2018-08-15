@@ -29,7 +29,7 @@ module.exports = function () {
 	});
 
 	When(/^the user is on the app dashboard$/, function (cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('/').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('/').and.notify(cb);
 
 	});
 

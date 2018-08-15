@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^writes a tag for the question$/, function(cb) {
-		navigate.clicksButton('.spec-add-tags-question').then(function() {
+		user.finds('.spec-add-tags-question').click().then(function() {
 			navigate.sendKeys('.spec-add-name-tag', 'Awesometacular').then(cb);
 		});
 	});
@@ -17,6 +17,6 @@ module.exports = function() {
 	});
 
 	When(/^activates the Tags option$/, function(cb) {
-		navigate.clicksButton('.spec-add-tags-question').then(cb);
+		user.finds('.spec-add-tags-question').click().then(cb);
 	});
 };

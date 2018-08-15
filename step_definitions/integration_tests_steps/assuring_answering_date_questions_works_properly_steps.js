@@ -39,8 +39,8 @@ module.exports = function() {
 		qrvey.createQrvey('Assuring date question works properly test qrvey', 'Assuring the repetitive bugs will not continueé to show up');
 		qrvey.questionType('spec_da_qt');
 		qrvey.fillDateQuestion('what is your favorite date for testing?');
-		navigate.clicksButton('.spec-dropdown-0');
-		navigate.clicksButton('.change-require-question-0');
+		user.finds('.spec-dropdown-0').click();
+		user.finds('.change-require-question-0').click();
 		qrvey.addQuestion();
 		navigate.sendKeys('.spec-edit-question-name-1', 'what are your favorite choices for testing?');
 		navigate.sendKeys('.spec-multichoice-question-1-option-0', 'this one?');
@@ -98,7 +98,7 @@ module.exports = function() {
 		today = timeStamp.getDate();
 		// timeStamp = today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear();
 		expect(element(by.css('[data-date="' + today + '"]')).isDisplayed()).to.eventually.be.true;
-		navigate.clicksButton('[data-date="' + today + '"]').then(cb);
+		user.finds('[data-date="' + today + '"]').click().then(cb);
 		//element(by.css('[data-date="' + today + '"]')).click();
 	});
 
@@ -143,7 +143,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the skip question button$/, function(cb) {
-		navigate.clicksButton('.skipbtn').then(cb);
+		user.finds('.skipbtn').click().then(cb);
 	});
 
 	Then(/^the qrvey should not be in the same question$/, function(cb) {

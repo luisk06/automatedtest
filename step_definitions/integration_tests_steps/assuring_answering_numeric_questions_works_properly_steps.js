@@ -49,8 +49,8 @@ module.exports = function() {
 		qrvey.createQrvey('Assuring numeric question works properly test qrvey', 'Assuring the repetitive bugs will not continue to show up');
 		qrvey.questionType('spec_nu_qt');
 		qrvey.fillDateQuestion('what is your favorite number for testing numbers?');
-		navigate.clicksButton('.spec-dropdown-0');
-		navigate.clicksButton('.change-require-question-0');
+		user.finds('.spec-dropdown-0').click();
+		user.finds('.change-require-question-0').click();
 		qrvey.addQuestion();
 		navigate.sendKeys('.spec-edit-question-name-1', 'what are your favorite choices for testing?');
 		navigate.sendKeys('.spec-multichoice-question-1-option-0', 'this one?');
@@ -90,8 +90,8 @@ module.exports = function() {
 		qrvey.createQrvey('Assuring numeric question works properly test qrvey', 'Assuring the numeric repetitive bugs will not continue to show up');
 		qrvey.questionType('spec_nu_qt');
 		qrvey.fillNumericQuestion('what is your favorite number of testing tests?');
-		element(by.css('.spec-maker-allow-decimals')).click();
-		//navigate.clicksButton('.spec-maker-allow-decimals');
+		user.finds('.spec-maker-allow-decimals').click();
+
 		expect(qrvey.checkQrveyPresence('what is your favorite number of testing tests?')).to.eventually.be.true;
 		qrvey.activeQrvey('\'' + 'Social' + '\'');
 		var url = $('.spec-qrvey-url-share');

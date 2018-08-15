@@ -64,8 +64,8 @@ module.exports = function() {
 	When(/^selects your question to be the path question$/, function(cb) {
 		element.all(by.css('.spec-paths-question-0 span')).get(1).click();
 		element(by.repeater('question in routes_questions')).click();
-		navigate.clicksButton('.spec-select-option-question_00');
-		navigate.clicksButton('#spec_yn_qt');
+		user.finds('.spec-select-option-question_00').click();
+		user.finds('#spec_yn_qt').click();
 		navigate.sendKeys('.spec-path-question-title-00', 'Question 1 Path 1 yes/no-sub-question 1').then(cb);
 	});
 };

@@ -46,6 +46,6 @@ module.exports = function() {
 	});
 
 	Then(/^the User already exists message should be displayed$/, function(cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('register').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('register').and.notify(cb);
 	});
 };

@@ -36,7 +36,7 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks on publish tab$/, function (cb) {
-		navigate.clicksButton('.spec-tab-to-share').then(cb);
+		user.finds('.spec-tab-to-share').click().then(cb);
 	});
 
 	Then(/^the user get an error$/, function (cb) {

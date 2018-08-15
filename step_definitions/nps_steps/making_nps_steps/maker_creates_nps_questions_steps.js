@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user do clicks on Create New$/, function(cb) {
-		navigate.clicksButton('.spec_dashboard_create_new_button').then(cb);
+		user.finds('.spec_dashboard_create_new_button').click().then(cb);
 	});
 
 	When(/^the user writes the "([^"]*)" as "([^"]*)" in "([^"]*)" type of qrvey$/, function(context, field, typeQrvey, cb) {

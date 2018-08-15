@@ -83,7 +83,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the publish tab$/, function(cb) {
 		user.finds('.spec-tab-to-share').click();
-		expect(navigate.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
 	});
 
 	When(/^the user clicks on the active button$/, function(cb) {
@@ -102,7 +102,7 @@ module.exports = function() {
 
 	Then(/^the publish page is show correctly$/, function(cb) {
 		user.finds('.spec-tab-to-share').click();
-		expect(navigate.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
 	});
 
 	Then(/^the webform should be activated correctly$/, function(cb) {

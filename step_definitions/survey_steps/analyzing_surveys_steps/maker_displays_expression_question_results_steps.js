@@ -50,6 +50,6 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the expression answer "([^"]*)"$/, function(arg1, cb) {
-		navigate.clicksButton('g.sw[data-id="' + arg1 + '"] circle').then(cb);
+		user.finds('g.sw[data-id="' + arg1 + '"] circle').click().then(cb);
 	});
 };

@@ -14,7 +14,7 @@ module.exports = function() {
 	When(/^the user pass to the "([^"]*)" share tab$/, function(typeOfQrvey, cb) {
 		var _type = (typeOfQrvey == 'survey') ? 'share' : typeOfQrvey + '-share';
 
-		navigate.clicksButton('.spec-tab-to-share');
+		user.finds('.spec-tab-to-share').click();
 		logger.log('Element -->:', '/' + _type);
 
 		webpage.getCurrentUrl().then(function(_url) {
@@ -26,7 +26,7 @@ module.exports = function() {
 	When(/^the user tries to move to the "([^"]*)" share tab$/, function(typeOfQrvey, cb) {
 		var _type = (typeOfQrvey == 'survey') ? 'share' : typeOfQrvey + '-share';
 
-		navigate.clicksButton('.spec-tab-to-share');
+		user.finds('.spec-tab-to-share').click();
 		logger.log('Element -->:', '/' + _type);
 
 		webpage.getCurrentUrl().then(function(_url) {

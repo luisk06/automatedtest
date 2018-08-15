@@ -47,7 +47,7 @@ module.exports = function() {
 			if(typeOfQrvey == 'analyzeForm'){
 				brw.switchTo().frame(element(by.css('#update-qrvey-iframe')).getWebElement());
 			}
-			navigate.clicksButton('.spec-taker-qrvey').then(cb);
+			user.finds('.spec-taker-qrvey').click().then(cb);
 		}
 	});
 
@@ -61,7 +61,7 @@ module.exports = function() {
 
 	When(/^the user take the qrvey$/, function(cb) {
 		brw.ignoreSynchronization = true;
-		navigate.clicksButton('.spec-taker-qrvey').then(cb);
+		user.finds('.spec-taker-qrvey').click().then(cb);
 	});
 
 	When(/^the user selects answers in "([^"]*)" question in widget$/, function(typeOfQuestion, cb) {

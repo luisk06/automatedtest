@@ -30,6 +30,6 @@ module.exports = function() {
 	});
 
 	Then(/^the incontext should be displayed on "([^"]*)" position$/, function(viewOption, cb) {
-		expect(navigate.isDisplayed('.spec-incontext-' + viewOption)).to.eventually.be.true.and.notify(cb);
+		expect(webpage.isDisplayed('.spec-incontext-' + viewOption)).to.eventually.be.true.and.notify(cb);
 	});
 };

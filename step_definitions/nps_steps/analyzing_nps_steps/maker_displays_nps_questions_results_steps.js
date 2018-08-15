@@ -18,7 +18,7 @@ module.exports = function() {
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)" of the just created nps$/, function(identifier, type, cb) {
 		var _class = '.spec_' + identifier + '_' + type + '_' + configer.get('QrveyId');
-		navigate.clicksButton(_class).then(function() {
+		user.finds(_class).click().then(function() {
 			var button = $('.spec-btn-filter-histogram-');
 			var isClickable = EC.elementToBeClickable(button);
 			brw.wait(isClickable, 20000);

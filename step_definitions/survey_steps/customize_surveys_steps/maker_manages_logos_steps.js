@@ -8,10 +8,6 @@ module.exports = function() {
 
 	var logoUrl = null;
 
-	// When(/^the user clicks on the "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-	// 	navigate.clicksButton('.spec_' + identifier + '_' + type).then(cb);
-	// });
-
 	Then(/^the user loads the "([^"]*)" file that has "([^"]*)" than (\d+) kb$/, function(type, size, kb, cb) {
 		var fileToUpload = null,
 			absolutePath = null,
@@ -46,7 +42,7 @@ module.exports = function() {
 		// var el = '.spec-customize-' + arg1 + '-logo';
 
 		// webpage.waitsFor(el).then(function() {
-		//     expect(navigate.isDisplayed(el)).to.eventually.be.true.and.notify(cb);
+		//     expect(webpage.isDisplayed(el)).to.eventually.be.true.and.notify(cb);
 		// });
 		cb();
 	});
@@ -55,7 +51,7 @@ module.exports = function() {
 		var el = '.alert-wrapper.' + arg1;
 
 		// webpage.waitsFor(el).then(function() {
-		expect(navigate.isDisplayed(el)).to.eventually.be.true.and.notify(cb);
+		expect(webpage.isDisplayed(el)).to.eventually.be.true.and.notify(cb);
 		// });
 	});
 };

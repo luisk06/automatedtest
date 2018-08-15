@@ -8,11 +8,12 @@ module.exports = function() {
 
 	Given(/^that there is a webform app with a "([^"]*)" with a "([^"]*)" question that has (\d+) answers with the following dates:$/, function(typeOfQrvey, typeOfQuestion, num, datesArray, cb) {
 		us.isLogged().then(function(_userId) {
-			apps.createNewApp('Test ' + typeOfQrvey + ' date').then(function(){
-				as.createAnswers(_userId, typeOfQrvey, typeOfQuestion, num, datesArray.rows()).then(function(){
-					user.waits(5000);
-				}).then(cb);
-			});
+			apps.createNewApp('Test ' + typeOfQrvey + ' date');
+		}).then(function(){
+			as.createAnswers(_userId, typeOfQrvey, typeOfQuestion, num, datesArray.rows());
+		}).then(function(){
+			user.waits(5000);
+			cb();
 		});
 	});
 
@@ -24,12 +25,10 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the first "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-		navigate.clicksButton('.spec_' + identifier + '_' + type).then(cb);
+		user.finds('.spec_' + identifier + '_' + type).click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)" of the just created qrvey$/, function(identifier, type, cb) {
-		// navigate.clicksButton('.spec_' + identifier + '_' + type + '_' + configer.get('QrveyId')).then(cb);
-
 		user.finds('.recordsForms').click().then(cb);
 	});
 
@@ -217,7 +216,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-		navigate.clicksButton('.spec_' + identifier + '_' + type).then(cb);
+		user.finds('.spec_' + identifier + '_' + type).click().then(cb);
 	});
 
 	When(/^the user closes the histogram$/, function(cb) {

@@ -43,7 +43,7 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" message should be displayed in the login$/, function(text, cb) {
-		expect(navigate.textPresence(text)).to.eventually.be.false.and.notify(cb);
+		expect(webpage.getsTextExists(text)).to.eventually.be.false.and.notify(cb);
 	});
 
 	Then(/^a create Qrvey button should be displayed$/, function(cb) {
@@ -70,7 +70,7 @@ module.exports = function() {
 	});
 
 	Then(/^a "([^"]*)" message should not be displayed in the login$/, function(text, cb) {
-		expect(navigate.textPresence(text)).to.eventually.be.false.and.notify(cb);
+		expect(webpage.getsTextExists(text)).to.eventually.be.false.and.notify(cb);
 	});
 
 	Then(/^a list of their qrveys should be displayed$/, function(cb) {

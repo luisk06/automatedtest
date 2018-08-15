@@ -31,14 +31,14 @@ module.exports = function() {
 
 	Then(/^a "([^"]*)" "([^"]*)" should not be displayed on the "([^"]*)"$/, function(identifier, type, location, cb) {
 		var _el = '.spec_' + location + '_' + identifier + '_' + type;
-		expect(navigate.isDisplayed(_el), err.elementNotFound(_el, type)).to.eventually.be.false.and.notify(cb);
+		expect(webpage.isDisplayed(_el), err.elementNotFound(_el, type)).to.eventually.be.false.and.notify(cb);
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be displayed on the "([^"]*)" as a svg$/, function(identifier, type, location, cb) {
 		var _el = '.spec_' + location + '_' + identifier + '_' + type + ' svg';
 
 		webpage.waitsFor(_el).then(function() {
-			expect(navigate.isDisplayed(_el), err.elementNotFound(_el, type)).to.eventually.be.true.and.notify(cb);
+			expect(webpage.isDisplayed(_el), err.elementNotFound(_el, type)).to.eventually.be.true.and.notify(cb);
 		});
 	});
 

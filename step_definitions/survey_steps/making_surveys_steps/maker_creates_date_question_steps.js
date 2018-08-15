@@ -54,13 +54,13 @@ module.exports = function() {
 
 	Then(/^the publish page should be displayed$/, function(cb) {
 		expect(
-			navigate.getCurrentUrl()
+			webpage.getCurrentUrl()
 		).to.eventually.contain('share').and.notify(cb);
 	});
 
 	Then(/^the publish page should not be displayed$/, function(cb) {
 		expect(
-			navigate.getCurrentUrl()
+			webpage.getCurrentUrl()
 		).to.eventually.not.contain('share').and.notify(cb);
 	});
 

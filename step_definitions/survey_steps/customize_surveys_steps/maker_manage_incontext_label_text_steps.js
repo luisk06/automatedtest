@@ -33,7 +33,7 @@ module.exports = function() {
 	});
 
 	Then(/^the incontext on "([^"]*)" position should contain customized title$/, function(position, cb) {
-		if(navigate.isDisplayed('.spec-incontext-' +position + ' .content .titlecontent')){
+		if(webpage.isDisplayed('.spec-incontext-' +position + ' .content .titlecontent')){
 			user.finds('.spec-incontext-' + position + ' .content .titlecontent').getText().then(function(text){
 				expect(text).to.be.equal(_title);
 			}).then(cb);

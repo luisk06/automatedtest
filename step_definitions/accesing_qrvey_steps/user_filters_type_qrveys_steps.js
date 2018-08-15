@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function() {
-	
+
 	Given = this.Given;
 	When = this.When;
 	Then = this.Then;
@@ -15,11 +15,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the "([^"]*)" filter by dropdown type$/, function(typeFilter, cb) {
-		navigate.clicksButton('.spec_filter_by_' + typeFilter + '_dropdown').then(cb);
+		user.finds('.spec_filter_by_' + typeFilter + '_dropdown').click().then(cb);
 	});
 
 	When(/^selects the "([^"]*)" option in the filter type$/, function(type, cb) {
-		navigate.clicksButton('.spec-type-' + type.toLowerCase()).then(cb);
+		user.finds('.spec-type-' + type.toLowerCase()).click().then(cb);
 	});
 
 	Then(/^only the qrveys in "([^"]*)" type should be displayed$/, function(type, cb) {

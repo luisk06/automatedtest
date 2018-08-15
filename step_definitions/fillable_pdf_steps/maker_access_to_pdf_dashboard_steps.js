@@ -11,7 +11,7 @@ module.exports = function () {
 	});
 
 	Then(/^the user should stay on the manager files url$/, function (cb) {
-		expect(navigate.getCurrentUrl()).to.eventually.contain('fillable-templates').and.notify(cb);
+		expect(webpage.getCurrentUrl()).to.eventually.contain('fillable-templates').and.notify(cb);
 	});
 
 	Then(/^should not have pdf on the list$/, function (cb) {

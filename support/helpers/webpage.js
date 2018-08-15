@@ -122,6 +122,11 @@ Webpage.prototype.getsInputTextExists = function (_locator, _text) {
 	});
 };
 
+Webpage.prototype.isPresent = function (webElement) {
+	this.waitForWebElement(webElement);
+	return webElement.isPresent();
+};
+
 Webpage.prototype.isDisplayed = function (e) {
 	logger.log('Checking that the element ---> "' + e + '" is displayed');
 

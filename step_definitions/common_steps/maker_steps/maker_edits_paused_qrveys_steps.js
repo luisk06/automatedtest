@@ -33,7 +33,7 @@ module.exports = function() {
 	});
 
 	When(/^the question name is changed$/, function(cb) {
-		navigate.clicksButton('.spec-tab-to-desing');
+		user.finds('.spec-tab-to-desing').click();
 		//user.finds('.spec_edit_question_overlay').click();
 		expect(element(by.css('.spec-question-title')).getText()).to.eventually.contain('Test edit question title').and.notify(cb);
 	});
