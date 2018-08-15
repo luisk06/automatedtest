@@ -16,3 +16,14 @@ Feature: The user creates fillables templates
 		When the user opened the manager files
 		Then the user should stay on the manager files url
 			And should not have pdf on the list
+
+	Scenario: The user uploads a file on templates dashboard
+		Given the user has an app
+			And the user has login
+			And the user opens the just created app
+			And the user opened his app on "config"
+			And the clicks on settings tab
+		When the user opened the manager files
+			And the user clicks upload file button
+			And the user uploads a pdf file
+		Then a file should appear on the list

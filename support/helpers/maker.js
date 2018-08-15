@@ -315,93 +315,36 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 			});
 		} else if (params.typeOfInput == 'desktop') {
 
-			// var i = n + 1;
-			// var num = 100 + (i >= 6 ? i * 10 : i * 3);
+			var path = require('path'),
+			remote = require('selenium-webdriver/remote'),
+			absolutePath = path.resolve(__dirname, '../../support/logos/google.png');
 
-			// scrollIntoElement(el, function () {
-			// 	// scrollAxisY(num.toString());
-			// 	el.click();
-			// 	self.waits(100);
-			// 	n++;
+			brw.driver.setFileDetector(new remote.FileDetector());
 
-			// 	next();
-			// });
+			self.findsAll('.spec-image-upload-option-desktop').count().then(function (num) {
+				async.times(num, function (i, next) {
+					var _el = self.finds('.spec-image-upload-option-desktop-' + i); //start in 0
+					logger.log('i', i);
+					logger.log(absolutePath);
+
+					_el.sendKeys(absolutePath);
+					var _ele = element.all(by.css('.image-container img')).get(i);
+
+					self.waitsElementPresence(_ele);
+
+					_ele.getAttribute('src').then(function (_text) {
+						expect(_text).to.not.be.equal('');
+						webpage.waits(900);
+						next();
+					});
+				}, function (err) {
+					if (err) throw err;
+
+					deferred.fulfill();
+				});
+			});
 		}
 	});
-
-	// }, function (err, n){
-
-	// 	if (params.isQuiz){
-	// 		element.all(by.css('.spec-quiz-right-answer')).first().click();
-	// 	}
-
-	// 	deferred.fulfill();
-	// });
-
-	// if (_typeOfInput == 'url') {
-	// 	logger.log('finished');
-
-	// 	scrollToTop();
-
-	// 	this.findsAll('.spec-image-upload-option-url').count().then(function (num) {
-	// 		logger.log('num', num);
-	// 		var i = 0;
-
-	// 		async.eachSeries(gArray(num), function (n, next) {
-
-	// 			var _el = self.finds('.spec-design-modal-image-url');
-	// 			var _url = 'https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png';
-	// 			var el = self.finds('.spec-image-upload-option-url-' + i);
-	// 			el.click();
-
-	// 			_el.clear().sendKeys(_url).getAttribute('value').then(function (_value) {
-	// 				expect(_value).to.be.equal(_url);
-
-	// 				self.finds('.spec-design-modal-done-button').click().then(function () {
-	// 					logger.log('Finish log');
-
-	// 					self.waits(500);
-	// 					logger.log('i', i);
-	// 					i++;
-	// 				}).then(function () { next(); });
-	// 			});
-	// 		}, function (err) {
-	// 			if (err) throw err;
-	// 			else logger.log('completed');
-
-	// deferred.fulfill();
-	// 		});
-	// 	});
-	// } else if (_typeOfInput == 'desktop') {
-	// 	var path = require('path'),
-	// 		remote = require('selenium-webdriver/remote'),
-	// 		absolutePath = path.resolve(__dirname, '../../support/logos/google.png');
-
-	// 	brw.driver.setFileDetector(new remote.FileDetector());
-
-	// 	this.findsAll('.spec-image-upload-option-desktop').count().then(function (num) {
-	// 		async.times(num, function (i, next) {
-	// 			var _el = self.finds('.spec-image-upload-option-desktop-' + i); //start in 0
-	// 			logger.log('i', i);
-	// 			logger.log(absolutePath);
-
-	// 			_el.sendKeys(absolutePath);
-	// 			var _ele = element.all(by.css('.image-container img')).get(i);
-
-	// 			self.waitsElementPresence(_ele);
-
-	// 			_ele.getAttribute('src').then(function (_text) {
-	// 				expect(_text).to.not.be.equal('');
-	// 				self.waits(900);
-	// 				next();
-	// 			});
-	// 		}, function (err) {
-	// 			if (err) throw err;
-
-	// 			deferred.fulfill();
-	// 		});
-	// 	});
-	// }
 
 	return deferred.promise;
 };
