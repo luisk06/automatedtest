@@ -6,9 +6,48 @@ module.exports = function() {
 	When = this.When;
 	Then = this.Then;
 
-	Given(/^that the user has no qrveys$/, function(cb) {
-		if (!isRemote) user.deteleAllQrveys().then(cb);
-		else throw new Error('This server is not remote');
+	Given(/^the user has not apps$/, function(cb) {
+		cb(); // No should to do nothing
+	});
+
+	Then(/^the main dashboard should be displayed$/, function(cb) {
+		expect(
+			webpage.isDisplayed('.spec-create-new-app-btn')
+		).to.eventually.be.true;
+		expect(
+			webpage.isDisplayed('.spec-qrvey-logo-exp')
+		).to.eventually.be.true;
+		expect(
+			webpage.isDisplayed('.guide-tour')
+		).to.eventually.be.true;
+		expect(
+			webpage.isDisplayed('.user-account-top .name')
+		).to.eventually.be.true;
+		expect(
+			webpage.isDisplayed('.tab-container .tab:not(.active)')
+		).to.eventually.be.true.and.notify(cb);
+	});
+
+	Then(/^the main application box should be displayed$/, function(cb) {
+		expect(
+			webpage.isDisplayed('.module.create-app')
+		).to.eventually.be.true.and.notify(cb);
+	});
+
+	Then(/^the application search field should be displayed$/, function(cb) {
+		expect(
+			webpage.isDisplayed('.spec_search_input')
+		).to.eventually.be.true.and.notify(cb);
+	});
+
+	Then(/^the applications created should be displayed$/, function(cb) {
+		expect(
+			webpage.isDisplayed('.module:not(.create-app)')
+		).to.eventually.be.true;
+
+		expect(
+			user.findsAll('.module:not(.create-app)').count()
+		).to.eventually.be.above(0).and.notify(cb);
 	});
 
 	Then(/^a "([^"]*)" "([^"]*)" should be displayed$/, function(identifier, type, cb) {

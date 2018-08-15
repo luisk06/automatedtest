@@ -61,13 +61,13 @@ module.exports = function() {
 		} else cb();
 	});
 
-	Given(/^the user has not apps$/, function(cb) {
-		us.isLogged().then(function() {
-			apps.deleteAll().then(function(){
-				// console.log('All apps were deleted');
-			}).then(cb);
-		});
-	});
+	// Given(/^the user has not apps$/, function(cb) {
+	// 	us.isLogged().then(function() {
+	// 		apps.deleteAll().then(function(){
+	// 			// console.log('All apps were deleted');
+	// 		}).then(cb);
+	// 	});
+	// });
 
 	Given(/^the user clicks on the settings tab$/, function(cb) {
 		user.findsAll('.tab').get(1).click().then(cb);

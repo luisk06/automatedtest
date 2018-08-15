@@ -6,7 +6,6 @@ Feature: Creating webforms regarding the user's plan
 	I must be enabled to create aplications
 	In order to tests the new flow based on plans
 
-	@toRun
 	Scenario Outline: The user should be able to create <typeOfWebform> with the <planName> plan
 		Given the user has "<planName>" plan
 			And the user has login

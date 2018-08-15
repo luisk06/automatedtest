@@ -1234,24 +1234,24 @@ Maker.prototype.selectsOtherQuestion = function () {
 	return this.finds('.spec-other-write-awnswer');
 };
 
-Maker.prototype.toDoLogin = function (_username, _password) {
-	_username = (typeof _username !== 'undefined') ? _username : configer.get('username');
-	_password = (typeof _password !== 'undefined') ? _password : configer.get('password');
+Maker.prototype.toDoLogin = function (_username = '', _password = '') {
+	_username = (_username != '') ? _username : configer.get('username');
+	_password = (_password != '') ? _password : configer.get('password');
 
-	this.goTo('/login');
+	webpage.goTo('/login');
 	this.finds('#spec-inputlogin-user').sendKeys(_username);
 	this.finds('#spec-inputlogin-password').sendKeys(_password);
 	this.finds('.spec-login-btn').click();
 	return this.waitsFor('.spec-qrvey-logo-exp');
 };
 
-Maker.prototype.toDoRegister = function (_username, _password) {
-	_username = (typeof _username !== 'undefined') ? _username : 'testingqrvey+' + randomId() + '@gmail.com';
-	_password = (typeof _password !== 'undefined') ? _password : '123456';
+Maker.prototype.toDoRegister = function (_username = '', _password = '') {
+	_username = (_username != '') ? _username : 'testingqrvey+' + randomId() + '@gmail.com';
+	_password = (_password != '') ? _password : '123456';
 
 	logger.log('register username', _username);
 
-	this.goTo('/register');
+	webpage.goTo('/register');
 	this.finds('#spec-input-useremail-register').sendKeys(_username);
 	this.finds('#spec-input-userpass-register').sendKeys(_password);
 	this.finds('.spec-register-btn').click();
