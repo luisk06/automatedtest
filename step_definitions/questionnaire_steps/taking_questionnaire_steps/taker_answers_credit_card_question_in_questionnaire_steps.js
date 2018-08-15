@@ -15,12 +15,12 @@ module.exports = function() {
 				max: 9999
 			});
 
-		maker.finds('.spec-trial-creditcard-number').sendKeys(creditcardNumber);
-		maker.finds('.spec-trial-date-expires').sendKeys(dateExpires);
-		maker.finds('.spec-trial-cvc-number').sendKeys(cvcNumber).then(cb);
+		taker.finds('.spec-trial-creditcard-number').sendKeys(creditcardNumber);
+		taker.finds('.spec-trial-date-expires').sendKeys(dateExpires);
+		taker.finds('.spec-trial-cvc-number').sendKeys(cvcNumber).then(cb);
 	});
 
 	When(/^the user clicks the Ok button for credit card$/, function(cb) {
-		maker.finds('.spec-button-subscribe').click().then(cb);
+		taker.finds('.spec-button-subscribe').click().then(cb);
 	});
 };

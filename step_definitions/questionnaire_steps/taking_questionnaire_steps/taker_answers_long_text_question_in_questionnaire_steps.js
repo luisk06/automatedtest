@@ -11,13 +11,13 @@ module.exports = function() {
 			switch (typeOfQuestion) {
 				case 'short text':
 				case 'short_text':
-					maker.finds('.spec-taker-short-text-answers').getAttribute('value').then(function(_text){
+					taker.finds('.spec-taker-short-text-answers').getAttribute('value').then(function(_text){
 						expect(_text.length).to.be.equal(255);
 					});
 					break;
 				case 'long text':
 				case 'long_text':
-					maker.finds('.spec-taker-long-text-answers').getAttribute('value').then(function(_text){
+					taker.finds('.spec-taker-long-text-answers').getAttribute('value').then(function(_text){
 						expect(_text.length).to.be.equal(500);
 					});
 					break;
@@ -29,6 +29,6 @@ module.exports = function() {
 		var el = '.spec-user-response-ok.submit-answers';
 
 		webpage.waitsFor(el);
-		maker.finds(el).click().then(cb);
+		taker.finds(el).click().then(cb);
 	});
 };

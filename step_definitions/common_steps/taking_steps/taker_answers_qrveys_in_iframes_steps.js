@@ -23,7 +23,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks the Begin button$/, function(cb) {
-		//maker.finds('.spec-taker-qrvey').click().then(cb);
+		//taker.finds('.spec-taker-qrvey').click().then(cb);
 		//brw.sleep(10000);
 		brw.ignoreSynchronization = false;
 		cb();

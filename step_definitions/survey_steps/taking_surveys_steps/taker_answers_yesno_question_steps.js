@@ -17,7 +17,7 @@ module.exports = function() {
 
 		webpage.isDisplayed(el).then(function(isdisplayed) {
 			if (isdisplayed) {
-				maker.findsAll(el).first().getText().then(function(_text) {
+				taker.findsAll(el).first().getText().then(function(_text) {
 					expect(_text).to.be.equal('Answers submitted.');
 				}).then(cb);
 			} else cb('The finished qrvey page not found');
@@ -58,7 +58,7 @@ module.exports = function() {
 					webpage.isDisplayed('.scoreboard').then(function (isdisplayed) {
 						return expect(isdisplayed).to.be.true;
 					}).then(function () {
-						return maker.finds('.scoreboard .passing-message').getText();
+						return taker.finds('.scoreboard .passing-message').getText();
 					}).then(function (_val) {
 						logger.log('VAL ---->' , _val);
 						expect(_val).to.be.a('string');

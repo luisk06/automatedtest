@@ -17,8 +17,8 @@ module.exports = function() {
 	When(/^the user selects they stop$/, function(cb) {
 		brw.ignoreSynchronization = true;
 
-		maker.movesSlidebar(1200);
-		maker.movesSlidebar(-1200).then(function(){
+		taker.movesSlidebar(1200);
+		taker.movesSlidebar(-1200).then(function(){
 			cb();
 		});
 	});

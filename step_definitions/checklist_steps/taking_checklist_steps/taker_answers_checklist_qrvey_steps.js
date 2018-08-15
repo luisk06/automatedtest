@@ -28,7 +28,7 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks the submit button$/, function (cb) {
-		maker.finds('.ico-check.spec-user-response-ok').click().then(cb);
+		taker.finds('.ico-check.spec-user-response-ok').click().then(cb);
 
 		// webpage.waits(600, function(){
 		// 	logger.log('voy a hacer el click');
@@ -49,7 +49,7 @@ module.exports = function () {
 		var el = '.new-end-page';
 
 		webpage.waitsFor(el);
-		maker.finds(el).isDisplayed().then(function (_isDisplays) {
+		taker.finds(el).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);
 	});

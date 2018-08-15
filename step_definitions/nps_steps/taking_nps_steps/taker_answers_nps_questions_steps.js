@@ -22,13 +22,13 @@ module.exports = function() {
 	});
 
 	When(/^clicks on the Ok button again$/, function(cb) {
-		maker.finds(okTakerButton).click().then(cb);
+		taker.finds(okTakerButton).click().then(cb);
 	});
 
 	When(/^the user clicks on OK button in the preview$/, function(cb) {
 		var el = '.button.yellow.okbtn.ico-check.spec-user-response-ok';
 
 		webpage.waitsFor(el); // Wait for other element finish to load
-		maker.finds(el).click().then(cb);
+		taker.finds(el).click().then(cb);
 	});
 };

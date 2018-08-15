@@ -54,13 +54,13 @@ module.exports = function() {
 
 		switch (webform) {
 			case 'survey':
-				_ele = maker.finds('.numeric-input-text');
+				_ele = taker.finds('.numeric-input-text');
 				break;
 			case 'questionnaire':
-				_ele = maker.finds('.spec-taker-answer-numeric-question');
+				_ele = taker.finds('.spec-taker-answer-numeric-question');
 				break;
 			default:
-				_ele = maker.finds('.numeric-input-text');
+				_ele = taker.finds('.numeric-input-text');
 		}
 
 		if(sw == 'focus') _ele.click().then(cb);
@@ -68,7 +68,7 @@ module.exports = function() {
 	});
 
 	When(/^the input has (.*) as answer$/, function(answer, cb) {
-		maker.finds('.spec-taker-answer-numeric-question-read').getAttribute('value').then(function(_text) {
+		taker.finds('.spec-taker-answer-numeric-question-read').getAttribute('value').then(function(_text) {
 			expect(_text).to.be.equal(answer);
 		}).then(cb);
 	});
@@ -79,17 +79,17 @@ module.exports = function() {
 
 		switch (webform) {
 			case 'survey':
-				_focusedInput = maker.finds('.spec-taker-answer-numeric-question');
-				_notFocusedInput = maker.finds('.spec-taker-answer-numeric-question-read');
+				_focusedInput = taker.finds('.spec-taker-answer-numeric-question');
+				_notFocusedInput = taker.finds('.spec-taker-answer-numeric-question-read');
 				break;
 			case 'questionnaire':
 			case 'forms':
-				_focusedInput = maker.finds('.numeric-input-number');
-				_notFocusedInput = maker.finds('.spec-taker-answer-numeric-question');
+				_focusedInput = taker.finds('.numeric-input-number');
+				_notFocusedInput = taker.finds('.spec-taker-answer-numeric-question');
 				break;
 			default:
-				_focusedInput = maker.finds('.spec-taker-answer-numeric-question');
-				_notFocusedInput = maker.finds('.spec-taker-answer-numeric-question-read');
+				_focusedInput = taker.finds('.spec-taker-answer-numeric-question');
+				_notFocusedInput = taker.finds('.spec-taker-answer-numeric-question-read');
 		}
 
 		var _el = (sw == 'focus') ?  _focusedInput : _notFocusedInput;
@@ -100,7 +100,7 @@ module.exports = function() {
 	});
 
 	When(/^numeric input has (.*) as (.*) answer$/, function(answer, type, cb) {
-		var _el = maker.finds('.spec-taker-answer-numeric-question');
+		var _el = taker.finds('.spec-taker-answer-numeric-question');
 
 		_el.getAttribute('value').then(function(_text) {
 			expect(_text).to.be.equal(answer);

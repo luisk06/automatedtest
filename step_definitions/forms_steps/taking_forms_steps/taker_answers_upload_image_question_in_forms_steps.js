@@ -7,10 +7,10 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user take a photo to upload$/, function (cb) {
-		maker.finds('.takePhotoBtn').click();
+		taker.finds('.takePhotoBtn').click();
 		brw.sleep(1000);
-		maker.finds('.take-button').click();
-		maker.finds('.take-button.confirm').click();
+		taker.finds('.take-button').click();
+		taker.finds('.take-button.confirm').click();
 		brw.sleep(1000);
 		cb();
 	});
