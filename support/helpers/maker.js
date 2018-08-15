@@ -2,7 +2,7 @@
 
 var Maker = function () {};
 
-Maker.prototype = User.prototype;
+Maker.prototype = userb.prototype;
 Maker.prototype.constructor = Maker;
 
 Maker.prototype.actionSearch = function () {
