@@ -423,13 +423,13 @@ Maker.prototype.createsListOptions = function (type = 'multichoice') {
 	var deferred = protractor.promise.defer();
 
 	async.during(function (cb) {
-		hasClass(self.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
+		hasClass(this.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
 			logger.log('val', !_val);
 			return cb(null, !_val);
 		});
 	}, function (next) {
-		self.waits(400);
-		self.findsAll('.icon.q-icon-add').last().click().then(function () {
+		this.waits(400);
+		this.findsAll('.icon.q-icon-add').last().click().then(function () {
 			next();
 		});
 	});
@@ -863,7 +863,7 @@ Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey
 		}
 
 		if (typeQrvey == 'nps' || typeQrvey == 'checklist') {
-			self.waits(1300);
+			webpage.waits(1300);
 			self.finds('.spec-question-title').click();
 		}
 
@@ -1035,7 +1035,7 @@ Maker.prototype.goToTaken = function () {
 Maker.prototype.isQuizOnMaker = function () {
 	var defer = protractor.promise.defer();
 
-	this.getsTextExists('Quiz').then(function (_val) {
+	webpage.getsTextExists('Quiz').then(function (_val) {
 		console.log('isQuizOnMaker', _val);
 		defer.fulfill(_val);
 	});
