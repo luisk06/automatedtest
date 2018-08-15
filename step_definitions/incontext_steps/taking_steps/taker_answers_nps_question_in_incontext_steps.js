@@ -41,7 +41,7 @@ module.exports = function() {
 			//     var any = rand.getNumber({ min: 0, max: 5 });
 			//     any = (any > 0) ? any : 0;
 			//
-			//     user.finds('.spec-taker-rating-select-' + any).click().then(cb);
+			//     maker.finds('.spec-taker-rating-select-' + any).click().then(cb);
 			// }
 		}
 	});

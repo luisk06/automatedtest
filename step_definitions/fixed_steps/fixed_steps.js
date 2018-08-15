@@ -52,7 +52,7 @@ module.exports = function() {
 	});
 
 	When(/^the clicks on settings tab$/, function(cb) {
-		user.findsXpath("//div[contains(@class, 'tab') and contains(text(),'Settings')]").click().then(cb); // eslint-disable-line
+		maker.findsXpath("//div[contains(@class, 'tab') and contains(text(),'Settings')]").click().then(cb); // eslint-disable-line
 	});
 
 	Given(/^the user has "([^"]*)" plan$/, function(textPlan, cb) {
@@ -70,7 +70,7 @@ module.exports = function() {
 	// });
 
 	Given(/^the user clicks on the settings tab$/, function(cb) {
-		user.findsAll('.tab').get(1).click().then(cb);
+		maker.findsAll('.tab').get(1).click().then(cb);
 	});
 
 	Given(/^the user has not qrveys$/, function(cb) {
@@ -82,18 +82,18 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the publish tab$/, function(cb) {
-		user.finds('.spec-tab-to-share').click();
+		maker.finds('.spec-tab-to-share').click();
 		expect(webpage.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
 	});
 
 	When(/^the user clicks on the active button$/, function(cb) {
-		user.finds('.spec-qrvey-btn-active').click();
+		maker.finds('.spec-qrvey-btn-active').click();
 		webpage.waitsFor('.modal-box.new-nps-modal.spec-confirm-end-qrvey');
-		user.finds('.modal-box.new-nps-modal.spec-confirm-end-qrvey .button').click().then(cb);
+		maker.finds('.modal-box.new-nps-modal.spec-confirm-end-qrvey .button').click().then(cb);
 	});
 
 	Then(/^the end button should be displayed$/, function(cb) {
-		expect(user.finds('.spec-end-never-expire').isDisplayed()).to.eventually.be.true.and.notify(cb);
+		expect(maker.finds('.spec-end-never-expire').isDisplayed()).to.eventually.be.true.and.notify(cb);
 	});
 
 	Then(/^the webform is activated$/, function(cb) {
@@ -101,12 +101,12 @@ module.exports = function() {
 	});
 
 	Then(/^the publish page is show correctly$/, function(cb) {
-		user.finds('.spec-tab-to-share').click();
+		maker.finds('.spec-tab-to-share').click();
 		expect(webpage.getCurrentUrl()).to.eventually.contain('share').and.notify(cb);
 	});
 
 	Then(/^the webform should be activated correctly$/, function(cb) {
-		user.finds('.spec-qrvey-btn-active').click();
+		maker.finds('.spec-qrvey-btn-active').click();
 		webpage.waits(500);
 		element(by.css('.button.yellow.pause')).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
@@ -114,7 +114,7 @@ module.exports = function() {
 	});
 
 	Then(/^the webform should be reactivated correctly$/, function(cb) {
-		user.finds('.button.yellow.reactivate.activate-qrvey-btn').click();
+		maker.finds('.button.yellow.reactivate.activate-qrvey-btn').click();
 		webpage.waits(500);
 		element(by.css('.button.yellow.pause')).isDisplayed().then(function (_isDisplays) {
 			expect(_isDisplays).to.be.true;
@@ -141,27 +141,27 @@ module.exports = function() {
 	});
 
 	When(/^the user open the dataset as draft$/, function(cb) {
-		user.finds('.spec-qrvey-title-link').click().then(cb);
+		maker.finds('.spec-qrvey-title-link').click().then(cb);
 	});
 
 	When(/^the user go to the Summary View$/, function(cb) {
-		user.finds(locatorAnalyzeViewSelector).getText().then(function(view){
+		maker.finds(locatorAnalyzeViewSelector).getText().then(function(view){
 			// console.log('view', view);
 
 			if (view !== 'Summary'){
-				user.finds('.spec-filter-analyze').click();
-				user.finds('#spec-panelview-multi').click();
+				maker.finds('.spec-filter-analyze').click();
+				maker.finds('#spec-panelview-multi').click();
 			}
 		}).then(cb);
 	});
 
 	When(/^the user go to the Tabular View$/, function(cb) {
-		user.finds(locatorAnalyzeViewSelector).getText().then(function(view){
+		maker.finds(locatorAnalyzeViewSelector).getText().then(function(view){
 			// console.log('view', view);
 
 			if (view !== 'Tabular View'){
-				user.finds('.spec-filter-analyze').click();
-				user.finds('#spec-panelview-tabular').click();
+				maker.finds('.spec-filter-analyze').click();
+				maker.finds('#spec-panelview-tabular').click();
 				webpage.waitsFor('.dx-datagrid-headers');
 			}
 		}).then(cb);
@@ -169,9 +169,9 @@ module.exports = function() {
 
 	When(/^the user adds an action as default$/, function(cb) {
 		var url = 'https://qdev.qrvey.com/webhooks/automatiq/process/4d2541698f55592c678f80cd07b9855cf7cdf922574e5a1fa52ba5f35e2a224155b4bed88fc2ad90941b';
-		user.finds('.spec-automatiq-block-action-view-open').click();
-		user.finds('.spec-automatiq-select-action-open').click();
-		user.finds('.spec-automatiq-select-action-webhook').click();
-		user.finds('.spec_webhook_url_action').sendKeys(url).then(cb);
+		maker.finds('.spec-automatiq-block-action-view-open').click();
+		maker.finds('.spec-automatiq-select-action-open').click();
+		maker.finds('.spec-automatiq-select-action-webhook').click();
+		maker.finds('.spec_webhook_url_action').sendKeys(url).then(cb);
 	});
 };

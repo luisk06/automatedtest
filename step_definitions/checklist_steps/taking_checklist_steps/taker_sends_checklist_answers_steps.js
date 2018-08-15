@@ -8,13 +8,13 @@ module.exports = function() {
 
 	When(/^the user clicks on email me the results$/, function(cb) {
 		webpage.waits(7000).then(function() {
-			user.finds('#update-qrvey-answers').click().then(cb);
+			maker.finds('#update-qrvey-answers').click().then(cb);
 		});
 	});
 
 	Then(/^a sent email message should appear$/, function(cb) {
 		webpage.waits(3000);
-		var _element = user.finds('.results-way');
+		var _element = maker.finds('.results-way');
 		_element.isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		}).then(cb);

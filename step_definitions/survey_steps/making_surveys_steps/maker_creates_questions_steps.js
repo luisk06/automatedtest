@@ -26,8 +26,8 @@ module.exports = function() {
 			t2 = longText;
 		}
 
-		user.finds(e1).sendKeys(t1);
-		user.finds(e2).sendKeys(t2).then(cb);
+		maker.finds(e1).sendKeys(t1);
+		maker.finds(e2).sendKeys(t2).then(cb);
 	});
 
 	Then(/^the text will be the first (\d+) chars of the original written "([^"]*)"$/, function(size, type, cb) {
@@ -44,7 +44,7 @@ module.exports = function() {
 
 		expect(text.substring(0, +size).length).to.eql(+size);
 
-		user.finds(el).getAttribute('value').then(function(_text) {
+		maker.finds(el).getAttribute('value').then(function(_text) {
 			expect(_text).to.be.equal(text.substring(0, +size));
 		}).then(cb);
 	});
@@ -60,8 +60,8 @@ module.exports = function() {
 	});
 
 	Then(/^the left and write value will be the first (\d+) chars of the original written left and right values$/, function(size, cb) {
-		var left = user.finds('.spec-slidebar-question-type-answer-left').getAttribute('value'),
-			right = user.finds('.spec-slidebar-question-type-answer-right').getAttribute('value');
+		var left = maker.finds('.spec-slidebar-question-type-answer-left').getAttribute('value'),
+			right = maker.finds('.spec-slidebar-question-type-answer-right').getAttribute('value');
 
 		expect(left).to.eventually.not.be.empty;
 		expect(right).to.eventually.not.be.empty;

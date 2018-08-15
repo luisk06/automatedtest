@@ -28,7 +28,7 @@ module.exports = function() {
 		} else if (site == 'squarespace') {
 			element(by.css('.sqs-email-text-content input')).sendKeys('amit@qrvey.com');
 			element(by.css('.sqs-text-content input')).sendKeys('NkCyzuotx');
-			user.findsAll('.buttons .button').get(1).click().then(cb);
+			maker.findsAll('.buttons .button').get(1).click().then(cb);
 		}
 	});
 
@@ -38,8 +38,8 @@ module.exports = function() {
 	});
 
 	When(/^the user send the qrvey data and save$/, function(cb) {
-		user.findsAll('.widget-content tr td input').get(2).clear().sendKeys(qrveyIDForWidget);
-		user.findsAll('.widget-content tr td input').get(3).clear().sendKeys('https://automatedqastg.qrvey.com/api');
+		maker.findsAll('.widget-content tr td input').get(2).clear().sendKeys(qrveyIDForWidget);
+		maker.findsAll('.widget-content tr td input').get(3).clear().sendKeys('https://automatedqastg.qrvey.com/api');
 		element(by.css('#widget-qrveyincontextwidget-4-savewidget')).click().then(cb);
 	});
 

@@ -7,10 +7,10 @@ module.exports = function() {
 	Then = this.Then;
 
 	Given(/^the user opens the just created app$/, function(cb) {
-		user.findsAll('.my-apps .module:not(.create-app)').get(0).click().then(cb);
+		maker.findsAll('.my-apps .module:not(.create-app)').get(0).click().then(cb);
 	});
 
 	Given(/^the user opens the "([^"]*)" board$/, function(site, cb) {
-		user.finds('.left-nav:not(.left-nav-ipad) .spec_' + site + '_dashboard').click().then(cb);
+		maker.finds('.left-nav:not(.left-nav-ipad) .spec_' + site + '_dashboard').click().then(cb);
 	});
 };

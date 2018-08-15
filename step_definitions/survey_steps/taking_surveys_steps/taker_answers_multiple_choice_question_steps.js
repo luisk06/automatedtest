@@ -43,15 +43,15 @@ module.exports = function() {
 	});
 
 	When(/^the user selects the Other option$/, function(cb) {
-		user.finds('.spec-multiple-choise-option-other').click().then(cb);
+		maker.finds('.spec-multiple-choise-option-other').click().then(cb);
 	});
 
 	When(/^the user selects the Other option again$/, function(cb) {
-		user.finds('.spec-other-write-awnswer').click().then(cb);
+		maker.finds('.spec-other-write-awnswer').click().then(cb);
 	});
 
 	When(/^writes their answer$/, function(cb) {
-		user.finds('.spec-multiple-choise-option-other').sendKeys('My own answer').then(cb);
+		maker.finds('.spec-multiple-choise-option-other').sendKeys('My own answer').then(cb);
 	});
 
 	When(/^clicks on the Ok button$/, function(cb) {

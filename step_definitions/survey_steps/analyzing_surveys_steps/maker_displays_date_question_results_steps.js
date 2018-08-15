@@ -25,11 +25,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the first "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-		user.finds('.spec_' + identifier + '_' + type).click().then(cb);
+		maker.finds('.spec_' + identifier + '_' + type).click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)" of the just created qrvey$/, function(identifier, type, cb) {
-		user.finds('.recordsForms').click().then(cb);
+		maker.finds('.recordsForms').click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" answer$/, function(arg1, cb) {
@@ -137,8 +137,8 @@ module.exports = function() {
 
 			logger.log('Si hay respuestas');
 
-			user.finds(_el).click().then(function() {
-				expect(user.finds(_el).getAttribute('opened')).to.eventually.be.equal('true');
+			maker.finds(_el).click().then(function() {
+				expect(maker.finds(_el).getAttribute('opened')).to.eventually.be.equal('true');
 			}).then(function() {
 				navigate.waitForElement('.tblIndividualResponse');
 				brw.sleep(1000);
@@ -161,7 +161,7 @@ module.exports = function() {
 	When(/^the user clicks on the "([^"]*)" number (\d+)$/, function(btn, i, cb) {
 		var idx = 1;
 
-		user.findsAll('.spec_' + btn + '_all').each(function(_item) {
+		maker.findsAll('.spec_' + btn + '_all').each(function(_item) {
 			logger.log('for i:', i);
 
 			if (i == idx) {
@@ -187,7 +187,7 @@ module.exports = function() {
 		//scrollToBottom();
 
 		scrollToTop(500).then(function(){
-			user.finds('.spec_filter_button_' + idx).click().then(cb);
+			maker.finds('.spec_filter_button_' + idx).click().then(cb);
 		});
 	});
 
@@ -198,7 +198,7 @@ module.exports = function() {
 		logger.log('i', i);
 		element(by.css('.spec-download-drop')).click().then(function(){
 			webpage.waits(500).then(function() {
-				user.findsAll('.spec_' + btn + '_1').get(idx).click().then(cb);
+				maker.findsAll('.spec_' + btn + '_1').get(idx).click().then(cb);
 			});
 		});
 	});
@@ -216,7 +216,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the "([^"]*)" "([^"]*)"$/, function(identifier, type, cb) {
-		user.finds('.spec_' + identifier + '_' + type).click().then(cb);
+		maker.finds('.spec_' + identifier + '_' + type).click().then(cb);
 	});
 
 	When(/^the user closes the histogram$/, function(cb) {

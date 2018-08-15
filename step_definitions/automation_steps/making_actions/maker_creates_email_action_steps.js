@@ -43,33 +43,33 @@ module.exports = function() {
 	});
 
 	When(/^the user opens the first "([^"]*)" process$/, function( process, cb) {
-		user.finds('.spec_workflows_button').click().then(function(){
+		maker.finds('.spec_workflows_button').click().then(function(){
 			//element.all(by.xpath("//a[contains(@class, 'spec-qrvey-title-link qrvey-title-desktop') and contains(text(),'"+process+"')]")).first().click().then(cb);
 			element.all(by.css('a.spec-qrvey-title-link.qrvey-title-desktop')).first().click().then(cb);
 		});
 	});
 
 	When(/^the user opens the actions$/, function(cb) {
-		user.finds('.spec-automatiq-block-action-view-open').click().then(cb);
+		maker.finds('.spec-automatiq-block-action-view-open').click().then(cb);
 	});
 
 	When(/^the user opens the actions in wait$/, function(cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(1).click().then(cb);
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(1).click().then(cb);
 	});
 
 	When(/^the user opens the actions in startflow$/, function(cb) {
-		user.findsAll('.spec-automatiq-block-action-view-open').get(0).click().then(cb);
+		maker.findsAll('.spec-automatiq-block-action-view-open').get(0).click().then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" in wait$/, function(typeOfAction, cb) {
 		webpage.waits(1000).then(function(){
-			user.finds('.spec-automatiq-select-action-open').click();
-			user.finds('.spec-automatiq-select-action-' + typeOfAction).click().then(cb);
+			maker.finds('.spec-automatiq-select-action-open').click();
+			maker.finds('.spec-automatiq-select-action-' + typeOfAction).click().then(cb);
 		});
 	});
 
 	When(/^the user adds a new action$/, function(cb) {
-		user.finds('.spec-automatiq-add-new-action').click().then(cb);
+		maker.finds('.spec-automatiq-add-new-action').click().then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" action$/, function(typeOfAction, cb) {
@@ -89,7 +89,7 @@ module.exports = function() {
 
 			logger.log('email ' + i, _contact);
 
-			user.finds('.spec-automatiq-input-emails input.input').sendKeys(_contact);
+			maker.finds('.spec-automatiq-input-emails input.input').sendKeys(_contact);
 			brw.actions().sendKeys(protractor.Key.ENTER).perform().then(function() {
 				_counter--;
 
@@ -107,19 +107,19 @@ module.exports = function() {
 		var _contact = '+12028164512';
 
 		webpage.waits(1000);
-		user.finds('.spec-automatiq-input-emails input.input').sendKeys(_contact).then(cb);
+		maker.finds('.spec-automatiq-input-emails input.input').sendKeys(_contact).then(cb);
 	});
 
 	When(/^the user put (\d+) contacts in sms in not found$/, function (numOfContacts, cb) {
 		var _contact = '+12028164512';
 
 		webpage.waits(1000);
-		user.findsAll('.spec-automatiq-input-emails input.input').get(1).sendKeys(_contact).then(cb);
+		maker.findsAll('.spec-automatiq-input-emails input.input').get(1).sendKeys(_contact).then(cb);
 	});
 
 	When(/^the user put the subject$/, function(cb) {
 		var _text = rand.getText(81),
-			_el = user.finds('.spec-automatiq-action-input-subject');
+			_el = maker.finds('.spec-automatiq-action-input-subject');
 
 		_el.sendKeys(_text);
 		_el.getAttribute('value').then(function(_value) {

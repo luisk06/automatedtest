@@ -11,19 +11,19 @@ module.exports = function() {
 
 	When(/^user enters "([^"]*)" as label$/, function(label, cb) {
 		_label = label;
-		user.finds('.spec-customize-input-label').clear();
-		user.finds('.spec-customize-input-label').sendKeys(_label).then(cb);
+		maker.finds('.spec-customize-input-label').clear();
+		maker.finds('.spec-customize-input-label').sendKeys(_label).then(cb);
 	});
 
 	When(/^user enters "([^"]*)" as title$/, function(title, cb) {
 		_title = title;
-		user.finds('.spec-customize-input-title').clear();
-		user.finds('.spec-customize-input-title').sendKeys(_title).then(cb);
+		maker.finds('.spec-customize-input-title').clear();
+		maker.finds('.spec-customize-input-title').sendKeys(_title).then(cb);
 	});
 
 	Then(/^the incontext on "([^"]*)" position should contain customized label$/, function(position, cb) {
 		if(position == 'right' || position == 'left'){
-			user.finds('.spec-incontext-' + position + ' .button-cta').getText().then(function(text){
+			maker.finds('.spec-incontext-' + position + ' .button-cta').getText().then(function(text){
 				expect(text).to.be.equal(_label);
 			}).then(cb);
 		}else{
@@ -34,7 +34,7 @@ module.exports = function() {
 
 	Then(/^the incontext on "([^"]*)" position should contain customized title$/, function(position, cb) {
 		if(webpage.isDisplayed('.spec-incontext-' +position + ' .content .titlecontent')){
-			user.finds('.spec-incontext-' + position + ' .content .titlecontent').getText().then(function(text){
+			maker.finds('.spec-incontext-' + position + ' .content .titlecontent').getText().then(function(text){
 				expect(text).to.be.equal(_title);
 			}).then(cb);
 		}

@@ -7,14 +7,14 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user clicks on design button$/, function (cb) {
-		user.finds('.spec-tab-to-desing').click().then(cb);
+		maker.finds('.spec-tab-to-desing').click().then(cb);
 	});
 
 	When(/^the user open the header of "([^"]*)"$/, function (type, cb) {
 		if (type == 'checklist') {
-			user.finds('.spec_checklist_saved_layer').click().then(cb);
+			maker.finds('.spec_checklist_saved_layer').click().then(cb);
 		} else {
-			user.finds('.spec_title_description').sendKeys('Text').then(function () {
+			maker.finds('.spec_title_description').sendKeys('Text').then(function () {
 				cb('Description field is not blocked');
 			}).catch(function () {
 				cb();
@@ -56,7 +56,7 @@ module.exports = function () {
 	});
 
 	When(/^the user clicks on description check$/, function (cb) {
-		user.finds('.spec_allow_intropage').click().then(
+		maker.finds('.spec_allow_intropage').click().then(
 			function () {
 				throw new Error('Description check is not blocked');
 			},
@@ -67,7 +67,7 @@ module.exports = function () {
 	});
 
 	When(/^the user opens the question$/, function (cb) {
-		user.finds('#question-1').click().then(cb);
+		maker.finds('#question-1').click().then(cb);
 
 		// var el = '.spec-question-title';
 		// webpage.waitsFor(el);
@@ -79,11 +79,11 @@ module.exports = function () {
 	});
 
 	When(/^the user opens the question on "([^"]*)"$/, function (typeOfQrvey, cb) {
-		user.finds('.' + typeOfQrvey + '-questions-list').click().then(cb);
+		maker.finds('.' + typeOfQrvey + '-questions-list').click().then(cb);
 	});
 
 	When(/^the user try to open the question on "([^"]*)"$/, function (typeOfQrvey, cb) {
-		user.findsAll('.card.q-editable-card').get(0).click().then(function(){
+		maker.findsAll('.card.q-editable-card').get(0).click().then(function(){
 			cb('The element is clickeabled');
 		}).catch(function(){
 			cb();
@@ -95,7 +95,7 @@ module.exports = function () {
 	});
 
 	When(/^the user try edits the question$/, function (cb) {
-		user.finds('.spec-edit-question-name-0').click().then(
+		maker.finds('.spec-edit-question-name-0').click().then(
 			function () {
 				throw new Error('Question is not blocked');
 			},

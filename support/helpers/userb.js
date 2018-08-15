@@ -24,6 +24,10 @@ Userb.prototype.finds = function (_el) {
 	return element;
 };
 
+Userb.prototype.count = function (_el) {
+	return this.findsAll(_el).count();
+};
+
 Userb.prototype.findsValue = function (_el) {
 	return this.finds(_el).getAttribute('value');
 };
@@ -32,33 +36,33 @@ Userb.prototype.findsContainingText = function (_el, _val) {
 	return element(by.cssContainingText(_el, _val));
 };
 
-Userb.prototype.findsOn = function (ele) {
-	var i = 0;
+// Userb.prototype.findsOn = function (ele) {
+// 	var i = 0;
 
-	return this.isDisplayed(ele).then(function (res) {
-		if (res === true) {
-			return element.all(by.css(ele)).each(function (item) {
-				item.click().then(function () {
-					logger.log('done the promise');
-					i++;
-				}, function () {
-					logger.log('It was error');
-					i++;
-				});
+// 	return this.isDisplayed(ele).then(function (res) {
+// 		if (res === true) {
+// 			return element.all(by.css(ele)).each(function (item) {
+// 				item.click().then(function () {
+// 					logger.log('done the promise');
+// 					i++;
+// 				}, function () {
+// 					logger.log('It was error');
+// 					i++;
+// 				});
 
-				if (i >= 2) return item;
-			});
-		} else {
-			logger.log('Element -->: ' + ele + ' was not displayed');
+// 				if (i >= 2) return item;
+// 			});
+// 		} else {
+// 			logger.log('Element -->: ' + ele + ' was not displayed');
 
-			var deferred = protractor.promise.defer();
-			return deferred.reject('Element -->: ' + ele + ' was not displayed');
-		}
-	});
-};
+// 			var deferred = protractor.promise.defer();
+// 			return deferred.reject('Element -->: ' + ele + ' was not displayed');
+// 		}
+// 	});
+// };
 
 Userb.prototype.clicksOn = function (ele) {
-	return this.findsOn(ele);
+	return this.finds(ele).click();
 };
 
 Userb.prototype.findsAll = function (_el) {

@@ -6,9 +6,9 @@ module.exports = function() {
 
 	When(/^the user filter "([^"]*)" responses$/, function (checkType, cb) {
 		webpage.waits(500).then(function() {
-			user.finds('.checklist-responses-filter .spec-filter-analyze-histogram').click().then(function() {
+			maker.finds('.checklist-responses-filter .spec-filter-analyze-histogram').click().then(function() {
 				webpage.waits(800).then(function(){
-					user.finds('.spec-filter-'+checkType).click().then(cb);
+					maker.finds('.spec-filter-'+checkType).click().then(cb);
 				});
 			});
 		});
@@ -32,14 +32,14 @@ module.exports = function() {
 	});
 
 	When(/^the user type "([^"]*)" on keyword input$/, function (text, cb) {
-		user.finds('#response_search_check input').sendKeys(text).then(cb);
+		maker.finds('#response_search_check input').sendKeys(text).then(cb);
 	});
 
 	Then(/^the total of "([^"]*)" answers should be (\d+)$/, function (typeOfView, num, cb) {
 		webpage.waits(500).then(function() {
 			brw.executeScript('window.scrollTo(0,0);').then(function() {
-				user.finds('.spec-filter-analyze').click().then(function() {
-					user.finds('#spec-panelview-' + typeOfView).click();
+				maker.finds('.spec-filter-analyze').click().then(function() {
+					maker.finds('#spec-panelview-' + typeOfView).click();
 				});
 			});
 		});
@@ -55,7 +55,7 @@ module.exports = function() {
 				}).then(cb);
 				break;
 			case 'multi':
-				var answered = user.finds('.question-title strong~strong');
+				var answered = maker.finds('.question-title strong~strong');
 
 				answered.getText().then(function(text) {
 					expect(text).to.be.equal(num);

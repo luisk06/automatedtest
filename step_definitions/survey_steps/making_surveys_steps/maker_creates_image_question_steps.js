@@ -8,7 +8,7 @@ module.exports = function() {
 
 	When(/^the user writes the title of the question$/, function(cb) {
 		var _title = 'Image type question',
-			_el = user.finds('.spec-edit-question-name-any');
+			_el = maker.finds('.spec-edit-question-name-any');
 
 		_el.clear().sendKeys(_title).then(cb);
 	});

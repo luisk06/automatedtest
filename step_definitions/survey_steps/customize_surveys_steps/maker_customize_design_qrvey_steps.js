@@ -32,13 +32,13 @@ module.exports = function() {
 
 	When(/^the user clicks on customize button$/, function(cb) {
 		webpage.waits(2000).then(function(){
-			user.finds('.spec-tab-to-customize').click().then(cb);
+			maker.finds('.spec-tab-to-customize').click().then(cb);
 		});
 	});
 
 	When(/^the user opens the "([^"]*)" module$/, function(moduleOption, cb) {
 		var i = (moduleOption == 'color') ? 0 : 1;
-		user.findsAll('.accordeon-module').get(i).click().then(function() {
+		maker.findsAll('.accordeon-module').get(i).click().then(function() {
 			webpage.waits(3000);
 		}).then(cb);
 	});
@@ -48,7 +48,7 @@ module.exports = function() {
 	});
 
 	Then(/^that qrvey should have the "([^"]*)" template loaded$/, function(arg1, cb) {
-		user.finds('.' + arg1).isDisplayed().then(function(_displayed) {
+		maker.finds('.' + arg1).isDisplayed().then(function(_displayed) {
 			expect(_displayed).to.be.true;
 		}).then(cb);
 	});
@@ -56,10 +56,10 @@ module.exports = function() {
 	Then(/^the "([^"]*)" button should be displayed and should have "([^"]*)" as text$/, function(btnName, arg2, cb) {
 		var _el = '.spec_' + btnName + '_button';
 
-		user.finds(_el).isDisplayed().then(function(_displayed) {
+		maker.finds(_el).isDisplayed().then(function(_displayed) {
 			expect(_displayed).to.be.true;
 		}).then(function() {
-			user.finds(_el).getAttribute('innerHTML').then(function(_text) {
+			maker.finds(_el).getAttribute('innerHTML').then(function(_text) {
 				expect(_text).to.be.equal(arg2);
 			}).then(cb);
 		});
@@ -70,27 +70,27 @@ module.exports = function() {
 	});
 
 	Then(/^the "([^"]*)" title should be displayed$/, function(arg1, cb) {
-		user.finds('.spec_customize_title_' + arg1).isDisplayed().then(function(_displayed) {
+		maker.finds('.spec_customize_title_' + arg1).isDisplayed().then(function(_displayed) {
 			expect(_displayed).to.be.true;
 		}).then(cb);
 	});
 
 	Then(/^the "([^"]*)" color option should be displayed$/, function(arg1, callback) {
-		user.finds('.spec_customize_color_option_' + arg1).isDisplayed().then(function(_displayed) {
+		maker.finds('.spec_customize_color_option_' + arg1).isDisplayed().then(function(_displayed) {
 			expect(_displayed).to.be.true;
 		}).then(callback);
 	});
 
 	Given(/^the user clicks on the create survey button$/, function(cb) {
-		user.finds('.spec-button-create-survey').click().then(cb);
+		maker.finds('.spec-button-create-survey').click().then(cb);
 	});
 
 	Then(/^the user clicks on the "([^"]*)" "([^"]*)" on the "([^"]*)"$/, function(identifier, type, location, cb) {
-		user.finds('.spec_' + location + '_' + identifier + '_' + type).click().then(cb);
+		maker.finds('.spec_' + location + '_' + identifier + '_' + type).click().then(cb);
 	});
 
 	Given(/^the user fills "([^"]*)" into the "([^"]*)" field on the "([^"]*)"$/, function(keys, fieldName, location, cb) {
-		user.finds('.spec-input-new-' + location.toLowerCase() + '-' + fieldName).sendKeys(keys).then(cb);
+		maker.finds('.spec-input-new-' + location.toLowerCase() + '-' + fieldName).sendKeys(keys).then(cb);
 	});
 
 	Then(/^the "([^"]*)" button on modal should be displayed$/, function(arg1, cb) {

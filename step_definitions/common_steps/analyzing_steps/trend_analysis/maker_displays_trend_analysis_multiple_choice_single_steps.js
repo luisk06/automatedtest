@@ -33,7 +33,7 @@ module.exports = function () {
 		var index = i - 1;
 		logger.log(index);
 		webpage.waits(2000).then(function () {
-			var _element = user.findsAll('.spec-' + btn + '-' + i).get(index);
+			var _element = maker.findsAll('.spec-' + btn + '-' + i).get(index);
 			_element.click().then(cb);
 		});
 	});

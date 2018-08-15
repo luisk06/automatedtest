@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user opens placeholders$/, function(cb) {
-		user.finds('.spec-view-placeholders').click().then(cb);
+		maker.finds('.spec-view-placeholders').click().then(cb);
 	});
 
 	When(/^the user add a new placeholder$/, function(cb) {
@@ -17,6 +17,6 @@ module.exports = function() {
 	});
 
 	Then(/^in the panel the new numeric placeholder is shown$/, function(cb) {
-		expect(user.finds('.spec-automatiq-token-added').getText()).to.eventually.be.equal('{{numeric}}').and.notify(cb);
+		expect(maker.finds('.spec-automatiq-token-added').getText()).to.eventually.be.equal('{{numeric}}').and.notify(cb);
 	});
 };

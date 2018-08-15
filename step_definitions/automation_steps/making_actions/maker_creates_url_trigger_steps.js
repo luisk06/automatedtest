@@ -7,13 +7,13 @@ module.exports = function() {
 	Then = this.Then;
 
 	Then(/^the user selects the type of action as load qrvey$/, function(cb) {
-		user.finds('.spec-automatiq-select-action-open').click();
-		user.finds('.spec-automatiq-select-action-load-qrvey').click().then(cb);
+		maker.finds('.spec-automatiq-select-action-open').click();
+		maker.finds('.spec-automatiq-select-action-load-qrvey').click().then(cb);
 	});
 
 	Then(/^the user selects the king of action as "([^"]*)"$/, function(typeOfQrvey, cb) {
-		user.finds('.spec-automatiq-select span').click();
-		user.finds('.spec-select-option-' + typeOfQrvey).click().then(cb);
+		maker.finds('.spec-automatiq-select span').click();
+		maker.finds('.spec-select-option-' + typeOfQrvey).click().then(cb);
 	});
 
 	Then(/^the user opens the trigger url/, function(cb) {

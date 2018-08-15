@@ -18,8 +18,8 @@ module.exports = function() {
 
 	When(/^the user selects (\d+) option on level (\d+)$/, function(optionNumber, levelNumber, cb) {
 		webpage.waits(1000).then(function() {
-			user.finds('.spec-multiple-choise-option-' + (optionNumber - 1)).click();
-			user.findsAll('.spec-user-response-ok').get(levelNumber).click().then(cb);
+			taker.finds('.spec-multiple-choise-option-' + (optionNumber - 1)).click();
+			taker.findsAll('.spec-user-response-ok').get(levelNumber).click().then(cb);
 		});
 	});
 };

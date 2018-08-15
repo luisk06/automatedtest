@@ -44,13 +44,13 @@ module.exports = function() {
 		var el = '.spec-filter-container g[data-id="' + arg1 + '"]';
 
 		webpage.waitsFor(el);
-		user.finds(el).click().then(cb);
+		maker.finds(el).click().then(cb);
 	});
 
 	When(/^the user clicks on the "([^"]*)" filter as toggle$/, function(arg1, cb) {
 		var el = '.spec-filter-container toggle[data-id="' + arg1 + '"] i.circle';
 
 		webpage.waitsFor(el);
-		user.finds(el).click().then(cb);
+		maker.finds(el).click().then(cb);
 	});
 };

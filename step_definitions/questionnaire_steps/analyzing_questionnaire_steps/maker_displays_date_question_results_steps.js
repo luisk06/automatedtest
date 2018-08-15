@@ -63,7 +63,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks aggregate menu$/, function(cb) {
-		user.finds('body').click();
+		maker.finds('body').click();
 		webpage.waits(2000);
 
 		var el = '.dx-dropdowneditor-button.dx-button-normal.dx-widget';

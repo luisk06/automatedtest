@@ -21,9 +21,9 @@ module.exports = function() {
 			qrvey.pressTakeQrvey().then(function() {
 				element(by.binding('question.text')).getText().then(function(questionName) {
 					qrvey.setQrveyQuestionName(questionName);
-					user.finds('.spec-taker-date-answer-input').click();
-					user.finds('[data-date="' + today + '"]').click();
-					user.finds('.spec-user-response-ok').click().then(cb);
+					maker.finds('.spec-taker-date-answer-input').click();
+					maker.finds('[data-date="' + today + '"]').click();
+					maker.finds('.spec-user-response-ok').click().then(cb);
 				});
 			});
 		});
@@ -36,9 +36,9 @@ module.exports = function() {
 		brw.ignoreSynchronization = true;
 
 		element(by.binding('question.text')).getText().then(function() {
-			user.finds('.spec-taker-date-answer-input').click();
-			user.finds('[data-date="' + today + '"]').click();
-			user.finds('.spec-user-response-ok').click().then(cb);
+			maker.finds('.spec-taker-date-answer-input').click();
+			maker.finds('[data-date="' + today + '"]').click();
+			maker.finds('.spec-user-response-ok').click().then(cb);
 		});
 	});
 
@@ -47,7 +47,7 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks the Done button$/, function(cb) {
-		user.finds('.spec-done-submit-take-qrvey').click().then(cb);
+		maker.finds('.spec-done-submit-take-qrvey').click().then(cb);
 	});
 
 	Then(/^the login page should be displayed with username$/, function(cb) {
@@ -63,7 +63,7 @@ module.exports = function() {
 		brw.driver.switchTo().activeElement();
 		skipSync(false);
 
-		user.getText('.modal-box .wrapper .sub').then(function(_text) {
+		maker.getText('.modal-box .wrapper .sub').then(function(_text) {
 			expect(_text).to.equal(arg1);
 		}).then(cb);
 	});

@@ -7,14 +7,14 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user click on add image option$/, function(cb) {
-		user.finds('.addImageAction').click().then(cb);
+		maker.finds('.addImageAction').click().then(cb);
 	});
 
 	When(/^the user add image option to "([^"]*)"$/, function (typeOfInput, cb) {
 		if (typeOfInput == 'url') {
-			user.finds('.actions .uploadURL').click();
-			user.finds('.spec-design-modal-image-url').clear().sendKeys('https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png');
-			user.finds('.spec-design-modal-done-button').click();
+			maker.finds('.actions .uploadURL').click();
+			maker.finds('.spec-design-modal-image-url').clear().sendKeys('https://automatedqastg.qrvey.com/images/icn/logo-qrvey.png');
+			maker.finds('.spec-design-modal-done-button').click();
 		} else if (typeOfInput == 'desktop') {
 			// browser.explore();
 			var path = require('path'),

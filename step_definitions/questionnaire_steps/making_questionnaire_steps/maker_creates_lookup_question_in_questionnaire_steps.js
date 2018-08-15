@@ -18,26 +18,26 @@ module.exports = function() {
 	});
 
 	When(/^the user selects "([^"]*)" like an app type from the dropdown$/, function(qrveyAppType, cb) {
-		user.finds('.spec-lookup-dropdown-qrvey-app-select').click();
-		user.finds('.spec-lookup-dropdown-qrvey-app-selected-' + qrveyAppType).click().then(cb);
+		maker.finds('.spec-lookup-dropdown-qrvey-app-select').click();
+		maker.finds('.spec-lookup-dropdown-qrvey-app-selected-' + qrveyAppType).click().then(cb);
 	});
 
 	When(/^the user clicks on the Edit button for modify the lookup rows$/, function(cb) {
-		user.finds('.spec-lookup-edit-btn').click().then(cb);
+		maker.finds('.spec-lookup-edit-btn').click().then(cb);
 	});
 
 	When(/^the user selects the form from the dropdown$/, function(cb) {
 		webpage.waitsFor('.modal-dialog');
-		user.finds('.automatiq-select').click();
+		maker.finds('.automatiq-select').click();
 
 		webpage.waitsFor('.scroll-select');
-		user.finds('.scroll-select .select-search input').sendKeys('qrvey');
-		user.findsAll('.scroll-select li:not(.select-search)').first().click().then(cb);
+		maker.finds('.scroll-select .select-search input').sendKeys('qrvey');
+		maker.findsAll('.scroll-select li:not(.select-search)').first().click().then(cb);
 	});
 
 	When(/^the user selects the columm to show$/, function(cb) {
-		user.finds('.spec-google-display-column-dropdown').click();
-		user.finds('.spec-google-display-column-dropdown + .options span').click().then(cb);
+		maker.finds('.spec-google-display-column-dropdown').click();
+		maker.finds('.spec-google-display-column-dropdown + .options span').click().then(cb);
 	});
 
 	When(/^the user selects the value to show$/, function(cb) {

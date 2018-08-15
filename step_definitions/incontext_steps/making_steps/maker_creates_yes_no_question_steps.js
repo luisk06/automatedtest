@@ -34,10 +34,10 @@ module.exports = function() {
 				break;
 			case 'ranking':
 				navigate.sendKeys('.spec-edit-question-name-any', 'The ' + typeOfQuestion + ' question title');
-				user.finds('.spec-add-option-ranking-question-0').click();
-				user.finds('.spec-add-option-ranking-question-0').click();
-				user.finds('.spec-add-option-ranking-question-0').click();
-				user.finds('.spec-add-option-ranking-question-0').click();
+				maker.finds('.spec-add-option-ranking-question-0').click();
+				maker.finds('.spec-add-option-ranking-question-0').click();
+				maker.finds('.spec-add-option-ranking-question-0').click();
+				maker.finds('.spec-add-option-ranking-question-0').click();
 				navigate.sendKeys('.spec-ranking-option-1', 'Option 1');
 				navigate.sendKeys('.spec-ranking-option-2', 'Option 2');
 				navigate.sendKeys('.spec-ranking-option-3', 'Option 3');

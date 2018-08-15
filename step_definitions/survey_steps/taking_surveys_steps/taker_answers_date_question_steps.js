@@ -18,15 +18,15 @@ module.exports = function() {
 
 	When(/^the user clicks the Ok button$/, function(cb) {
 		webpage.waits(1000);
-		user.findsAll('.spec-user-response-ok').get(0).click().then(cb);
+		maker.findsAll('.spec-user-response-ok').get(0).click().then(cb);
 	});
 
 	When(/^the user clicks the Confirm button$/, function(cb) {
-		user.findsAll('.button.yellow.confirm-branch-bto').get(0).click().then(cb);
+		maker.findsAll('.button.yellow.confirm-branch-bto').get(0).click().then(cb);
 	});
 
 	When(/^the user clicks the Ok button again$/, function(cb) {
-		user.findsAll('.spec-user-response-ok.ico-check').get(1).click().then(cb);
+		maker.findsAll('.spec-user-response-ok.ico-check').get(1).click().then(cb);
 	});
 
 	When(/^the user scrolls to bottom$/, function(cb) {

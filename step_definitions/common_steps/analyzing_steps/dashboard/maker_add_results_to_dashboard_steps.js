@@ -7,12 +7,12 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user add the chart to dashboard$/, function (cb) {
-		user.finds('.spec-download-drop').click();
-		user.finds('.spec-add-to-dashboard').click().then(cb);
+		maker.finds('.spec-download-drop').click();
+		maker.finds('.spec-add-to-dashboard').click().then(cb);
 	});
 
 	When(/^the user go to the analytic dashboard$/, function (cb) {
-		user.finds('.spec_favorites_button').click().then(cb);
+		maker.finds('.spec_favorites_button').click().then(cb);
 	});
 
 	When(/^the user clicks on the filter button$/, function (cb) {
@@ -41,8 +41,8 @@ module.exports = function () {
 	});
 
 	Then(/^the chart of "([^"]*)" should appear in the dashboard$/, function (typeOfQuestion, cb) {
-		if (typeOfQuestion == 'rating')  user.finds('.slimScrollDiv').click().then(cb);
-		else user.finds('.spec-chart-analytiq-dashboard').click().then(cb);
+		if (typeOfQuestion == 'rating')  maker.finds('.slimScrollDiv').click().then(cb);
+		else maker.finds('.spec-chart-analytiq-dashboard').click().then(cb);
 	});
 
 	Then(/^the panel should mention filter applied$/, function (cb) {

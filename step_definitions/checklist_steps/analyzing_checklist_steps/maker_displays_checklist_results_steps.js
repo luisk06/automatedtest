@@ -17,16 +17,16 @@ module.exports = function() {
 
 	When(/^the user selects "([^"]*)" from dropdown$/, function(typeOfView, cb) {
 		webpage.waitsFor('.spec-filter-analyze');
-		user.finds('.spec-filter-analyze').click().then(function() {
-			user.finds('#spec-panelview-' + typeOfView).click().then(cb);
+		maker.finds('.spec-filter-analyze').click().then(function() {
+			maker.finds('#spec-panelview-' + typeOfView).click().then(cb);
 		});
 	});
 
 	When(/^the user selects "([^"]*)" from dropdown on "([^"]*)"$/, function(typeOfView, typeOfQrvey, cb) {
 		if (typeOfQrvey !== 'incontextfeedback') {
 			webpage.waitsFor('.spec-filter-analyze');
-			user.finds('.spec-filter-analyze').click().then(function() {
-				user.finds('#spec-panelview-' + typeOfView).click().then(cb);
+			maker.finds('.spec-filter-analyze').click().then(function() {
+				maker.finds('#spec-panelview-' + typeOfView).click().then(cb);
 			});
 		}
 		cb();
@@ -35,15 +35,15 @@ module.exports = function() {
 	When(/^user selects "([^"]*)" from dropdown on "([^"]*)"$/, function(typeOfView, typeOfQrvey, cb) {
 		if (typeOfQrvey !== 'incontextfeedback') {
 			webpage.waitsFor('.spec-filter-analyze');
-			user.finds('.spec-filter-analyze').click().then(function() {
-				user.finds('#spec-panelview-' + typeOfView).click().then(cb);
+			maker.finds('.spec-filter-analyze').click().then(function() {
+				maker.finds('#spec-panelview-' + typeOfView).click().then(cb);
 			});
 		}
 		cb();
 	});
 
 	Then(/^the "([^"]*)" option on dropdown should contain a check$/, function(typeOfView, cb) {
-		user.finds('.spec-filter-analyze').click().then(function() {
+		maker.finds('.spec-filter-analyze').click().then(function() {
 			expect(hasClass(element(by.css('#spec-panelview-' + typeOfView)), 'active')).to.eventually.be.true;
 		}).then(cb);
 	});

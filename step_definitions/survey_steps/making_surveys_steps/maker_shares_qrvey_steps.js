@@ -14,7 +14,7 @@ module.exports = function() {
 	When(/^the user pass to the "([^"]*)" share tab$/, function(typeOfQrvey, cb) {
 		var _type = (typeOfQrvey == 'survey') ? 'share' : typeOfQrvey + '-share';
 
-		user.finds('.spec-tab-to-share').click();
+		maker.finds('.spec-tab-to-share').click();
 		logger.log('Element -->:', '/' + _type);
 
 		webpage.getCurrentUrl().then(function(_url) {
@@ -26,7 +26,7 @@ module.exports = function() {
 	When(/^the user tries to move to the "([^"]*)" share tab$/, function(typeOfQrvey, cb) {
 		var _type = (typeOfQrvey == 'survey') ? 'share' : typeOfQrvey + '-share';
 
-		user.finds('.spec-tab-to-share').click();
+		maker.finds('.spec-tab-to-share').click();
 		logger.log('Element -->:', '/' + _type);
 
 		webpage.getCurrentUrl().then(function(_url) {
@@ -36,12 +36,12 @@ module.exports = function() {
 	});
 
 	When(/^the user try pass to the share tab$/, function(cb) {
-		user.finds('.spec-tab-to-share').click().then(cb);
+		maker.finds('.spec-tab-to-share').click().then(cb);
 	});
 
 	When(/^the user clicks on Privacy button$/, function(cb) {
-		user.finds('#spec_privacy_dropdown').click().then(function() {
-			expect(user.finds('.spec_privacy_popop').isDisplayed()).to.eventually.be.true.and.notify(cb);
+		maker.finds('#spec_privacy_dropdown').click().then(function() {
+			expect(maker.finds('.spec_privacy_popop').isDisplayed()).to.eventually.be.true.and.notify(cb);
 		});
 	});
 
@@ -50,11 +50,11 @@ module.exports = function() {
 
 		logger.log('TYPEPRIVACY', _el);
 
-		user.finds(_el).click().then(cb);
+		maker.finds(_el).click().then(cb);
 	});
 
 	When(/^clicks on Activate button in "([^"]*)"$/, function(typeOfQrvey, cb) {
-		var _el = user.finds('.spec-qrvey-btn-active');
+		var _el = maker.finds('.spec-qrvey-btn-active');
 
 		webpage.waitsForElement(_el);
 
@@ -62,17 +62,17 @@ module.exports = function() {
 			_el.click().then(function(){
 				webpage.waitsFor('.pause');
 
-				user.finds('.pause').isPresent().then(function (_isPresent) {
+				maker.finds('.pause').isPresent().then(function (_isPresent) {
 					expect(_isPresent).to.be.true;
 				}).then(cb);
 			});
 		}else if(typeOfQrvey == 'forms-spreadsheet'){
-			user.finds('.reactivate').click().then(cb);
+			maker.finds('.reactivate').click().then(cb);
 		}else if(typeOfQrvey == 'nps'){
 			_el.click().then(cb);
 		}else{
 			_el.click();
-			user.finds('.spec-confirm-end-qrvey .content-modal-body .modal-footer .button').click().then(cb);
+			maker.finds('.spec-confirm-end-qrvey .content-modal-body .modal-footer .button').click().then(cb);
 		}
 	});
 

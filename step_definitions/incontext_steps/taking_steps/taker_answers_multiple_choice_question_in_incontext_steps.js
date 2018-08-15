@@ -61,8 +61,8 @@ module.exports = function() {
 			}else if(typeOfQuestion == 'date'){
 				var newDate = new Date(rand.getDate());
 
-				user.finds('.datepicker-here').click();
-				user.finds('[data-date="' + newDate.getDate() + '"]').click().then(cb);
+				maker.finds('.datepicker-here').click();
+				maker.finds('[data-date="' + newDate.getDate() + '"]').click().then(cb);
 			}
 		}
 	});

@@ -52,7 +52,7 @@ module.exports = function() {
 
 		webpage.waitsFor(_el).then(function() {
 			webpage.waits(2500).then(function() {
-				user.finds('.spec_polling_presenter_counter_answers').getAttribute('innerHTML').then(function(_html) {
+				maker.finds('.spec_polling_presenter_counter_answers').getAttribute('innerHTML').then(function(_html) {
 					expect(_html).to.be.equal('Answered: ' + numberOfAnswers);
 				}).then(cb);
 			});

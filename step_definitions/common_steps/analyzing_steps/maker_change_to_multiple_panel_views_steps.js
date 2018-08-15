@@ -26,8 +26,8 @@ module.exports = function() {
 
 	When(/^the user clicks on multi-panel view$/, function(cb) {
 		webpage.waits(3500).then(function() {
-			user.finds('.spec-filter-analyze').click().then(function() {
-				user.finds('#spec-panelview-multi').click().then(cb);
+			maker.finds('.spec-filter-analyze').click().then(function() {
+				maker.finds('#spec-panelview-multi').click().then(cb);
 			});
 		});
 	});

@@ -10,7 +10,7 @@ module.exports = function() {
 		var leftText = 'Very Satisfied';
 		var rigthText = 'Very Unsatisfied';
 
-		var el = user.finds('.spec-edit-question-name-any');
+		var el = maker.finds('.spec-edit-question-name-any');
 
 		el
 			.clear()
@@ -26,7 +26,7 @@ module.exports = function() {
 
 		// webpage.waits(500);
 
-		el = user.finds('.spec-slidebar-question-type-answer-left');
+		el = maker.finds('.spec-slidebar-question-type-answer-left');
 
 		el
 			.clear()
@@ -43,7 +43,7 @@ module.exports = function() {
 
 		webpage.waits(500);
 
-		el = user.finds('.spec-slidebar-question-type-answer-right');
+		el = maker.finds('.spec-slidebar-question-type-answer-right');
 
 
 		el

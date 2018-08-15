@@ -20,37 +20,37 @@ module.exports = function () {
 
 	When(/^the user selects the king of process as "([^"]*)"$/, function (typeOfProcess, cb) {
 		webpage.waits(2000).then(function () {
-			user.finds('.spec-automatiq-select-type').click();
-			user.finds('.spec-automatiq-type-' + typeOfProcess).click().then(cb);
+			maker.finds('.spec-automatiq-select-type').click();
+			maker.finds('.spec-automatiq-type-' + typeOfProcess).click().then(cb);
 		});
 	});
 
 	When(/^the user selects the king of repeater as "([^"]*)"$/, function (typeOfRepeater, cb) {
-		user.finds('.spec-selects-process').click();
-		user.finds('.spec-automation-repeater-open').click();
-		user.finds('.spec-automation-selects-repeater-' + typeOfRepeater).click().then(cb);
+		maker.finds('.spec-selects-process').click();
+		maker.finds('.spec-automation-repeater-open').click();
+		maker.finds('.spec-automation-selects-repeater-' + typeOfRepeater).click().then(cb);
 	});
 
 	When(/^the user selects the king of repeater every as (\d+) days$/, function (numDays, cb) {
-		user.finds('.spec-automation-selects-repeater-every').sendKeys(numDays).then(cb);
+		maker.finds('.spec-automation-selects-repeater-every').sendKeys(numDays).then(cb);
 	});
 
 	When(/^the user selects the start Date$/, function (cb) {
 		var today = new Date();
 
-		user.finds('.spec-automation-selects-start-date').click().then(function () {
-			user.finds('[data-date="' + today.getDate() + '"]').click().then(cb);
+		maker.finds('.spec-automation-selects-start-date').click().then(function () {
+			maker.finds('[data-date="' + today.getDate() + '"]').click().then(cb);
 		});
 	});
 
 	When(/^the user selects the hours to every day as (\d+):(\d+) in "([^"]*)"$/, function (hours, minutes, timezone, cb) {
-		user.finds('.spec-automation-selects-time').sendKeys(hours + ': ' + minutes);
-		user.finds('.spec-automation-selects-timezone').click();
-		user.finds('.spec-automation-selects-timezone-' + timezone).click().then(cb);
+		maker.finds('.spec-automation-selects-time').sendKeys(hours + ': ' + minutes);
+		maker.finds('.spec-automation-selects-timezone').click();
+		maker.finds('.spec-automation-selects-timezone-' + timezone).click().then(cb);
 	});
 
 	When(/^the user selects the "([^"]*)" check$/, function (nameCheck, cb) {
-		user.finds('.spec-automation-selects-' + nameCheck).click().then(cb);
+		maker.finds('.spec-automation-selects-' + nameCheck).click().then(cb);
 	});
 
 	When(/^the user selects the specific date to finish$/, function (cb) {
@@ -59,18 +59,18 @@ module.exports = function () {
 
 		if (today == 30) today -= 1;
 
-		user.finds('.spec-automation-selects-end-date').click().then(function () {
-			user.findsAll('[data-date="' + today + '"]').get(1).click().then(cb);
+		maker.finds('.spec-automation-selects-end-date').click().then(function () {
+			maker.findsAll('[data-date="' + today + '"]').get(1).click().then(cb);
 		});
 	});
 
 	When(/^the user selects the end time after (\d+) times$/, function (times, cb) {
-		user.finds('.spec-automation-selects-after-times').clear().sendKeys(times).then(cb);
+		maker.finds('.spec-automation-selects-after-times').clear().sendKeys(times).then(cb);
 	});
 
 	When(/^the user clicks on Save Changes$/, function (cb) {
 		webpage.waits(1000).then(function () {
-			user.finds('.spec-automation-btn-save').click().then(cb);
+			maker.finds('.spec-automation-btn-save').click().then(cb);
 		});
 	});
 

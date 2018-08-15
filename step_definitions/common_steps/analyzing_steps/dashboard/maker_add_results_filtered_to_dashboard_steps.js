@@ -7,7 +7,7 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^ the chart with filter should appear in the dashboard$/, function(){
-		user.finds('.spec-download-drop').click();
-		user.finds('.spec-add-to-dashboard').click();
+		maker.finds('.spec-download-drop').click();
+		maker.finds('.spec-add-to-dashboard').click();
 	});
 };

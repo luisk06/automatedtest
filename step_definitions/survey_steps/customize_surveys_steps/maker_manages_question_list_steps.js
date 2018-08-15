@@ -10,8 +10,8 @@ module.exports = function() {
 		switch (_typeQuestion) {
 			case 'multiple_choice':
 				maker.createsMultiChoiceTypeQuestion(_title);
-				user.finds('.spec-multichoice-option-1').sendKeys('Option 1');
-				user.finds('.spec-multichoice-option-2').sendKeys('Option 2').then(cb);
+				maker.finds('.spec-multichoice-option-1').sendKeys('Option 1');
+				maker.finds('.spec-multichoice-option-2').sendKeys('Option 2').then(cb);
 				break;
 			case 'numeric':
 				maker.createsNumericTypeQuestion(_title).then(cb);
@@ -41,15 +41,15 @@ module.exports = function() {
 				break;
 			case 'ranking':
 				maker.createsRankingQuestion(_title);
-				user.finds('.spec-ranking-option-1').sendKeys('Option 1');
-				user.finds('.spec-ranking-option-2').sendKeys('Option 2').then(cb);
+				maker.finds('.spec-ranking-option-1').sendKeys('Option 1');
+				maker.finds('.spec-ranking-option-2').sendKeys('Option 2').then(cb);
 				break;
 		}
 	});
 
 	When(/^the user adds the question as favorite$/, function(cb) {
-		user.findsAll('.spec-dropdown-edit-0').last().click().then(function() {
-			return user.finds('.spec-add-question-as-favorite-edit').click();
+		maker.findsAll('.spec-dropdown-edit-0').last().click().then(function() {
+			return maker.finds('.spec-add-question-as-favorite-edit').click();
 		}).then(function() {
 			return webpage.getsTextExists('The question has been added to your favorites.');
 		}).then(function(_value) {
@@ -58,12 +58,12 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on Add question from favorites$/, function(cb) {
-		user.finds('.spec-design-add-state').click();
-		user.finds('.spec-design-add-from-favorites').click().then(cb);
+		maker.finds('.spec-design-add-state').click();
+		maker.finds('.spec-design-add-from-favorites').click().then(cb);
 	});
 
 	When(/^the user clicks on Add slide from favorites$/, function(cb) {
-		user.finds('.spec-btn-add-question-from-favorite').click().then(cb);
+		maker.finds('.spec-btn-add-question-from-favorite').click().then(cb);
 	});
 
 	Then(/^the question "([^"]*)" should be displayed in question list modal$/, function(_title, cb) {
@@ -74,21 +74,21 @@ module.exports = function() {
 
 	Given(/^that the user create a question$/, function(cb) {
 		maker.createsMultiChoiceTypeQuestion();
-		user.finds('.spec-multichoice-option-1').sendKeys('Option 1');
-		user.finds('.spec-multichoice-option-2').sendKeys('Option 2').then(cb);
+		maker.finds('.spec-multichoice-option-1').sendKeys('Option 1');
+		maker.finds('.spec-multichoice-option-2').sendKeys('Option 2').then(cb);
 	});
 
 	Given(/^the user makes questions as favorites$/, function(cb) {
-		user.findsAll('.spec-dropdown-edit-0').last().click();
-		user.finds('.spec-add-question-as-favorite-edit').click().then(cb);
+		maker.findsAll('.spec-dropdown-edit-0').last().click();
+		maker.finds('.spec-add-question-as-favorite-edit').click().then(cb);
 	});
 
 	When(/^the user clicks on Select All$/, function(cb) {
-		user.finds('.spec-question-list-check-all-questions-label').click().then(cb);
+		maker.finds('.spec-question-list-check-all-questions-label').click().then(cb);
 	});
 
 	When(/^the user clicks on Delete Question$/, function(cb) {
-		user.finds('.spec-question-list-delete-questions').click().then(cb);
+		maker.finds('.spec-question-list-delete-questions').click().then(cb);
 	});
 
 	Then(/^all the question are deletes$/, function(cb) {
@@ -99,11 +99,11 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the first question$/, function(cb) {
-		user.findsAll('.spec-question-item').first().element(by.css('.spec-fav-question-check')).click().then(cb);
+		maker.findsAll('.spec-question-item').first().element(by.css('.spec-fav-question-check')).click().then(cb);
 	});
 
 	When(/^the user close the modal$/, function(cb) {
-		user.finds('.spec-close-modal').click().then(cb);
+		maker.finds('.spec-close-modal').click().then(cb);
 	});
 
 	Then(/^the question should be displayed in the design$/, function(cb) {

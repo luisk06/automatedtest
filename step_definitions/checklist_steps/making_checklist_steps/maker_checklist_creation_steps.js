@@ -10,12 +10,12 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks Create "([^"]*)" button$/, function(type, cb) {
-		user.finds('.spec-button-create-'+type.toLowerCase()).click().then(cb);
+		maker.finds('.spec-button-create-'+type.toLowerCase()).click().then(cb);
 		brw.sleep(2000);
 	});
 
 	Then(/^An alert with text "([^"]*)" should appear below "([^"]*)" input$/, function(_alertText, _input, cb) {
-		var _element = user.finds('span#enter-' + _input.toLowerCase() + '-checklist');
+		var _element = maker.finds('span#enter-' + _input.toLowerCase() + '-checklist');
 		_element.isDisplayed().then(function(_isDisplays) {
 			expect(_isDisplays).to.be.true;
 		});
@@ -32,7 +32,7 @@ module.exports = function() {
 
 		webpage.waitsFor('.checklist-saved');
 
-		var _elementTitle = user.finds('.checklist-saved');
+		var _elementTitle = maker.finds('.checklist-saved');
 		_elementTitle.getText().then(function(_actualTitleText) {
 			expect(_actualTitleText).to.contain(_name);
 			//expect(_actualTitleText).to.contain(_description);

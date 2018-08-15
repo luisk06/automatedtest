@@ -61,7 +61,7 @@ module.exports = function () {
 
 	When(/^the user close the modal in analyze$/, function (cb) {
 		webpage.waits(2000);
-		user.finds('.AN-close-modal').click().then(cb);
+		maker.finds('.AN-close-modal').click().then(cb);
 	});
 
 	When(/^the user closes the modal in analyze$/, function (cb) {

@@ -5,14 +5,14 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user go to pages dashboard$/, function(cb) {
-		user.finds('.spec_pages_button').click().then(cb);
+		maker.finds('.spec_pages_button').click().then(cb);
 	});
 
 	When(/^the user clicks the "([^"]*)" button$/, function(button, cb) {
 		if (button == 'Create Page') {
-			user.finds('#spec_new_page').click().then(cb);
+			maker.finds('#spec_new_page').click().then(cb);
 		} else if (button == 'Create') {
-			user.finds('.spec-button-create-process').click().then(cb);
+			maker.finds('.spec-button-create-process').click().then(cb);
 		}
 	});
 
@@ -25,7 +25,7 @@ module.exports = function() {
 	});
 
 	When(/^the user writes the page name$/, function(cb) {
-		user.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5)).then(cb);
+		maker.finds('.spec-input-new-process-name').clear().sendKeys(rand.getSentence(5)).then(cb);
 	});
 
 	When(/^the user mark the access level as "([^"]*)"$/, function(access, cb) {
@@ -33,7 +33,7 @@ module.exports = function() {
 	});
 
 	When(/^the user writes the page description$/, function(cb) {
-		user.finds('.spec-input-new-process-description').clear().sendKeys(rand.getSentence(15)).then(cb);
+		maker.finds('.spec-input-new-process-description').clear().sendKeys(rand.getSentence(15)).then(cb);
 	});
 
 	When(/^the page is created$/, function(cb) {

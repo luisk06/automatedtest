@@ -11,7 +11,7 @@ module.exports = function() {
 	});
 
 	When(/^the user adds (\d+) branches to question (\d+)$/, function(numberOfBranchesToAdd, questionNumber, cb) {
-		user.finds('.spec-tab-to-desing').click();
+		maker.finds('.spec-tab-to-desing').click();
 
 		async.eachSeries(gArray(numberOfBranchesToAdd), function(n, next){
 			scrollToTop().then(function(){
