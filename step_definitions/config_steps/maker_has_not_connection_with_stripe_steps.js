@@ -10,17 +10,13 @@ module.exports = function() {
 		newPass = '123456';
 
 	Given(/^that the user is new$/, function(cb) {
-		// newAccount = rand.getName() + '.' + rand.getLastname() + '@trial.com';
-		newAccount = 'testingqrvey+' + randomId() + 'gmail.com';
-
-		ls.register(newAccount, newPass).then(function() {
-			logger.log('The user was registered successfully');
-			cb();
-		});
+		cb();
 	});
 
 	Given(/^the user this has login$/, function(cb) {
-		user.toDoLogin(newAccount, newPass).then(cb);
+		maker.toDoLogin().then(function(){
+			cb();
+		});
 	});
 
 	When(/^the user enter to config page$/, function(cb) {
