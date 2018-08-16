@@ -1,6 +1,6 @@
 @complete @taking @surveyTaking @multipleChoice @survey
 
-Feature: Answering multiple choice question in survey
+Feature: Answering multiple choice question with image option in survey
 
 	As as user
 	I want to answer a qrvey with a multiple choice question

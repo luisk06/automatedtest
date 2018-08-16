@@ -24,7 +24,6 @@ global.dropFile = require('./helpers/drop-file.js');
 global.webpage = require('./helpers/webpage');
 global.taker = require('./helpers/taker');
 global.maker = require('./helpers/maker');
-console.log('taker root', taker);
 
 // Random Answers Module
 global.rand = require('./helpers/random');

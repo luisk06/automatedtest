@@ -13,8 +13,10 @@ module.exports = function() {
 		};
 
 	When(/^the user go to "([^"]*)"$/, function(section, cb) {
+		maker.finds('.spec-dropdown-menu-main').click();
+
 		if(section === 'address_book'){
-			maker.finds('.spec-dropdown-menu-main').click();
+			webpage.waits(300);
 			maker.finds('.spec_address_book_button').click().then(cb);
 		}
 	});

@@ -11,7 +11,7 @@ util.inherits(Maker, Userb);
 
 Maker.prototype.actionSearch = function () {
 	this.finds('.spec_search_input').sendKeys(protractor.Key.ENTER);
-	return this.waits(2000);
+	return webpage.waits(2000);
 };
 
 Maker.prototype.activatesAddOtherOption = function () {
@@ -57,7 +57,7 @@ Maker.prototype.addImageOptions = function (_all_images_possible = 3) {
 	async.times(all_images_possible, function (n, next) {
 		scrollIntoElement(el, function () {
 			el.click();
-			this.waits(100);
+			webpage.waits(100);
 
 			next();
 		});
@@ -72,6 +72,7 @@ Maker.prototype.addImageOptions = function (_all_images_possible = 3) {
 Maker.prototype.addImageTitles = function () {
 	var deferred = protractor.promise.defer(),
 		_title = null,
+		self = this,
 		maxNum = 16;
 
 	this.findsAll('.spec-design-image-title').count().then(function (num) {
@@ -191,7 +192,7 @@ Maker.prototype.createsActionToPage = function (_typeOfAction, typeOfQrvey, _vie
 	this.finds('.spec-automatiq-show-results-select-qrvey span').click();
 	this.finds('.spec-show-results-' + typeOfQrvey).click();
 	this.finds('.spec-show-results-qrvey').click();
-	this.waits(5000);
+	webpage.waits(5000);
 
 	this.findsAll('.spec-show-results-qrvey ul div li').get(1).click();
 
@@ -218,6 +219,8 @@ Maker.prototype.createsActionToPage = function (_typeOfAction, typeOfQrvey, _vie
 };
 
 Maker.prototype.createsDateQuestion = function (params = {}) {
+	var self = this;
+
 	if (params.isQuiz) {
 		element(by.css('.right-answer-input input')).click();
 		element(by.css('.mat-calendar-body-today')).click();
@@ -230,6 +233,7 @@ Maker.prototype.createsDateQuestion = function (params = {}) {
 };
 
 Maker.prototype.createsDropdownQuestion = function () {
+	var self = this;
 	qrvey.questionType('spec_dr_qt');
 
 	return this.createsTitleForQuestion().then(function () {
@@ -239,7 +243,7 @@ Maker.prototype.createsDropdownQuestion = function () {
 
 Maker.prototype.createsExpressionQuestion = function () {
 	qrvey.questionType('spec_ex_qt');
-	this.waits(200);
+	webpage.waits(200);
 	this.fillExpressionQuestionAnswers();
 	return this.createsTitleForQuestion();
 };
@@ -249,6 +253,7 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 		self = this,
 		count = 0;
 
+	if (typeof params === 'string') params.typeOfInput = params;
 	if (typeof params.typeOfInput === 'undefined') params.typeOfInput = 'url';
 
 	this.createsTitleForQuestion();
@@ -268,7 +273,7 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 
 	var n = 0;
 
-	self.findsAll('.spec-image-upload-option-url').count().then(function (_count) {
+	this.findsAll('.spec-image-upload-option-url').count().then(function (_count) {
 		count = _count;
 
 		logger.log('params.typeOfInput', params.typeOfInput);
@@ -288,7 +293,7 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 					expect(_value).to.be.equal(_url);
 
 					self.finds('.spec-design-modal-done-button').click().then(function () {
-						return self.waits(500);
+						return webpage.waits(500);
 					}).then(function () {
 						if (params.isQuiz) {
 							return self.findsAll('.spec-quiz-right-answer + input:not(.spec-quiz-right-answer)').get(n).sendKeys(
@@ -302,7 +307,7 @@ Maker.prototype.createsImageQuestion = function (params = {}) {
 					}).then(function () {
 						logger.log('Finish log');
 
-						self.waits(500);
+						webpage.waits(500);
 						logger.log('i', n);
 						next();
 					});
@@ -364,6 +369,7 @@ Maker.prototype.createsIncontext = function () {
 
 Maker.prototype.createsListOptions = function (type = 'multichoice') {
 	var deferred = protractor.promise.defer();
+	var self = this;
 
 	async.during(function (cb) {
 		hasClass(self.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
@@ -372,7 +378,7 @@ Maker.prototype.createsListOptions = function (type = 'multichoice') {
 		});
 	}, function (next) {
 		webpage.waits(400);
-		this.findsAll('.icon.q-icon-add').last().click().then(function () {
+		self.findsAll('.icon.q-icon-add').last().click().then(function () {
 			next();
 		});
 	});
@@ -588,6 +594,8 @@ Maker.prototype.createsQuestionByType = function (_type, _isQuiz) {
 };
 
 Maker.prototype.createsRankingQuestion = function (params = {}) {
+	var self = this;
+
 	if (params.isQuiz) {
 		element(by.css('.spec-ranking-option-1')).sendKeys('Option 1');
 		element(by.css('.spec-ranking-option-2')).sendKeys('Option 2');
@@ -622,7 +630,7 @@ Maker.prototype.createsSlideBarQuestion = function (params = {}) {
 	var _stops = (typeof params.stops !== 'undefined') ? params.stops : 3;
 
 	qrvey.questionType('spec_sl_qt');
-	this.waits(200);
+	webpage.waits(200);
 
 	this.createsTitleForQuestion();
 
@@ -745,7 +753,7 @@ Maker.prototype.fillImageQuestionFromId = function (number, title) {
 	var i = 0;
 	return questionContainer.element(by.css('.spec-edit-question-name-any')).sendKeys(title).then(function () {
 		return questionContainer.all(by.css('.spec-image-upload-option-url')).each(function () {
-			self.waits(890);
+			webpage.waits(890);
 			questionContainer.element(by.css('.spec-image-upload-option-url-' + i)).click();
 
 			var _el = self.finds('.spec-design-modal-image-url');
@@ -812,7 +820,7 @@ Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey
 
 		var clickQuestionName = (typeQrvey == 'nps') ? '.spec-nps-title-question-input' : '.spec-edit-question-name-any';
 
-		if (typeQrvey == 'nps') self.waits(300);
+		if (typeQrvey == 'nps') webpage.waits(300);
 
 		self.finds(clickQuestionName).click();
 	});
@@ -914,7 +922,7 @@ Maker.prototype.fillsRankingQuestion = function (_titles) {
 		t++;
 	}
 
-	return this.waits(100);
+	return webpage.waits(100);
 };
 
 Maker.prototype.findsUrlToTaker = function () {
@@ -971,7 +979,7 @@ Maker.prototype.getsTotalByCss = function (_class) {
 };
 
 Maker.prototype.goToTaken = function () {
-	this.waits(2000);
+	webpage.waits(2000);
 	return this.finds('.spec_taken_qrveys_button').click();
 };
 
@@ -995,7 +1003,7 @@ Maker.prototype.makerMovesQuestion = function (_where = 'up', _number = 0) {
 		_el = this.finds('.spec-maker-move-question-' + _number);
 
 	brw.actions().mouseDown(_el).perform();
-	this.waits(2000);
+	webpage.waits(2000);
 	brw.actions().mouseMove(_el, _dir).perform();
 	return brw.actions().mouseUp().perform();
 };
@@ -1004,7 +1012,7 @@ Maker.prototype.movesSlidebar = function (_distance) {
 	var _el = this.findsAll('.rz-pointer').first();
 
 	brw.actions().mouseDown(_el).perform();
-	this.waits(2000);
+	webpage.waits(2000);
 	return brw.actions().mouseMove(_el, {
 		x: _distance,
 		y: 0
@@ -1028,7 +1036,7 @@ Maker.prototype.publishWebform = function () {
 
 Maker.prototype.search = function (_text) {
 	this.finds('.spec_search_input').sendKeys(_text);
-	return this.waits(2000);
+	return webpage.waits(2000);
 };
 
 Maker.prototype.selectQuestionFromDropdown = function (typeOfQuestion) {
@@ -1159,7 +1167,7 @@ Maker.prototype.selectTemplate = function (_category) {
 
 Maker.prototype.selectsOptionOfQuestion = function (_number = 0) {
 	var _el = this.findsAll('.spec-select-option-question').last();
-	this.waits(200);
+	webpage.waits(200);
 	_el.click();
 	return _el.all(by.css('.options span')).get(_number).click();
 };
@@ -1197,11 +1205,11 @@ Maker.prototype.touchesMenuQrvey = function (_number = 1) {
 
 			var _el = (!isMobile) ? '.spec_dropdown_create_survey_button.dash-btn-desk' : '.spec_dropdown_create_survey_button.dash-btn-mobile';
 			this.finds(_el).click();
-			this.waits(2000);
+			webpage.waits(2000);
 
 			this.finds('.spec-button-create-survey').click();
 
-			this.waits(2000);
+			webpage.waits(2000);
 			brw.get(brw.baseUrl);
 		}
 

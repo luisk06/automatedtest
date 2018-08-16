@@ -14,7 +14,7 @@ module.exports = function() {
 	});
 
 	When(/^the user adds all images possible to question since "([^"]*)"$/, function(typeOfInput, cb) {
-		maker.createsImageQuestion({'typeOfInput': typeOfInput}).then(cb);
+		maker.createsImageQuestion({ 'typeOfInput': typeOfInput }).then(cb);
 	});
 
 	When(/^the user adds all title possible to images$/, function(cb) {
