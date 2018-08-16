@@ -1,4 +1,4 @@
-@chartBuilderES @complete @analyzingES @chartBuilderESPieChart
+@chartBuilderES @complete @analyzingES @chartBuilderESPieChart @dataloader
 
 Feature:  Creating a Pie Chart on a Elasticsearch live connection.
 

@@ -1,4 +1,4 @@
-@chartBuilderES @complete @analyzingES @chartBuilderESBoxAndWhiskers
+@chartBuilderES @complete @analyzingES @chartBuilderESBoxAndWhiskers @dataloader
 
 Feature:  Creating a Box and Whiskers chart on a Elasticsearch live connection.
 

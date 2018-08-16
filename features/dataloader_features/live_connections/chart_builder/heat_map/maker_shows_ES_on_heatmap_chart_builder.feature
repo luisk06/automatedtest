@@ -1,4 +1,4 @@
-@chartBuilderES @complete @analyzingES @chartBuilderESHeatMap
+@chartBuilderES @complete @analyzingES @chartBuilderESHeatMap @dataloader
 
 Feature:  Creating a Heatmap Chart on a Elasticsearch live connection.
 

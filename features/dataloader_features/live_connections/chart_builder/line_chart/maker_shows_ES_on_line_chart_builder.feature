@@ -1,4 +1,4 @@
-@chartBuilderES @complete @analyzingES @chartBuilderESLineChart
+@chartBuilderES @complete @analyzingES @chartBuilderESLineChart @dataloader
 
 Feature:  Creating a Line Chart on a Elasticsearch live connection.
 

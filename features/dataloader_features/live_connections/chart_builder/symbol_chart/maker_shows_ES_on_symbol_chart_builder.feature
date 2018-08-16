@@ -1,4 +1,4 @@
-@chartBuilderES @complete @analyzingES @chartBuilderESSymbol
+@chartBuilderES @complete @analyzingES @chartBuilderESSymbol @dataloader
 
 Feature:  Creating a Symbol Chart on a Elasticsearch live connection.
 

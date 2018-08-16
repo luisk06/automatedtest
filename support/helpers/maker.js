@@ -399,13 +399,57 @@ Maker.prototype.createsListOptions = function (type = 'multichoice') {
 	return deferred.promise;
 };
 
+Maker.prototype.createsListOptionsByNum = function (type = 'multichoice', num) {
+	var deferred = protractor.promise.defer();
+	var self = this;
+	var idx = 0;
+
+	if(typeof num !== 'undefined'){
+		async.during(function (cb) {
+			if(idx <= num){
+				hasClass(self.findsAll('.icon.q-icon-add').last(), 'disabled').then(function (_val) {
+					logger.log('val', !_val);
+					idx++;
+					return cb(null, !_val);
+				});
+			} else return false;
+			
+		}, function (next) {
+			webpage.waits(400);
+			self.findsAll('.icon.q-icon-add').last().click().then(function () {
+				next();
+			});
+		});
+	}	
+
+	var el = null;
+	self.findsAll('.icon.q-icon-add').count().then(function (_count) {
+		async.times(_count, function (n, next) {
+			el = self.finds('.spec-' + type + '-option-' + (n + 1));
+			scrollIntoElement(el);
+			el.sendKeys('Option ' + (n + 1)).then(function () {
+				next();
+			});
+		}, function () {
+			deferred.fulfill();
+		});
+	});
+
+	return deferred.promise;
+};
+
 Maker.prototype.createsMultiChoiceTypeQuestion = function (params = {}) {
 	var self = this;
 
 	if (params.isQuiz) this.findsAll('.answer .right-answer input').first().click();
 
 	return this.createsTitleForQuestion().then(function () {
-		return self.createsListOptions('multichoice');
+		if(params.allOptions){
+			return self.createsListOptions('multichoice');
+		} else {
+			return self.createsListOptionsByNum('multichoice', params.num);
+
+	}
 	});
 };
 

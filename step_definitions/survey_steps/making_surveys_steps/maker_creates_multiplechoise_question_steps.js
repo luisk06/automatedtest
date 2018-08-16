@@ -31,12 +31,8 @@ module.exports = function() {
 	});
 
 	When(/^the user writes the question and answers$/, function(cb) {
-		maker.finds('.spec-edit-question-name-any').getAttribute('value').then(function(_val){
-			if (_val == null || _val === 'Untitled Question'){
-				maker.createsMultiChoiceTypeQuestion().then(function() {
-					cb();
-				});
-			} else cb();
+		maker.createsMultiChoiceTypeQuestion().then(function(){
+			cb();
 		});
 	});
 
