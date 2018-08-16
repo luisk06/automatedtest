@@ -90,7 +90,10 @@ module.exports = function() {
 	});
 
 	Then(/^the user should be able to login with it's new password$/, function(cb) {
-		navigate.goToProfile();
+		// navigate.goToProfile();
+		maker.finds('.spec-dropdown-menu-main').click();
+		maker.finds('.spec_profile_button').click();
+
 		profile.clickChangePassword();
 		profile.modifyPassword(newPass, oldPass);
 

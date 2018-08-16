@@ -31,7 +31,9 @@ module.exports = function() {
 	});
 
 	When(/^the user writes the question and answers$/, function(cb) {
-		maker.createsMultiChoiceTypeQuestion().then(cb);
+		maker.createsMultiChoiceTypeQuestion().then(function(){
+			cb();
+		});
 	});
 
 	When(/^clicks on the Other option field$/, function(cb) {

@@ -1,4 +1,4 @@
-@complete @nps @npsTaker
+@complete @nps @npsTaking
 
 Feature: Answering NPS
 

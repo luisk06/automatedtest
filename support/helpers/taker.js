@@ -722,4 +722,9 @@ Taker.prototype.touchsMultipleAnswers = function (numberOfAnswers) {
 	return deferred.promise;
 };
 
+Taker.prototype.writesOtherAnswer = function (_question) {
+	_question = (typeof _question !== 'undefined') ? _question : 'My own other answer';
+	return this.finds('.spec-other-write-awnswer').sendKeys(_question);
+};
+
 module.exports = new Taker();
