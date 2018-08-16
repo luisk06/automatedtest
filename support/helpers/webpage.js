@@ -61,7 +61,7 @@ Webpage.prototype.goToHome = function () {
 
 	this.deleteAllCookies();
 	brw.get('http://www.qrvey.com').then(function () {
-		_this.waits(500);
+		webpage.waits(500);
 		deferred.fulfill();
 	});
 
@@ -76,7 +76,7 @@ Webpage.prototype.openUrl = function (_custom, _sw) {
 
 	this.deleteAllCookies();
 	brw.get(_custom).then(function () {
-		_this.waits(2000);
+		webpage.waits(2000);
 		deferred.fulfill();
 	});
 
@@ -88,7 +88,7 @@ Webpage.prototype.navTo = function (_slug) {
 	var _this = this;
 
 	brw.get(brw.baseUrl + _slug).then(function () {
-		_this.waits(500);
+		webpage.waits(500);
 		deferred.fulfill();
 	});
 

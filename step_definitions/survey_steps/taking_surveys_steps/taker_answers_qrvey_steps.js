@@ -13,7 +13,7 @@ module.exports = function() {
 			return webpage.openUrl(_data.url);
 		}).then(function() {
 			skipSync(true);
-			taker.takesQrveyShared().then(cb);
+			taker.startQrvey().then(cb);
 		});
 	});
 
@@ -41,7 +41,7 @@ module.exports = function() {
 			return webpage.openUrl(_data.url);
 		}).then(function() {
 			skipSync(true);
-			return taker.takesQrveyShared();
+			return taker.startQrvey();
 		}).then(function() {
 			return taker.choicesAnswer('yes');
 		}).then(function() {

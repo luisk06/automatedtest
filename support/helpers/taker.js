@@ -18,7 +18,7 @@ Taker.prototype.answerAll = function (rightAnswers) {
 
 	async.during(function (cb) {
 
-		self.waits(400);
+		webpage.waits(400);
 
 		self.findsAll('.spec-user-response-ok').get(idx).isDisplayed().then(function (_isDisplayed) {
 			logger.warn('Displayed:', _isDisplayed);
@@ -188,7 +188,7 @@ Taker.prototype.answersLongTextQuestion = function () {
 };
 
 Taker.prototype.answersLookupQuestion = function (type) {
-	this.waits(500);
+	webpage.waits(500);
 	this.finds('.spec-taker-lookup-select').click();
 	return this.finds('.spec-taker-lookup-option-' +
 		rand.getNumber({
@@ -444,7 +444,7 @@ Taker.prototype.answersSlidebarQuestion = function () {
 };
 
 Taker.prototype.answersTextFieldQuestion = function () {
-	this.waits(1300);
+	webpage.waits(1300);
 
 	var _textArea = this.finds('.spec-nps-answers-textfield');
 	_textArea.sendKeys(
@@ -493,7 +493,7 @@ Taker.prototype.choicesRandomAnswer = function (_type, _idx) {
 	var _el = null;
 	var answer = null;
 
-	this.waits(700);
+	webpage.waits(700);
 
 	if (_type == 'SINGLE_CHOICE') {
 		answer = chance.integer({ min: 0, max: 4 });
@@ -571,7 +571,7 @@ Taker.prototype.choicesRightAnswer = function (_type, _idx) {
 	var deferred = protractor.promise.defer();
 	var _el = null;
 
-	this.waits(700);
+	webpage.waits(700);
 	// this.waitsFor('.question-number');
 
 	if (_type == 'SINGLE_CHOICE') {
@@ -640,14 +640,14 @@ Taker.prototype.finish = function (_confirm = true) {
 	if (_confirm === true) {
 		this.waitsFor('.spec-user-email-field-confirm');
 		this.finds('.spec-user-email-field-confirm').sendKeys(configer.get('username'));
-		this.waits('.spec-done-submit-take-qrvey');
+		webpage.waits('.spec-done-submit-take-qrvey');
 		this.finds('.spec-done-submit-take-qrvey').click().then(function () {
 			skipSync(false);
-			return self.waits(2000);
+			return webpage.waits(2000);
 		});
 	} else if (_confirm === false) {
 		this.finds('.spec-failed-submit-take-qrvey').click();
-		return this.waits(300);
+		return webpage.waits(300);
 	}
 };
 
@@ -681,7 +681,7 @@ Taker.prototype.movesSlidebar = function (_distance) {
 	var _el = this.findsAll('.rz-pointer').first();
 
 	brw.actions().mouseDown(_el).perform();
-	this.waits(2000);
+	webpage.waits(2000);
 	return brw.actions().mouseMove(_el, {
 		x: _distance,
 		y: 0
@@ -693,6 +693,10 @@ Taker.prototype.putCodeInAudiencePage = function (_code) {
 
 	logger.log('the code is:', _code);
 	return this.finds('.spec_audiencepage_enter_access_code_input').sendKeys(_code);
+};
+
+Taker.prototype.startQrvey = function () {
+	return this.finds('.spec-taker-qrvey').click();
 };
 
 Taker.prototype.touchStarts = function () {
@@ -708,7 +712,7 @@ Taker.prototype.touchsMultipleAnswers = function (numberOfAnswers) {
 
 	async.times(numberOfAnswers, function (n, next) {
 		self.finds('.spec-multiple-choise-option-multi-' + n).click();
-		self.waits(500).then(function () {
+		webpage.waits(500).then(function () {
 			next();
 		});
 	}, function () {
