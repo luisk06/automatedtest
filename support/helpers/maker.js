@@ -410,18 +410,18 @@ Maker.prototype.createsMultiChoiceTypeQuestion = function (params = {}) {
 };
 
 Maker.prototype.createsNps = function () {
-	this.finds('.spec_dashboard_create_new_button').click();
-	this.finds('.spec_dropdown_create_nps_button').click();
+	self.finds('.spec_dashboard_create_new_button').click();
+	self.finds('.spec_dropdown_create_nps_button').click();
 
-	return this.finds('.spec-button-create-nps').click();
+	return self.finds('.spec-button-create-nps').click();
 };
 
 Maker.prototype.createsNpsQuestion = function (_nameEnterprise = 'QRVEY', _textfieldText = 'Could you please explain your choice? Thank you!') {
-	this.finds('.qrvey-info-editor-container').click();
+	self.finds('.qrvey-info-editor-container').click();
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-	this.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
+	self.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-	this.finds('.spec-nps-title-textfield-question-input').clear().sendKeys(_textfieldText);
+	self.finds('.spec-nps-title-textfield-question-input').clear().sendKeys(_textfieldText);
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
 
 	return element(by.css('.spec-nps-title-question-input')).getAttribute('value').then(function (_html) {
