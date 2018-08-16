@@ -1,4 +1,4 @@
-@chartBuilderES @complete @analyzingES @chartBuilderESBarChart
+@chartBuilderES @complete @analyzingES @chartBuilderESBarChart @dataloader
 
 Feature:  Creating a Bar Chart on a Elasticsearch live connection.
 
