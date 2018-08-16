@@ -7,11 +7,8 @@ module.exports = function () {
 	Then = this.Then;
 
 	When(/^the user clicks the "([^"]*)" record button$/, function (button, cb) {
-		if (button == 'add') {
-			element(by.css('.spec_form_add')).click().then(cb);
-		} else if (button == 'delete') {
-			element(by.css('.spec_form_delete')).click().then(cb);
-		}
+		webpage.waits(500);
+		element(by.css('.spec_form_' + button)).click().then(cb);
 	});
 
 	When(/^the user check the first record to "([^"]*)"$/, function (button, cb) {
@@ -42,12 +39,11 @@ module.exports = function () {
 	Then(/^the table should have (\d+) records$/, function (rows, cb) {
 		webpage.waits(5000);
 
-		brw.enterRepl();
-
 		element.all(by.css('.dx-data-row')).count().then(function (num) {
 			console.log('num', num.toString());
 			console.log('rows', rows);
-			expect(num.toString()).to.be.equal(rows);
+			expect(num).to.be.above(0);
+			expect(num).to.be.equal(+rows);
 		}).then(cb);
 	});
 

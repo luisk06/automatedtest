@@ -402,7 +402,7 @@ Maker.prototype.createsListOptions = function (type = 'multichoice') {
 Maker.prototype.createsMultiChoiceTypeQuestion = function (params = {}) {
 	var self = this;
 
-	if (params.isQuiz) this.finds('.answer .right-answer input').first().click();
+	if (params.isQuiz) this.findsAll('.answer .right-answer input').first().click();
 
 	return this.createsTitleForQuestion().then(function () {
 		return self.createsListOptions('multichoice');
@@ -417,11 +417,11 @@ Maker.prototype.createsNps = function () {
 };
 
 Maker.prototype.createsNpsQuestion = function (_nameEnterprise = 'QRVEY', _textfieldText = 'Could you please explain your choice? Thank you!') {
-	self.finds('.qrvey-info-editor-container').click();
+	this.finds('.qrvey-info-editor-container').click();
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-	self.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
+	this.finds('.spec-nps-title-question-input').clear().sendKeys(_nameEnterprise);
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
-	self.finds('.spec-nps-title-textfield-question-input').clear().sendKeys(_textfieldText);
+	this.finds('.spec-nps-title-textfield-question-input').clear().sendKeys(_textfieldText);
 	element.all(by.css('.spec_edit_question_overlay')).get(0).click();
 
 	return element(by.css('.spec-nps-title-question-input')).getAttribute('value').then(function (_html) {
@@ -726,6 +726,28 @@ Maker.prototype.editsQuery = function () {
 	this.finds('.spec_create_modal_description_field').sendKeys('Please help us to better understand your needs by completing this qrvey. Thank you for your time.');
 	this.finds('.spec-button-create-survey').click();
 	return this.finds('.spec-save-new-qrvey').click();
+};
+
+Maker.prototype.fillExpressionQuestionAnswers = function (num, type) {
+	var deferred = protractor.promise.defer();
+	var word = null;
+	var _this = this;
+	var _el = (typeof type === 'undefined') ? '.spec_input_expression_word' : '.spec_input_' + type + '_expression_word';
+
+	async.times(num, function (n, next) {
+		word = rand.getWord();
+
+		logger.log('word', word);
+
+		_this.finds(_el).sendKeys(word + ' ');
+		brw.actions().sendKeys(protractor.Key.ENTER).perform();
+
+		next();
+	}, function () {
+		deferred.fulfill();
+	});
+
+	return deferred.promise;
 };
 
 Maker.prototype.fillExpressionQuestionFromId = function (number, title) {
@@ -1129,6 +1151,12 @@ Maker.prototype.selectQuestionFromDropdown = function (typeOfQuestion) {
 			break;
 		case 'slidebar':
 			_text = 'Slide Bar';
+			break;
+		case 'phone_number':
+			_text = 'Phone Number';
+			break;
+		case 'us_address':
+			_text = 'US Address';
 			break;
 		default:
 			throw new Error('The type of question is undefined when the user try to select ' + typeOfQuestion + ' in the dropdown menu');
