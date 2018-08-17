@@ -413,14 +413,14 @@ Maker.prototype.createsListOptionsByNum = function (type = 'multichoice', num) {
 					return cb(null, !_val);
 				});
 			} else return false;
-			
+
 		}, function (next) {
 			webpage.waits(400);
 			self.findsAll('.icon.q-icon-add').last().click().then(function () {
 				next();
 			});
 		});
-	}	
+	}
 
 	var el = null;
 	self.findsAll('.icon.q-icon-add').count().then(function (_count) {
@@ -713,7 +713,7 @@ Maker.prototype.createsTitleForQuestion = function (text) {
 };
 
 Maker.prototype.createsWebform = function (obj) {
-	if (!_.get(obj, 'title')) obj.title = rand.getParagraph(10);
+	if (!_.get(obj, 'title')) obj.title = rand.getParagraph(3);
 	if (!_.get(obj, 'description')) obj.description = rand.getParagraph(30);
 	if (!_.get(obj, 'type')) obj.type = 'survey';
 	if (obj.type == 'form') obj.type = 'forms';
