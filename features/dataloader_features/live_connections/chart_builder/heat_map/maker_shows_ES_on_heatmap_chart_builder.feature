@@ -6,7 +6,7 @@ Feature:  Creating a Heatmap Chart on a Elasticsearch live connection.
 	I want to visualize differents types data from my live connection on a customized heatmap chart
 	In order to clarify relations between them
 
-	Background: 
+	Background:
 		Given the user has an app
 			And that there is a ES connection
 			And the user has login
@@ -18,7 +18,7 @@ Feature:  Creating a Heatmap Chart on a Elasticsearch live connection.
 		When the user clicks on add chart
 			And the user selects "heatmap_chart" chart
 			And the user enter "Chart heatmap test" as bar chart name
-			And the user select8s "<categoryQuestionName>" from "category" dropdown
+			And the user selects "<categoryQuestionName>" from "category" dropdown
 			And the user selects "<valueQuestionName>" from "value" dropdown
 			And the user selects "<aggregateType>" from "aggregate" dropdown
 			And the user move to visualization tab
@@ -40,4 +40,3 @@ Feature:  Creating a Heatmap Chart on a Elasticsearch live connection.
 			| AirlineID            		| ArrDelay         		| Maximum     	|
 			| AirlineID            		| ArrDelay         		| Sum	     	|
 
-			
