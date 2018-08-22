@@ -157,7 +157,7 @@ var ApplicationServices = function() {
 		this.create(name, description).then(function(data){
 			return defer.fulfill(data);
 		}).catch(function(){
-			return defer.rejected();
+			return defer.reject();
 		});
 
 		return defer.promise;

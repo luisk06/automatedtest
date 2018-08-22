@@ -41,7 +41,7 @@ module.exports = function() {
 	// }
 
 	registerHandler('AfterScenario', function(event, cb) {
-		logger.log('email used in the scenario: ' + user.getSetting('validUser'));
+		logger.log('email used in the scenario: ' + configer.get('validUser'));
 		logger.log('finished running scenario ' + (nameOfScenarios.length + 1));
 		logger.log('-----------------------------------------------');
 		skipSync(false);
@@ -53,16 +53,14 @@ module.exports = function() {
 		hasAnswers = true;
 		nameOfScenarios.push('\'scenario' + (nameOfScenarios.length + 1) + '\': \'' + event.getName() + '\'');
 
-		// us.isLogged().then(function() {
 		var newUsername = 'testingqrvey+' + randomId() + '@gmail.com';
 		configer.set('username', newUsername);
 
 		us.getting({ 'automation': false }).then(function (userInfo) {
 			logger.info('userInfo', userInfo);
 
-			user.setSetting('validUser', newUsername);
+			configer.set('validUser', newUsername);
 		}).then(cb);
-		// });
 	});
 
 	registerHandler('AfterFeatures', function(event, cb) {
@@ -70,10 +68,9 @@ module.exports = function() {
 		logger.debug('---------------+++++++++++++++++---------------');
 		skipSync(false);
 
-		fs.writeFile(_dir, JSON.parse(JSON.stringify(nameOfScenarios)), function (err) {
-			if (err) return console.log(err);
-			// console.log('The file was saved!');
-		});
+		// fs.writeFile(_dir, JSON.parse(JSON.stringify(nameOfScenarios)), function (err) {
+		// 	if (err) return console.log(err);
+		// });
 
 		cb();
 	});

@@ -48,7 +48,7 @@ module.exports = function () {
 			case 'multiple_choice':
 			case 'image':
 			case 'yes-no':
-				user.waitForElement(element(repeater));
+				webpage.waitForElement(element(repeater));
 				element.all(repeater).then(function (els) {
 					els.forEach(function (ele, i, a) {
 						a[i].element(by.css('p')).getText().then(function (_key) {
@@ -65,7 +65,7 @@ module.exports = function () {
 				break;
 			case 'expression':
 			case 'multiple_choice_multiple_selection':
-				user.waitForElement(element(repeater));
+				webpage.waitForElement(element(repeater));
 				sum = 0;
 				arr = [];
 				element.all(repeater).each(function (filter) {

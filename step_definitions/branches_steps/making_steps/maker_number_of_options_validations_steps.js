@@ -45,7 +45,7 @@ module.exports = function() {
 		webpage.waits(1800).then(function(){
 			dropdown.click().then(function(){
 				var option = dropdown.element(by.css('.spec-branch-answer-option-' + (_opt)));
-				user.waitForElement(option);
+				webpage.waitForElement(option);
 				option.click();
 			}).then(cb);
 		});
@@ -87,7 +87,7 @@ module.exports = function() {
 					var dropdown = branch.all(by.css('.spec-branch-dropdown-answers')).get(i);
 					dropdown.click().then(function(){
 						var _opt = dropdown.element(by.css('.spec-branch-answer-option-'+i));
-						user.waitForElement(_opt);
+						webpage.waitForElement(_opt);
 						scrollToBottom();
 						webpage.waits(1000);
 						_opt.click().then(function(){

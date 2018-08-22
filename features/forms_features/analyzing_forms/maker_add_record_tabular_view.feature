@@ -28,7 +28,7 @@ Feature: Add records on Forms tabular view
 			And the user take the qrvey on "analyzeForm"
 			And the user clicks the "add" button to confirm
 		Then the modal should not be hidden
-	@thisx
+
 	Scenario: Press cancel button on add record modal
 		Given that there is a webform app with a "forms" with a "multiple choice" question that has 2 answers
 			And the user is logged in

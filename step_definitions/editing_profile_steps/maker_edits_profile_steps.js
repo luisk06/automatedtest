@@ -84,8 +84,8 @@ module.exports = function() {
 	Then(/^the new password should be changed$/, function(cb) {
 		webpage.deleteAllCookies();
 		webpage.goTo('/');
-		console.log('userEmail', user.getSetting('validUser'));
-		user_login.login(user.getSetting('validUser'), newPass);
+		console.log('userEmail', configer.get('validUser'));
+		user_login.login(configer.get('validUser'), newPass);
 		expect(webpage.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
 	});
 
@@ -99,7 +99,7 @@ module.exports = function() {
 
 		webpage.deleteAllCookies();
 		webpage.goTo('/');
-		user_login.login(user.getSetting('validUser'), oldPass);
+		user_login.login(configer.get('validUser'), oldPass);
 
 		expect(webpage.isDisplayed('.spec-dropdown-menu-main')).to.eventually.be.true.and.notify(cb);
 	});

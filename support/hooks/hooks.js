@@ -43,7 +43,9 @@ module.exports = function JsonOutputHook() {
 					});
 
 					if (typeof process.env.JOB_NAME !== 'undefined'){
+
 						console.log('customName:', process.env.JOB_NAME.toLowerCase());
+
 						fs.writeFile(outputDirGeneral + '/' + process.env.JOB_NAME.toLowerCase() + '.json', json, function(err) {
 							if(err) throw new Error(err);
 						});
