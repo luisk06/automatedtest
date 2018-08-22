@@ -127,6 +127,9 @@ module.exports = {
         "scrollIntoElement": true,
         "findAllQuestions": true,
         "findDataModel": true,
-        "abbrState": true
+        "abbrState": true,
+        "maker": true,
+        "taker":true,
+        "webpage":true
     }
 };
