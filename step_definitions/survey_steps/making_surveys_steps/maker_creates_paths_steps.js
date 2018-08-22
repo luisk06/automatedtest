@@ -15,7 +15,7 @@ module.exports = function() {
 	});
 
 	// When(/^activates the Paths option$/, function(cb) {
-	// 	user.activatesPath().then(cb);
+	// 	maker.activatesPath().then(cb);
 	// });
 
 	Then(/^the user will see the paths they created below the question as tabs$/, function(cb) {

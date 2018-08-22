@@ -3,9 +3,8 @@
 Feature:  Anwering a jump to question - jump to end branches
 
 	As as user
-	I want to be redirected to a question or the end of the survey
-	when I'm answering a survey with branches
-	In order to follow the flow designed by the user.
+	I want to be redirected to a question or the end of the survey when I'm answering a survey with branches
+	In order to follow the flow designed by the maker.
 
 	Background:
 		Given the user has an app called "Taker Branches jumps"

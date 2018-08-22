@@ -76,6 +76,6 @@ module.exports = function() {
 	});
 
 	Then(/^the Oops No qrveys to match your criteria message should be displayed$/, function(cb) {
-		expect(user.getText('.spec-no-matches-result-search')).to.eventually.be.equal('Oops No qrveys to match your criteria').and.notify(cb);
+		expect(maker.getText('.spec-no-matches-result-search')).to.eventually.be.equal('Oops No qrveys to match your criteria').and.notify(cb);
 	});
 };

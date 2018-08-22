@@ -775,7 +775,7 @@ Maker.prototype.editsQuery = function () {
 Maker.prototype.fillExpressionQuestionAnswers = function (num, type) {
 	var deferred = protractor.promise.defer();
 	var word = null;
-	var _this = this;
+	var self = this;
 	var _el = (typeof type === 'undefined') ? '.spec_input_expression_word' : '.spec_input_' + type + '_expression_word';
 
 	async.times(num, function (n, next) {
@@ -783,7 +783,7 @@ Maker.prototype.fillExpressionQuestionAnswers = function (num, type) {
 
 		logger.log('word', word);
 
-		_this.finds(_el).sendKeys(word + ' ');
+		self.finds(_el).sendKeys(word + ' ');
 		brw.actions().sendKeys(protractor.Key.ENTER).perform();
 
 		next();

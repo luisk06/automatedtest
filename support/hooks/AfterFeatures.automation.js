@@ -41,7 +41,7 @@ module.exports = function() {
 	// }
 
 	registerHandler('AfterScenario', function(event, cb) {
-		logger.log('email used in the scenario: ' + user.getSetting('validUser'));
+		logger.log('email used in the scenario: ' + configer.get('validUser'));
 		logger.log('finished running scenario ' + (nameOfScenarios.length + 1));
 		logger.log('-----------------------------------------------');
 		skipSync(false);
@@ -60,7 +60,7 @@ module.exports = function() {
 		us.getting({ 'automation': true }).then(function (userInfo) {
 			// console.log('userInfo', userInfo);
 
-			user.setSetting('validUser', newUsername);
+			configer.get('validUser', newUsername);
 		}).then(cb);
 		// });
 	});

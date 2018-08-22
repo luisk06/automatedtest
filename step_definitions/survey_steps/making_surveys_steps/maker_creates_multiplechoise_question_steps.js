@@ -53,7 +53,7 @@ module.exports = function() {
 		var el = maker.findsAll('.spec-edit-question-name-any').last();
 
 		el.clear().sendKeys(_title);
-		user.wait(200);
+		webpage.waits(200);
 		el.getAttribute('value').then(function(_text){
 			expect(_text.length).to.be.equal(160);
 		}).then(cb);

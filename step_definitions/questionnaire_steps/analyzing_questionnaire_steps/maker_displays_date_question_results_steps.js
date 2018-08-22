@@ -31,10 +31,8 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on sort column button$/, function(cb) {
-
-
 		var sort = element.all(by.css('.dx-sort-none')).last();
-		user.waitForElement(sort);
+		webpage.waitForElement(sort);
 		sort.click().then(cb);
 	});
 

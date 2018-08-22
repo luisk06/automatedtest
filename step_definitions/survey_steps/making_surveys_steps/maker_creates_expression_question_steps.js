@@ -16,7 +16,7 @@ module.exports = function() {
 			max: 20
 		});
 
-		user.fillExpressionQuestionAnswers(num).then(cb);
+		maker.fillExpressionQuestionAnswers(num).then(cb);
 	});
 
 	When(/^that the user marks the active categories checkbox$/, function(cb) {
@@ -34,7 +34,7 @@ module.exports = function() {
 			max: 10
 		});
 
-		user.fillExpressionQuestionAnswers(num, 'positive').then(cb);
+		maker.fillExpressionQuestionAnswers(num, 'positive').then(cb);
 	});
 
 	When(/^writes the possible negative answers$/, function(cb) {
@@ -43,7 +43,7 @@ module.exports = function() {
 			max: 10
 		});
 
-		user.fillExpressionQuestionAnswers(num, 'negative').then(cb);
+		maker.fillExpressionQuestionAnswers(num, 'negative').then(cb);
 	});
 
 	When(/^the user starts writing some possible answer$/, function(cb) {
