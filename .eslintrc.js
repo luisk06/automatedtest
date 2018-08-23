@@ -102,7 +102,7 @@ module.exports = {
         "brw": true,
         "env": true,
         "user": true,
-        "do": true,
+        "dos": true,
         "chai": true,
         "server": true,
         "protractor": true,
