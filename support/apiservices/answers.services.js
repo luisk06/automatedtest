@@ -1463,9 +1463,10 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function(cb){
+				return cb(null, j >= 0);
+			}, function(next) {
 
-				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
 				answerModel.answers[0].data.push(rand.getEmail());
 
