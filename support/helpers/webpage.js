@@ -175,6 +175,14 @@ Webpage.prototype.waitsForElement = function (_el) {
 	);
 };
 
+Webpage.prototype.waitsForSelected = function (_el) {
+	return brw.wait(
+		EC.elementToBeSelected(
+			element.all(by.css(_el)).get(0)
+		)
+	, 10000);
+};
+
 Webpage.prototype.waitsForPresence = function (_el) {
 	return brw.wait(
 		EC.presenceOf(

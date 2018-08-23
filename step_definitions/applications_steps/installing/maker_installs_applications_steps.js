@@ -34,12 +34,12 @@ module.exports = function () {
 	});
 
 	Then(/^the user should not have applications shared$/, function (cb) {
-		var el = '.my-apps';
+		var el = '.tab-container .tab:nth-child(2)';
 
-		webpage.isDisplayed(element(by.css(el))).then(function (_isdisplayed) {
-			expect(_isdisplayed).to.be.true;
+		webpage.waitsForSelected(el).then(function (_isclickable) {
+			expect(_isclickable).to.be.false;
 		}, function () {
-			cb('Error, the element "' + el + '" is not displayed');
+			cb('Error, the element "' + el + '" is not clickable');
 		}).then(cb);
 	});
 
