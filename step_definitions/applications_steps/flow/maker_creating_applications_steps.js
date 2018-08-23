@@ -7,13 +7,14 @@ module.exports = function() {
 	Then = this.Then;
 
 	When(/^the user clicks on the "([^"]*)" option in apps$/, function(option, cb) {
-		var el = '.spec-new-app-select-module-'+option;
+		var el = '.spec-new-app-select-module-' + option;
 
 		webpage.waitsFor(el);
 		maker.finds(el).click().then(cb);
 	});
 
 	When(/^the user clicks on the new app$/, function(cb) {
+		maker.finds('.close-modal-choose').click();
 		maker.findsAll('.my-apps .module:not(.create-app)').get(0).click().then(cb);
 	});
 
