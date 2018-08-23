@@ -82,6 +82,7 @@ var AnswerService = function() {
 		validField(typeOfQrvey, 'type Of Qrvey', 'createAnswersForDateQuestion');
 
 		var i = 0,
+			j = num,
 			options = {},
 			answersToGo = {},
 			answersToGoCounter = 0,
@@ -105,7 +106,9 @@ var AnswerService = function() {
 			if (answersToGo.length === 0) {
 				return defer.fulfill();
 			} else {
-				async.times(num, function(n, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(n, next) {
 					answerModel.qrveyID = qrveyID;
 					answerModel.qstring.q = qstring;
 
@@ -115,6 +118,8 @@ var AnswerService = function() {
 						answerModel.answers[0].data_ansid = Array();
 						answerModel.profile.email = rand.getEmail();
 					}
+
+					i++;
 
 					options = {
 						url: '/api/qrveyanswers/' + qstring,
@@ -129,6 +134,8 @@ var AnswerService = function() {
 					rs.sendInfo(options, function(_resp) {
 						logger.info('answer:', _resp);
 						logger.info('counter:', answersToGoCounter);
+
+						j--;
 
 						next();
 					});
@@ -162,7 +169,9 @@ var AnswerService = function() {
 			answerModel.qstring.q = qstring;
 			answerModel.answers[0].id = qrveyanswerid;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
 
@@ -228,7 +237,9 @@ var AnswerService = function() {
 			answerModel.qstring.q = qstring;
 			answerModel.answers[0].id = qrveyanswerid;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				answerModel.answers[0].data = [];
 				answerModel.answers[0].data_ansid = [];
 
@@ -299,7 +310,9 @@ var AnswerService = function() {
 			answerModel.qstring.q = qstring;
 			answerModel.answers[0].id = qrveyanswerid;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				var isPositve = Math.random() >= 0.5;
 				logger.info('is positive', isPositve);
 
@@ -373,7 +386,9 @@ var AnswerService = function() {
 				qstring = findHashInUrl(_data.url),
 				qrveyanswerid = configer.get('QrveyAnswerId');
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				answerModel = findAnswers('yes_no');
 				answerModel.qrveyID = qrveyID;
 				answerModel.qstring.q = qstring;
@@ -436,7 +451,9 @@ var AnswerService = function() {
 				qstring = findHashInUrl(_data.url),
 				qrveyanswerid = configer.get('QrveyAnswerId');
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 				answerModel = findAnswers('slidebar');
 
 				answerModel.qrveyID = qrveyID;
@@ -501,7 +518,9 @@ var AnswerService = function() {
 				qstring = findHashInUrl(_data.url),
 				qrveyanswerid = configer.get('QrveyAnswerId');
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				answerModel = findAnswers('multiple_choice');
 
 				answerModel.qrveyID = qrveyID;
@@ -564,7 +583,9 @@ var AnswerService = function() {
 				qstring = findHashInUrl(_data.url),
 				qrveyanswerid = configer.get('QrveyAnswerId');
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				answerModel = findAnswers('image');
 
 				answerModel.qrveyID = qrveyID;
@@ -625,7 +646,9 @@ var AnswerService = function() {
 			qrveyanswerid = configer.get('QrveyAnswerId'),
 			possibleAnswers = ['Jon Snow', 'Tyrion Lannister', 'Daenerys Targaryen', 'Arya Stark', 'Ghost'];
 
-		async.times(num, function(item, next) {
+		dos.cycle(function (cb) {
+			return cb(null, j >= 0);
+		}, function(item, next) {
 			answerModel = findAnswers('multiple_choice');
 
 			answerModel.qrveyID = qrveyID;
@@ -693,7 +716,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				answerModel.answers[0].data[0] = possibleAnswers[num % (i + 1) % possibleAnswers.length];
 
 				i++;
@@ -751,7 +776,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, k >= 0);
+			}, function(next) {
 
 				j = 0;
 
@@ -824,7 +851,9 @@ var AnswerService = function() {
 				answerModel.profile.email = rand.getEmail();
 			}
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 				answerModel.answers[0].data = [];
 				answerModel.answers[0].data.push(possibleAnswers[(num % (i + 1)) % possibleAnswers.length]);
 				i++;
@@ -863,6 +892,7 @@ var AnswerService = function() {
 		var defer = protractor.promise.defer(),
 			answerModel = findAnswers('nps_with_textfield'),
 			i = 0,
+			j = num,
 			idx = 1,
 			answersToGo = {},
 			answersToGoCounter = 0,
@@ -895,8 +925,10 @@ var AnswerService = function() {
 			if (answersToGo.length === 0) {
 				return defer.fulfill();
 			} else {
-				async.times(num, function(n, next) {
-					// answersToGo.forEach(function(key) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(next) {
+
 					if (num == 8) {
 						idx = 0;
 					} else if (num == 13) {
@@ -908,10 +940,10 @@ var AnswerService = function() {
 					answerModel.qrveyID = npsID;
 					answerModel.qstring.q = qstring;
 
-					_data1 = [vecNum[idx][n]];
+					_data1 = [vecNum[idx][i]];
 
 					logger.log('textArray', textArray);
-					logger.log('item', n);
+					logger.log('item', i);
 					logger.log('textArray[item][0]', textArray[n][0]);
 
 					answerModel.answers[0].data = _data1;
@@ -933,6 +965,8 @@ var AnswerService = function() {
 
 					logger.log('Answer Model of life', answerModel);
 
+					i++;
+
 					options = {
 						url: '/api/qrveyanswers/' + qstring,
 						method: 'POST',
@@ -946,6 +980,8 @@ var AnswerService = function() {
 					rs.sendInfo(options, function(_resp) {
 						logger.info('answer:', _resp);
 						logger.info('counter:', answersToGoCounter);
+
+						j--;
 
 						next();
 					});
@@ -991,7 +1027,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				stAns = '';
 				answerModel.answers[0].data = [];
@@ -1082,7 +1120,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				stAns = '';
 				answerModel.answers[0].data = [];
@@ -1152,7 +1192,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				stAns = '';
 				answerModel.answers[0].data = [];
@@ -1161,7 +1203,6 @@ var AnswerService = function() {
 					answerModel.answers[0].data_ansid = [answerModel.answers[0].id];
 					answerModel.profile.email = rand.getEmail();
 				}
-
 
 				var charNum = rand.getNumber({ float: false, min: 5, max: 15 });
 				logger.info('charNum:', charNum);
@@ -1210,15 +1251,15 @@ var AnswerService = function() {
 			var qrveyID = configer.get('QrveyId'),
 				qstring = findHashInUrl(_data.url);
 
-			// console.log('_data.questionsVersion', _data);
-
 			answerModel.answers[0].id = configer.get('QrveyAnswerId');
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
 			var dataImage = getImage();
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 				// Start upload image
 				options = {
 					url: '/api/styles/upload/file?type=image/png&lookup=' + qstring,
@@ -1302,9 +1343,10 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 
-				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
 
 				var number = rand.getNumber({
@@ -1364,7 +1406,9 @@ var AnswerService = function() {
 			answerModel.qstring.q = qstring;
 			var uniqueEmailDefined = false;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				stAns = '';
 				if (answerModel.profile){
@@ -1517,7 +1561,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function(cb){
+				return cb(null, j >= 0);
+			}, function(item, next) {
 
 				answerModel.answers[0].address = [];
 
@@ -1578,7 +1624,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function(cb){
+				return cb(null, j >= 0);
+			}, function(item, next) {
 
 				answerModel.answers[0].address = [];
 
@@ -1640,7 +1688,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 
 				answerModel.answers[0].name = [];
 				answerModel.answers[0].name = {
@@ -1697,7 +1747,9 @@ var AnswerService = function() {
 			answerModel.qrveyID = qrveyID;
 			answerModel.qstring.q = qstring;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 
 				answerModel.answers[0].data = [];
 				answerModel.answers[0].data.push('+' + rand.getPhone('').replace(/[()]/g, ''));
@@ -1753,7 +1805,9 @@ var AnswerService = function() {
 			answerModel.qstring.q = qstring;
 			answerModel.answers[0].id = qrveyanswerid;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 				if (typeOfBranch == 'jump_to_mc' || typeOfBranch == 'jump_to_yesno' || typeOfBranch == 'jump_to_image') {
 					answerModel.answers[1].data[0] = rand.getNumber({
 						float: false,
@@ -1820,7 +1874,9 @@ var AnswerService = function() {
 			answerModel.answers[2].id = qrveyanswerid3;
 			answerModel.answers[3].id = qrveyanswerid4;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 
 				answerModel.answers[0].data = [];
 				answerModel.answers[1].data = [];
@@ -1918,7 +1974,9 @@ var AnswerService = function() {
 				answerModel.answers[2].id = qrveyanswerid3;
 				answerModel.answers[3].id = qrveyanswerid4;
 
-				async.times(num, function(item, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(item, next) {
 
 					if (typeOfQrvey == 'quiz') {
 						answerModel.profile.email = rand.getEmail();
@@ -1986,7 +2044,9 @@ var AnswerService = function() {
 				answerModel.answers[4].id = qrveyanswerid5;
 				answerModel.answers[5].id = qrveyanswerid6;
 
-				async.times(num, function(item, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(next) {
 
 					answerModel.answers[0].data = [];
 					answerModel.answers[1].data = [];
@@ -2087,7 +2147,9 @@ var AnswerService = function() {
 			answerModel.answers[4].id = qrveyanswerid5;
 			answerModel.answers[5].id = qrveyanswerid6;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function (cb) {
+				return cb(null, j >= 0);
+			}, function(item, next) {
 
 				answerModel.answers[0].data = [];
 				answerModel.answers[1].data = [];
@@ -2186,7 +2248,9 @@ var AnswerService = function() {
 				answerModel.answers[2].id = qrveyanswerid3;
 				answerModel.answers[3].id = qrveyanswerid4;
 
-				async.times(num, function(item, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(item, next) {
 
 					if (typeOfQrvey == 'quiz') {
 						answerModel.profile.email = rand.getEmail();
@@ -2251,7 +2315,9 @@ var AnswerService = function() {
 				answerModel.answers[4].id = qrveyanswerid5;
 				answerModel.answers[5].id = qrveyanswerid6;
 
-				async.times(num, function(item, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(item, next) {
 
 					answerModel.answers[0].data = [];
 					answerModel.answers[1].data = [];
@@ -2351,7 +2417,9 @@ var AnswerService = function() {
 				answerModel.answers[2].id = qrveyanswerid3;
 				answerModel.answers[3].id = qrveyanswerid4;
 
-				async.times(num, function(item, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(item, next) {
 
 					if (typeOfQrvey == 'quiz') {
 						answerModel.profile.email = rand.getEmail();
@@ -2419,7 +2487,9 @@ var AnswerService = function() {
 				answerModel.answers[4].id = qrveyanswerid5;
 				answerModel.answers[5].id = qrveyanswerid6;
 
-				async.times(num, function(item, next) {
+				dos.cycle(function (cb) {
+					return cb(null, j >= 0);
+				}, function(item, next) {
 
 					answerModel.answers[0].data = [];
 					answerModel.answers[1].data = [];

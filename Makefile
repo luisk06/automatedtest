@@ -10,6 +10,9 @@ postinstall:
 # parameters: accessing, editing, incontext, nps, polls, qrvey
 # Exampple: make er-module arg=editing
 
+check:
+	clear && ./node_modules/protractor/bin/protractor runners/cucumber_conf.remote.js --cucumberOpts.tags="@accessing" --cucumberOpts.tags="~@widgets" --cucumberOpts.tags="~@iframes" --cucumberOpts.tags="~@todo" --cucumberOpts.tags="~@noRunOutLocal" --dry-run="true" --disableChecks
+
 er-module:
 	clear && ./node_modules/protractor/bin/protractor runners/cucumber_conf.js --cucumberOpts.tags="@$(arg)" --cucumberOpts.tags="~@todo" --cucumberOpts.tags="~@noRunLocal" --disableChecks
 
