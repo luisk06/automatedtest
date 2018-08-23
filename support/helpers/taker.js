@@ -183,7 +183,7 @@ Taker.prototype.answersImageQuestion = function (num = 1) { /* To review */
 };
 
 Taker.prototype.answersLongTextQuestion = function () {
-	var text = rand.getText(500);
+	var text = rand.getText(10000);
 	return this.finds('.spec-taker-long-text-answers').sendKeys(text);
 };
 
