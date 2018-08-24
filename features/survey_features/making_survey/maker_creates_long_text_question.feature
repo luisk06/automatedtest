@@ -24,7 +24,7 @@ Feature: The user creates a long text question in survey
 			And the webform should be activated correctly
 
 	Scenario: The user creates long text question with less than 160 chars
-		When the user writes the long-text question with less than 160 chars
+		When the user writes the long text question with less than 160 chars
 			And the user clicks outside the section box
 		Then the long-text question should be saved with the exact string the user wrote
 			And the question is saved

@@ -3,12 +3,18 @@ default: serve
 gherkinlint:
 	clear && ./node_modules/.bin/gherkin-lint .
 
+removeNodeModules:
+	@sudo rm -R node_modules
+
 postinstall:
-	clear && ./node_modules/.bin/webdriver-manager update --chrome --versions.chrome 2.36
+	clear && ./node_modules/.bin/webdriver-manager update --chrome --versions.chrome 2.40
 
 # Easy Run
 # parameters: accessing, editing, incontext, nps, polls, qrvey
 # Exampple: make er-module arg=editing
+
+check:
+	clear && ./node_modules/protractor/bin/protractor runners/cucumber_conf.remote.js --cucumberOpts.tags="@accessing" --cucumberOpts.tags="~@widgets" --cucumberOpts.tags="~@iframes" --cucumberOpts.tags="~@todo" --cucumberOpts.tags="~@noRunOutLocal" --dry-run="true" --disableChecks
 
 er-module:
 	clear && ./node_modules/protractor/bin/protractor runners/cucumber_conf.js --cucumberOpts.tags="@$(arg)" --cucumberOpts.tags="~@todo" --cucumberOpts.tags="~@noRunLocal" --disableChecks

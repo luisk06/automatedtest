@@ -6,6 +6,8 @@ Feature: User forgot password
 	I want to get a new password
 	In order to log in succesfully
 
+	@luism
+
 	Scenario: User not registred
 		Given the user never registred
 		When the user hits the forgot password button

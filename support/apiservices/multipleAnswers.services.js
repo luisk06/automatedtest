@@ -90,7 +90,9 @@ var MultipleAnswersService = function() {
 			answerModel.answers[15].id = qrveyanswerid16;
 			answerModel.answers[16].id = qrveyanswerid17;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function(cb){
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
@@ -263,7 +265,9 @@ var MultipleAnswersService = function() {
 			answerModel.answers[9].id = qrveyanswerid10;
 			answerModel.answers[10].id = qrveyanswerid11;
 
-			async.times(num, function(item, next) {
+			dos.cycle(function(cb){
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
@@ -398,7 +402,9 @@ var MultipleAnswersService = function() {
 			answerModel.answers[3].id = qrveyanswerid4;
 			answerModel.answers[4].id = qrveyanswerid5;
 
-			async.times(num, function(n, next) {
+			dos.cycle(function(cb){
+				return cb(null, j >= 0);
+			}, function(next) {
 
 				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
