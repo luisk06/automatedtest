@@ -1,5 +1,6 @@
 # Documentation about Automated Tests Develop
 
+![automated tests logo](docs/images/automated_logo.png)
 
 ## What is the purpose of creating an automated test?
 
@@ -32,14 +33,24 @@ You'll need to install the next items list on your computer in the same order:
 
 ## What versions should I have installed of each one?
 
-- NodeJs: 6.9.1
-- NPM: ^3.10.8
-- Git: ^2.15.2
+- NodeJs: **6.9.1**
+- NPM: **^3.10.8**
+- Git: **^2.15.2**
+- Protractor: **5.4.0** (Will be installed with the npm dependencies)
+- Chrome Driver: **2.40** (Will be installed with the npm dependencies)
+- Chrome: **latest** (Should be installed manually)
+- VScode: **latest**
+- Xcode: **latest**
 
 
-## How I should install the packages needed to run the project?
+## What I should do if currently I have installed other Nodejs version?
 
-Actually it's easier since just need to run this command on the root folder: `` npm install ``, this command allow you install all the packages needed to run the automated tests, where bascially you going to have available this items list:
+Currently you should has installed N, this package will allow you change the nodejs version whenever you want it, just need to run this command: `sudo n 6.9.1`, if is the first time, the version package will be downloaded but if you have installed before just will changed it.
+
+
+## How I should install the npm packages needed to run the project?
+
+Actually it's easier since just need to run this command on the root folder: ` npm install `, this command allow you install all the packages needed to run the automated tests, where bascially you going to have available this items list:
 
 - [async](https://www.npmjs.com/package/async)
 - [chai](https://www.npmjs.com/package/chai)
@@ -87,10 +98,10 @@ In the repository you'll found some folders called features, reports, runners, s
 
 | File Name        | Description                                                 |
 |------------------|-------------------------------------------------------------|
-| .eslintrc.js     | Each feature of the application that were builded           |
-| .gitignore       | at make up the reports like images, html, xml and more      |
-| Makefile         | Specific files that allow us to run the automated tests     |
-| package.json     | The scripts that having the protractor commands             |
+| .eslintrc.js     | Mainly the global variables are defined here                |
+| .gitignore       | All files or folder that are skipped in the repository      |
+| Makefile         | The command file to run the automated tests                 |
+| package.json     | The npm file required to install all dependencies in the project |
 
 
 ## What I should to know before to run the automated tests?
@@ -175,3 +186,7 @@ http://ramonvictor.github.io/protractor/slides/#/53
 
 ##### Debugging
 https://github.com/angular/protractor/blob/master/docs/debugging.md
+
+
+![poweredby](/docs/images/powered_by.png)
+![qrvey_logo](/docs/images/logo_exp.png)

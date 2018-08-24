@@ -191,6 +191,13 @@ Webpage.prototype.waitsForPresence = function (_el) {
 	, 10000);
 };
 
+Webpage.prototype.waitForElement = function (_el) {
+	var time = (rootServer !== 'browserstack') ? 20000 : 30000;
+
+	var isDisplayed = EC.visibilityOf(_el);
+	return brw.wait(isDisplayed, time);
+};
+
 Webpage.prototype.waitsElementPresence = function (_el) {
 	return brw.wait(
 		EC.presenceOf(_el)

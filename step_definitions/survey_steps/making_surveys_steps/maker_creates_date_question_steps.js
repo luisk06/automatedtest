@@ -12,9 +12,7 @@ module.exports = function() {
 
 	Given(/^the user has login$/, function(cb) {
 		webpage.waits(2000);
-		maker.toDoLogin().then(function(){
-			cb(); // Should be thus
-		});
+		maker.toDoLogin().then(cb);
 	});
 
 	Given(/^the user created the "([^"]*)"$/, function(type, cb) {
