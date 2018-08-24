@@ -34,15 +34,15 @@ module.exports = function() {
 	});
 
 	When(/^the user clicks on the (\d+) filter as bar in a "([^"]*)" question$/, function(numberOfBar, type, cb) {
-		var _element = $('rect[data-id*="spec"]');
+		var _element = 'rect[data-id*="spec"]';
 		var _class = null;
 		var _el = null;
 
-		brw.wait(EC.elementToBeClickable(_element), 5000);
+		webpage.waitsForClickeable(_element);
 
 		if (numberOfBar != 0) {
 			_class = 'rect[data-id="spec-' + type + '-bar-' + numberOfBar + '"]';
-			_el = element(by.css(_class));
+			_el = element.all(by.css(_class)).first();
 
 			logger.log('rect1', _class);
 

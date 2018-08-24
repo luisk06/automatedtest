@@ -942,12 +942,15 @@ var AnswerService = function() {
 
 					_data1 = [vecNum[idx][i]];
 
+					if(i >= num) i--; // weird fix
+
 					logger.log('textArray', textArray);
 					logger.log('item', i);
-					logger.log('textArray[item][0]', textArray[n][0]);
+					logger.log('item', textArray[i]);
+					logger.log('textArray[item][0]', textArray[i][0]);
 
 					answerModel.answers[0].data = _data1;
-					answerModel.answers[1].data = [textArray[n][0]];
+					answerModel.answers[1].data = [textArray[i][0]];
 
 					if (_data1 > 0 && _data1 <= 6) {
 						answerModel.answers[0].userType = 'Detractor';

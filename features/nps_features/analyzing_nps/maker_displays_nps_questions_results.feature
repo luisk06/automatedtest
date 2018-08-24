@@ -1,4 +1,4 @@
-@analyticQ @analyzing @complete @displays_nps_question_results @nps
+@analyticQ @analyzing @complete @displays_nps_question_results @nps @npsAnalyzing
 
 Feature: The user applies a filter to the NPS question results
 
