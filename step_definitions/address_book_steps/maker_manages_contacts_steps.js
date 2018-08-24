@@ -16,8 +16,10 @@ module.exports = function() {
 		maker.finds('.spec-dropdown-menu-main').click();
 
 		if(section === 'address_book'){
-			webpage.waits(300);
-			maker.finds('.spec_address_book_button').click().then(cb);
+			var el = '.spec_address_book_button';
+
+			webpage.waitsFor(el);
+			maker.finds(el).click().then(cb);
 		}
 	});
 
@@ -71,7 +73,7 @@ module.exports = function() {
 		}).then(cb);
 	});
 
-	Then(/^the name of the user should be displayed$/, function(cb) {
+	Then(/^the username should be displayed$/, function(cb) {
 		var _el = '.spec-addressbook-name',
 			_el2 = element.all(by.css(_el));
 
@@ -97,10 +99,8 @@ module.exports = function() {
 	});
 
 	Then(/^the modal still should be displayed$/, function(cb) {
-		var el = element(by.css('.modal'));
-
-		webpage.isDisplayed(el).then(function(_isDisplays) {
-			expect(_isDisplays).to.be.true;
+		webpage.waitsFor('.modal').then(function(_isDisplayed) {
+			expect(_isDisplayed).to.be.true;
 		}).then(cb);
 	});
 };

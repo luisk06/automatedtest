@@ -27,7 +27,7 @@ Feature: Managing contacts
 			And the user type the "email" of the new contact
 			And the user type the "phone" of the new contact
 			And the user clicks on the "btn-create" "new-contact" on "addressbook"
-		Then the name of the user should be displayed
+		Then the username should be displayed
 
 	@newContact
 	Scenario: The user try to add a new contact without data in your address book
@@ -44,7 +44,7 @@ Feature: Managing contacts
 			And the user clicks on the create new button
 			And the user type the "email" of the new contact
 			And the user clicks on the "btn-create" "new-contact" on "addressbook"
-		Then the name of the user should be displayed
+		Then the username should be displayed
 
 	@unitContacts @smokeTest1 @sanityTest
 	Scenario: The user add a new contact with all data in your address book
@@ -55,7 +55,7 @@ Feature: Managing contacts
 			And the user type the "email" of the new contact
 			And the user type the "phone" of the new contact
 			And the user clicks on the "btn-create" "new-contact" on "addressbook"
-		Then the name of the user should be displayed
+		Then the username should be displayed
 
 	@unitContacts
 	Scenario: The user try to add a new contact without data in your address book

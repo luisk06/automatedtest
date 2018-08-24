@@ -18,7 +18,7 @@ Feature: Managing tags
 			And the user type the "email" of the new contact
 			And the user type a new tag
 			And the user clicks on the "btn-create" "new-contact" on "addressbook"
-		Then the name of the user should be displayed
+		Then the username should be displayed
 
 	@unitTags
 	Scenario: The user add a new contact with all data in your address book
@@ -30,7 +30,7 @@ Feature: Managing tags
 			And the user type the "phone" of the new contact
 			And the user type a new tag
 			And the user clicks on the "btn-create" "new-contact" on "addressbook"
-		Then the name of the user should be displayed
+		Then the username should be displayed
 
 	@unitTags
 	Scenario: The user try to add a new contact without data in your address book
