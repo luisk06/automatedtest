@@ -128,7 +128,7 @@ var User = function () {
 
 		this.finds(_el).click();
 		this.waitsFor('.spec_title_description');
-		return this.fillQrveyNameOrDescription(obj.title, 'name', obj.type);
+		return this.fillQrveyNameAndDescription(obj.title, 'name', obj.type);
 	};
 
 	this.editsQuery = function () {

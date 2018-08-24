@@ -30,10 +30,10 @@ var $config = {
 		'os': 'OS X',
 		'os_version': 'High Sierra',
 		'browserName': 'Chrome',
-		'browser_version': '64.0',
+		'browser_version': '68.0',
 		'resolution': '1920x1080',
 		'name': process.env.JOB_NAME + ' in Jenkins with Chrome',
-		'browserstack.chrome.driver': '2.35',
+		'browserstack.chrome.driver': '2.40',
 		'chromeOptions': {
 			'args': ['--window-size=1920,1080']
 		}
