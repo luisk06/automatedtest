@@ -113,12 +113,12 @@ Maker.prototype.addNewToken = function (typeToken) {
 	typeToken = typeToken.toLowerCase();
 
 	this.finds('.spec-automatiq-add-token').click();
-	this.waitsFor('.modal-dialog');
+	webpage.waitsFor('.modal-dialog');
 
 	this.finds('.spec-automatiq-token-select-qrvey').click();
 	this.finds('ul.open .scroll-select .spec-automatiq-token-qrvey-option-1').click();
 
-	this.waitsFor('.tokens-questions');
+	webpage.waitsFor('.tokens-questions');
 	this.finds('.spec-automatiq-token-question-option-1').click();
 	this.finds('.spec-automatiq-token-label-input').sendKeys(typeToken);
 	this.finds('.spec-automatiq-token-add-button').click();
@@ -490,7 +490,7 @@ Maker.prototype.createsPages = function (action) {
 	);
 	this.finds('.spec-button-create-process').click();
 
-	this.waitsFor('.spec-automatiq-block-action-view-open');
+	webpage.waitsFor('.spec-automatiq-block-action-view-open');
 	this.findsAll('.spec-automatiq-block-action-view-open').get(0).click();
 	this.findsAll('.spec-automatiq-select-action-open').get(0).click();
 	this.findsAll('.spec-automatiq-select-action-' + action).get(0).click();
@@ -501,7 +501,7 @@ Maker.prototype.createsPages = function (action) {
 		);
 		this.finds('.spec-automation-btn-activate').click();
 
-		this.waitsFor('.toggle');
+		webpage.waitsFor('.toggle');
 		this.findsAll('.pages-list.qrvey-list.qrvey-pages-list .page .toggle').first().click();
 
 		deferred.fulfill();
@@ -724,7 +724,7 @@ Maker.prototype.createsWebform = function (obj) {
 	if (obj.type !== 'quiz') scrollIntoElement(this.finds(_el));
 
 	this.finds(_el).click();
-	this.waitsFor('.spec_title_description');
+	webpage.waitsFor('.spec_title_description');
 	return this.fillQrveyNameAndDescription(obj.title, 'name', obj.type);
 };
 
@@ -1246,11 +1246,17 @@ Maker.prototype.selectsOtherQuestion = function () {
 };
 
 Maker.prototype.toDoLogin = function (_username = configer.get('username'), _password = configer.get('password')) {
+	var defer = protractor.promise.defer();
+
 	webpage.goTo('/login');
 	this.finds('#spec-inputlogin-user').sendKeys(_username);
 	this.finds('#spec-inputlogin-password').sendKeys(_password);
 	this.finds('.spec-login-btn').click();
-	return this.waitsFor('.spec-qrvey-logo-exp');
+	webpage.waitsFor('.spec-qrvey-logo-exp').then(function(){
+		defer.fulfill();
+	});
+
+	return defer.promise;
 };
 
 Maker.prototype.toDoRegister = function (_username = 'testingqrvey+' + randomId() + '@gmail.com', _password = '123456') {
@@ -1261,7 +1267,7 @@ Maker.prototype.toDoRegister = function (_username = 'testingqrvey+' + randomId(
 	this.finds('#spec-input-userpass-register').sendKeys(_password);
 	this.finds('.spec-register-btn').click();
 
-	return this.waitsFor('.spec-qrvey-logo-exp');
+	return webpage.waitsFor('.spec-qrvey-logo-exp');
 };
 
 Maker.prototype.touchesDeleteOptionMenuQrvey = function (_number = 1) {
