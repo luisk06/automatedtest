@@ -1,5 +1,7 @@
 'use strict';
 
+// Sample Comment
+
 module.exports = function() {
 
 	Given = this.Given;

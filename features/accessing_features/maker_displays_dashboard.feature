@@ -6,7 +6,7 @@ Feature: User access dashboard
 	I want to access the dashboard of webform
 	In order have access to all the features webform offers in one place
 
-  	@smokeTest @userFirst
+  	@smokeTest @userFirst @luism
 	Scenario: the user has no applications
 		Given the user has "basic" plan
 			And the user has not apps
