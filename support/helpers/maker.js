@@ -725,7 +725,7 @@ Maker.prototype.createsWebform = function (obj) {
 
 	this.finds(_el).click();
 	this.waitsFor('.spec_title_description');
-	return this.fillQrveyNameOrDescription(obj.title, 'name', obj.type);
+	return this.fillQrveyNameAndDescription(obj.title, 'name', obj.type);
 };
 
 Maker.prototype.createsYesOrNotQuestion = function (params = {}) {
@@ -757,11 +757,8 @@ Maker.prototype.deleteAnDashboard = function (_appID) {
 Maker.prototype.deleteMesssage = function (_state) {
 	_state = (typeof _state !== 'undefined') ? _state : 'confirm';
 
-	if (_state == 'confirm') {
-		return this.finds('.spec-delete-qrvey-confirm').click();
-	} else if (_state == 'cancel') {
-		return this.finds('.spec-delete-qrvey-cancel').click();
-	}
+	if (_state == 'confirm') return this.finds('.spec-delete-qrvey-confirm').click();
+	else if (_state == 'cancel') return this.finds('.spec-delete-qrvey-cancel').click();
 };
 
 Maker.prototype.editsQuery = function () {
@@ -854,7 +851,7 @@ Maker.prototype.fillMultipleChoiceQuestionFromId = function (number, title) {
 	return questionContainer.element(by.css('.spec-multichoice-option-2')).sendKeys('Option 2');
 };
 
-Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey) {
+Maker.prototype.fillQrveyNameAndDescription = function (context, field, typeQrvey) {
 	var self = this;
 
 	return this.finds('.spec_title_description').click().then(function () {
@@ -867,7 +864,7 @@ Maker.prototype.fillQrveyNameOrDescription = function (context, field, typeQrvey
 		});
 
 		self.finds('.spec_editing_title_description textarea').clear().sendKeys(
-			rand.getParagraph(10)
+			rand.getParagraph(8)
 		).getAttribute('value').then(function (_val) {
 			expect(_val.length).to.be.equal(176);
 		});

@@ -18,9 +18,9 @@ var $config = {
 		'os': 'OS X',
 		'os_version': 'Sierra',
 		'browserName': 'Chrome',
-		'browser_version': '55.0',
+		'browser_version': '68.0',
 		'resolution': '1920x1080',
-		'browserstack.chrome.driver': '2.29',
+		'browserstack.chrome.driver': '2.40',
 		'chromeOptions': {
 			'args': ['--window-size=1920,1080'],
 			'prefs': {
