@@ -1,13 +1,13 @@
 'use strict';
 
 const util = require('util');
-const Userb = require('./userb');
+const Base = require('./base');
 
 var Taker = function () {
-	Userb.call(this);
+	Base.call(this);
 };
 
-util.inherits(Taker, Userb);
+util.inherits(Taker, Base);
 
 Taker.prototype.answerAll = function (rightAnswers) {
 	var defer = protractor.promise.defer();

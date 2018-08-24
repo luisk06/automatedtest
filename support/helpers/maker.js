@@ -1,13 +1,13 @@
 'use strict';
 
 const util = require('util');
-const Userb = require('./userb');
+const Base = require('./base');
 
 var Maker = function () {
-	Userb.call(this);
+	Base.call(this);
 };
 
-util.inherits(Maker, Userb);
+util.inherits(Maker, Base);
 
 Maker.prototype.actionSearch = function () {
 	this.finds('.spec_search_input').sendKeys(protractor.Key.ENTER);
