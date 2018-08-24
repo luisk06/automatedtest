@@ -1,4 +1,4 @@
-@analyzing @complete @checklist @analyzingChecklist @analyzeChecklistDetailedView
+@analyzing @todo @checklist @analyzingChecklist @analyzeChecklistDetailedView
 
 Feature: Excluding checklist answers on a detailed view
 

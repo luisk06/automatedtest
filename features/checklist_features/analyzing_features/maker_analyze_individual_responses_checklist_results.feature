@@ -1,4 +1,4 @@
-@analyzing @complete @checklist @analyzingChecklist @analyzeChecklistIndividualResponses
+@analyzing @todo @checklist @analyzingChecklist @analyzeChecklistIndividualResponses
 
 Feature: Filtering checklist answers on individual responses view
 
