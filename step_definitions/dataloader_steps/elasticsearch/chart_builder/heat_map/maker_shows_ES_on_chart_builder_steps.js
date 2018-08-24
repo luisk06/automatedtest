@@ -22,7 +22,10 @@ module.exports = function() {
 
 
 	When(/^the user inputs (\d+) max data points$/, function(num, cb) {
-		element.all(by.css('qv-numeric[qv-on-change="onMultiseriesChange"] input')).last().clear().sendKeys(num).then(cb);
+		var input = element.all(by.css('qv-numeric[qv-on-change="onMultiseriesChange"] input')).last();
+		browser.executeScript('arguments[0].select()',input).then(function(){
+			input.sendKeys(num).then(cb);
+		});
 	});
 
 	Then(/^the number of cells shoulb be (\d+)$/, function(num, cb) {
