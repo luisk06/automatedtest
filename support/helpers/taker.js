@@ -1,13 +1,13 @@
 'use strict';
 
 const util = require('util');
-const Userb = require('./userb');
+const Base = require('./base');
 
 var Taker = function () {
-	Userb.call(this);
+	Base.call(this);
 };
 
-util.inherits(Taker, Userb);
+util.inherits(Taker, Base);
 
 Taker.prototype.answerAll = function (rightAnswers) {
 	var defer = protractor.promise.defer();
@@ -108,7 +108,7 @@ Taker.prototype.answersEmailQuestion = function () {
 Taker.prototype.answersExpressionQuestion = function () {
 	var el = '.spec-expression-word-check';
 	var self = this;
-	this.waitsForPresence(el);
+	webpage.waitsForPresence(el);
 
 	return this.findsAll('.spec-expression-word-check').count().then(function (_count) {
 		var index = rand.getNumber({
@@ -135,7 +135,7 @@ Taker.prototype.answersExpressionWithCategoriesQuestion = function () {
 
 	el2 = '.expression-words:nth-child(' + (index == 0 ? 'odd' : 'even') + ') .word-check';
 
-	this.waitsFor(el2);
+	webpage.waitsFor(el2);
 	var self = this;
 
 	return this.findsAll(el2).count().then(function (_count) {
@@ -534,7 +534,7 @@ Taker.prototype.choicesRandomAnswer = function (_type, _idx) {
 
 		logger.info('DATE', answer);
 
-		this.waitsFor('.spec-taker-date-answer-input');
+		webpage.waitsFor('.spec-taker-date-answer-input');
 
 		_el = this.finds('.spec-taker-date-answer-input');
 
@@ -572,11 +572,11 @@ Taker.prototype.choicesRightAnswer = function (_type, _idx) {
 	var _el = null;
 
 	webpage.waits(700);
-	// this.waitsFor('.question-number');
+	// webpage.waitsFor('.question-number');
 
 	if (_type == 'SINGLE_CHOICE') {
 
-		this.waitsFor('.spec-multiple-choise-option-0');
+		webpage.waitsFor('.spec-multiple-choise-option-0');
 		this.finds('.spec-multiple-choise-option-0').click();
 		this.findsAll('.spec-user-response-ok').get(_idx).click().then(function () {
 			deferred.fulfill();
@@ -613,7 +613,7 @@ Taker.prototype.choicesRightAnswer = function (_type, _idx) {
 
 	} else if (_type == 'EMAIL') {
 
-		this.waitsFor('.textfield-area.requested-email');
+		webpage.waitsFor('.textfield-area.requested-email');
 		this.finds('.textfield-area.requested-email').sendKeys('testingqrvey+' + randomId() + '@gmail.com');
 		this.findsAll('.spec-user-response-ok').get(_idx).click().then(function () {
 			deferred.fulfill();
@@ -638,7 +638,7 @@ Taker.prototype.enterInAudicencePage = function () {
 
 Taker.prototype.finish = function (_confirm = true) {
 	if (_confirm === true) {
-		this.waitsFor('.spec-user-email-field-confirm');
+		webpage.waitsFor('.spec-user-email-field-confirm');
 		this.finds('.spec-user-email-field-confirm').sendKeys(configer.get('username'));
 		webpage.waits('.spec-done-submit-take-qrvey');
 		this.finds('.spec-done-submit-take-qrvey').click().then(function () {

@@ -3,6 +3,9 @@ default: serve
 gherkinlint:
 	clear && ./node_modules/.bin/gherkin-lint .
 
+removeNodeModules:
+	@sudo rm -R node_modules
+
 postinstall:
 	clear && ./node_modules/.bin/webdriver-manager update --chrome --versions.chrome 2.40
 

@@ -171,7 +171,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				// for (i = 0; i < num; i++) {
 				answerModel.answers[0].data = [];
 
@@ -239,7 +239,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				answerModel.answers[0].data = [];
 				answerModel.answers[0].data_ansid = [];
 
@@ -312,7 +312,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				var isPositve = Math.random() >= 0.5;
 				logger.info('is positive', isPositve);
 
@@ -388,7 +388,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				answerModel = findAnswers('yes_no');
 				answerModel.qrveyID = qrveyID;
 				answerModel.qstring.q = qstring;
@@ -520,7 +520,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				answerModel = findAnswers('multiple_choice');
 
 				answerModel.qrveyID = qrveyID;
@@ -585,7 +585,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				answerModel = findAnswers('image');
 
 				answerModel.qrveyID = qrveyID;
@@ -648,7 +648,7 @@ var AnswerService = function() {
 
 		dos.cycle(function (cb) {
 			return cb(null, j >= 0);
-		}, function(item, next) {
+		}, function(next) {
 			answerModel = findAnswers('multiple_choice');
 
 			answerModel.qrveyID = qrveyID;
@@ -718,7 +718,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				answerModel.answers[0].data[0] = possibleAnswers[num % (i + 1) % possibleAnswers.length];
 
 				i++;
@@ -1563,7 +1563,7 @@ var AnswerService = function() {
 
 			dos.cycle(function(cb){
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 
 				answerModel.answers[0].address = [];
 
@@ -1626,7 +1626,7 @@ var AnswerService = function() {
 
 			dos.cycle(function(cb){
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 
 				answerModel.answers[0].address = [];
 
@@ -1690,7 +1690,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 
 				answerModel.answers[0].name = [];
 				answerModel.answers[0].name = {
@@ -1749,7 +1749,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 
 				answerModel.answers[0].data = [];
 				answerModel.answers[0].data.push('+' + rand.getPhone('').replace(/[()]/g, ''));
@@ -1807,7 +1807,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 				if (typeOfBranch == 'jump_to_mc' || typeOfBranch == 'jump_to_yesno' || typeOfBranch == 'jump_to_image') {
 					answerModel.answers[1].data[0] = rand.getNumber({
 						float: false,
@@ -1876,7 +1876,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 
 				answerModel.answers[0].data = [];
 				answerModel.answers[1].data = [];
@@ -1976,7 +1976,7 @@ var AnswerService = function() {
 
 				dos.cycle(function (cb) {
 					return cb(null, j >= 0);
-				}, function(item, next) {
+				}, function(next) {
 
 					if (typeOfQrvey == 'quiz') {
 						answerModel.profile.email = rand.getEmail();
@@ -2149,7 +2149,7 @@ var AnswerService = function() {
 
 			dos.cycle(function (cb) {
 				return cb(null, j >= 0);
-			}, function(item, next) {
+			}, function(next) {
 
 				answerModel.answers[0].data = [];
 				answerModel.answers[1].data = [];
@@ -2250,7 +2250,7 @@ var AnswerService = function() {
 
 				dos.cycle(function (cb) {
 					return cb(null, j >= 0);
-				}, function(item, next) {
+				}, function(next) {
 
 					if (typeOfQrvey == 'quiz') {
 						answerModel.profile.email = rand.getEmail();
@@ -2317,7 +2317,7 @@ var AnswerService = function() {
 
 				dos.cycle(function (cb) {
 					return cb(null, j >= 0);
-				}, function(item, next) {
+				}, function(next) {
 
 					answerModel.answers[0].data = [];
 					answerModel.answers[1].data = [];
@@ -2419,7 +2419,7 @@ var AnswerService = function() {
 
 				dos.cycle(function (cb) {
 					return cb(null, j >= 0);
-				}, function(item, next) {
+				}, function(next) {
 
 					if (typeOfQrvey == 'quiz') {
 						answerModel.profile.email = rand.getEmail();
@@ -2489,7 +2489,7 @@ var AnswerService = function() {
 
 				dos.cycle(function (cb) {
 					return cb(null, j >= 0);
-				}, function(item, next) {
+				}, function(next) {
 
 					answerModel.answers[0].data = [];
 					answerModel.answers[1].data = [];
