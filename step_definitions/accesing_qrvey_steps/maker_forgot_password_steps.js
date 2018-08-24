@@ -21,7 +21,7 @@ module.exports = function() {
 	});
 
 	When(/^fills an email fields$/, function(cb) {
-		var email = rand.getEmail();
+		var email = 'testingqrvey_neverregister+' + randomId() + '@gmail.com';
 		element(by.css('.spec-user-forgot-password')).clear().sendKeys(email).then(cb);
 	});
 
