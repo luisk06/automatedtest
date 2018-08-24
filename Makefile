@@ -4,7 +4,7 @@ gherkinlint:
 	clear && ./node_modules/.bin/gherkin-lint .
 
 postinstall:
-	clear && ./node_modules/.bin/webdriver-manager update --chrome --versions.chrome 2.36
+	clear && ./node_modules/.bin/webdriver-manager update --chrome --versions.chrome 2.40
 
 # Easy Run
 # parameters: accessing, editing, incontext, nps, polls, qrvey
